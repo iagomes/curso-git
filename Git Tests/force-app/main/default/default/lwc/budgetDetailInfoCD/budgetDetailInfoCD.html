@@ -1,0 +1,62 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand"  alternative-text="loading"></lightning-spinner>
+    <div class="style-element-container"></div>
+    <div class="slds-section slds-is-open slds-card " data-name="divAllProducts"
+        style="padding:15px; border-radius: 5px 5px 0px 0px;margin-bottom: 30px;box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;position: relative;">
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+        <!-- Header -->
+            <button class="slds-button slds-float_right slds-button_icon slds-modal__close slds-button_icon-inverse" title="Fechar" onclick={buttonCloseClick}>
+                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                <span class="slds-assistive-text">Fechar</span>
+            </button>
+        <c-budget-detail-info-c-d-header
+            resp={resp}
+            onopenhistoric={handleOpenHistoric}
+            onopenproductdesc={handleOpenProductDesc}
+        ></c-budget-detail-info-c-d-header>
+        <!-- needRefactor -->
+        <!-- fator-de-conversao={fatorDeConversao} \/-->
+            <c-budget-detail-info-c-d-converter
+                resp={resp}
+            ></c-budget-detail-info-c-d-converter>
+        <!-- Accordion do CD -->
+        <div class="distributionCardDiv">
+            <!-- <template if:true={prod.show}> -->
+                <!-- active-section-name={activeSection} \/ -->
+                <lightning-accordion name="accordion" allow-multiple-sections-open active-section-name="cdaccordion">
+                    <div class="slds-m-around_x-small slds-scrollable_x">
+                        <!-- data-target-id={prod.pbeExternalId}  -->
+                        <!-- Inicio Histórico -->
+                        <template if:true={showHistoric}>
+                            <c-budget-detail-info-c-d-history
+                            
+                            ></c-budget-detail-info-c-d-history>
+                        </template>
+                        <!-- Fim Histórico -->
+                    </div>
+                    <!-- <lightning-accordion-section name="cdaccordion" data-name="accordion" label="Centro de Distribuição" class="divAccordionSection"> -->
+                        <c-budget-detail-info-c-d-content
+                            opp-id={oppId}
+                            resp={resp}
+                            cnpj={cnpj}
+                            uf={uf}
+                            pricebook={pricebook}
+                            condpag={condpag}
+                            quantidade={quantidade}
+                            accountid={accountid}
+                            account-type={accountType}
+                            cds-bloqueados={cdsBloqueados}
+                            onnextpage={handleNextPage}
+                        ></c-budget-detail-info-c-d-content>
+                    <!-- </lightning-accordion-section> -->
+                </lightning-accordion>
+            <!-- </template> -->
+        </div>
+    </div>
+	<!-- Modal descrição do Produto -->
+    <c-product-description
+        prod={resp} 
+        show={showProductDescriptionModal} 
+        onproductdescriptioncloseclick={handleOpenProductDesc}
+    ></c-product-description>
+</template>

@@ -1,0 +1,914 @@
+<template>
+    <div class="style-element-container"></div>
+    <div class="slds-section slds-is-open slds-card " data-name="divAllProducts"
+        style="padding:15px; border-radius: 5px 5px 0px 0px;margin-bottom: 30px;box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;position: relative;"
+        key={prod.pbeExternalId}>
+        <lightning-spinner if:true={isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse close-button"
+            title="Fechar" onclick={buttonCloseClick}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                size="small"></lightning-icon>
+            <span class="slds-assistive-text">Fechar</span>
+        </button>
+        <!-- <div data-name="divAllProducts" style="margin:auto;display:flex;justify-content:space-between; width: 100%;"                                    
+            data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code} data-product-malha="false" onclick={handleSelectedProduct}> -->
+        <div data-name="divAllProducts" style="margin:auto;display:flex;justify-content:space-between; width: 100%"
+            data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code} data-product-malha="false">
+
+            <lightning-layout multiple-rows horizontal-align="spread" style="width: 100%;">
+                <template if:true={desktop}>
+                    <lightning-layout-item size="2">
+                        <div style="font-size:1rem;padding: 0 0 10px 0;">
+                            <strong>{prod.code}</strong>
+                        </div>
+                        <div>
+                            <img src="https://i.imgur.com/q2wyFuf.png" width="22px"></img>
+                            <div style="display:inline-block;margin:auto">
+                                <div style="display: flex;border: 1px dashed #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                    title={prod.categoriaDesc}>
+                                    {prod.categoria}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 12px;padding-top:10px;">
+                            {prod.temperatura}
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6">
+                        <div class="slds-media__body slds-col">
+                            <lightning-layout class="slds-m-bottom_xx-small">
+                                <lightning-layout-item>
+                                    <div style="font-size: 15px;color:#0070d2">
+                                        <p><strong>{prod.nome}</strong></p>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-m-bottom_xx-small">
+                                <lightning-layout-item>
+                                    <div style="font-size: 13px;font-weight:600">
+                                        <p>{prod.principioAtivo}</p>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-m-bottom_xx-small">
+                                <lightning-layout-item>
+                                    <div style="font-size: 13px;color:#999">
+                                        <p>{prod.fabricante}</p>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <div class="box-legendas">
+                                <!-- OBS: Essa gambiarra dos template if true foi só pra mostrar na apresentação como ficaria o card mostrando 1, 2, 3 ou 4 badges.  -->
+                                <template if:true={prod.showBadgeOL}>
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                            title={prod.precoBadgeOL}>
+                                                <span class="badge badge-color1">
+                                                    Produto OL
+                                                </span>
+                                        </div>
+                                </template>
+                                <template if:true={prod.showBadgeAcordoComercial}>
+                                        <!-- <div style="display: flex;border: 1px dashed #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;" -->
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                            title={prod.precoBadgeAcordoComercial}>
+                                            <span class="badge badge-color4">
+                                                Acordo Comercial
+                                            </span>
+                                        </div>
+                                </template>
+                                <template if:true={prod.showBadgeshelflife}>
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                            title={prod.precoBadgeshelflife}>
+                                            <span class="badge badge-color5">
+                                                Produto shelflife
+                                            </span>
+                                        </div>
+                                </template>
+                                <template if:true={prod.showBadgeCampanha}>
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;">
+                                            <span class="badge badge-color2">
+                                                Campanha Produto
+                                            </span>
+                                        </div>
+                                </template>
+                                <template if:true={prod.showBadgeCampanhaVendedor}>
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                            title={prod.dataBadgeCampanhaVendedor}>
+                                            <span class="badge badge-color6">
+                                                Campanha Vendedor
+                                            </span>
+                                        </div>
+                                </template>
+                                <template if:true={prod.showBadgeConsignado}>
+                                        <div style="display: #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;"
+                                            title={prod.precoBadgeConsignado}>
+                                            <span class="badge badge-color3">
+                                                Produto Consignado
+                                            </span>
+                                        </div>
+                                </template>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1" style="display: inline-grid; justify-content: center;">
+                        <template if:true={prod.isRecommendation}>
+                            <template if:false={prod.alreadyAnswered}>
+                                <lightning-button class="slds-m-bottom_x-small" label="Aprovar" variant="success" icon-name="utility:like" onclick={recommendationApproved} data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code}>
+                                </lightning-button>
+                                <lightning-button variant="destructive-text" label="Recusar"  icon-name="utility:dislike" onclick={recommendationRefused} data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code}>
+                                </lightning-button>
+                            </template>
+                            <template if:true={prod.alreadyAnswered}>
+                                <div style="text-align: center;">
+                                    <div>
+                                        <lightning-icon icon-name="action:approval" alternative-text="Approved" title="Item avaliado!"></lightning-icon>
+                                    </div>
+                                    <div class="slds-m-bottom_x-small" style="color: #666; text-align-last: center;">
+                                        <strong>Item avaliado</strong>
+                                    </div>														
+                                </div>
+                            </template>
+                        </template>
+                    </lightning-layout-item>
+                    <!-- <lightning-layout-item size="1">
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <template if:true={prod.principioAtivo}>
+                                <template if:false={isRecommendation}>
+                                    <a style="font-size: 13px;color:#0070d2" data-product-ativo={prod.principioAtivo} onclick={onSearchByActivePrinciple}>
+                                        <div style="text-align-last: center;">
+                                            <p><strong>Buscar princípio ativo</strong></p>
+                                        </div>
+                                    </a>
+                                </template> 
+                            </template>
+                        </div>
+                    </lightning-layout-item> -->
+                    <template if:true={prod.isContractOrCampaign}>
+                        <lightning-layout-item size="1">
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <lightning-layout-item>
+                                    <div class="slds-m-left_xx-small"
+                                        style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                        <strong>Preço</strong>
+                                    </div>
+                                </lightning-layout-item>
+                                <div class="slds-m-right_xx-small"
+                                    style="font-size:1rem;font-weight:bold">
+                                    <lightning-formatted-number
+                                    value={prod.precoTabelaCx}
+                                    format-style="currency"
+                                    currency-code="BRL">
+                                </lightning-formatted-number></div>
+                            </div>
+                        </lightning-layout-item>
+                    </template>
+                    <lightning-layout-item size="1">
+                        <div style="float: right;">
+                            <lightning-button-icon style="display:block" alternative-text=""
+                                tooltip="Histórico" icon-class="" variant="border" type="button"
+                                icon-name="utility:knowledge_base" value={prod}
+                                onclick={openHistoric} size="medium">
+                            </lightning-button-icon>
+                            <!-- <lightning-button-icon style="display:block" alternative-text=""
+                                icon-class="" variant="border" type="button" tooltip="Foto"
+                                icon-name="utility:photo" size="medium">
+                            </lightning-button-icon> -->
+                            <lightning-button-icon style="display:block" alternative-text=""
+                                tooltip="Descrição" icon-class="" variant="border" type="button"
+                                icon-name="utility:description" value={prod} 
+                                onclick={openModalProductDescription} size="medium">
+                            </lightning-button-icon>
+                            <lightning-button-icon
+                                variant="border"
+                                icon-name="utility:refresh"
+                                tooltip="Atualizar malha"
+                                onclick={handleSelectedProduct2}
+                                data-product-id={prod.prodId}
+                                data-product-name={prod.nome}
+                                data-product-code={prod.prodCode}
+                                data-product-malha="true" 
+                                style="display:block"
+                                size="medium"
+                            ></lightning-button-icon>
+                        </div>
+                    </lightning-layout-item>
+
+                </template>
+            </lightning-layout>
+        </div>
+        <!-- Card info do produto -->
+
+        <lightning-layout-item size="6">
+            <br>                        
+            <div class="slds-media__body slds-col">
+                <lightning-layout class="slds-m-bottom_xx-small">
+                    <lightning-layout-item>
+                        <div style="font-size:1rem;padding: 0 0 10px 0;">
+                            <div class="cflex_row">
+                                <div class="cflex_row cflex_ai_start">
+                                    <strong>Conversão &nbsp;&nbsp;</strong>
+                                    <template for:each={radioOptionsConversao} for:item="item">
+                                        <fieldset key={item.value} style="display: block; float: left;">
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-radio">
+                                                    <input name="radiogroup" id={item.value} type="radio"  checked={item.checked} value={conversao} data-id={item.value} onchange={handleSelectedRadioConversao}/>
+                                                    <label class="slds-radio__label" for={item.value}>
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label">{item.label}</span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </fieldset>
+                                    </template>
+                                    <div class="slds-grid slds-wrap" style="flex: auto; place-content: center;">
+                                        <div class="slds-col slds-large-size_1-of-6" style="width:auto">
+                                            <div class="card-body">
+                                                <div class="box-form">
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                 Fator de conversão
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                <lightning-input type="text" value={fatordeConversao} name="qtde_cx_input" label="" variant="label-hidden" onchange={handleFatorConversao} onblur={atualizarProduto}> </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6">
+            <!-- <lightning-layout class="slds-m-bottom_xx-small"> -->
+            <lightning-layout >
+                <div class="slds-grid slds-wrap" style="flex: auto; place-content: center;">
+                    <div class="slds-col slds-size_1-of-1">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col slds-size_1-of-8">
+                                <strong> Observação </strong>
+                            </div>
+                            <div class="slds-col slds-size_5-of-6"> 
+                                <!-- <lightning-input type="text" value={comentario} label=""  variant="label-hidden"
+                                        onblur={handlecomentario}>
+                                    </lightning-input> -->
+                                <lightning-textarea label=""  variant="label-hidden"  style="width: 100%;" value={observacao}
+                                    onblur={handlecomentario}>
+                                </lightning-textarea>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <!-- Accordion do CD -->
+        <div class="distributionCardDiv">
+            <template if:true={prod.show}>
+                <lightning-accordion name="accordion" allow-multiple-sections-open active-section-name={activeSection}>
+        <!-- Inicio Histórico -->
+                    <div data-target-id={prod.pbeExternalId} class="slds-m-around_x-small slds-scrollable_x">
+                        <template if:true={showHistoric}>
+                            <div class="slds-section slds-is-open divHist" data-product-id={prod.pbeExternalId}>
+                                <h3 class="slds-section__title">
+                                    <lightning-button
+                                        class="slds-theme_base slds-section__title-action"
+                                        name="historicSection" icon-position="left"
+                                        variant="base" label="Histórico " value={prod.pbeExternalId}
+                                        icon-name="utility:switch">
+                                            <!-- onclick={closeSection}> -->
+                                    </lightning-button>
+                                </h3>
+                            </div>
+                            <div>
+                                <div class="slds-section__content" data-product-id={prod.pbeExternalId}>
+                                    <table
+                                        class="colorborderblue slds-table slds-no-row-hover slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                        <thead>
+                                            <tr class="slds-text-title_caps">
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Código e Nome">
+                                                        Código e Nome </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Data emissão">
+                                                        Data
+                                                        emissão</div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Número do registro">
+                                                        Número do registro</div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Valor Unitário">
+                                                        Valor
+                                                        Unitário</div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Quantidade">
+                                                        Quantidade
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Unidade de medida">
+                                                        Unidade de medida
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Status do registro">
+                                                        Status do registro
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Score do produto">
+                                                        Score do produto
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Score do registro">
+                                                        Score do registro
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="slds-text-align_center"
+                                                        title="Centro de Distribuição">
+                                                        Centro de
+                                                        Distribuição</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <template for:each={HistoricList} for:item="prod">
+                                                    <tr class="slds-hint-parent" key={prod}>
+                                                        <td>
+                                                            <div class="slds-text-align_center"
+                                                                style="font-size: 13px;">
+                                                                <p><span style="font-family:'Salesforce Sans';"><strong>{prod.codNomeCli}</strong></span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center"
+                                                                style="font-size: 13px;">
+                                                                <p><span style="font-family:'Salesforce Sans';"><strong>{prod.dataPedido}</strong></span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><span><strong><a href="javascript:void(0)" data-id={prod.pedidoId} onclick={redirectPedido}>{prod.nroPedido}</a></strong></span>
+                                                                    
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><span><strong>
+                                                                        <lightning-formatted-number
+                                                                                value={prod.vlrUnitatio}
+                                                                                format-style="currency"
+                                                                                currency-code="BRL">
+                                                                        </lightning-formatted-number>
+                                                                    </strong></span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><span><strong>{prod.qtd}</strong></span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><span><strong>{prod.undMedida}</strong></span>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><strong>{prod.status}</strong></p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><strong>{prod.margemPrd}</strong></p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><strong>{prod.margemPedido}</strong></p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="slds-text-align_center" style="font-size: 13px;">
+                                                                <p><strong>{prod.centroDistribuicao}</strong>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                            </template>
+                                        </tbody>
+                                        <thead if:true={HistoricList}>
+                                            <td >
+                                                <div if:false={isFirstPage}  >
+                                                    <input type="button" value="Anterior" onclick={handlePrev} disabled={isFirstPage} style="width:100px"/>
+                                                </div>
+                                            </td>
+                                            <td >
+                                                <div if:false={isLastPage}  >
+                                                    <input type="button" value="Próximo"   onclick={handleNext} disabled={isLastPage} style="width:100px"/>
+                                                </div>
+                                            </td>
+                                        </thead>
+                                </table>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+        <!-- Fim Histórico -->
+                    <lightning-accordion-section name="cdaccordion" data-name="accordion"
+                        label="Centro de Distribuição" class="divAccordionSection"
+                        style="display:block;">
+                        <div slot="actions" style="width:80%;padding-left: 14rem;">
+                            <div class="cflex_row">
+                                <div class="cflex_row cflex_ai_start">
+                                    <template for:each={radioOptions} for:item="item">
+                                        <fieldset key={item.value} style="display: block; float: left;">
+                                            <div class="slds-form-element__control">
+                                                <span class="slds-radio">
+                                                    <input name="radiogroup1" id={item.value} type="radio" checked={item.checked}  value={item.value} onchange={handleSelectedRadioCd} />
+                                                    <label class="slds-radio__label" for={item.value}>
+                                                        <span class="slds-radio_faux"></span>
+                                                        <span class="slds-form-element__label">{item.label}</span>
+                                                    </label>
+                                                </span>
+                                            </div>
+                                        </fieldset>
+                                    </template>
+                                    <template if:true={isForaMalha}>
+                                        <lightning-button variant="base" label="Esconder fora malha" data-product-code={prod.code} onclick={removeForaMalha} class="slds-m-left_x-small"></lightning-button>
+                                    </template>
+                                    <template if:false={isForaMalha}>
+                                        <lightning-button variant="base" label="Buscar fora malha" style="margin-top:-4px"
+                                        data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code} data-product-malha="true" onclick={handleSelectedProduct} class="slds-m-left_x-small"></lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div style="display:flex;">														
+                            <template if:true={desktop}>
+                                <div style="display:flex;align-content:flex-start;margin:auto;">
+                                    <lightning-icon style="cursor: pointer;" class="nextButton"
+                                        icon-name="utility:chevronleft" variant="brand"
+                                        onclick={previousCd} size="medium" if:true={showPreviousCdButton}></lightning-icon>
+                                </div>
+                            </template>
+                            <div class="slds-grid slds-wrap" style="flex: auto; place-content: center;">
+                                <template for:each={cdListItems} for:item="cd">
+                                    <!-- CARD CD -->
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3" style="width:auto" key={cd.id}>
+                                        <!-- LOOP -->
+                                        <div class="card-custom" key={cd.id}>
+                                            <!-- CARD-HEADER -->
+                                            <div class="card-header">
+                                                <div class="title">
+                                                    <span>{cd.cds}</span>
+                                                    <div class="box-icons">
+                                                        <!-- <div class="icon no-border-bg">
+                                                            <lightning-helptext
+                                                                content="Saldo: 1 - Armazém: SL"
+                                                                icon-name="utility:unlock"
+                                                                size="small" variant="warning">
+                                                            </lightning-helptext>
+                                                        </div> -->
+                                                        <div class="icon">
+                                                            <lightning-button-icon
+                                                                style="margin:auto;"
+                                                                tooltip="Informações CD - Clique + informações"
+                                                                icon-name="utility:fulfillment_order"
+                                                                size="medium"
+                                                                data-cd-cnpj={cd.cnpjCd}
+                                                                title={cd.cnpjCd}
+                                                                data-product-code={prod.code}
+                                                                onclick={handleSelectedInfo}
+                                                                variant="bare">
+                                                            </lightning-button-icon>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /CARD-HEADER -->
+                                            <!--CARD BODY -->
+                                            <div class="card-body">
+                                                <!-- INFO -->
+                                                <div class="info">
+                                                    <div class="qtde">
+                                                        <span class={cd.class}>{cd.estoque} ({cd.unidadePrincipal})</span>
+                                                    </div>
+<!-- 
+                                                    <div class="qtde small px-2">
+                                                        <template if:true={cd.unidadeSec}>
+                                                            <span class={cd.class}>{cd.estoqueUn} ({cd.unidadeSecundaria})</span>
+                                                        </template>
+                                                    </div> -->
+                                                </div>
+                                                <!-- /INFO -->
+                                                <div class="info2">
+                                                    <div>
+                                                        <span class="lb-sec dark">Preço &rArr;
+                                                            <lightning-formatted-number
+                                                                value={cd.precoTabelaCx}
+                                                                format-style="currency"
+                                                                currency-code="BRL">
+                                                            </lightning-formatted-number>
+                                                        </span>
+                                                        <span class="lb-sec">Fábrica &rarr;
+                                                            <lightning-formatted-number
+                                                                value={cd.precoFabricaCx}
+                                                                format-style="currency"
+                                                                currency-code="BRL">
+                                                            </lightning-formatted-number>
+                                                        </span>                                                                                
+                                                        <!-- <span class="lb-sec">Preço atual &rarr;
+                                                            <lightning-formatted-number
+                                                                value={cd.precoFabricaCx}
+                                                                format-style="currency"
+                                                                currency-code="BRL">
+                                                            </lightning-formatted-number>
+                                                        </span> -->
+                                                    </div>
+                                                    <!-- UNIDADE -->
+                                                    <div>
+                                                        <span class="lb-sec dark" style="background-color: #ffbb00" >
+                                                            <template if:true={cd.cbBloqueado} >
+                                                                <font color="white">
+                                                                    <b>Este CD não está</b>
+                                                                </font>
+                                                            </template>
+                                                        </span>
+                                                        <span class="lb-sec dark" style="background-color: #ffbb00" >
+                                                            <template if:true={cd.cbBloqueado} >
+                                                                <font color="white">
+                                                                    <b>
+                                                                        elegível pela  
+                                                                    </b>
+                                                                </font>
+                                                            </template>
+
+                                                        </span>
+                                                        <span class="lb-sec dark" style="background-color: #ffbb00">
+                                                            <template if:true={cd.cbBloqueado} >
+                                                                <font color="white">
+                                                                    integradora.
+                                                                </font>
+                                                            </template>
+                                                        </span>
+                                                        <template if:true={cd.oppGanha}>
+                                                            <font color="green">
+                                                                <b>{cd.oppGanha}</b>
+                                                            </font>
+                                                        </template>
+                                                        
+                                                        <template if:true={cd.oppPerdida}>
+                                                            <font color="red">
+                                                                <b>{cd.oppPerdida}</b>   
+                                                            </font>
+                                                        </template>
+                                                    </div>
+                                                    <!-- UNIDADE -->
+                                                </div>
+                                                <div class="box-form">
+                                                    <div class="row-form" style="justify-content:space-between;">
+                                                        <template if:true={cd.valorZerado}>
+                                                            <lightning-helptext
+                                                                class="valor-zerado-help-text"
+                                                                content="Preço não cadastrado para essa tabela, favor entrar em contato com o departamento responsável."
+                                                                icon-name="utility:info_alt"
+                                                                size="small" 
+                                                                variant="warning">
+                                                            </lightning-helptext>
+                                                        </template>
+                                                        <div style="flex:1"></div>
+                                                        <template if:true={cd.showBadgeCampanhaCD}>
+                                                            <div class="box-legendas" title={cd.precoBadgeCampanhaProduto}>
+                                                                <div class="badge badge-color2" style="display: flex; align-items: center; justify-content: center;padding: 0px 5px 0px 5px; ">
+                                                                    Campanha Produto
+                                                                    <lightning-helptext style="padding-bottom: 4px;" class="slds-m-left_xxx-small" content={cd.precoBadgeCampanhaProduto}></lightning-helptext>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+                                                    </div>
+
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                Qtde. ({cd.unidadePrincipal})
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <lightning-input type="number"
+                                                                    value={cd.quantidadeCx}
+                                                                    data-cd-id={cd.cdId}
+                                                                    data-prod-id={cd.prodId}
+                                                                    name="qtde_cx_input"
+                                                                    label=""
+                                                                    variant="label-hidden"
+                                                                    onblur={calcPriceUnitCx}
+                                                                    disabled={cd.valorZerado}>
+                                                                </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                <font color="red">
+                                                                    Qtde. Portal
+                                                                </font>
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <lightning-input 
+                                                                    type="number"
+                                                                    title={cd.index}
+                                                                    data-cd-id={cd.id}
+                                                                    data-prod-id={cd.prodId}
+                                                                    name="unitario" label=""
+                                                                    step="0.0001"
+                                                                    value={cd.quantidadePortal}
+                                                                    variant="label-hidden"
+                                                                    disabled="true">
+                                                                </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                Vlr. ({cd.unidadePrincipal})
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <template if:false={cd.valorZerado}>
+                                                                    <lightning-input type="number"
+                                                                        value={cd.caixa}
+                                                                        data-cd-id={cd.cdId}
+                                                                        data-prod-id={cd.prodId}
+                                                                        name="qtde_cx_input"
+                                                                        label="" step="0.000001"
+                                                                        onblur={calcCxValue}
+                                                                        variant="label-hidden"
+                                                                        disabled={cd.valorBloqueado}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                                <template if:true={cd.valorZerado}>
+                                                                    <lightning-input type="number"
+                                                                        value={cd.caixa}
+                                                                        data-cd-id={cd.cdId}
+                                                                        data-prod-id={cd.prodId}
+                                                                        name="qtde_cx_input"
+                                                                        label="" step="0.000001"
+                                                                        onblur={calcCxValue}
+                                                                        variant="label-hidden"
+                                                                        disabled={cd.valorZerado}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                <font color="red">
+                                                                    Vlr. Portal
+                                                                </font>
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <lightning-input type="number"
+                                                                    value={cd.unitarioPortal}
+                                                                    data-cd-id={cd.id}
+                                                                    data-prod-id={cd.prodId}
+                                                                    name="qtde_unit_input"
+                                                                    step="0.000001" label=""
+                                                                    variant="label-hidden"
+                                                                    disabled="true">
+                                                                </lightning-input>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                Desconto %
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <template if:false={cd.valorZerado}>
+                                                                    <lightning-input type="number"
+                                                                        value={cd.desconto}
+                                                                        data-cd-id={cd.cdId}
+                                                                        data-prod-id={cd.prodId}
+                                                                        name="qtde_cx_input"
+                                                                        label="" step="0.01"
+                                                                        variant="label-hidden"
+                                                                        onblur={calcDiscount}
+                                                                        disabled={cd.valorBloqueado}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                                <template if:true={cd.valorZerado}>
+                                                                    <lightning-input type="number"
+                                                                        value={cd.desconto}
+                                                                        data-cd-id={cd.cdId}
+                                                                        data-prod-id={cd.prodId}
+                                                                        name="qtde_cx_input"
+                                                                        label="" step="0.01"
+                                                                        variant="label-hidden"
+                                                                        onblur={calcDiscount}
+                                                                        disabled={cd.valorZerado}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                Valor Total
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <lightning-formatted-number
+                                                                    value={cd.valorTotal}
+                                                                    format-style="currency"
+                                                                    currency-code="BRL">
+                                                                </lightning-formatted-number>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- +1 -->
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <div class="lb-form">
+                                                                Validade mínima:
+                                                            </div>
+                                                            <div class="lb-input-100">
+                                                                <lightning-combobox label=""
+                                                                    value={cd.validadeMinima}
+                                                                    options={validityOptions}
+                                                                    data-cd-id={cd.id}
+                                                                    data-prod-id={cd.prodId}
+                                                                    onchange={handleValidadeMinima}
+                                                                    dropdown-alignment="left"
+                                                                    variant="label-hidden">
+                                                                </lightning-combobox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row-form">
+                                                        <div class="col-form">
+                                                            <template if:true={cd.verMargem}>
+                                                                <div class="lb-form">
+                                                                    Margem Alvo
+                                                                </div>
+                                                                <div class="lb-input">
+                                                                    <lightning-formatted-number
+                                                                        value={cd.margemAlvo}>
+                                                                    </lightning-formatted-number>%
+                                                                </div>
+                                                            </template>
+                                                            </div>
+                                                    </div>
+                                                    <div class="row-form">
+                                                        <div class="col-form" style="justify-content: left;float: left">
+                                                            <div class="lb-form" style="min-width: auto;">
+                                                                Score
+                                                            </div>
+                                                            <div class="lb-input">
+                                                                <lightning-formatted-number value={cd.score}></lightning-formatted-number>
+                                                            </div>
+                                                        </div>
+                                                        <div style="justify-content: flex-end;float: right">
+                                                            
+                                                            <template if:true={cd.adicionado}>
+                                                                <lightning-button-icon
+                                                                    icon-name="utility:delete"
+                                                                    value={cd.id} 
+                                                                    data-product-code={cd.prodCode}
+                                                                    data-product-card=true
+                                                                    alternative-text="Delete" 
+                                                                    class="slds-m-right_x-small"
+                                                                    title="Delete" 
+                                                                    onclick={removeOrderedProduct}>
+                                                                </lightning-button-icon>
+                                                                <lightning-button size="large"
+                                                                    icon-name="utility:check" value={cd}
+                                                                    variant="success"
+                                                                    data-cd-id={cd.cdId}
+                                                                    data-prod-id={cd.prodId}
+                                                                    onclick={handleSaveCd}
+                                                                    label="Adicionado">
+                                                                </lightning-button>
+                                                            </template>
+
+                                                            <template if:false={cd.adicionado}>
+                                                                    <lightning-button size="large"
+                                                                        class="slds-button_full-width  flex-end"
+                                                                        icon-name="utility:add" value={cd}
+                                                                        variant="brand"
+                                                                        data-cd-id={cd.cdId}
+                                                                        data-prod-id={cd.prodId}
+                                                                        data-cnpj={cd.cnpjCd}
+                                                                        onclick={handleSaveCd}
+                                                                        label="Adicionar"
+                                                                        disabled={cd.valorZerado}>
+                                                                    </lightning-button>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /CARD CD -->
+                                </template>
+                            </div>
+                            <template if:true={desktop}>
+                                <div style="display:flex;align-content:flex-end;margin:auto;">
+                                    <lightning-icon style="cursor: pointer;" class="nextButton"
+                                        icon-name="utility:chevronright" size="medium"
+                                        variant="brand" onclick={nextCd} if:true={showNextCdButton}>
+                                    </lightning-icon>
+                                </div>
+                            </template>																								
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+        </div>
+    </div>
+	<!-- Modal descrição do Produto -->
+    <c-product-description prod={selectedProductModal} show={showProductDescriptionModal} onproductdescriptioncloseclick={closeModalProductDescription}></c-product-description>
+
+    
+    <template if:true={showCdInfoList}>
+        <table
+            class="colorborderblue slds-table_resizable-cols slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
+            style="font-size:12px;">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th>
+                        <div class="slds-truncate" title="Lote">Lote</div>
+                    </th>
+                    <th>
+                        <div class="slds-truncate" title="Validade">Validade</div>
+                    </th>
+                    <th>
+                        <div class="slds-truncate" title="Saldo">Saldo</div>
+                    </th>
+                    <th>
+                        <div class="slds-truncate" title="Preço Shelf Life">Preço Shelf Life</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={infoList} for:item="info">
+                    <tr key={info.id} class="slds-hint-parent">
+                        <td>
+                            <div>
+                                <p><span>{info.lote}</span></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p><span>{info.validade}</span></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p><span>{info.saldo}</span></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <p><span>{info.preco}</span></p>
+                            </div>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </template>
+</template>

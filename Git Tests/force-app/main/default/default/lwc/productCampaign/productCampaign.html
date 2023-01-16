@@ -1,0 +1,180 @@
+<template>
+    <!-- <lightning-button
+       label="Produtos de campanha"
+       title="Produtos de campanha"
+       onclick={openModal}
+       class="slds-m-left_x-small">
+    </lightning-button> -->
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 100%; max-width: 55rem; min-width: 30rem; ">
+                <!-- Modal/Popup Box LWC header here -->
+                <header style="position: relative; border-top-right-radius: .25rem; border-top-left-radius: .25rem; padding: 1rem; text-align: center; background-color: #fff;">
+                    <div class="header">
+                        <lightning-icon icon-name="standard:account" alternative-text="Account" title="Account"></lightning-icon>
+                        <h2 class="slds-m-left_x-small slds-text-heading_medium slds-hyphenate" style="font-weight: bold; margin-right: auto;">Produtos de campanha</h2>                    
+                        <div style="float:right">
+                            <lightning-button-icon icon-name="utility:close" alternative-text="Fechar" title="Fechar" onclick={closeModal}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </header>
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-var-p-around_medium" style="background-color: #f3f2f2; margin-top: -5px;" >
+                    <div class="second-section">
+                        <div class="search-header">
+                            <div style="width: 100%">
+                                <lightning-input label="Procurar produto" placeholder="Digite o nome, código, fornecedor ou centro de distribuição do produto"
+                                    type="search" variant="standard" name="searchProduct" onkeyup={onChangeSearchProduct}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div id="prodDiv" class="slds-scrollable_y" style="padding: 15px;background-color: #fff; max-height: 30rem">
+                    <template for:each={filteredListProdCampaign} for:item="prod">
+                        <div class="slds-m-top_medium" key={prod.id} style="padding:15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                            <div style="display:flex;">
+                                <lightning-layout>
+                                    <lightning-layout-item>
+                                        <div style="font-size: 15px; font-weight: bold;">
+                                            <p>{prod.code}</p>
+                                        </div>
+                                        <div>
+                                            <lightning-input label="Selecionar" checked={prod.selected} type="checkbox" onclick={handleCheckbox} data-product-id={prod.id}>
+                                            </lightning-input>
+                                        </div>
+                                        <template if:true={prod.showBadgeCampanha}>
+                                            <div style="margin-top: 5px;" class="box-legendas" title={prod.precoBadgeCampanhaProduto}>
+                                                <div class="badge badge-color2">
+                                                    Campanha Produto
+                                                </div>
+                                            </div>
+                                        </template>	
+                                        <template if:true={prod.showBadgeCampanhaVendedor}>
+                                            <div style="margin-top: 5px;" class="box-legendas" title={prod.dataBadgeCampanhaVendCNPJ}>
+                                                <div class="badge badge-color6">
+                                                    Campanha Vendedor
+                                                </div>
+                                            </div>
+                                        </template>																						
+                                        <template if:true={prod.showBadgeshelflife}>
+                                            <div style="margin-top: 5px;" class="box-legendas">
+                                                <span class="badge badge-color5">
+                                                    Produto shelflife
+                                                </span>
+                                            </div>
+                                        </template>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                <div class="slds-col slds-m-left_medium" data-product-id={prod.id} onclick={handleSelectProduct}>
+                                    <div class="slds-media__body slds-col">
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 15px;color:#0070d2">
+                                                    <p><strong>{prod.nome}</strong></p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 14px;">
+                                                    <p>{prod.principioAtivo}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 13px;color:#999">
+                                                    <p>{prod.fabricante}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </div>
+                                </div>
+                                <div style="margin-left: auto; align-self: center;">
+                                    <lightning-layout>
+                                        <lightning-layout-item>
+                                            <a style="font-size: 13px;color:#000000" data-campaign={prod.regraCampanha} onclick={handleCampaignDescription}>
+                                                <p><strong>Regra da campanha</strong></p>
+                                            </a>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </div>
+                            <template if:true={prod.show}>
+                                <template for:each={orderDataList} for:item="item">
+                                    <div key={item.ordId} style="border-top: 1px solid #dddbda; margin-top: 15px;">
+                                        <div style="display:flex; margin-top: 15px;" onclick={handleCd}>                            
+                                            <div class="slds-col slds-m-left_small" style="align-self: center;">
+                                                <lightning-layout >
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 14px; font-weight: bold;">
+                                                            <p>{item.ordNumber}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <lightning-layout >
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 13px;">
+                                                            <p>{item.ordCreatedDate}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                            </div>
+                                            <div class="slds-col slds-m-left_medium">
+                                                <div class="slds-media__body slds-col">
+                                                    <lightning-layout >
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 14px;">
+                                                                <p>{item.ordItemCd}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </div>
+                                            </div>
+                                            <div class="slds-m-right_small" style="margin-left: auto; align-self: center;">
+                                                <div class="slds-col" >
+                                                    <lightning-layout style="place-content: flex-end">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;">
+                                                                <p><strong>{item.ordItemQuantity} x {item.ordItemPrice}</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </template>
+                    <!-- <div class="slds-align_absolute-center slds-m-top_medium">                            
+                        <div style="font-size: 15px;color:#0070d2"><p><strong>Ver mais..</strong></p></div>
+                        <lightning-button-icon icon-name="utility:down" onclick={handleGetMoreProducts} size="medium" tooltip="Pesquisar mais produtos" class="slds-m-left_xx-small"></lightning-button-icon>
+                    </div> -->
+                </div>
+                <div style="background-color: #fff; border-bottom-right-radius: 0.25rem; border-bottom-left-radius: 0.25rem; ">
+                    <div style="float: right; padding: 15px">
+                        <lightning-button onclick={onSearchProduct} size="medium" label="Buscar selecionados" ></lightning-button>
+                    </div>
+                </div>
+                <template if:true={isLoadingProducts}>
+                    <!--
+                    <div>
+                        <div role="status" class="slds-spinner slds-spinner_x-small">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                    --> 
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </template>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

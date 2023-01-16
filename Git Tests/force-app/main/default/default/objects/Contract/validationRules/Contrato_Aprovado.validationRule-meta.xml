@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contrato_Aprovado</fullName>
+    <active>true</active>
+    <description>Regra de validação para não permitir editar campos se o status do contrato estiver como Aprovado.</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(Status, &apos;Aprovado&apos;),
+
+OR(
+ISCHANGED(AccountId),
+ISCHANGED(TipoRegra__c),
+ISCHANGED(MensagemIntegracao__c)
+))</errorConditionFormula>
+    <errorMessage>Não é permitido editar campos se o contrato já estiver aprovado.</errorMessage>
+</ValidationRule>

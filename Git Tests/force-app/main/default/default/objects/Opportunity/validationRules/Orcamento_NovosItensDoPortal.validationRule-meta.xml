@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orcamento_NovosItensDoPortal</fullName>
+    <active>false</active>
+    <description>não deixar criar OpportunityLineItems em Oportunidades do Portal que estejam vencidas.</description>
+    <errorConditionFormula>AND( CloseDate &lt; TODAY()
+				,PRIORVALUE(OpportunityLineItemCount__c) &lt; OpportunityLineItemCount__c		
+    ,RecordType.DeveloperName = &apos;OrcamentoPortal&apos;
+				,AND($Profile.Name != &apos;Administrador do sistema&apos;, $Profile.Name != &apos;System Administrator&apos;)
+			)</errorConditionFormula>
+    <errorMessage>Itens de Oportunidade não podem ser adicionados em oportunidades vencidas.</errorMessage>
+</ValidationRule>

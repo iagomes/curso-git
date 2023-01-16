@@ -1,0 +1,10 @@
+Prezado (a) {!Case.OwnerFullName},
+
+Informamos que o Caso número {!Case.CaseNumber} está com o seu SLA de atendimento próximo de estourar!
+
+A partir do recebimento dessa mensagem, você tem 2 (duas) horas para conclusão do mesmo.
+
+Atenciosamente,
+
+Equipe de Atendimento ao Cliente
+Grupo Elfa

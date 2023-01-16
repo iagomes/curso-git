@@ -1,0 +1,298 @@
+<template>
+    <div class="style-element-container">
+    </div>
+    <div class="dynamic-style-container"></div>
+
+    <div class="content budget-detail slds-is-relative">
+    
+        <div style="display:grid;place-items:center;position:absolute;width: 100%;height: 60%" if:true={isIntegrating}>
+            <h1 style="margin-top:-100px;z-index:99999999">Por favor aguarde: Recebendo dados do orçamento...</h1>
+            <lightning-spinner style="z-index:99999998" variant="brand" alternative-text="loading"></lightning-spinner>
+        </div>
+
+        <lightning-spinner if:true={showSpinner} variant="brand"  alternative-text="loading"></lightning-spinner>
+
+        <template if:true={MensagemErroIntegracaoPortalCotacoes}>
+            <div class="details-form falha-na-integracao">
+                <lightning-accordion class="accordion" allow-multiple-sections-open active-section-name={sectionsToDisplay1}>
+                    <lightning-accordion-section class="slds-accordion__section" name="FalhaNaIntegracao" label="Falha na Integração">
+                        <lightning-formatted-rich-text
+                            label="Mensagem de Erro"
+                            value={MensagemErroIntegracaoPortalCotacoes}
+                        ></lightning-formatted-rich-text>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </template>
+
+        <div class="details-form details-form1">
+            <c-lightning-record-form-by-layout-name
+                record-id={recordId}
+                record-type="Orçamento do Portal"
+                object-api-name="Opportunity"
+                layout-name="DetailsForm1" 
+                skip-standard-submit="true"
+                fields-to-display-as-row="EnderecoEntregaPedido__c;ObservacoesCliente__c;TermosCliente__c;"
+                view-only-mode={viewOnly}>
+            </c-lightning-record-form-by-layout-name>
+        </div>
+        
+        <template if:true={hasCotacoesConsolidadas}>
+            <div class="details-form details-form4" if:true={budgetData.consolidadas}>
+                <lightning-accordion class="accordion" allow-multiple-sections-open active-section-name={sectionsToDisplay1}>
+                    <lightning-accordion-section class="slds-accordion__section" name="ConsolidatedBudget" label="Cotação consolidada">
+                        <c-consolidated-budget record-id={recordId} budget-data={budgetData}> </c-consolidated-budget>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </div>
+        </template>
+
+        <div class="product-list container" if:true={showProductList}>
+            <lightning-accordion class="accordion" allow-multiple-sections-open active-section-name={sectionsToDisplay}>
+                <div style="display: flex; justify-content: flex-end; position: absolute; right: 24px; float: right; top: 7px; z-index: 2;">
+                    <lightning-combobox options={clientCategoryOptions} class="slds-m-horizontal_xxx-small" value={clientCategory} onchange={handleChangeCategoryFilter}></lightning-combobox>
+                    <lightning-combobox options={statusItemsFilter} class="slds-m-horizontal_xxx-small" dropdown-alignment="right" value={showFilterItems}  onchange={handleChangeShowFilterItems}></lightning-combobox>
+                </div>
+                <lightning-accordion-section class="slds-accordion__section" name="QuoteItems" label="Itens do orçamento">
+
+                    <div style="display:flex;">
+                        <div style="display:flex;align-content:flex-start;margin:auto;width:0">
+                            <lightning-icon style="cursor: pointer;position: absolute;left: -2px;margin-top: -15px;" class="previousButton"
+                                icon-name="utility:chevronleft" variant="brand"
+                                onclick={previousPage} size="medium" if:true={showPreviousPageButton}>
+                            </lightning-icon>
+                        </div>
+                        <div style="width: -webkit-fill-available;">
+                            <c-budget-detail-products-datatable
+                                key-field="idPortal"
+                                data={visibleItens}
+                                columns={itemsColums}
+                                wrap-text-max-lines="2"
+                                max-row-selection={maxRowSelection}
+                                oncustombuttonclick={handleButtonClick}
+                                onregisterrowcustomcell={handleRegisterRowCustomCell}
+                                draft-values={draftValues}
+                                onrowselection={handleProductRowSelection}
+                                selected-rows={currentSelectedRowsId}
+                                sorted-by="sequencia"
+                                sorted-direction="asc"
+                            ></c-budget-detail-products-datatable>
+                        </div>
+                        
+                        <div style="display:flex;align-content:flex-end;margin:auto;width:0">
+                            <lightning-icon style="cursor: pointer;" class="nextButton"
+                                icon-name="utility:chevronright" size="medium"
+                                variant="brand" onclick={nextPage} if:true={showNextPageButton}>
+                            </lightning-icon>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-grid_align-center">
+                        <div class="slds-col slds-size_1-of-6 slds-float_right">
+                            <lightning-icon style="cursor: pointer;" class="previousButton slds-float_right"
+                                icon-name="utility:chevronleft" variant="brand"
+                                onclick={previousPage} size="medium" if:true={showPreviousPageButton}>
+                            </lightning-icon>
+                            <lightning-icon style="cursor: pointer;" class="previousButton slds-float_right"
+                                icon-name="utility:jump_to_left" variant="brand"
+                                onclick={jumpToFirstPage} size="medium" if:true={showPreviousPageButton}>
+                            </lightning-icon>
+                        </div>
+                        <div class="slds-col slds-grow-none">
+                            <label>{currentPageNumber}/{numberOfPages}</label>
+                        </div>
+                        <div class="slds-col slds-size_1-of-6">
+                            <lightning-icon style="cursor: pointer;" class="nextButton"
+                                icon-name="utility:chevronright" size="medium"
+                                variant="brand" onclick={nextPage} if:true={showNextPageButton}>
+                            </lightning-icon>
+                            <lightning-icon style="cursor: pointer;" class="nextButton"
+                                icon-name="utility:jump_to_right" size="medium"
+                                variant="brand" onclick={jumpToLastPage} if:true={showNextPageButton}>
+                            </lightning-icon>
+                        </div>
+                    </div>
+                    <!-- show-row-number-column -->
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </div>
+
+            <div class="tabulacao-selection slds-grid" style="margin: .5rem 2.58rem 0rem;">
+                <template if:true={isEditable}>
+                    <!-- <lightning-input type="checkbox" onchange={handleCheckBoxAllRows} checked={allRowsChecked}></lightning-input> -->
+                    <!-- <label if:false={showTabulacaoN1Picklist}> Selecionar Todos</label> -->
+                    <template for:each={multiplaTabulacaoCheckBox} for:item="item">
+                        <div key={item.value} class="slds-col slds-size_1-of-4" style="padding-bottom: .24rem;">
+                            <fieldset>
+                                <div class="slds-checkbox">
+                                    <input type="checkbox" name="options" id={item.value} value={item.value} data-id={item.value} onchange={handleCheckBoxAllRows} checked={item.selected}/>
+                                    <label class="slds-checkbox__label" for={item.value}>
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label" style="padding-left: .2rem;">{item.label}</span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </template>
+                </template>
+                <div class="slds-col slds-size_1-of-2 slds-grid"  style="padding-bottom: .24rem;">
+                    <template if:true={showTabulacaoN1Picklist}>
+                        <div class="slds-col slds-size_1-of-2">
+                            <label class="slds-form-element__label" style="float: right">Tabular itens selecionados:</label>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <c-multi-values-picklist-l-w-c
+                                name="MultiplaTabulacao"
+                                onmultivaluespicklistvaluechange={handleMultiValuesPickListValueChange}
+                                max-row-selection="1"
+                                hide-limpar="true"
+                                hide-empty-value="true"
+                                hide-options={tabulacaoN1HideOptions}
+                                skip-load-options-by-field-name="true"
+                                options={multiplaTabulacaoOptions}
+                                field-api-name="OpportunityLineItem.TabulacaoN1__c">
+                            </c-multi-values-picklist-l-w-c>
+                        </div>
+                    </template>
+                </div>
+            </div>
+
+        <div class="details-form details-form3">
+            <c-condition-payment-budget
+                record-id={recordId} budget-data={budgetData}  is-editable={isEditable} view-only={viewOnly}>
+            </c-condition-payment-budget>
+        </div>
+
+        
+        
+        <c-budget-detail-tabulacao
+            budget-detail-due-date={budgetData}
+            is-editable={isEditable}
+            record-id={recordId}
+        ></c-budget-detail-tabulacao>
+
+        <template if:true={showVincularModal}>
+            <c-budget-detail-edit-item
+                budget-data={budgetData}
+                first-index={firstIndex}
+                item-index={itemIndex}
+                is-editable={isEditable}
+                list-size={filteredItensSize}
+                onclosemodal={closeVincularModal}
+                onnextitemclick={handleNextItemClick}
+                onpreviousitemclick={handlePreviousItemClick}
+                onrefreshitems={refreshQuoteItems}
+                onupdatequoteitem={handleUpdateQuoteItem}
+                opp-id={recordId}
+                quoteitem={itemData}
+                status-picklist-values={statusPicklistValues}
+                tabulacao-n1-picklist-values={tabulacaoN1PicklistValues}
+            ></c-budget-detail-edit-item>
+            <!-- onrefreshline={handleRefreshLine} -->
+            <!-- show-spinner={showSpinner} -->
+        </template>
+
+        <template if:true={showEntrega}>
+            <section role="dialog" tabindex="-1" aria-modal="true"
+            class="modal-vincular slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Fechar" onclick={closeshowEntrega}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Fechar</span>
+                        </button>
+                        <div class="slds-text-heading_medium">Programação de Entrega</div>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <div class="slds-box produto-solicitado">
+                            <label>Solicitado</label>
+                            <div class="slds-grid">
+                                <div class="slds-col slds-size_7-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_3-of-12">
+                                            <label>Código</label>
+                                            <span>{itemData.idCustomer}</span>
+                                        </div>
+                                        <div class="slds-col slds-size_9-of-12">
+                                            <label>Produto solicitado</label>
+                                            <span>{itemData.customerDescription}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <label>Unidade de Medida (Cliente)</label>
+                                            <span>{itemData.customerMeasurementUnit}</span>
+                                        </div>
+                                        <div class="slds-col slds-size_6-of-12">
+                                            <label>Quantidade</label>
+                                            <span>{itemData.quantidadeSolicitada}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="colorborderblue slds-table slds-no-row-hover slds-table_bordered slds-table_striped slds-table_col-bordered">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th>
+                                        <div class="slds-text-align_center"
+                                            title="Data">
+                                            Data </div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-text-align_center"
+                                            title="Quantidade">
+                                            Quantidade</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={itensDataEntrega} for:item="prod">
+                                        <tr class="slds-hint-parent" key={prod}>
+                                            <td>
+                                                <div class="slds-text-align_center"
+                                                    style="font-size: 13px;">
+                                                    <p><span style="font-family:'Salesforce Sans';"><strong>{prod.data}</strong></span>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center"
+                                                    style="font-size: 13px;">
+                                                    <p><span style="font-family:'Salesforce Sans';"><strong>{prod.quantidade}</strong></span>
+                                                    </p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="slds-modal__footer"></div>
+                </div>
+            </section>
+           <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+        <template if:true={loadSelectBUModal}>
+            <div class="modal-multitabulacao">
+                <c-budget-detail-select-b-u
+                    label="Selecione as BUs desejadas para tabular as respostas:"
+                    type="checkbox"
+                    opportunity-id={budgetData.oppId}
+                    categorias={budgetData.categorias}
+                    onclosemodalselectbu={closeModalSelectBU}
+                    onprocessitemupdateresult={handleAddResponseModalBu}
+                ></c-budget-detail-select-b-u>
+            </div>
+        </template>
+        <div class="footer-buttons slds-m-around_small">
+            <lightning-button label="Enviar/Salvar" onclick={handleEnviarOrcamentoClick} title="Enviar/Salvar" class="btn-enviar-orcamento slds-m-around_small" disabled={disableButtons}></lightning-button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QuantidadeItens__c</fullName>
+    <externalId>false</externalId>
+    <label>Quantidade de itens</label>
+    <summaryForeignKey>ItemContrato__c.NumeroContrato__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Summary</type>
+</CustomField>

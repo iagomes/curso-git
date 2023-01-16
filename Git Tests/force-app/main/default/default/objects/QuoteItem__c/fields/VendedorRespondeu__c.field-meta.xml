@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VendedorRespondeu__c</fullName>
+    <description>
+        Em alguns casos o vendedor que responde a cotação não é o responsável primário por dar a resposta.
+        Esse campo armazena o usuário que efetuou a resposta do item por último.
+    </description>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Vendedor que respondeu</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>ItemOrcamentoRespondido</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

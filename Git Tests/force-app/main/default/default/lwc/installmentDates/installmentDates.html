@@ -1,0 +1,107 @@
+<template >
+    <!-- lightning button for open modal window -->
+    <lightning-button
+        class="slds-m-left_xx-small"
+        disabled={disabled}
+        icon-name="utility:monthlyview"
+        label="Parcelas"
+        title="Parcelas"
+        onclick={openModal}>
+    </lightning-button>
+    <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+    <template if:true={isModalOpen}>        
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Inserção de parcelas</h2>
+                </header>
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-var-p-around_medium" style="background-color: #fff; border-bottom: 1px solid #dddbda;" >
+                    <div class="second-section">
+                        <div>
+                            <div class="second-section-form">
+                                <lightning-input
+                                    class="slds-text-align_left slds-m-left_x-small"
+                                    label="Número de dias"
+                                    type="number" 
+                                    variant="standard"
+                                    value={numberDays}
+                                    onchange={handleNumberDays}>
+                                </lightning-input>
+                                <lightning-button-icon
+                                    class="slds-var-m-left_small"
+                                    icon-name="utility:add"
+                                    variant="brand"
+                                    onclick={handleAddDate}
+                                    disabled={isAddBlock}
+                                    tooltip="Nova data">
+                                </lightning-button-icon>
+                            </div>
+                            <h1 if:true={hasInputError} class="slds-text-align_left slds-var-m-top_x-small slds-text-color_destructive slds-m-left_x-small">
+                                Número de dias inválido.
+                            </h1>
+                        </div>
+                        <div style="text-align-last: center;">                            
+                            <h3 class="slds-text-heading_medium slds-hyphenate slds-m-right_small">Valor total</h3>
+                            <h3 class="slds-text-heading_medium slds-hyphenate slds-m-right_small">                                
+                                {totalValue}
+                            </h3>
+                        </div>
+                    </div>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <template if:true={listInstallmentDates}>
+                    <div class="slds-modal__content slds-p-around_medium" >
+                        <template for:each={listInstallmentDates} for:item="item" >
+                            <div key={item.key} class="slds-m-bottom_medium">
+                                <div class="date-info-form">
+                                    <lightning-input
+                                        class="slds-text-align_left slds-m-left_x-small"
+                                        label="Dia de parcela"
+                                        type="date"
+                                        variant="standard"
+                                        data-id={item.key}
+                                        value={item.formattedDate}
+                                        onchange={handleChangeDate}>
+                                    </lightning-input>       
+                                    <lightning-button-icon
+                                        class="slds-var-m-left_small"
+                                        variant="border"
+                                        type="button"
+                                        tooltip="Excluir" 
+                                        icon-name="utility:delete"
+                                        size="medium"
+                                        data-id={item.key}
+                                        onclick={handleRemoveDate}>
+                                    </lightning-button-icon>
+                                    <div class="slds-var-m-left_x-small" style="display: flex; flex-direction: column; justify-content: center; height: 32px; width: 60px;">
+                                        <h1>{item.daysBetween}</h1>
+                                    </div>                 
+                                </div>
+                                <div if:true={item.errorMessage}>
+                                    <h1 class="slds-text-align_left slds-var-m-top_x-small slds-text-color_destructive">
+                                        {item.errorMessage}
+                                    </h1>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_brand" onclick={submitDetails} title="Salvar">Salvar</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+ </template>

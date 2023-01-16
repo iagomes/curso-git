@@ -1,0 +1,201 @@
+<template>
+    <div class="style-element"></div>
+    <h1 class="filter-toggle-btn" onclick={toggleFiltersVisibility}>Filtrar orçamentos 
+        <lightning-icon if:false={showFilters} icon-name="utility:chevrondown" size="x-small"></lightning-icon>
+        <lightning-icon if:true={showFilters} icon-name="utility:chevronup" size="x-small"></lightning-icon>
+    </h1>
+    <div class="content">
+
+        <div class="filters slds-hide">
+        
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_3-of-12">
+                
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                            name="canalEntrada"
+                            label="Canal de Vendas"
+                            field-api-name="Opportunity.CanalEntrada__c"
+                            onoptionselection={handleOptionSelection}>
+                        </c-dropdown-input>
+                    </div>
+        
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <lightning-input type="text" label="ID da cotação na Integradora" onchange={setQuoteIntegratorId} value={quoteIntegratorId} placeholder="Digite um ou mais IDs. (Separando por ponto e vírgula [;])" minlength="3"></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                        name="vdePickList"
+                        label="Representantes (VDE)"
+                        onoptionselection={handleOptionSelection}
+                        options={vdePickList}
+                        ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                            name="vdiPickList"
+                            label="Vendedores (VDI)"
+                            onoptionselection={handleOptionSelection}
+                            options={vdiPickList}
+                        ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <lightning-input type="text" label="CNPJ do cliente" onchange={setCNPJCliente} value={cnpjCliente} minlength="3"></lightning-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <lightning-input type="text" label="Nome do cliente" onchange={setNomeCliente} value={nomeCliente} minlength="3"></lightning-input>
+                    </div>        
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                        name="uf"
+                        label="UF do cliente"
+                        onoptionselection={handleOptionSelection}
+                        options={states}
+                    ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                            name="city"
+                            label="Cidade do cliente"
+                            onoptionselection={handleOptionSelection}
+                            options={cities}
+                        ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <lightning-input onclick={handleClickDataVencimento} type="text" date-style="short" label="Vencimento da cotação" value={vencimentoCotacaoText}></lightning-input>
+                        
+                        <template if:true={showModalDataVencimento}>
+                            <div>
+                                <section role="dialog" tabindex="-1" aria-modal="true"
+                                    class="modal-data-vencimento slds-modal slds-fade-in-open slds-modal_medium">
+                                    <div class="slds-modal__container">
+                                        <header class="slds-modal__header">
+                                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                                title="Close" onclick={closeModalDataVencimento}>
+                                                <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                                    size="small"></lightning-icon>
+                                                <span class="slds-assistive-text">Close</span>
+                                            </button>
+                                            <div class="slds-text-heading_medium">Data de Vencimento <span if:true={vencimentoCotacaoText}> - {vencimentoCotacaoText}</span></div>
+                                        </header>
+                                        <div class="slds-modal__content slds-p-around_medium">
+                                            <lightning-input type="datetime" date-style="short" label="Vencimento da De" value={vencimentoCotacaoData1} onchange={setvencimentoCotacaoDe} min="2020-01-01T00:00:00Z" max="2040-01-01T00:00:00Z" ></lightning-input>
+                                            <lightning-input type="datetime" date-style="short" label="Vencimento da Até" value={vencimentoCotacaoData2} onchange={setVencimentoCotacaoAte} min="2020-01-01T00:00:00Z" max="2040-01-01T00:00:00Z" ></lightning-input>
+                                            <lightning-button label="Hoje" class="btn-fixed-date" onclick={setVencimentoToday}></lightning-button>
+                                            <lightning-button label="Ontem" class="btn-fixed-date" onclick={setVencimentoYesterday}></lightning-button>
+                                            <lightning-button label="Últimos 7 dias" class="btn-fixed-date" onclick={setVencimentoUltimos7Dias}></lightning-button>
+                                            <lightning-button label="Últimos 30 dias" class="btn-fixed-date" onclick={setVencimentoUltimos30Dias}></lightning-button>
+                                        </div>
+                                        <footer class="slds-modal__footer">
+                                            <template if:true={vencimentoCotacaoText}>
+                                                <lightning-button variant="destructive" label="Remover" onclick={vencimentoCotacaoRemove} title="Remover filtro" icon-name="utility:delete" class="btn-delete slds-m-left_x-small"></lightning-button>
+                                            </template>
+                                            <lightning-button label="Filtrar" onclick={closeModalDataVencimento}></lightning-button>
+                                        </footer>
+                                    </div>
+                                </section>
+                                <div class="slds-backdrop slds-backdrop_open"></div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                            name="mesa"
+                            label="Mesa"
+                            onoptionselection={handleOptionSelection}
+                            options={mesaOptions}
+                        ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <lightning-input type="text" label="Nome/Código de Produto" onchange={setProduto} value={produto} minlength="3"></lightning-input>
+                    </div>        
+                </div>
+                <div class="slds-col slds-size_3-of-12">
+                    <div class="slds-var-p-around_medium">
+                        <c-dropdown-input 
+                            name="categoria"
+                            label="Categoria"
+                            onoptionselection={handleOptionSelection}
+                            options={categoriaOptions}
+                        ></c-dropdown-input>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_12-of-12">
+                    <div class="status-btn-area slds-var-p-around_medium">
+
+                        <template for:each={statusOptions} for:item="opt" for:index="index">
+                            <div class="slds-button" key={opt.value}>
+                                <button class={opt.class}
+                                        data-is-first-element={opt.isFirstElement}
+                                        data-is-last-element={opt.isLastElement}
+                                        if:false={opt.selected}
+                                        onclick={handleStatusSelectedClick}
+                                >{opt.label}</button>
+
+                                <button class={opt.class}
+                                        data-is-first-element={opt.isFirstElement} 
+                                        data-is-last-element={opt.isLastElement} 
+                                        if:true={opt.selected} 
+                                        onclick={handleStatusUnselectedClick}
+                                >{opt.label}</button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="slds-var-p-around_medium status-btn-area">
+                <div class="slds-button">
+                    <button class='slds-button slds-button_brand' data-is-first-element=true data-is-last-element=false onclick={doSearch} style="padding-left:20px; padding-right:20px;">
+                        Filtrar
+                    </button>
+                    <button class='slds-button slds-button_neutral' data-is-first-element=false data-is-last-element=true onclick={sendFilters} style="padding-left:20px; padding-right:20px;">
+                        Salvar Filtro
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="applied-filters" if:true={hasFilters}>
+            <label>Filtrando por:</label>
+            
+            <lightning-pill title="Filtro de canal de entrada" label={canalEntradaSelectedLabel} if:true={canalEntradaSelectedLabel} onremove={canalVendasRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Representantes (VDE)" label={vendedorSelectedLabel} if:true={vendedorSelectedLabel} onremove={vendedorSelectedRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Vendedor(VDI)" label={teamMemberLabel} if:true={teamMemberLabel} onremove={teamMemberRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Id do Integrador" label={quoteIntegratorIdLabel} if:true={quoteIntegratorIdLabel} onremove={quoteIntegratorIdRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Tipo da Cotação" label={quoteTypeLabel} if:true={quoteTypeLabel} onremove={quoteTypeRemove}></lightning-pill>
+            <lightning-pill title="Filtro de CNPJ do Cliente" label={cnpjClienteLabel} if:true={cnpjClienteLabel} onremove={cnpjClienteRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Mesa" label={mesaSelectedLabel} if:true={mesaSelectedLabel} onremove={mesaRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Categoria" label={categoriaSelectedLabel} if:true={categoriaSelectedLabel} onremove={categoriaRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Nome do Cliente" label={nomeClienteLabel} if:true={nomeClienteLabel} onremove={nomeClienteRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Nome do Cliente" label={produtoLabel} if:true={produtoLabel} onremove={produtoRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Estado do Cliente" label={ufClienteLabel} if:true={ufClienteLabel} onremove={ufClienteRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Cidade do Cliente" label={cidadeClienteLabel} if:true={cidadeClienteLabel} onremove={cidadeClienteRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Data de Vencimento" label={vencimentoCotacaoLabel} if:true={vencimentoCotacaoLabel} onremove={vencimentoCotacaoRemove}></lightning-pill>
+            <lightning-pill title="Filtro de Status" label={statusSearchLabel} if:true={statusSearchLabel} onremove={statusSearchRemove}></lightning-pill>
+        </div>
+    </div>
+
+
+</template>

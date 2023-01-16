@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusIntegracaoVinculoProdutos__c</fullName>
+    <description>Status utilizado para verificar a integridade das integrações dessa resposta na class: IntegrationPortalVinculoOUT</description>
+    <externalId>false</externalId>
+    <label>Status Integração - Vínculo de Produtos</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Não Integrado</fullName>
+                <default>true</default>
+                <label>Não Integrado</label>
+            </value>
+            <value>
+                <fullName>Falha na Integração</fullName>
+                <default>false</default>
+                <label>Falha na Integração</label>
+            </value>
+            <value>
+                <fullName>Integrado</fullName>
+                <default>false</default>
+                <label>Integrado</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

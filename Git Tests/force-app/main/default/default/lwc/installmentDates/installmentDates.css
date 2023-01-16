@@ -1,0 +1,19 @@
+.second-section {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    /* temp */
+}
+.second-section .second-section-form {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.date-info-form {    
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}

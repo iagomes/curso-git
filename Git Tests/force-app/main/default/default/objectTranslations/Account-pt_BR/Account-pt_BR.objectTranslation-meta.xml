@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Cliente</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Clientes</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Layout de cliente (pessoa física)</layout>
+        <sections>
+            <label><!-- Informações de endereço --></label>
+            <section>Informações de endereço</section>
+        </sections>
+        <sections>
+            <label><!-- Informações financeiras --></label>
+            <section>Informações financeiras</section>
+        </sections>
+        <sections>
+            <label><!-- Informações sobre a conta --></label>
+            <section>Informações sobre a conta</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de cliente (pessoa jurídica)</layout>
+        <sections>
+            <label><!-- Informações de endereço --></label>
+            <section>Informações de endereço</section>
+        </sections>
+        <sections>
+            <label><!-- Informações financeiras --></label>
+            <section>Informações financeiras</section>
+        </sections>
+        <sections>
+            <label><!-- Informações sobre a conta --></label>
+            <section>Informações sobre a conta</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Criar contato --></label>
+        <name>ClienteCriarContato</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Business Account --></label>
+        <name>Business_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pessoa Física --></label>
+        <name>PessoaFisica</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pessoa Jurídica --></label>
+        <name>PessoaJuridica</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- O campo &quot;Nome do cliente&quot; não pode ser editado. --></errorMessage>
+        <name>Cliente_BloquearEdicaoNomeCliente</name>
+    </validationRules>
+</CustomObjectTranslation>

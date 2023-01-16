@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoPedidoIntegradora</fullName>
+    <fields>CodigoIntegradora__c</fields>
+    <fields>TipoIntegradora__c</fields>
+    <fields>Laboratorio__c</fields>
+    <fields>Status__c</fields>
+    <fields>RecordTypeId</fields>
+    <label>Layout compacto de pedido de integradora</label>
+</CompactLayout>

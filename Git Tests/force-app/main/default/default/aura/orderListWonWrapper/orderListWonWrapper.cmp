@@ -1,0 +1,5 @@
+<aura:component implements="lightning:isUrlAddressable, force:appHostable" >
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <aura:handler event="lightning:tabFocused" action="{! c.onTabFocused }"/>
+    <c:orderListWon aura:id="orderListWon"/>
+</aura:component>	

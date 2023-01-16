@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoTituloAberto</fullName>
+    <fields>Name</fields>
+    <fields>Conta__c</fields>
+    <fields>ValorDocumento__c</fields>
+    <fields>ParcelaBoleto__c</fields>
+    <fields>DataVencimento__c</fields>
+    <label>Layout compacto de título em aberto</label>
+</CompactLayout>

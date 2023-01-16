@@ -1,0 +1,89 @@
+<template>
+  <template if:true={isLoading}>
+    <lightning-spinner size="small"></lightning-spinner>
+  </template>
+  <div class="slds-modal__container">
+    <div class="slds-modal__header">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <lightning-icon icon-name="custom:custom64"></lightning-icon>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title slds-var-m-left_medium">Criar reserva</h2>
+        </div>
+      </header>
+    </div>
+
+    <div class="slds-modal__content" style="min-height: 400px">
+      <lightning-layout multiple-rows>
+        <lightning-layout-item size="6" padding="around-medium">
+          <lightning-radio-group 
+            name="reservation-type"
+            label="Tipo da reserva"
+            options={reservationTypeOptions}
+            value={selectedReservationType}
+            type="radio"
+            onchange={handleChange}
+            required>
+          </lightning-radio-group>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" padding="around-small"></lightning-layout-item>
+        
+        <lightning-layout-item size="7" padding="horizontal-medium">
+          <lightning-combobox
+            name="distribution-center"
+            label="Centro de Distribuição"
+            placeholder="Selecione um centro de distribuição"
+            options={deliveryCenterOptions}
+            onchange={handleChangeDeliveryCenter}
+            required>
+          </lightning-combobox>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="5" padding="horizontal-medium">
+          <lightning-input 
+            class="slds-var-m-bottom_small"
+            label="Início da reserva" 
+            name="start-date" 
+            type="date"
+            value={startDate}
+            onchange={handleChange}
+            required>
+          </lightning-input>
+          
+          <lightning-input 
+            label="Fim da reserva" 
+            name="end-date" 
+            type="date"
+            value={endDate}
+            onchange={handleChange}
+            required>
+          </lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" padding="around-medium">
+          <lightning-textarea 
+            name="description"
+            label="Descrição" 
+            max-length="255"
+            onchange={handleChange}>
+          </lightning-textarea>
+        </lightning-layout-item>
+
+        <template if:true={error}>
+          <lightning-layout-item size="12" padding="horizontal-medium">
+            <span class="slds-text-color_error">{error}</span>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+    </div>
+
+    <div class="slds-modal__footer">
+      <lightning-button 
+        variant="brand" 
+        type="button" 
+        label="Salvar"
+        onclick={handleSave}>
+      </lightning-button>
+    </div>
+  </div>
+</template>

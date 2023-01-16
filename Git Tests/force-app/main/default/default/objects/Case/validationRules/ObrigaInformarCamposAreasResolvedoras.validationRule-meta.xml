@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigaInformarCamposAreasResolvedoras</fullName>
+    <active>true</active>
+    <description>Regra de validação que obriga os times das áreas resolvedoras, informarem valores nos campos &quot;Status Área Demandante&quot; e &quot;Análise do Caso&quot;</description>
+    <errorConditionFormula>AND(ISPICKVAL(StatusResponsibleArea__c,&quot;&quot;),OR($Permission.ResolutionAreas,$Permission.ResolutionAreasRegulatorio))</errorConditionFormula>
+    <errorDisplayField>StatusResponsibleArea__c</errorDisplayField>
+    <errorMessage>FAVOR VERIFICAR O CAMPO &quot;STATUS ÁREA DEMANDANTE&quot;</errorMessage>
+</ValidationRule>

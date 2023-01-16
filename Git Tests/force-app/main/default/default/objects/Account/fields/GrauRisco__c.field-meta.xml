@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GrauRisco__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>A - Nunca bloqueia o cliente, independente de atrasos ou limites; 
+B - Usado para órgãos públicos - Só bloqueia o cliente após 90 dias de atraso; 
+C - Bloqueia com 15 dias de atraso; 
+D - Bloqueia com 5 dias de atraso; 
+E - Sempre bloqueado.</inlineHelpText>
+    <label>Grau de risco do cliente</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

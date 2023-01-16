@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <formulas>
+        <name>FormulaNow</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Reserva - Ativar reserva {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reserva - Ativar reserva</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>AtualizarStatusAtiva</name>
+        <label>Atualizar status para Ativa</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <filterLogic>1 OR (2 AND 3)</filterLogic>
+        <filters>
+            <field>InicioReserva__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>FormulaNow</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>InicioReserva__c</field>
+            <operator>LessThanOrEqualTo</operator>
+            <value>
+                <elementReference>FormulaNow</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>FimReserva__c</field>
+            <operator>GreaterThanOrEqualTo</operator>
+            <value>
+                <elementReference>FormulaNow</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StatusReserva__c</field>
+            <value>
+                <stringValue>Ativa</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>AtualizarStatusAtiva</targetReference>
+        </connector>
+        <object>Reserva__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

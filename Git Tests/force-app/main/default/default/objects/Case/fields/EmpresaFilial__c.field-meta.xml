@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EmpresaFilial__c</fullName>
+    <description>Informação da Empresa/Filial, referente a NF citada no Caso.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Informar a respectiva Empresa/Filial vinculada a NF citada no campo acima.</inlineHelpText>
+    <label>Nota fiscal: Empresa/Filial</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>AGILFARMA</fullName>
+                <default>false</default>
+                <label>AGILFARMA</label>
+            </value>
+            <value>
+                <fullName>ART MEDICA - EUSEBIO (MATRIZ)</fullName>
+                <default>false</default>
+                <label>ART MEDICA - EUSEBIO (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>ATMA SSA - ATMA SSA</fullName>
+                <default>false</default>
+                <label>ATMA SSA - ATMA SSA</label>
+            </value>
+            <value>
+                <fullName>BIOHOSP - BELO HORIZONTE (FILIAL 02)</fullName>
+                <default>false</default>
+                <label>BIOHOSP - BELO HORIZONTE (FILIAL 02)</label>
+            </value>
+            <value>
+                <fullName>BIOHOSP - CONTAGEM (MATRIZ)</fullName>
+                <default>false</default>
+                <label>BIOHOSP - CONTAGEM (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>BIOHOSP - RIO DE JANIERO (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>BIOHOSP - RIO DE JANIERO (FILIAL 03)</label>
+            </value>
+            <value>
+                <fullName>CDM CE - CDM CEARÁ</fullName>
+                <default>false</default>
+                <label>CDM CE - CDM CEARÁ</label>
+            </value>
+            <value>
+                <fullName>CDM PA - CDM PARÁ</fullName>
+                <default>false</default>
+                <label>CDM PA - CDM PARÁ</label>
+            </value>
+            <value>
+                <fullName>CDM PE - CDM PERNAMBUCO</fullName>
+                <default>false</default>
+                <label>CDM PE - CDM PERNAMBUCO</label>
+            </value>
+            <value>
+                <fullName>CIENCIA  - CIENCIA MATRIZ</fullName>
+                <default>false</default>
+                <label>CIENCIA  - CIENCIA MATRIZ</label>
+            </value>
+            <value>
+                <fullName>COMERCIAL COMMED - SAO PAULO (MATRIZ)</fullName>
+                <default>false</default>
+                <label>COMERCIAL COMMED - SAO PAULO (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>CONSOLIDADORA - CONSOLIDADORA</fullName>
+                <default>false</default>
+                <label>CONSOLIDADORA - CONSOLIDADORA</label>
+            </value>
+            <value>
+                <fullName>CRISTAL - CRISTAL MATRIZ</fullName>
+                <default>false</default>
+                <label>CRISTAL - CRISTAL MATRIZ</label>
+            </value>
+            <value>
+                <fullName>DUPATRI - BETIM (FILIAL 08)</fullName>
+                <default>false</default>
+                <label>DUPATRI - BETIM (FILIAL 08)</label>
+            </value>
+            <value>
+                <fullName>DUPATRI - CATALAO (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>DUPATRI - CATALAO (FILIAL 03)</label>
+            </value>
+            <value>
+                <fullName>DUPATRI - SANTOS (MATRIZ)</fullName>
+                <default>false</default>
+                <label>DUPATRI - SANTOS (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>DUPATRI - SUMARE (FILIAL 07)</fullName>
+                <default>false</default>
+                <label>DUPATRI - SUMARE (FILIAL 07)</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA BSB</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA BSB</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED BA</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED BA</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED CE</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED CE</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED CEARA</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED CEARA</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED DCT</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED DCT</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED ITAIM</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED ITAIM</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED JP</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED JP</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED SC</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED SC</label>
+            </value>
+            <value>
+                <fullName>ELFA BSB - ELFA MED SP</fullName>
+                <default>false</default>
+                <label>ELFA BSB - ELFA MED SP</label>
+            </value>
+            <value>
+                <fullName>ELFA FOR - ELFA FOR</fullName>
+                <default>false</default>
+                <label>ELFA FOR - ELFA FOR</label>
+            </value>
+            <value>
+                <fullName>JAW - JAW FILIAL PR</fullName>
+                <default>false</default>
+                <label>JAW - JAW FILIAL PR</label>
+            </value>
+            <value>
+                <fullName>JAW - JAW FILIAL RS</fullName>
+                <default>false</default>
+                <label>JAW - JAW FILIAL RS</label>
+            </value>
+            <value>
+                <fullName>JAW - JAW MATRIZ</fullName>
+                <default>false</default>
+                <label>JAW - JAW MATRIZ</label>
+            </value>
+            <value>
+                <fullName>MAJELA MED - MAJELA MED CE ADM</fullName>
+                <default>false</default>
+                <label>MAJELA MED - MAJELA MED CE ADM</label>
+            </value>
+            <value>
+                <fullName>MAJELA MED - MAJELA MED CE CD</fullName>
+                <default>false</default>
+                <label>MAJELA MED - MAJELA MED CE CD</label>
+            </value>
+            <value>
+                <fullName>MAJELA MED - MAJELA MED PB</fullName>
+                <default>false</default>
+                <label>MAJELA MED - MAJELA MED PB</label>
+            </value>
+            <value>
+                <fullName>MEDCOM - BRASILIA (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>MEDCOM - BRASILIA (FILIAL 03)</label>
+            </value>
+            <value>
+                <fullName>MEDCOM - CAMPO GRANDE (FILIAL 04)</fullName>
+                <default>false</default>
+                <label>MEDCOM - CAMPO GRANDE (FILIAL 04)</label>
+            </value>
+            <value>
+                <fullName>MEDCOM - CUIABA (FILIAL 02)</fullName>
+                <default>false</default>
+                <label>MEDCOM - CUIABA (FILIAL 02)</label>
+            </value>
+            <value>
+                <fullName>MEDCOM - GOIANIA (FILIAL 05)</fullName>
+                <default>false</default>
+                <label>MEDCOM - GOIANIA (FILIAL 05)</label>
+            </value>
+            <value>
+                <fullName>MEDCOM - GOIANIA (MATRIZ)</fullName>
+                <default>false</default>
+                <label>MEDCOM - GOIANIA (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>MOSTAERT - RECIFE (MATRIZ)</fullName>
+                <default>false</default>
+                <label>MOSTAERT - RECIFE (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - CONTAGEM (FILIAL 09)</fullName>
+                <default>false</default>
+                <label>NACIONAL - CONTAGEM (FILIAL 09)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - CONTAGEM (FILIAL 10)</fullName>
+                <default>false</default>
+                <label>NACIONAL - CONTAGEM (FILIAL 10)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - MACAE (FILIAL 08)</fullName>
+                <default>false</default>
+                <label>NACIONAL - MACAE (FILIAL 08)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - RIBEIRAO PRETO (MATRIZ)</fullName>
+                <default>false</default>
+                <label>NACIONAL - RIBEIRAO PRETO (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - S. J. RIO PRETO (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>NACIONAL - S. J. RIO PRETO (FILIAL 03)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - SANT. DE PARNAIBA (FILIAL 05)</fullName>
+                <default>false</default>
+                <label>NACIONAL - SANT. DE PARNAIBA (FILIAL 05)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - SANT. DE PARNAIBA (FILIAL 06)</fullName>
+                <default>false</default>
+                <label>NACIONAL - SANT. DE PARNAIBA (FILIAL 06)</label>
+            </value>
+            <value>
+                <fullName>NACIONAL - SANT. DE PARNAIBA (FILIAL 07)</fullName>
+                <default>false</default>
+                <label>NACIONAL - SANT. DE PARNAIBA (FILIAL 07)</label>
+            </value>
+            <value>
+                <fullName>ONCORIO - CURITIBA (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>ONCORIO - CURITIBA (FILIAL 03)</label>
+            </value>
+            <value>
+                <fullName>ONCORIO - ITUMBIARA (FILIAL 02)</fullName>
+                <default>false</default>
+                <label>ONCORIO - ITUMBIARA (FILIAL 02)</label>
+            </value>
+            <value>
+                <fullName>ONCORIO - PINHAIS (FILIAL 05)</fullName>
+                <default>false</default>
+                <label>ONCORIO - PINHAIS (FILIAL 05)</label>
+            </value>
+            <value>
+                <fullName>ONCORIO - RIO CLARO (MATRIZ)</fullName>
+                <default>false</default>
+                <label>ONCORIO - RIO CLARO (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESC. CENTRO</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESC. CENTRO</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA BH</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA BH</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA CABEDELO</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA CABEDELO</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA NATAL</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA NATAL</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA PRAIA</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA PRAIA</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA SP</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA SP</label>
+            </value>
+            <value>
+                <fullName>PRESCRITA PRAIA - PRESCRITA SSA</fullName>
+                <default>false</default>
+                <label>PRESCRITA PRAIA - PRESCRITA SSA</label>
+            </value>
+            <value>
+                <fullName>PRIME - PRIME</fullName>
+                <default>false</default>
+                <label>PRIME - PRIME</label>
+            </value>
+            <value>
+                <fullName>PROCIFAR DISTRIB. - SALVADOR (MATRIZ)</fullName>
+                <default>false</default>
+                <label>PROCIFAR DISTRIB. - SALVADOR (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>SALUS LATAM - SAO PAULO (MATRIZ)</fullName>
+                <default>false</default>
+                <label>SALUS LATAM - SAO PAULO (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>SAN LOG - SAN LOG</fullName>
+                <default>false</default>
+                <label>SAN LOG - SAN LOG</label>
+            </value>
+            <value>
+                <fullName>VITAL - SALVADOR (FILIAL 02)</fullName>
+                <default>false</default>
+                <label>VITAL - SALVADOR (FILIAL 02)</label>
+            </value>
+            <value>
+                <fullName>VITAL - SALVADOR (MATRIZ)</fullName>
+                <default>false</default>
+                <label>VITAL - SALVADOR (MATRIZ)</label>
+            </value>
+            <value>
+                <fullName>VITAL - VILA VELHA (FILIAL 03)</fullName>
+                <default>false</default>
+                <label>VITAL - VILA VELHA (FILIAL 03)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

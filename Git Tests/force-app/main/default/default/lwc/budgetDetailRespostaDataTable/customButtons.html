@@ -1,0 +1,11 @@
+<template>
+    <template if:false={typeAttributes.hideButton}>
+        <c-budget-detail-resposta-datatable-column-buttons
+            record-id={typeAttributes.recordId}
+            tool-tip-label={typeAttributes.toolTipLabel}
+            icon-name={typeAttributes.iconName}
+            action-click={typeAttributes.actionClick}
+            scope-father={typeAttributes.scopeFather}
+        ></c-budget-detail-resposta-datatable-column-buttons>
+    </template>
+</template>

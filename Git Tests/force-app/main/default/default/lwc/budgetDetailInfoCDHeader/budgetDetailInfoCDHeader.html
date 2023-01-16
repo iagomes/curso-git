@@ -1,0 +1,75 @@
+<template>
+    <div data-name="divAllProducts" style="margin:auto;display:flex;justify-content:space-between; width: 100%">
+        <!-- data-product-id={prod.pbeExternalId} data-product-name={prod.nome} data-product-code={prod.code} data-product-malha="false"> -->
+
+        <lightning-layout multiple-rows horizontal-align="spread" style="width: 100%;">
+            <!-- <template if:true={desktop}> -->
+                <lightning-layout-item size="2">
+                    <div style="font-size:1rem;padding: 0 0 5px 0;">
+                        <strong>{resp.prodCode}</strong>
+                    </div>
+                    <div>
+                        <img src="https://i.imgur.com/q2wyFuf.png" width="22px"></img>
+                        <div style="display:inline-block;margin:auto" title={resp.categoriaDesc}>
+                            <div style="display: flex;border: 1px dashed #ddd;border-radius: 5px;min-width: 30px;justify-content: center;height: 30px;align-items: center;">
+                                {resp.categoria}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="font-size: 12px;padding-top:5px;">
+                        {resp.temperatura}
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <div class="slds-media__body slds-col">
+                        <lightning-layout class="slds-m-bottom_xxx-small">
+                            <lightning-layout-item>
+                                <div style="font-size: 15px;color:#0070d2">
+                                    <p><strong>{resp.nome}</strong></p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <lightning-layout class="slds-m-bottom_xxx-small">
+                            <lightning-layout-item>
+                                <div style="font-size: 13px;font-weight:600">
+                                    <p>{resp.principioAtivo}</p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <lightning-layout class="slds-m-bottom_xxx-small">
+                            <lightning-layout-item>
+                                <div style="font-size: 13px;color:#999">
+                                    <p>{resp.marcaProdOfertado}</p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item size="1">
+                    <div style="float: right;">
+                        <lightning-button-icon style="display:block" alternative-text=""
+                            tooltip="Histórico" icon-class="" variant="border" type="button"
+                            icon-name="utility:knowledge_base" value={resp}
+                            onclick={openHistoric} size="medium">
+                        </lightning-button-icon>
+                        <lightning-button-icon style="display:block" alternative-text=""
+                            tooltip="Descrição" icon-class="" variant="border" type="button"
+                            icon-name="utility:description" value={resp} 
+                            onclick={openModalProductDescription} size="medium">
+                        </lightning-button-icon>
+                        <lightning-button-icon
+                            variant="border"
+                            icon-name="utility:refresh"
+                            tooltip="Atualizar malha"
+                            onclick={refreshMalha}
+                            disabled={refreshDisable}
+                            style="display:block"
+                            size="medium"
+                        ></lightning-button-icon>
+                    </div>
+                </lightning-layout-item>
+
+            <!-- </template> -->
+        </lightning-layout>
+    </div>
+</template>

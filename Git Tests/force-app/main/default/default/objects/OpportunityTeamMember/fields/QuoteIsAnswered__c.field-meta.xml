@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QuoteIsAnswered__c</fullName>
+    <description>Verdadeiro caso todas as cotações desse vendedor tiverem sido respondidas.</description>
+    <externalId>false</externalId>
+    <formula>AllQuotes__c = AnsweredQuotes__c &amp;&amp; AllQuotes__c &gt; 0</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>QuoteIsAnswered</label>
+    <type>Checkbox</type>
+</CustomField>

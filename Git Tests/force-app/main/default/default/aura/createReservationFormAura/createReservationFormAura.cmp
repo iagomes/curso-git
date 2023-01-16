@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,lightning:actionOverride" access="global">
+    <c:closeConsoleTabAura></c:closeConsoleTabAura>
+    <c:createReservationForm></c:createReservationForm>
+</aura:component>

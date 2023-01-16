@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CasoReaberto__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Campo criado para marcar um caso que foi reaberto</description>
+    <externalId>false</externalId>
+    <label>Caso Reaberto</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

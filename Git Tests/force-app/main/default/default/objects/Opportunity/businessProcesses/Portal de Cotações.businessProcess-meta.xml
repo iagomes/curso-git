@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Portal de Cotações</fullName>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Aguardando Integração</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Em digitação</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Falha na integração</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Fechado%2FGerado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Fechado%2FPerdido</fullName>
+        <default>false</default>
+    </values> 
+    <values>
+        <fullName>Gerar Pedido</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Novo</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Respondida</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Cancelada</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Sem Retorno</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Não Ganha</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Não Respondida</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

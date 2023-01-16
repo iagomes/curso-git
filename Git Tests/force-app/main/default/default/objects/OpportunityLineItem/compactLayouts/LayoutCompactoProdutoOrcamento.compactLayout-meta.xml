@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoProdutoOrcamento</fullName>
+    <fields>Product2Id</fields>
+    <fields>PrincipioAtivo__c</fields>
+    <fields>ProductCode</fields>
+    <fields>CentroDistribuicao__c</fields>
+    <fields>ForaMalha__c</fields>
+    <fields>ValorTotal__c</fields>
+    <fields>ScoreAlvo__c</fields>
+    <fields>ScoreAtual__c</fields>
+    <label>Layout compacto do produto do orçamento</label>
+</CompactLayout>

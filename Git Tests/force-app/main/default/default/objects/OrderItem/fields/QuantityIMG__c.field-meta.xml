@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QuantityIMG__c</fullName>
+    <externalId>false</externalId>
+    <formula>TEXT(Quantity)+IF(QuantityChanged__c, &apos; &apos;+IMAGE(&apos;/img/msg_icons/warning16.png&apos;,&apos; [!]&apos;), &apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Quantidade do pedido, caso haja alteração pelo cliente será marcada com um sinal de alerta.</inlineHelpText>
+    <label>Quantidade</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<template>
+    <template if:true={showTooltip}>
+        <div class="slds-popover slds-popover_tooltip slds-nubbin_left slds-slide-from-right-to-left"
+            role="tooltip" id="help" style="position: absolute;top: -1px;left: 34px;">
+            <div class="slds-popover__body">{tooltip}</div>
+        </div>
+    </template>
+    <lightning-icon
+        icon-name={iconName}
+        size={size}
+        onmouseenter={handleIconFocus}
+        onmouseleave={handleIconLeave}
+    ></lightning-icon>
+</template>

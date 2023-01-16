@@ -1,0 +1,159 @@
+<template>
+    <div class="icon">
+        <lightning-button-icon
+            style="margin:auto;"
+            tooltip="Informações CD - Clique + informações"
+            icon-name="utility:fulfillment_order"
+            size="medium"
+            onclick={openModal}
+            variant="bare">
+        </lightning-button-icon>
+    </div> 
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 100%; max-width: 55rem; min-width: 30rem; ">
+                <!-- Modal/Popup Box LWC header here -->
+                <header style="position: relative; border-top-right-radius: .25rem; border-top-left-radius: .25rem; padding: 1rem; text-align: center; background-color: #fff;">
+                    <div class="header">
+                        <lightning-icon icon-name="standard:fulfillment_order" alternative-text="Lotes" title="Lotes"></lightning-icon>
+                        <div style="display: inline-block; width: 100%; text-align: left;">
+                            <h2 class="slds-var-m-left_x-small slds-text-heading_medium" style="font-weight: bold; margin-right: auto;">Lotes</h2>                    
+                            <div class="slds-var-m-left_x-small" style="font-size: 15px; color:#0070d2">
+                                <p><strong>{product.nome}</strong></p>
+                            </div>
+                        </div>
+                        <div style="float:right">
+                            <lightning-button-icon 
+                                icon-name="utility:close" 
+                                alternative-text="Fechar" 
+                                title="Fechar" 
+                                onclick={closeModal}>
+                            </lightning-button-icon>
+                        </div>
+                    </div>
+                </header>
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-var-p-around_medium" style="background-color: #f3f2f2; margin-top: -5px;" >
+                    <div class="second-section">
+                        <div class="search-header">
+                            <lightning-layout-item size="12">
+                                <lightning-layout multiple-rows>
+                                    <lightning-layout-item size="6">
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item size="12">
+                                                <div style="font-size: 14px;color:rgb(133, 133, 133)">
+                                                    <p>Centro de distribuição</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="12">
+                                                <div style="font-size: 14px;">
+                                                    <p>{distributionCenter.nome}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6">
+                                        <lightning-layout multiple-rows>
+                                            <lightning-layout-item size="12">
+                                                <div style="font-size: 14px;color:rgb(133, 133, 133)">
+                                                    <p>Unidade de medida</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="12">
+                                                <div style="font-size: 14px;">
+                                                    <p>{product.unidadePrincipal}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </lightning-layout-item>
+                        </div>
+                    </div>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <template if:false={isLoadingLotes}>
+                    <template if:false={lots}>
+                        <div class="slds-var-p-around_x-large" style="background-color: #fff;">
+                            <p>Não foi encontrado nenhum lote para esse produto.</p>
+                        </div>
+                    </template>
+                    <template if:true={lots}>
+                        <div style="padding:15px;background-color: #fff; border-bottom-right-radius: 0.25rem; border-bottom-left-radius: 0.25rem; max-height: 30rem; overflow: auto;">
+                            <template for:each={lots} for:item="lot">
+                                <div key={lot.name} style="margin-bottom: 10px; padding:15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item size="12">
+                                            <lightning-layout class="slds-var-m-bottom_xx-small">
+                                                <lightning-layout-item>
+                                                    <div style="font-size: 15px;color:#0070d2">
+                                                        <p><strong>Lote {lot.name}</strong></p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="8">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item size="4">
+                                                    <lightning-layout multiple-rows>
+                                                        <lightning-layout-item size="12">
+                                                            <div style="font-size: 14px;color:rgb(133, 133, 133)">
+                                                                <p>Validade</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="12">
+                                                            <div style="font-size: 14px;">
+                                                                <p>{lot.validity}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="4">
+                                                    <lightning-layout multiple-rows>
+                                                        <lightning-layout-item size="12">
+                                                            <div style="font-size: 14px;color:rgb(133, 133, 133)">
+                                                                <p>Saldo</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="12">
+                                                            <div style="font-size: 14px;">
+                                                                <p>{lot.stock}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="4">
+                                                    <template if:true={lot.price}>
+                                                        <lightning-layout multiple-rows>
+                                                            <lightning-layout-item size="12">
+                                                                <div style="font-size: 14px;color:rgb(133, 133, 133)">
+                                                                    <p>Preço Shelf Life</p>
+                                                                </div>
+                                                            </lightning-layout-item>
+                                                            <lightning-layout-item size="12">
+                                                                <div style="font-size: 14px;">
+                                                                    <p>{lot.price}</p>
+                                                                </div>
+                                                            </lightning-layout-item>
+                                                        </lightning-layout>
+                                                    </template>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="4"></lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <template if:true={isLoadingLotes}>
+                <div class="exampleHolder">
+                    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                </div>
+            </template>	
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>   
+</template>

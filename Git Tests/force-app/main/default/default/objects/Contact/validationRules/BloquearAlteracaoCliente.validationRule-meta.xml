@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BloquearAlteracaoCliente</fullName>
+    <active>true</active>
+    <description>Regra criada para impedir que o Cliente associado a um contato seja alterado manualmente.</description>
+    <errorConditionFormula>AND(
+				  $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+				  $Profile.Name &lt;&gt; &apos;Administrador do sistema&apos;,
+				  ISCHANGED(AccountId)
+    )</errorConditionFormula>
+    <errorMessage>Não é possível alterar o Cliente associado a este Contato. Procure o administrador do sistema para mais informações.</errorMessage>
+</ValidationRule>

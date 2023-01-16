@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusIntegracaoPortalCotacoes__c</fullName>
+    <externalId>false</externalId>
+    <label>Status de Integração (Portal)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Não Integrado</fullName>
+                <default>true</default>
+                <label>Não Integrado</label>
+            </value>
+            <value>
+                <fullName>Falha na Integração</fullName>
+                <default>false</default>
+                <label>Falha na Integração</label>
+            </value>
+            <value>
+                <fullName>Integrado</fullName>
+                <default>false</default>
+                <label>Integrado</label>
+            </value>
+            <value>
+                <fullName>Recebendo dados</fullName>
+                <default>false</default>
+                <label>Recebendo dados</label>
+            </value>
+            <value>
+                <fullName>Recebida</fullName>
+                <default>false</default>
+                <label>Recebida</label>
+            </value>
+            <value>
+                <fullName>Integrada</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Integrada</label>
+            </value>
+            <value>
+                <fullName>Não Integrada</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Não Integrada</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

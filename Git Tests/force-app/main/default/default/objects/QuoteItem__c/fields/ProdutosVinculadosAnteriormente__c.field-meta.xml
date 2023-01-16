@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProdutosVinculadosAnteriormente__c</fullName>
+    <description>JSON de produtos que estavam vinculados a mesma requisição (mesmo IdCustomer__c) em outras cotações.</description>
+    <externalId>false</externalId>
+    <label>Produtos Vinculados Anteriormente</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

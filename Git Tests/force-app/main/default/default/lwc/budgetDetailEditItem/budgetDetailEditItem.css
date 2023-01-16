@@ -1,0 +1,24 @@
+
+
+.produto-solicitado {
+    position: relative;
+    padding: 1em 1.5em;
+}
+
+
+.produto-solicitado > div > div {
+    display: inline-grid;
+}
+
+.produto-solicitado > div > div > label {
+    color: gray;
+    font-size: smaller;
+}
+
+.produto-solicitado > div > div > span {
+    font-size: larger;
+}
+
+.produto-vinculado c-budget-detail-list-product{
+    width: 100%;
+}

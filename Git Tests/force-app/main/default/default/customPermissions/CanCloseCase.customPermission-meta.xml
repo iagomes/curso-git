@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Only users with this permission can close a case</description>
+    <isLicensed>false</isLicensed>
+    <label>CanCloseCase</label>
+</CustomPermission>

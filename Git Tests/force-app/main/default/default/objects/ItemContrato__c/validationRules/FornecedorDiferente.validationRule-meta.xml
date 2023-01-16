@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FornecedorDiferente</fullName>
+    <active>false</active>
+    <description>O fornecedor do contrato deve ser o mesmo fornecedor do produto</description>
+    <errorConditionFormula>Fornecedor__c &lt;&gt;  FornecedorContrato__c</errorConditionFormula>
+    <errorDisplayField>NomeProduto__c</errorDisplayField>
+    <errorMessage>O fornecedor do contrato deve ser o mesmo fornecedor do produto</errorMessage>
+</ValidationRule>

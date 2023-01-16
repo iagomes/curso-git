@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotCloseCaseWithStatusNew</fullName>
+    <active>true</active>
+    <description>Users from the customer service cannot close a case with the status New.</description>
+    <errorConditionFormula>AND(
+  ISCHANGED(Status),
+  ISPICKVAL(PRIORVALUE(Status), &quot;New&quot;),
+  OR(
+    ISPICKVAL(Status, &quot;Finalizado&quot;),
+    ISPICKVAL(Status, &quot;Closed&quot;)
+  ),
+  $Permission.CannotCloseNewCaseDirectly 
+)</errorConditionFormula>
+    <errorMessage>ESSE CASO AINDA NÃO TEVE NENHUMA TRATATIVA, NÃO É POSSÍVEL ENCERRÁ-LO.</errorMessage>
+</ValidationRule>

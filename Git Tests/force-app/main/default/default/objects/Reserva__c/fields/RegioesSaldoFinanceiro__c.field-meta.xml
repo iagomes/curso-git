@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RegioesSaldoFinanceiro__c</fullName>
+    <description>Regiões do saldo financeiro selecionado ao criar a reserva.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Regiões do saldo financeiro selecionado ao criar a reserva.</inlineHelpText>
+    <label>Regiões do saldo financeiro</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

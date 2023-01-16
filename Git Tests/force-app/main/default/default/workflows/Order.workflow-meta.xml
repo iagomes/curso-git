@@ -1,0 +1,774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AprovadoBonificacao</fullName>
+        <field>AprovadoBonificacao__c</field>
+        <literalValue>1</literalValue>
+        <name>Aprovado Bonificação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AprovadoComercial</fullName>
+        <field>AprovadoComercial__c</field>
+        <literalValue>1</literalValue>
+        <name>Aprovado Comercial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AprovadoMalha</fullName>
+        <field>AprovadoMalha__c</field>
+        <literalValue>1</literalValue>
+        <name>Aprovado Malha</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AprovadoPricing</fullName>
+        <field>AprovadoPricing__c</field>
+        <literalValue>1</literalValue>
+        <name>Aprovado Pricing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AprovadoRegionalizacao</fullName>
+        <field>AprovadoRegionalizacao__c</field>
+        <literalValue>1</literalValue>
+        <name>Aprovado Regionalização</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoBonificacao</fullName>
+        <field>AprovadoBonificacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Bonificação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoBonificacaoRecall</fullName>
+        <field>AprovadoBonificacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Bonificação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoComercial</fullName>
+        <field>AprovadoComercial__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Comercial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoComercialRecall</fullName>
+        <field>AprovadoComercial__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Comercial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoMalha</fullName>
+        <field>AprovadoMalha__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Malha</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoMalhaRecall</fullName>
+        <field>AprovadoMalha__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Malha</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoPricing</fullName>
+        <field>AprovadoPricing__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Pricing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoPricingRecall</fullName>
+        <field>AprovadoPricing__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Pricing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoRegionalizacao</fullName>
+        <field>AprovadoRegionalizacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Regionalização</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarAprovadoRegionalizacaoRecall</fullName>
+        <field>AprovadoRegionalizacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Aprovado Regionalização</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarEmDigitacao</fullName>
+        <field>Status</field>
+        <literalValue>Em digitação</literalValue>
+        <name>Atualizar Em digitação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarEmDigitacaoRecall</fullName>
+        <field>Status</field>
+        <literalValue>Em digitação</literalValue>
+        <name>Atualizar Em digitação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovBonificacaoRecall</fullName>
+        <field>NecessitaAprovacaoBonificacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprov Bonificação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoBonificacao</fullName>
+        <field>NecessitaAprovacaoBonificacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprov Bonificação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovComercialRecall</fullName>
+        <field>NecessitaAprovacaoComercial__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Comercial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoComercial</fullName>
+        <field>NecessitaAprovacaoComercial__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Comercial</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovMalhaRecall</fullName>
+        <field>NecessitaAprovacaoMalha__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Malha</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoMalha</fullName>
+        <field>NecessitaAprovacaoMalha__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Malha</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoPricing</fullName>
+        <field>NecessitaAprovacaoPricing__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Pricing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoPricingRecall</fullName>
+        <field>NecessitaAprovacaoPricing__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprovação Pricing</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovRegionalRecall</fullName>
+        <field>NecessitaAprovacaoRegionalizacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprov Regionalização</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarNecessitaAprovacaoRegional</fullName>
+        <field>NecessitaAprovacaoRegionalizacao__c</field>
+        <literalValue>0</literalValue>
+        <name>Atualizar Necessita aprov Regionalização</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarRecallProcesso</fullName>
+        <field>RecallProcesso__c</field>
+        <literalValue>1</literalValue>
+        <name>Atualizar Recall do processo</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarRejeicaoProcesso</fullName>
+        <field>RejeicaoProcesso__c</field>
+        <literalValue>1</literalValue>
+        <name>Atualizar Rejeição do processo</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarReprovado</fullName>
+        <field>Status</field>
+        <literalValue>Reprovado</literalValue>
+        <name>Atualizar Reprovado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AtualizarStatus</fullName>
+        <field>Status</field>
+        <literalValue>Aguardando aprovação</literalValue>
+        <name>Atualizar status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>DesmarcarEnviarAprovacao</fullName>
+        <field>EnviarAprovacao__c</field>
+        <literalValue>0</literalValue>
+        <name>DesmarcarEnviarAprovacao</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>PedidoSolicitacaoAprovada</fullName>
+        <description>Pedido que solicita a aprovação</description>
+        <field>SolicitacaoAprovada__c</field>
+        <literalValue>1</literalValue>
+        <name>Pedido Solicitação Aprovada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>true</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SolicitacaoAprovada</fullName>
+        <field>SolicitacaoAprovada__c</field>
+        <literalValue>1</literalValue>
+        <name>Solicitação aprovada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAguardandoAprovacao</fullName>
+        <field>Status</field>
+        <literalValue>Aguardando aprovação</literalValue>
+        <name>Status aguardando aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAprovado</fullName>
+        <field>Status</field>
+        <literalValue>Aprovado</literalValue>
+        <name>Status aprovado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusReprovado</fullName>
+        <field>Status</field>
+        <literalValue>Reprovado</literalValue>
+        <name>Status reprovado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBC</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoC&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBE</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoE&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBG</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoG&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBM</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoM&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBN</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoN&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBQ</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoQ&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBS</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoS&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoBY</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoBonificacaoY&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCC</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialC&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCE</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialE&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCG</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialG&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCM</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialM&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCN</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialN&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCQ</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialQ&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCS</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialS&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoCY</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoComercialY&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMC</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaC&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoME</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaE&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMG</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaG&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMM</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaM&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMN</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaN&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMQ</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaQ&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMS</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaS&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoMY</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoMalhaY&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPC</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingC&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPE</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingE&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPG</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingG&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPM</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingM&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPN</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingN&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPQ</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingQ&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPS</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingS&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoPY</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoPricingY&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRC</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoC&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRE</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoE&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRG</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoG&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRM</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoM&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRN</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoN&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRQ</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoQ&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRS</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoS&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>UltimaAprovacaoRY</fullName>
+        <field>UltimaAprovacao__c</field>
+        <formula>&apos;Pedido_AprovacaoRegionalizacaoY&apos;</formula>
+        <name>Última aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

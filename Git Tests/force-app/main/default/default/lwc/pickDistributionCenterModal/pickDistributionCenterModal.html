@@ -1,0 +1,59 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-button-icon
+    icon-name="utility:down"
+    variant="container"
+    onclick={openModal}>
+  </lightning-button-icon>
+
+  <template if:true={isModalOpen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <!-- Modal/Popup Box LWC header here -->
+        <header class="slds-modal__header">
+          <lightning-button-icon
+            class="slds-modal__close"
+            icon-name="utility:close"
+            variant="bare-inverse"
+            onclick={closeModal}>
+          </lightning-button-icon>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+            Centro de distribuição
+          </h2>
+        </header>
+        <!-- Modal/Popup Box LWC body starts here -->
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+          <lightning-dual-listbox
+            name="distributionCenterDual"
+            label="Selecione centros de distribuição"
+            source-label="Disponíveis"
+            selected-label="Selecionados"
+            field-level-help="Selecione centros de distribuição que serão aplicados para o item da campanha"
+            options={options}
+            value={values}
+            onchange={handleChangeOptions}>
+          </lightning-dual-listbox>
+
+        </div>
+        <!-- Modal/Popup Box LWC footer starts here -->
+        <footer class="slds-modal__footer">
+          <lightning-button
+            class="slds-var-m-right_small"
+            title="Cancel"
+            label="Cancelar"
+            onclick={closeModal}>
+          </lightning-button>
+
+          <lightning-button
+            title="Selecionar"
+            label="Selecionar"
+            variant="brand"
+            onclick={submitDetails}>
+          </lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

@@ -1,0 +1,40 @@
+<template>
+    <div class="slds-var-p-vertical_medium slds-var-p-horizontal_large">
+        <header style="padding: 15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%); border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+            <lightning-layout multiple-rows key={budgetData} horizontal-align="spread">
+                <template if:true={desktop}>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="8" large-device-size="8">
+                        <div style="width: 100%; display: flex; flex-direction: row; margin-bottom: 8px;">
+                            <a style="font-size: 14px; font-weight: bold; text-align: left;" data-budget-id={budgetData.Id} onclick={navigateToBudget}>
+                                <h1 class="slds-truncate">{budgetData.BudgetNumber}</h1>
+                            </a>
+                            <h1 style="font-weight: bold; text-align: left; margin-left: 8px;">{budgetData.AccountName}</h1>
+                        </div>
+                        <h1 style="text-align: left; font-size: 12px;">{budgetData.StageName}</h1>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="12" medium-device-size="4" large-device-size="4">
+                        <h1 style="color: #969492; text-align: right; margin-bottom: 8px; font-size: 12px;">Data de criação: {budgetData.CreatedDate}</h1>
+                        <h1 if:true={budgetData.isExpired} style="text-align: right; font-size: 12px;">Validade: {budgetData.CloseDate}</h1>
+                        <h1 if:false={budgetData.isExpired} style="color: #C23934; text-align: right; font-size: 12px;">Validade: {budgetData.CloseDate}</h1>
+                    </lightning-layout-item>
+                </template>
+                <template if:false={desktop}>
+                    <lightning-layout-item size="12">
+                        <h2 style="font-weight: bold; text-align: left;">{budgetData.AccountName}</h2>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <div style="width: 100%;">
+                            <a style="font-size: 14px; font-weight: bold; text-align: left;" data-budget-id={budgetData.Id} onclick={navigateToBudget}>
+                                <h2 class="slds-truncate">{budgetData.BudgetNumber}</h2>
+                            </a>
+                            <h2 style="text-align: left; font-size: 12px;">{budgetData.StageName}</h2>
+                        </div>
+                        <h2 style="color: #969492; text-align: right; margin-bottom: 8px; font-size: 12px;">Data de criação: {budgetData.CreatedDate}</h2>
+                        <h2 if:true={budgetData.isExpired} style="text-align: right; font-size: 12px;">Validade: {budgetData.CloseDate}</h2>
+                        <h2 if:false={budgetData.isExpired} style="color: #C23934; text-align: right; font-size: 12px;">Validade: {budgetData.CloseDate}</h2>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </header>
+    </div>
+</template>

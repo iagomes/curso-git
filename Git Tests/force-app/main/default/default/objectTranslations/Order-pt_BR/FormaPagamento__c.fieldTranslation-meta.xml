@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Forma de pagamento --></label>
+    <name>FormaPagamento__c</name>
+    <picklistValues>
+        <masterLabel>Boleto</masterLabel>
+        <translation><!-- Boleto --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Depósito</masterLabel>
+        <translation><!-- Depósito --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

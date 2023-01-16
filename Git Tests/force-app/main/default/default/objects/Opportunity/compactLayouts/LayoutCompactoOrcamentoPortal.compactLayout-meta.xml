@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoOrcamentoPortal</fullName>
+    <fields>NumeroOrcamento__c</fields>
+    <fields>Integradora__c</fields>
+    <fields>IdIntegrator__c</fields>
+    <fields>Regiao__c</fields>
+    <fields>QuantidadeItensTotal__c</fields>
+    <fields>DataVencimento__c</fields>
+    <label>Layout compacto de orçamento do portal</label>
+</CompactLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ItemCampanha__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Item da campanha</label>
+    <referenceTo>ItemCampanha__c</referenceTo>
+    <relationshipLabel>Produto do orçamento</relationshipLabel>
+    <relationshipName>ProdutoOrcamento</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

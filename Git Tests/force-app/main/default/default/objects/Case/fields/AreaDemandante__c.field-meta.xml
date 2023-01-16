@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AreaDemandante__c</fullName>
+    <description>Informação da área de origem ao qual o demandante do caso pertence.</description>
+    <externalId>false</externalId>
+    <label>Área Demandante</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Comercial - Especialidades Farmacêuticas</fullName>
+                <default>false</default>
+                <label>Comercial - Especialidades Farmacêuticas</label>
+            </value>
+            <value>
+                <fullName>Comercial - Genéricos e Similares</fullName>
+                <default>false</default>
+                <label>Comercial - Genéricos e Similares</label>
+            </value>
+            <value>
+                <fullName>Comercial - OPME, Materiais e Nutrição</fullName>
+                <default>false</default>
+                <label>Comercial - OPME, Materiais e Nutrição</label>
+            </value>
+            <value>
+                <fullName>Financeiro</fullName>
+                <default>false</default>
+                <label>Financeiro</label>
+            </value>
+            <value>
+                <fullName>Gente e Gestão</fullName>
+                <default>false</default>
+                <label>Gente e Gestão</label>
+            </value>
+            <value>
+                <fullName>Inovação e Digital</fullName>
+                <default>false</default>
+                <label>Inovação e Digital</label>
+            </value>
+            <value>
+                <fullName>Jurídico &amp; Compliance</fullName>
+                <default>false</default>
+                <label>Jurídico &amp; Compliance</label>
+            </value>
+            <value>
+                <fullName>Operações</fullName>
+                <default>false</default>
+                <label>Operações</label>
+            </value>
+            <value>
+                <fullName>Planejamento Estratégico e Integrações</fullName>
+                <default>false</default>
+                <label>Planejamento Estratégico e Integrações</label>
+            </value>
+            <value>
+                <fullName>Serviços Logísticos</fullName>
+                <default>false</default>
+                <label>Serviços Logísticos</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

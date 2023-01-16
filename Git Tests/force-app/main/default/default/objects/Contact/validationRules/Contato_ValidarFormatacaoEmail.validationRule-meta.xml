@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contato_ValidarFormatacaoEmail</fullName>
+    <active>true</active>
+    <description>Regra de validação para obrigar o usuário a inserir um email com a formatação correta.</description>
+    <errorConditionFormula>NOT(REGEX( Email ,&apos;([a-zA-Z0-9_\\-\\.]+)@((\\[a-z]{1,3}\\.[a-z]{1,3}\\.[a-z]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})&apos;))</errorConditionFormula>
+    <errorMessage>Insira a formação correta no e-mail: xxxxxxxx@xxxxxxxxxx</errorMessage>
+</ValidationRule>

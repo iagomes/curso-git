@@ -1,0 +1,135 @@
+<!--
+  @description       : 
+  @author            : Raphael Soares
+  @author username   : raphael.holanda.ext@iconit.com.br
+  @linkedin          : https://www.linkedin.com/in/raphaelsoares95/
+  @company           : Apllos Solutions
+  @last modified on  : 25-11-2021
+  @last modified by  : raphael.holanda.ext@iconit.com.br
+-->
+<template>
+    <section 
+    role={role} 
+    tabindex="-1" 
+    aria-labelledby="modal-heading-01" 
+    aria-modal="true" 
+    aria-describedby="modal-content-id-1" 
+    onkeydown={handleKeyDown}
+    class={initStyle}
+  >
+    <div class={containerStyle}>
+      <header class="slds-modal__header">
+        <template if:false={hideCloseButton}>
+          <button
+            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            title="Close"
+            onclick={handleCloseClick}
+          >
+            <lightning-icon
+              class="icon-close"
+              icon-name="utility:close"
+              alternative-text="close"
+            ></lightning-icon>
+            <span class="slds-assistive-text">Fechar</span>
+          </button>
+        </template>
+
+        <slot name="header">
+          <div class="slds-grid">
+            <div if:true={headerIconSrc} class="slds-media__figure">
+              <span
+                class="slds-icon_container slds-icon-standard-opportunity"
+                title={title}
+              >
+                <svg
+                  class="open-section-icon custom-icon-title"
+                  fill="white"
+                  width={iconWidth}
+                  height={iconHeight}
+                  viewBox={iconViewBox}
+                >
+                  ;
+                  <use xlink:href={headerIconSrc}></use>
+                </svg>
+              </span>
+            </div>
+            <h2
+              id="modal-heading-01"
+              class="slds-modal__title slds-hyphenate slds-text-title_bold"
+            >
+              {title}
+            </h2>
+          </div>
+        </slot>
+      </header>
+
+      <div class="slds-modal__content">
+        <div if:true={removepadding}>
+          <slot></slot>
+        </div>
+  
+        <div if:false={removepadding} class="slds-p-around_medium">
+          <slot></slot>
+        </div>
+      </div>
+
+      <div if:false={hidefooter}>
+        <slot name="footer">
+          <footer class="slds-modal__footer slds-is-relative" if:false={hidefooter}>
+            <div class="slds-grid">
+              <div if:true={showCancelButton}>
+                <button
+                  class="slds-button slds-button_neutral btn-cancelar"
+                  label="Cancelar"
+                  onclick={handleCancelClick}
+                >
+                  Cancelar
+                </button>
+              </div>
+              <div if:true={showConfirmationButton} class="slds-col_bump-left">
+                <button
+                  class="slds-button slds-button_brand btn-confirm"
+                  label="Confirmar"
+                  onclick={handleConfirmClick}
+                >
+                  Confirmar
+                </button>
+              </div>
+              <div
+                if:false={showConfirmationButton}
+                class="slds-col_bump-left"
+              ></div>
+              <div if:true={showNoButton}>
+                <button
+                  class="slds-button slds-button_neutral btn-no"
+                  label="Não"
+                  onclick={handleNoClick}
+                >
+                  Não
+                </button>
+              </div>
+              <div if:true={showYesButton}>
+                <button
+                  class="slds-button slds-button_brand btn-yes"
+                  label="Sim"
+                  onclick={handleYesClick}
+                >
+                  Sim
+                </button>
+              </div>
+              <div if:true={hideButtonNext}>
+                <button
+                  class="slds-button slds-button_brand"
+                  onclick={handleActionNext}
+                >
+                  Próximo
+                </button>
+              </div>
+            </div>
+          </footer>
+        </slot>
+      </div>
+    </div>
+  </section>
+  <div if:false={removeBackdrop} class="slds-backdrop slds-backdrop_open"></div>
+</template>

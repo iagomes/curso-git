@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Your case has been received</name>
+    <style>none</style>
+    <subject>Caso: {!Case.CaseNumber} - O Grupo Elfa agradece o seu contato!</subject>
+    <textOnly>Prezado cliente,
+
+Recebemos a sua solicitação e a mesma já está em análise. O Grupo Elfa se propõe a oferecer um atendimento de excelência, conte conosco para esta resolução o mais breve possível.
+
+Seu protocolo de atendimento é de Número {!Case.CaseNumber}.
+
+Atenciosamente,
+Equipe de Atendimento ao Cliente Grupo Elfa
+
+{!Case.OwnerFullName}
+(16) 99643-0417
+atendimentoaocliente@grupoelfa.com.br</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoSetorizacao</fullName>
+    <fields>Vendedor__c</fields>
+    <fields>Categoria__c</fields>
+    <fields>Subcategoria__c</fields>
+    <fields>Regiao__c</fields>
+    <fields>Setor__c</fields>
+    <fields>Mesa__c</fields>
+    <fields>CodigoMesa__c</fields>
+    <label>Layout compacto de setorização</label>
+</CompactLayout>

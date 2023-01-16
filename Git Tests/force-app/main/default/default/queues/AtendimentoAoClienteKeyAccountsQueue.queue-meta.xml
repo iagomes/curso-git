@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <email>atendimentoaocliente@grupoelfa.com.br</email>
+    <name>Atendimento ao Cliente - Key Accounts</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>AtendimentoAoClienteKeyAccounts</publicGroup>
+        </publicGroups>
+        <users>
+            <user>test-nihvs9evue32@example.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>AtendimentoAoClienteRoteamento</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>AgentWork</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>Case</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveAgentSession</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>LiveChatTranscript</sobjectType>
+    </queueSobject>
+</Queue>

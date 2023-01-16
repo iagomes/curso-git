@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProdutoVendido</fullName>
+    <active>true</active>
+    <description>Tipo de registro para os produtos que estão sendo vendido e resultarão em uma bonificação.</description>
+    <label>Produto vendido</label>
+</RecordType>

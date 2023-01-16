@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusIntegrationResponse__c</fullName>
+    <description>status de integração do item com a integradora, recebido via integraçãoIN com o portal, na classe: IntegrationPortalResponseIN</description>
+    <externalId>false</externalId>
+    <label>StatusIntegrationResponse</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Não Respondido</fullName>
+                <default>true</default>
+                <label>Não Respondido</label>
+            </value>
+            <value>
+                <fullName>Não Integrado</fullName>
+                <default>false</default>
+                <label>Não Integrado</label>
+            </value>
+            <value>
+                <fullName>Integrado</fullName>
+                <default>false</default>
+                <label>Integrado</label>
+            </value>
+            <value>
+                <fullName>Falha na Integração</fullName>
+                <default>false</default>
+                <label>Falha na Integração</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

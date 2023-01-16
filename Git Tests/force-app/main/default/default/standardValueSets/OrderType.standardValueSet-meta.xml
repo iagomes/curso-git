@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>PedidoBonificacao</fullName>
+        <default>false</default>
+        <label>Pedido de bonificação</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PedidoContaOrdem</fullName>
+        <default>false</default>
+        <label>Pedido de conta e ordem</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PedidoVenda</fullName>
+        <default>false</default>
+        <label>Pedido de venda</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Pedido histórico</fullName>
+        <default>false</default>
+        <label>Pedido histórico</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PedidoMae</fullName>
+        <default>false</default>
+        <label>Pedido pai</label>
+    </standardValue>
+</StandardValueSet>

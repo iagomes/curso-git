@@ -1,0 +1,14 @@
+<template>
+    <c-custom-modal
+        show-confirmation-button="true" 
+        show-cancel-button="true" 
+        hide-close-button="true"
+        remove-backdrop="true"        
+        onmodalresult={handleChangeOwner}
+        title={labels.Forward}
+        init-style=""
+        container-style=""
+        role="custom-dialog">
+        {labels.Are_sure_you_want_to_forward_the_case}
+    </c-custom-modal>
+</template>

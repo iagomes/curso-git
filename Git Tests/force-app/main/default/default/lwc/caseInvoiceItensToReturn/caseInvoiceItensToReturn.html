@@ -1,0 +1,38 @@
+<template>
+    <lightning-card title="Itens para Devolução" icon-name="standard:return_order_line_item" class="card slds-card_boundary">
+        <div slot="actions">
+            <template if:false={addItems}>
+                <lightning-button label="Adicionar Itens" slot="actions" onclick={handleAddItems}></lightning-button>
+            </template>
+        </div>
+        <template if:false={addItems}>
+            <div style="height: 300px">
+                <template if:true={itemsRecords}>
+                    <lightning-datatable
+                    key-field="Id"
+                    data={itemsRecords}
+                    columns={itemColumns}
+                    onrowaction={handleRowAction}
+                    onsave={handleInlineSave}
+                    hide-checkbox-column></lightning-datatable>
+                </template>
+            </div>
+        </template>
+        <template if:true={addItems}>
+            <div style="height: 300px">
+                <template if:true={originalItemsRecords}>
+                    <lightning-datatable
+                    key-field="Id"
+                    data={originalItemsRecords}
+                    columns={originalItemsColumns}></lightning-datatable>
+                </template>
+            </div>
+        </template>
+        <div slot="footer">
+            <template if:true={addItems}>
+                <lightning-button label="Cancelar" title="Cancelar" onclick={handleCancel}></lightning-button>
+                <lightning-button variant="brand" label="Salvar" title="Salvar" onclick={handleSave} class="slds-m-left_x-small"></lightning-button>
+            </template>
+        </div>
+</lightning-card>
+</template>

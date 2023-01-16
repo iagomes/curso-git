@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Botão para clonar o orçamento aberto na tela do usuário.</description>
+    <flowDefinition>Orcamento_ClonarRegistro</flowDefinition>
+    <label>Clonar</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

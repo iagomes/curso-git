@@ -1,0 +1,49 @@
+.content {
+    background-color: white;
+    border-top: 1px solid #dbd5d5;
+    margin-bottom: 35px;
+}
+
+.filters {
+    border-bottom: 1px solid #dbd5d5;
+}
+
+.filter-toggle-btn {
+    text-align: right;
+}
+
+.status-btn-area .slds-button {
+    margin: 0 -1px;
+    padding-left: 1px;
+    padding-right: 1px; 
+    border-radius: 0;
+}
+
+.status-btn-area .slds-button[data-is-last-element="true"] {
+    border-radius: 0 5px 5px 0;
+}
+
+.status-btn-area .slds-button[data-is-first-element="true"] {
+    border-radius: 5px 0 0 5px;
+}
+.slds-button{
+    padding-left: 10px; padding-right:10px;
+}
+
+.filter-toggle-btn lightning-icon {
+    margin-left: 4px;
+    margin-bottom: 2px;
+}
+
+.applied-filters {
+    margin-top: 30px;
+    margin-top: 30px;
+}
+
+.applied-filters label {
+    margin-right: 5px;
+}
+
+.applied-filters lightning-pill {
+    margin-left: 5px;
+}

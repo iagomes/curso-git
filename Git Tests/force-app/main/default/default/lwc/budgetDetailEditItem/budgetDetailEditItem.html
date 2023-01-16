@@ -1,0 +1,165 @@
+<template>
+    <template if:true={showBudgetItemData}>
+        <section role="dialog" tabindex="-1" aria-modal="true"
+            class="modal-vincular slds-modal slds-fade-in-open slds-modal_large">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header" style="border-bottom-color: gainsboro; padding-bottom: 5px;">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Fechar" onclick={closeVincularModal}>
+                        
+                        <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                            size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Fechar</span>
+                    </button>
+                    <div class="slds-grid slds-gutters slds-p-bottom_xxx-small">
+                        <div class="slds-col slds-size_2-of-6"></div>
+                        <div class="slds-col slds-size_2-of-6">
+                            <div class="slds-text-heading_medium" if:true={quoteitem}>{modalTitle}</div>
+                        </div>
+                        <div class="slds-col slds-size_2-of-6">
+                            <div class="slds-grid slds-grid_align-end slds-p-bottom_small">
+                                <div if:false={firstIndex}>
+                                    <lightning-button
+                                        variant="neutral"
+                                        title="PreviousItem"
+                                        label="Item anterior"
+                                        onclick={previousItem}
+                                    ></lightning-button>
+                                </div>
+                                <div>
+                                    <lightning-button
+                                        variant="neutral"
+                                        title="NextItem"
+                                        label="Próximo item"
+                                        onclick={nextItem}
+                                    ></lightning-button>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div class="slds-box produto-solicitado">
+                        <label><b>Solicitado</b></label>
+                        <div class="slds-grid">
+                            <div class="slds-col slds-size_1-of-12">
+                                <label>Código</label>
+                                <span class="slds-truncate">{quoteitem_.idCustomer}</span>
+                            </div>
+                            <div class="slds-col slds-size_3-of-12">
+                                <label>Produto solicitado</label>
+                                <span>{quoteitem_.customerDescription}</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12">
+                                <label>Quantidade</label>
+                                <span>{quoteitem_.quantidadeSolicitada}</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12">
+                                <label>Un. Medida (Cliente)</label>
+                                <span class="slds-truncate">{quoteitem_.customerMeasurementUnit}</span>
+                            </div>
+                            <div class="slds-col slds-size_2-of-12">
+                                <label>Marcas favoritas</label>
+                                <span>{quoteitem_.favoriteBrands}</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12">
+                                <label>Categoria</label>
+                                <span>{quoteitem_.categoriaCliente}</span>
+                            </div>
+                            <div class="slds-col slds-size_3-of-12">
+                                <label>Status</label>
+                                <span class="slds-truncate">{quoteitem_.statusItem}</span>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="slds-modal__content slds-p-around_xx-small slds-is-relative">
+                    <div class="topScroll"></div>
+                    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="loading"></lightning-spinner>
+    
+    
+                    <div class="slds-box produto-vinculado">
+    
+                        <label><b>Respostas</b></label>
+
+                        <template if:true={isEditable}>
+
+                            <lightning-button-icon
+                                name="adicionar"
+                                alternative-text="Adicionar"
+                                title="Adicionar"
+                                onclick={callCheckExistingUserBUs}
+                                class="slds-m-around_xx-small"
+                                icon-name="action:new"
+                            ></lightning-button-icon>            
+                        </template>                        
+                        
+                        <c-budget-detail-resposta
+                            opp-id={oppId}
+                            quoteitem={quoteitem_}
+                            respostas={respostas}
+                            resposta={respostaSelecionada}
+                            tabulacao-n1-picklist-values={tabulacaoN1PicklistValues}
+                            status-picklist-values={statusPicklistValues}
+                            onrespselecionada={handleRespSelecionada}
+                            is-editable={isEditable}
+                            onupdatequoteitem={handleUpdateQuoteItem}
+                            max-row-selection={maxRowSelection}
+                            onrefreshline={handleRefreshLine}>
+                        </c-budget-detail-resposta>
+                        
+                        <template if:true={showCdSelection}>
+                            <c-budget-detail-info-c-d
+                                opp-id={oppId}
+                                cnpj={budgetData.ClienteEmissorCGC}
+                                accountid={budgetData.ClienteEmissorId}
+                                account-type={budgetData.accountType}
+                                pricebook={budgetData.TabelaPrecoExternalId}
+                                condpag={budgetData.CondicaoPagamento}
+                                cds-bloqueados={budgetData.CDsBloqueado}
+                                uf={budgetData.ClienteEmissorUF}
+                                quantidade={quoteitem.quantidadeSolicitada}
+                                resp={respostaSelecionada}
+                                oncloseclick={handleCloseInfoCDClick}
+                                onnextpageedititem={nextItemEvent}
+                            ></c-budget-detail-info-c-d>
+                        </template>
+    
+                    </div>
+             
+                    <c-budget-detail-historico-vinculos
+                        id-portal-item={quoteitem_.idPortal}
+                        onvincularclick={handleVincular}
+                        record-id={oppId}
+                    ></c-budget-detail-historico-vinculos>
+                    
+                    <div class="product-search-container">
+                        <template if:true={respostaSelecionada}>
+                            <c-budget-search-products-to-answer
+                                account-id={budgetData.ClienteEmissorId}
+                                base-state={budgetData.ClienteEmissorUF}
+                                initial-product-search={quoteitem_.customerDescription}
+                                onselectproduct={handleSelectNewProduct}>
+                            </c-budget-search-products-to-answer>
+                        </template>
+                    </div>
+                    
+                </div>
+                <!-- <footer class="slds-modal__footer">
+                    <lightning-button label="Fechar" onclick={closeVincularModal}></lightning-button>
+                    <lightning-button label="Não trabalhamos" ></lightning-button>
+                    <lightning-button label="Vincular"  variant="brand"></lightning-button>
+                </footer> -->
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+        <template if:true={loadSelectBUModal}>
+            <c-budget-detail-select-b-u
+                label="Para criar a resposta, selecione a BU desejada:"
+                quote-item-id={quoteitem_.idPortal}
+                opportunity-id={oppId}
+                onclosemodalselectbu={closeModalSelectBU}
+                onprocessitemupdateresult={addQuoteItemRespose}
+            ></c-budget-detail-select-b-u>
+        </template>
+    </template>
+</template>

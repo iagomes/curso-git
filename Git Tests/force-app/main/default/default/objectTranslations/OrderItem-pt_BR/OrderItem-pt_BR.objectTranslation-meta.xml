@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Item de pedido</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Itens de pedido</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <validationRules>
+        <errorMessage><!-- Os campos &quot;Quantidade&quot; e &quot;Preço unitário&quot; não podem ser editados. --></errorMessage>
+        <name>ItemPedido_BloquearEdicaoCampos</name>
+    </validationRules>
+</CustomObjectTranslation>

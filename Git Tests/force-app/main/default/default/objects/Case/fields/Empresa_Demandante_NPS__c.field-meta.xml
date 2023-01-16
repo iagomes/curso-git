@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Empresa_Demandante_NPS__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( TEXT(EmpresaDemandante__c) , 
+        &quot;Agilfarma&quot;,
+            &quot;atendimento-agilfarma&quot;,
+        &quot;Anbioton&quot;,
+            &quot;consolidado&quot;,
+        &quot;ArtMedica&quot;,
+            &quot;atendimento-artmedica&quot;,
+        &quot;BioDent&quot;,
+            &quot;consolidado&quot;,
+        &quot;Biohosp&quot;,
+             &quot;atendimento-biohosp&quot;,
+        &quot;CDM&quot;,
+             &quot;atendimento-cdm&quot;,
+        &quot;Commed&quot;,
+             &quot;atendimento-nacionalcommed&quot;,
+        &quot;Cristal Pharma&quot;,
+            &quot;consolidado&quot;,
+        &quot;Dupatri&quot;,
+             &quot;atendimento-dupatri&quot;,
+        &quot;Elfa&quot;,
+             &quot;atendimento-elfa&quot;,
+        &quot;Fenergy&quot;,
+            &quot;atendimento-fenergy&quot;,
+        &quot;Jaw&quot;,
+            &quot;atendimento-jaw&quot;,
+        &quot;Majela&quot;,  
+            &quot;consolidado&quot;,          
+        &quot;Medcom&quot;,  
+            &quot;atendimento-medcom&quot;,   
+        &quot;Medcom Delivery&quot;,  
+            &quot;atendimento-medcomdelivery&quot;,            
+        &quot;Mostaert&quot;,  
+            &quot;atendimento-mostaert&quot;,   
+        &quot;Nacional&quot;,  
+            &quot;atendimento-nacionalcommed&quot;,   
+        &quot;Oncorio&quot;,  
+            &quot;atendimento-oncorio&quot;,           
+        &quot;Prescrita&quot;,  
+            &quot;atendimento-prescrita&quot;, 
+        &quot;Surya&quot;,  
+            &quot;atendimento-suryadental&quot;,           
+        &quot;Vital Procifar&quot;,  
+            &quot;atendimento-vitalprocifar&quot;,
+&quot;consolidado&quot;)</formula>
+    <label>Empresa Demandante NPS</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

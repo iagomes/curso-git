@@ -1,0 +1,60 @@
+.main-div, .main-div .picklist-button {
+    width: 100% !important;
+    justify-content: left !important
+}
+
+.display-flex, .display-flex div, .display-flex label, .display-flex span {
+    display: flex;
+}
+
+.main-div .option-value {
+    margin-left: 5px;
+}
+
+.main-div div.custom-dropdown {
+    position: relative;
+    visibility: visible;
+    min-width: -webkit-fill-available;
+}
+
+
+.div-button-3 {
+    position: absolute;
+    margin-top: 0px;
+    top: 6px;
+}
+
+.search-icon {
+    margin-top: 0;
+    top: 6px;
+    position: absolute;
+}
+
+.main-div .slds-dropdown__list {
+    z-index: 1000!important;
+}
+
+.main-div .slds-dropdown__list li {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.main-div .slds-dropdown__list a {
+    margin: 4px 2px !important;
+    padding: 0px 5px !important;
+}
+
+.div-check-icon {
+    height: 20px !important;
+    width: 20px !important;
+    display: table !important;
+}
+
+.content .slds-form-element__label {
+    width: 100% !important;
+}
+
+.content .slds-form-element__label .limpar{
+    float: right !important;
+    color: rgba(160, 25, 62, 1);
+}

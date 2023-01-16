@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Orçamento</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Orçamentos</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Layout de orçamento</layout>
+        <sections>
+            <label><!-- Informações do orçamento --></label>
+            <section>Informações do orçamento</section>
+        </sections>
+        <sections>
+            <label><!-- Informações do orçamento II --></label>
+            <section>Informações do orçamento II</section>
+        </sections>
+        <sections>
+            <label><!-- Links personalizados --></label>
+            <section>Links personalizados</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de orçamento conta e ordem</layout>
+    </layouts>
+    <quickActions>
+        <label><!-- Observações do cliente --></label>
+        <name>ObservacoesCliente</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Orçamento --></label>
+        <name>Orcamento</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Orçamento conta e ordem --></label>
+        <name>OrcamentoContaOrdem</name>
+    </recordTypes>
+</CustomObjectTranslation>

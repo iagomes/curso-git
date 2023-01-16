@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValidacaoTipoRegistro</fullName>
+    <active>true</active>
+    <description>Regra de validação para impedir que seja criado um item do tipo &quot;contrato de shelf life&quot; em uma campanha tipo &quot;campanha&quot; ou item do tipo &quot;campanha&quot; em uma campanha do tipo &quot;contrato de shelf life&quot;.</description>
+    <errorConditionFormula>OR(
+AND(
+  ISNEW(),
+   RecordType.DeveloperName  = &quot;ItemContratoShelfLife&quot;,
+   Campanha__r.RecordType.DeveloperName  = &quot;Campanha&quot;
+),
+AND(
+  ISNEW(),
+   RecordType.DeveloperName  = &quot;ItemCampanha&quot;,
+   Campanha__r.RecordType.DeveloperName  = &quot;ContratoShelfLife&quot;
+))</errorConditionFormula>
+    <errorMessage>O tipo do registro do item é diferente do tipo da campanha.</errorMessage>
+</ValidationRule>

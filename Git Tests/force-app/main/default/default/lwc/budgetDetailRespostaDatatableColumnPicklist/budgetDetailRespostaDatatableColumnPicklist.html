@@ -1,0 +1,23 @@
+<template>
+    <div class="content" data-record-id={recordId}>
+
+        <template if:false={isEditing_}>
+            <span style="margin-left: 17px">{value}</span>
+        </template>
+        <template if:true={isEditing_}>
+            <c-multi-values-picklist-l-w-c
+                    name={fieldName}
+                    onmultivaluespicklistvaluechange={handleMultiValuesPickListValueChange}
+                    max-row-selection="1"
+                    hide-limpar="true"
+                    hide-empty-value="true"
+                    skip-load-options-by-field-name="true"
+                    hide-options={hideOptions}
+                    options={options}
+                    field-api-name={fieldApiName}>
+            </c-multi-values-picklist-l-w-c>
+            <!-- button-edit-icon-name="utility:edit" -->
+        </template>
+
+    </div>
+</template>

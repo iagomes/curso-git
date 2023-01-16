@@ -1,0 +1,21 @@
+<template>
+
+    <!-- Default -->
+    <template if:true={html}>
+        <div class={messageStyle}>
+            <lightning-formatted-rich-text value={text}></lightning-formatted-rich-text>
+        </div>
+    </template>
+    
+     <!-- NPS -->
+     <template if:true={nps} >
+        <c-chatbot_nps input-params={text}></c-chatbot_nps>
+    </template>
+
+     <!-- Document download -->
+     <template if:true={documentDownload} >
+        <div class={messageStyle}>
+            <c-chatbot_document_download input-params={text}></c-chatbot_document_download>
+        </div>
+    </template>    
+</template>

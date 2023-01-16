@@ -1,0 +1,118 @@
+<template>
+    <template if:true={showTabs}>
+        <lightning-tabset variant="scoped">
+            <template for:each={tabs} for:item="tab">
+                <lightning-tab label={tab.CentroDistribuicao} key={tab.Id} value={tab.Id}>
+    
+                    <div class="slds-grid slds-gutters" style="font-weight: bold">
+                        <div class="slds-col">
+                            <lightning-input name="input1" label="Respondidos" disabled="true" value={tab.resp}></lightning-input>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-input name="input2" label="Quantidade total de itens" disabled="true" value={tab.qtdItensTotal}></lightning-input>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-input type="number" formatter="currency" name="input3" label="Valor total de itens" disabled="true" value={tab.totItem}></lightning-input>
+                        </div>
+                    </div>
+     
+                    <div class="details-form details-form0">
+                        <lightning-accordion active-section-name="A">
+                            
+                            <lightning-accordion-section name="A" label="Informações do Orçamento" >
+    
+                                <div data-div-name="divCd" data-div-cds={tab.Id}> 
+                                    <div class="slds-grid slds-wrap slds-p-around_small">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                data-target-id={tab.Id}
+                                                name="CloseDate"
+                                                variant="label-inline"
+                                                label="Data de validade"
+                                                value={tab.CloseDate}
+                                                type="date"
+                                                onchange={handleChangeCloseDate}
+                                                disabled={viewOnly}
+                                            ></lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-combobox
+                                                data-target-id={tab.Id}
+                                                name="CondicaoPagamentoPL"
+                                                variant="label-inline"
+                                                label="Condição de Pagamento"
+                                                value={tab.CondicaoPagamentoPL}
+                                                options={condPagOptions}
+                                                onchange={handleChangeCondicaoPagamentoPL}
+                                                disabled={viewOnly}
+                                            ></lightning-combobox>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                data-target-id={tab.Id}
+                                                name="PrazoValidade"
+                                                variant="label-inline"
+                                                label="Prazo de validade (em dias)"
+                                                value={tab.PrazoValidade}
+                                                type="number"
+                                                onchange={handleChangePrazoValidade}
+                                            ></lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                data-target-id={tab.Id}
+                                                name="MinimumBilling"
+                                                variant="label-inline"
+                                                label="Faturamento Mínimo"
+                                                type="number"
+                                                formatter="currency"
+                                                value={tab.MinimumBilling}
+                                                onchange={handleChangeMinimumBilling}
+                                                disabled={viewOnly}
+                                            ></lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input
+                                                data-target-id={tab.Id}
+                                                name="PrazoEntrega"
+                                                variant="label-inline"
+                                                label="Prazo de Entrega"
+                                                value={tab.PrazoEntrega}
+                                                type="number"
+                                                onchange={handleChangePrazoEntrega}
+                                                disabled={viewOnly}
+                                            ></lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-combobox
+                                                data-target-id={tab.Id}
+                                                name="FretePicklist"
+                                                variant="label-inline"
+                                                label="Tipo de Frete"
+                                                value={tab.FretePicklist}
+                                                options={freteOptions}
+                                                onchange={handleChangeFretePicklist}
+                                                disabled={viewOnly}
+                                            ></lightning-combobox>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-2 condition-payment-text-area">
+                                            <lightning-textarea
+                                                data-target-id={tab.Id}
+                                                name="ObservacoesLongText"
+                                                variant="label-inline"
+                                                label="Observações"
+                                                value={tab.ObservacoesLongText}
+                                                onchange={handleChangeObservacoesLongText}
+                                                disabled={viewOnly}
+                                            ></lightning-textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+                    </div>
+                </lightning-tab>
+            </template>
+        </lightning-tabset>
+    </template>
+</template>

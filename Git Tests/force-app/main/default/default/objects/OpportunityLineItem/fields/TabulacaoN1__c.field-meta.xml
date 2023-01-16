@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TabulacaoN1__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Refinamento do valor do campo Status.</inlineHelpText>
+    <label>Tabulação N1</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Status__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>FORA DE MALHA</fullName>
+                <default>false</default>
+                <label>Fora de malha</label>
+            </value>
+            <value>
+                <fullName>SEM ESTOQUE</fullName>
+                <default>false</default>
+                <label>Sem estoque</label>
+            </value>
+            <value>
+                <fullName>NÃO TEMOS NESSA APRESENTAÇÃO</fullName>
+                <default>false</default>
+                <label>Não temos nessa apresentação</label>
+            </value>
+            <value>
+                <fullName>NÃO TEMOS A VALIDADE SOLICITADA</fullName>
+                <default>false</default>
+                <label>Não temos a validade solicitada</label>
+            </value>
+            <value>
+                <fullName>Não temos a quantidade solicitada</fullName>
+                <default>false</default>
+                <label>Não temos a quantidade solicitada</label>
+            </value>
+            <value>
+                <fullName>Bloqueio por regionalização</fullName>
+                <default>false</default>
+                <label>Bloqueio por regionalização</label>
+            </value>
+            <value>
+                <fullName>Termolab alto SLA de entrega</fullName>
+                <default>false</default>
+                <label>Termolab alto SLA de entrega</label>
+            </value>
+            <value>
+                <fullName>Não pertence a minha BU</fullName>
+                <default>false</default>
+                <label>Não pertence a minha BU</label>
+            </value>
+            <value>
+                <fullName>Cotado</fullName>
+                <default>false</default>
+                <label>Cotado</label>
+            </value>
+            <value>
+                <fullName>NÃO TEM NO PORTIFÓLIO</fullName>
+                <default>false</default>
+                <label>Não tem no portifólio</label>
+            </value>
+            <value>
+                <fullName>COM OFERTA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Com oferta</label>
+            </value>
+            <value>
+                <fullName>NÃO TEMOS A QTDE SOLICITADA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NÃO TEMOS A QTDE SOLICITADA</label>
+            </value>
+            <value>
+                <fullName>NÃO TRABALHAMOS</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NÃO TRABALHAMOS</label>
+            </value>
+            <value>
+                <fullName>NÃO CONSEGUIMOS ATENDER NO PRAZO SOLICITADO</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Não conseguimos atender no prazo solicitado</label>
+            </value>
+            <value>
+                <fullName>SEM OFERTA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sem oferta</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>FORA DE MALHA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>SEM ESTOQUE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>NÃO TEMOS NESSA APRESENTAÇÃO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>NÃO TEMOS A VALIDADE SOLICITADA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>Não temos a quantidade solicitada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>Bloqueio por regionalização</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>Termolab alto SLA de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>Não pertence a minha BU</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>Cotado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NÃO IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>IDENTIFICADO</controllingFieldValue>
+            <controllingFieldValue>Resgatado</controllingFieldValue>
+            <controllingFieldValue>Aguardando Integração</controllingFieldValue>
+            <controllingFieldValue>QUALIFICADO</controllingFieldValue>
+            <controllingFieldValue>Falha na Integração</controllingFieldValue>
+            <controllingFieldValue>Respondido</controllingFieldValue>
+            <controllingFieldValue>Não Vinculado</controllingFieldValue>
+            <controllingFieldValue>Aprovado</controllingFieldValue>
+            <valueName>NÃO TEM NO PORTIFÓLIO</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

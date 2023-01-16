@@ -1,0 +1,11 @@
+:host .container {
+    margin: 5px;
+}
+
+:host .counter {
+    font-size: 1.1rem;
+}
+
+:host .card {
+    display: block;
+}

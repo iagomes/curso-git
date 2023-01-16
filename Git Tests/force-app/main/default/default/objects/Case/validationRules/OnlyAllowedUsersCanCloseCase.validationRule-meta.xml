@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyAllowedUsersCanCloseCase</fullName>
+    <active>true</active>
+    <description>Only users with the custom permission CanCloseCase are allowed to close a Case</description>
+    <errorConditionFormula>AND(!$Permission.CanCloseCase, ISCHANGED( Status ), ISPICKVAL(Status, &quot;ClosedWon&quot;))</errorConditionFormula>
+    <errorMessage>VOCÊ NÃO TEM PERMISSÃO PARA FECHAR O CASO</errorMessage>
+</ValidationRule>

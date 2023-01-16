@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CanalEntrada__c</fullName>
+    <externalId>false</externalId>
+    <label>Canal de entrada</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>ACSC - Associação Congregação de Santa Catarina</fullName>
+                <default>false</default>
+                <label>ACSC - Associação Congregação de Santa Catarina</label>
+            </value>
+            <value>
+                <fullName>Apoio</fullName>
+                <default>false</default>
+                <label>Apoio</label>
+            </value>
+            <value>
+                <fullName>Ariba/Amil</fullName>
+                <default>false</default>
+                <label>Ariba/Amil</label>
+            </value>
+            <value>
+                <fullName>Bionexo</fullName>
+                <default>false</default>
+                <label>Bionexo</label>
+            </value>
+            <value>
+                <fullName>Chat</fullName>
+                <default>false</default>
+                <label>Chat</label>
+            </value>
+            <value>
+                <fullName>CONTRATO</fullName>
+                <default>false</default>
+                <label>CONTRATO</label>
+            </value>
+            <value>
+                <fullName>E-mail</fullName>
+                <default>false</default>
+                <label>E-mail</label>
+            </value>
+            <value>
+                <fullName>E-MAIL MARKETING</fullName>
+                <default>false</default>
+                <label>E-MAIL MARKETING</label>
+            </value>
+            <value>
+                <fullName>GERENCIA</fullName>
+                <default>false</default>
+                <label>GERÊNCIA</label>
+            </value>
+            <value>
+                <fullName>GTPLAN</fullName>
+                <default>false</default>
+                <label>GTPLAN</label>
+            </value>
+            <value>
+                <fullName>Humma</fullName>
+                <default>false</default>
+                <label>Humma</label>
+            </value>
+            <value>
+                <fullName>INPART</fullName>
+                <default>false</default>
+                <label>INPART</label>
+            </value>
+            <value>
+                <fullName>Max Cotações</fullName>
+                <default>false</default>
+                <label>Max Cotações</label>
+            </value>
+            <value>
+                <fullName>Medical VM</fullName>
+                <default>false</default>
+                <label>Medical VM</label>
+            </value>
+            <value>
+                <fullName>MICROSOFT TEAMS</fullName>
+                <default>false</default>
+                <label>MICROSOFT TEAMS</label>
+            </value>
+            <value>
+                <fullName>Movi Tech</fullName>
+                <default>false</default>
+                <label>Movi Tech</label>
+            </value>
+            <value>
+                <fullName>MVM RS</fullName>
+                <default>false</default>
+                <label>MVM RS</label>
+            </value>
+            <value>
+                <fullName>NEOGRID</fullName>
+                <default>false</default>
+                <label>NEOGRID</label>
+            </value>
+            <value>
+                <fullName>Nimbi</fullName>
+                <default>false</default>
+                <label>Nimbi</label>
+            </value>
+            <value>
+                <fullName>PANFLETO</fullName>
+                <default>false</default>
+                <label>PANFLETO</label>
+            </value>
+            <value>
+                <fullName>Paradigma</fullName>
+                <default>false</default>
+                <label>Paradigma</label>
+            </value>
+            <value>
+                <fullName>Plani Max</fullName>
+                <default>false</default>
+                <label>Plani Max</label>
+            </value>
+            <value>
+                <fullName>PORTAL FAEPA</fullName>
+                <default>false</default>
+                <label>PORTAL FAEPA</label>
+            </value>
+            <value>
+                <fullName>Portal HR</fullName>
+                <default>false</default>
+                <label>Portal HR</label>
+            </value>
+            <value>
+                <fullName>PORTAL MULTICENTRAIS</fullName>
+                <default>false</default>
+                <label>PORTAL MULTICENTRAIS</label>
+            </value>
+            <value>
+                <fullName>PORTAL MV SISTEMA</fullName>
+                <default>false</default>
+                <label>PORTAL MV SISTEMA</label>
+            </value>
+            <value>
+                <fullName>PORTAL SAO MARTINHO</fullName>
+                <default>false</default>
+                <label>PORTAL SAO MARTINHO</label>
+            </value>
+            <value>
+                <fullName>PORTAL SGHCOT</fullName>
+                <default>false</default>
+                <label>PORTAL SGHCOT</label>
+            </value>
+            <value>
+                <fullName>PORTAL SINCONECTA</fullName>
+                <default>false</default>
+                <label>PORTAL SINCONECTA</label>
+            </value>
+            <value>
+                <fullName>PORTAL UNIFENAS</fullName>
+                <default>false</default>
+                <label>PORTAL UNIFENAS</label>
+            </value>
+            <value>
+                <fullName>PORTAL UNIMED LIMEIRA</fullName>
+                <default>false</default>
+                <label>PORTAL UNIMED LIMEIRA</label>
+            </value>
+            <value>
+                <fullName>PORTAL WARELINE</fullName>
+                <default>false</default>
+                <label>PORTAL WARELINE</label>
+            </value>
+            <value>
+                <fullName>Pro Saude</fullName>
+                <default>false</default>
+                <label>Pro Saude</label>
+            </value>
+            <value>
+                <fullName>Sintese</fullName>
+                <default>false</default>
+                <label>Sintese</label>
+            </value>
+            <value>
+                <fullName>Skype</fullName>
+                <default>false</default>
+                <label>Skype</label>
+            </value>
+            <value>
+                <fullName>Smarkets Marketplace</fullName>
+                <default>false</default>
+                <label>Smarkets Marketplace</label>
+            </value>
+            <value>
+                <fullName>Smart Compras</fullName>
+                <default>false</default>
+                <label>Smart Compras</label>
+            </value>
+            <value>
+                <fullName>Tasy</fullName>
+                <default>false</default>
+                <label>Tasy</label>
+            </value>
+            <value>
+                <fullName>Telefone</fullName>
+                <default>false</default>
+                <label>Telefone</label>
+            </value>
+            <value>
+                <fullName>TerNet</fullName>
+                <default>false</default>
+                <label>TerNet</label>
+            </value>
+            <value>
+                <fullName>Tivox</fullName>
+                <default>false</default>
+                <label>Tivox</label>
+            </value>
+            <value>
+                <fullName>Unifor</fullName>
+                <default>false</default>
+                <label>Unifor</label>
+            </value>
+            <value>
+                <fullName>VENDEDOR EXTERNO</fullName>
+                <default>false</default>
+                <label>VENDEDOR EXTERNO</label>
+            </value>
+            <value>
+                <fullName>VS Supply</fullName>
+                <default>false</default>
+                <label>VS Supply</label>
+            </value>
+            <value>
+                <fullName>Whatsapp</fullName>
+                <default>false</default>
+                <label>Whatsapp</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

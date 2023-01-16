@@ -1,0 +1,20 @@
+<template>
+    <div class="content" data-record-id={recordId}>
+        <template if:false={isEditing_}>
+            <span>{value}</span>
+        </template>
+        <template if:true={isEditing_}>
+            <c-multi-values-picklist-l-w-c
+                    name="Status"
+                    onmultivaluespicklistvaluechange={handleMultiValuesPickListValueChange}
+                    max-row-selection="1"
+                    hide-limpar="true"
+                    hide-empty-value="true"
+                    skip-load-options-by-field-name="true"
+                    options={options}
+                    field-api-name="OpportunityLineItem.Status__c">
+            </c-multi-values-picklist-l-w-c>
+            <!-- button-edit-icon-name="utility:edit" -->
+        </template>
+    </div>
+</template>

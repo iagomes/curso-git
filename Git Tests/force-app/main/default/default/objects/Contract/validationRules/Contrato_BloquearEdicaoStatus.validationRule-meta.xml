@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contrato_BloquearEdicaoStatus</fullName>
+    <active>true</active>
+    <description>Regra de validação para bloquear a inserção de um valor no status diferente de &quot;Rascunho&quot; durante a criação de um registro por um usuário comercial.</description>
+    <errorConditionFormula>AND(
+				ISNEW(),
+				NOT(ISPICKVAL(Status, &apos;Rascunho&apos;)),
+				$Profile.Name != &apos;Administrador do sistema&apos;
+)</errorConditionFormula>
+    <errorDisplayField>Status</errorDisplayField>
+    <errorMessage>Não é permitido escolher este valor para o status</errorMessage>
+</ValidationRule>

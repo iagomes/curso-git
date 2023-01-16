@@ -1,0 +1,289 @@
+<template>
+    <div class="slds-modal__container" style={componentStyle}>
+        <!-- Modal/Popup Box LWC header here -->
+        <header class="slds-modal__header" style="position: relative; border-top-right-radius: .25rem; border-top-left-radius: .25rem; padding: 1rem; text-align: center; background-color: #fff;">
+            <template if:true={isFromOrderProductScreen}>
+                <div style="float:right">
+                    <lightning-button-icon icon-name="utility:close" alternative-text="Fechar" title="Fechar" onclick={closeModal}>                    
+                    </lightning-button-icon>
+                </div>
+            </template>
+            <div class="header">
+                <lightning-icon icon-name="standard:account" alternative-text="Account" title="Account"></lightning-icon>
+                <h2 class="slds-m-left_x-small slds-text-heading_medium slds-hyphenate" style="font-weight: bold;">Mix do cliente</h2>                    
+            </div>
+        </header>
+        <div class="slds-modal__content modalBody">
+            <lightning-spinner if:true={isLoadingProducts} alternative-text="Loading" size="small"></lightning-spinner>
+            <!-- Modal/Popup Box LWC header here -->
+            <header class="slds-var-p-around_medium" style="background-color: #f3f2f2; margin-top: -5px;" >
+                <div class="second-section">
+                    <div class="search-header">
+                        <lightning-layout multiple-rows>
+                            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                <div style="width: 100%">
+                                    <lightning-input label="Procurar produto" placeholder="Digite o nome ou código do produto ou principio ativo"
+                                        type="search" variant="standard" name="searchProduct" onkeyup={onChangeSearchProductNome}>
+                                    </lightning-input>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                                <template if:true={desktop}>
+                                    <div style="width: 100%" class="slds-m-left_x-small">
+                                        <lightning-input label="Procurar por fabricante" placeholder="Digite o fabricante do produto"
+                                            type="search" variant="standard" name="searchProduct" onkeyup={onChangeSearchProductByFabricator}>
+                                        </lightning-input>
+                                    </div>
+                                </template>
+                                <template if:false={desktop}>
+                                    <div style="width: 100%">
+                                        <lightning-input label="Procurar por fabricante" placeholder="Digite o fabricante do produto"
+                                            type="search" variant="standard" name="searchProduct" onkeyup={onChangeSearchProductByFabricator}>
+                                        </lightning-input>
+                                    </div>
+                                </template>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </div>
+                </div>
+            </header>
+            <!-- Modal/Popup Box LWC body starts here -->
+        <div id="prodDiv" class="slds-scrollable_y" style="padding: 15px;background-color: #fff; border-bottom-right-radius: 0.25rem; border-bottom-left-radius: 0.25rem; max-height: 30rem">
+            <div>
+                <template for:each={productList} for:item="prod">
+                    <template if:true={desktop}>
+                        <div class="slds-m-top_medium" key={prod.id} style="padding:15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                            <div style="display:flex;"  data-product-id={prod.id} onclick={handleSelectProduct}>
+                                <lightning-layout>
+                                    <lightning-layout-item>
+                                        <div style="font-size: 15px; font-weight: bold;">
+                                            <p>{prod.code}</p>
+                                        </div>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                                <div class="slds-col slds-m-left_medium">
+                                    <div class="slds-media__body slds-col">
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 15px;color:#0070d2">
+                                                    <p><strong>{prod.name}</strong></p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 14px;">
+                                                    <p>{prod.pAtivo}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                        <lightning-layout class="slds-m-bottom_xx-small">
+                                            <lightning-layout-item>
+                                                <div style="font-size: 13px;color:#999">
+                                                    <p>{prod.fornecedor}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </div>
+                                </div>                            
+                                <div style="margin-left: auto; align-self: center;" onclick={onSearchProduct} data-product-code={prod.code}>
+                                    <template if:true={isFromOrderProductScreen}>
+                                        <lightning-layout>
+                                            <lightning-layout-item>
+                                                <a style="font-size: 13px;color:#0070d2">
+                                                    <p><strong>Buscar produto</strong></p>
+                                                </a>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                                    </template>
+                                </div>
+                            </div>
+                            <template if:true={prod.show}>
+                                <template for:each={orderDataList} for:item="item">
+                                    <div key={item.ordId} style="border-top: 1px solid #dddbda; margin-top: 15px;">
+                                        <div style="display:flex; margin-top: 15px;">                            
+                                            <div class="slds-col slds-m-left_small" style="align-self: center; max-width: 10%">
+                                                <lightning-layout>
+                                                    <lightning-layout-item>
+                                                        <a style="font-size: 14px; font-weight: bold;" data-order-id={item.ordId} onclick={navigateToOrder}>
+                                                            <p>{item.ordNumber}</p>
+                                                        </a>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <lightning-layout >
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 13px;">
+                                                            <p>{item.ordCreatedDate}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                            </div>
+                                            <div class="slds-col slds-m-left_medium" style="max-width: 40%">
+                                                <div class="slds-media__body slds-col">
+                                                    <lightning-layout >
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 14px;">
+                                                                <p>{item.ordItemCd}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </div>
+                                            </div>
+                                            <div class="slds-m-right_small" style="align-self: center; align-self: flex-end; max-width: 25%">
+                                                <div class="slds-media__body slds-col">
+                                                    <lightning-layout style="place-content: flex-end">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;color:#969492">
+                                                                <p><strong>Score do pedido: {item.ordScore}</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </div>
+                                            </div>
+                                            <div class="slds-m-right_small" style="margin-left: auto; align-self: center; max-width: 25%">
+                                                <div class="slds-col" >
+                                                    <lightning-layout style="place-content: flex-end">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;">
+                                                                <p><strong>{item.ordItemQuantity} x {item.ordItemPrice}</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                    <lightning-layout style="place-content: flex-end">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;color:#969492">
+                                                                <p><strong>Score do item: {item.ordItemScore}</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </template>
+                    <template if:false={desktop}>
+                        <div class="slds-m-top_medium" key={prod.id} style="padding:15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item size="12" data-product-id={prod.id} onclick={handleSelectProduct}>
+                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                        <lightning-layout-item>
+                                            <div style="font-size: 15px;color:#0070d2">
+                                                <p><strong>{prod.name}</strong></p>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                        <lightning-layout-item>
+                                            <div style="font-size: 14px;">
+                                                <p>{prod.pAtivo}</p>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                        <lightning-layout-item>
+                                            <div style="font-size: 13px;color:#999">
+                                                <p>{prod.fornecedor}</p>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12">
+                                    <div style="display:flex;" data-product-id={prod.id} onclick={handleSelectProduct}>
+                                        <lightning-layout>
+                                            <lightning-layout-item>
+                                                <div style="font-size: 15px; font-weight: bold;">
+                                                    <p>{prod.code}</p>
+                                                </div>
+                                            </lightning-layout-item>
+                                        </lightning-layout>                        
+                                        <div style="margin-left: auto; align-self: center;" onclick={onSearchProduct} data-product-code={prod.code}>
+                                            <template if:true={isFromOrderProductScreen}>
+                                                <lightning-layout>
+                                                    <lightning-layout-item>
+                                                        <a style="font-size: 13px;color:#0070d2">
+                                                            <p><strong>Buscar produto</strong></p>
+                                                        </a>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                                <template if:true={prod.show}>
+                                    <template for:each={orderDataList} for:item="item">
+                                        <div key={item.ordId} style="border-top: 1px solid #dddbda; margin-top: 15px; width: 100%; align-items: center;">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item size="12" class="slds-m-top_x-small" style="padding: 0;">
+                                                    <div style="width: 100%;">
+                                                        <div style="font-size: 14px;">
+                                                            <p>{item.ordItemCd}</p>
+                                                        </div>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12">
+                                                    <lightning-layout multiple-rows>
+                                                        <lightning-layout-item flexibility="auto" class="slds-m-top_x-small" style="padding: 0;">
+                                                            <div style="align-self: center;">
+                                                                <a style="font-size: 14px; font-weight: bold;" data-order-id={item.ordId} onclick={navigateToOrder}>
+                                                                    <p>{item.ordNumber}</p>
+                                                                </a>
+                                                                <lightning-layout >
+                                                                    <lightning-layout-item>
+                                                                        <div style="font-size: 13px;">
+                                                                            <p>{item.ordCreatedDate}</p>
+                                                                        </div>
+                                                                    </lightning-layout-item>
+                                                                </lightning-layout>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" class="slds-m-top_x-small" style="padding: 0;">
+                                                            <div style="align-self: center; align-self: flex-end;">
+                                                                <lightning-layout style="place-content: flex-end">
+                                                                    <lightning-layout-item>
+                                                                        <div style="font-size: 13px;color:#969492">
+                                                                            <p><strong>Score do pedido: {item.ordScore}</strong></p>
+                                                                        </div>
+                                                                    </lightning-layout-item>
+                                                                </lightning-layout>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item flexibility="auto" class="slds-m-top_x-small">
+                                                            <div style="margin-left: auto; align-self: center;">
+                                                                <lightning-layout style="place-content: flex-end">
+                                                                    <lightning-layout-item>
+                                                                        <div style="font-size: 13px;color:#969492">
+                                                                            <p><strong>Score do item: {item.ordItemScore}</strong></p>
+                                                                        </div>
+                                                                    </lightning-layout-item>
+                                                                </lightning-layout>
+                                                                <lightning-layout style="place-content: flex-end">
+                                                                    <lightning-layout-item>
+                                                                        <div style="font-size: 13px;">
+                                                                            <p><strong>{item.ordItemQuantity} x {item.ordItemPrice}</strong></p>
+                                                                        </div>
+                                                                    </lightning-layout-item>
+                                                                </lightning-layout>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </div>
+                                    </template>
+                                </template>
+                            </lightning-layout>                            
+                        </div>
+                    </template>
+                </template>
+                <div class="slds-align_absolute-center slds-m-top_medium" if:true={showMoreProduct}>                            
+                    <div style="font-size: 15px;color:#0070d2"><p><strong>Ver mais..</strong></p></div>
+                    <lightning-button-icon icon-name="utility:down" onclick={handleGetMoreProducts} size="medium" tooltip="Pesquisar mais produtos" class="slds-m-left_xx-small"></lightning-button-icon>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</template>

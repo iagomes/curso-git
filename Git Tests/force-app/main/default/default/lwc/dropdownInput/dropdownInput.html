@@ -1,0 +1,53 @@
+<template>
+    <div class="style-element-container"></div>
+    <section onmousedown={handleOnFocus} onmouseleave={handleOnBlur}>
+    <div class="container slds-form-element" >
+        <div class="slds-form-element__label fill-content" if:true={label}>
+            
+            <label if:false={boldTitle}>{label}</label>
+            <label if:true={boldTitle}><b>{label}</b></label>
+            <button class="limpar slds-form-element__label" if:false={hideLimpar} onclick={handleClearButton}>Limpar</button>
+        </div>
+        <div>
+            <lightning-input
+				type="search"
+				class="slds-container_fluid"
+				autocomplete="off"
+                variant="label-hidden"
+				name="searchInput"
+				value={inputValue}
+				onchange={handleChangeInput}
+				onfocus={handleOnFocus}
+				required={required}
+				disabled={disabled}>
+			</lightning-input>
+            <template if:true={showOptions}>
+                <div class="container-records-list slds-container_fluid slds-is-absolute" onmouseenter={handleOnFocus}>
+                    <ul>
+                        <template if:true={hasList}>
+                            <template for:each={optionList} for:item="option">
+                                <li key={option}
+                                    onclick={handleSelectOption}
+                                    data-value={option.value} data-label={option.label} data-is-selected={option.isSelected}
+                                    class="slds-var-p-vertical_small slds-var-p-horizontal_medium slds-list_horizontal slds-media_center slds-truncate list-item">
+                                        <div class="div-check-icon" data-value={option.value} data-label={option.label} data-is-selected={option.isSelected}>
+                                            <template if:true={option.isSelected}>
+                                                <lightning-icon
+                                                    icon-name="utility:check" size="x-small"
+                                                ></lightning-icon>
+                                            </template>
+                                        </div>
+        
+                                        <div data-value={option.value} data-label={option.label} data-is-selected={option.isSelected} class="slds-truncate">
+                                            {option.label}
+                                        </div>
+                                </li>
+                            </template>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+    </div>
+</section>
+</template>

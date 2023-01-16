@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Condição de pagamento</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Condições de pagamento</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>Layout de Condição de Pagamento</layout>
+        <sections>
+            <label><!-- Informações II --></label>
+            <section>Informações II</section>
+        </sections>
+        <sections>
+            <label><!-- Links personalizados --></label>
+            <section>Links personalizados</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nome da condição de pagamento</nameFieldLabel>
+</CustomObjectTranslation>

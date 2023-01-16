@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AguardandoIntegracao</fullName>
+        <field>StatusReserva__c</field>
+        <literalValue>Aguardando integração</literalValue>
+        <name>Aguardando integração</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Ativa</fullName>
+        <field>StatusReserva__c</field>
+        <literalValue>Ativa</literalValue>
+        <name>Ativa</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>QuantidadeTransferida</fullName>
+        <field>QuantidadeTransferida__c</field>
+        <formula>0</formula>
+        <name>Quantidade transferida</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Rejeitado</fullName>
+        <field>StatusReserva__c</field>
+        <literalValue>Rejeitada</literalValue>
+        <name>Rejeitado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

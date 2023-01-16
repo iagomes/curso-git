@@ -1,0 +1,158 @@
+<template>
+    <div class="style-element"></div>
+    <div class="dynamic-style-container"></div>
+    <div class="style-element-color-bg"></div>
+    <div class="slds-box content slds-is-relative">
+            
+        <template if:true={isLoading}>
+            <lightning-spinner  alternative-text="loading" variant="brand" size="large"> </lightning-spinner>
+        </template>
+
+        <div class="filters-section">
+
+            <div class="header slds-grid">
+                <div class="slds-col slds-size_5-of-12">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-grow-none">
+                            <div class="money-icon">
+                                <label>$</label>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-grow-none">
+                            <lightning-combobox
+                                class="fixed-filters"
+                                name="fixedFilters"
+                                label="Orçamentos"
+                                value={selectedFilter}
+                                options={fixedFiltersOptions}
+                                onchange={handleFixedFilterChange}
+                                style="border-color: transparent !important;">
+                            </lightning-combobox>
+                        </div>
+                        <div class="slds-col slds-grow-none">
+                            <div class="slds-m-horizontal_x-small">
+                                <lightning-button-icon 
+                                    icon-name={pinnedFilterIcon}
+                                    alternative-text="pin"
+                                    title="pin"
+                                    onclick={handleFilterPinClick}
+                                ></lightning-button-icon>
+                                <!-- pin pinned -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_2-of-12">
+                    <div class="slds-align_absolute-center order-count">
+                        <a class="slds-button slds-button_outline-brand" onclick={handleOrderCountClick}>
+                            <div class="slds-grid_vertical" style="line-height: 1.5;">
+                                <div class="slds-col">
+                                    <span>Pedidos ganhos:</span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>{orderCount}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_5-of-12">
+                    <div class="slds-float_right">
+                        <lightning-button-menu 
+                            alternative-text="opções" 
+                            variant="border-filled" 
+                            menu-alignment="auto" 
+                            icon-name="utility:settings"
+                            onselect={handleMenuSelect}>
+                            <lightning-menu-item value="deleteFilters" label="Excluir filtros"></lightning-menu-item>
+                        </lightning-button-menu>
+                    </div>
+                </div>
+            </div>
+    
+            <c-budget-tab-filters
+                order-by={orderBy}
+                items-per-page={itemsPerPage}
+                onbtnfiltrarclick={handleFilterClick}
+                onbtnsalvarclick={handleSaveFilterClick}
+                onfiltervisibilitychange={handleFilterVisibilityChange}
+            ></c-budget-tab-filters>
+        
+            <div class="search-text-area slds-grid_align-spread">
+                <div class="search-text-inner-toggle slds-col">
+                    <lightning-input 
+                        type="toggle" 
+                        label="Exibir Vencidos"
+                        message-toggle-active=""
+                        message-toggle-inactive=""
+                        value={expiredValue}
+                        onchange={handleToggleExpired}
+                        checked={expiredValue}
+                    ></lightning-input>
+    
+                    <lightning-input
+                        style="padding-left: 10px;"
+                        type="toggle" 
+                        label="Apenas Não Respondidos"
+                        message-toggle-active=""
+                        message-toggle-inactive=""
+                        value={notAnswered}
+                        onchange={handleToggleNotAnswered}
+                        checked={notAnswered}
+                    ></lightning-input>
+                </div>
+                <div class="search-text-inner-area slds-col">
+
+                    <lightning-button label="⭮" onclick={handleRefreshTable}></lightning-button>
+                    <lightning-input
+                        name="search-text"
+                        class="search-text"
+                        placeholder={searchTimerText}
+                        value={searchText}
+                        onchange={setSearchText}
+                        type="search"
+                    ></lightning-input>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-table infinite-scrolling tabela" onscroll={handleScroll} data-is-sorting={isSorting}>
+
+            <lightning-datatable
+                key-field="Id"
+                class="wrapped-header-datatable"
+                columns={columns}
+                data={data}
+                load-more-offset="30"
+                wrap-text-max-lines="2"
+                default-sort-direction={orderDirection}
+                sorted-direction={orderDirection}
+                sorted-by={sortBy}
+                onsort={onHandleSort}
+                min-column-width="100"
+                show-row-number-column
+                enable-infinite-loading
+                hide-checkbox-column
+                is-loading="false">
+            </lightning-datatable>
+        </div>
+
+        <label class="results">Resultados: {results}</label>
+        <div style="margin:5px 0; display:flex;"><div class="tag-red"></div><span>Cotações próximas ao vencimento(em até 1 hora à frente da hora atual)</span></div>
+        <template if:true={openNewFixFilterModal}>
+            <c-budget-tab-filters-custom
+                params-to-save={paramsToSave}
+                onclosemodal={closeModalCustomFilter}
+                onsavenewfilter={handleNewFilter}
+            ></c-budget-tab-filters-custom>
+        </template>
+        <template if:true={openExcludeFilterModal}>
+            <c-budget-tab-delete-filters
+                ondelete={handleDeleteFilterItens}
+                onclosemodal={closeExcludeFilterModal}
+                personalized-filters={personalizedFilters}
+            ></c-budget-tab-delete-filters>
+        </template>
+    </div>
+
+</template>

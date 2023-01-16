@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Chamar a classe do apex para clonar os itens de uma reserva.</description>
+        <name>AcaoCloneReservationItens</name>
+        <label>Ação clonar itens da reserva</label>
+        <locationX>678</locationX>
+        <locationY>301</locationY>
+        <actionName>CloneReservationItens</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>DecisionReturnFlow</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>ErrorScreenMessage</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>currentReservationId</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>reservationToGetItens</name>
+            <value>
+                <elementReference>InputResevationCode</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <decisions>
+        <name>DecisionReturnFlow</name>
+        <label>Decisão retorno flow</label>
+        <locationX>896</locationX>
+        <locationY>303</locationY>
+        <defaultConnectorLabel>Resultado padrão</defaultConnectorLabel>
+        <rules>
+            <name>DecisionTrue</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>AcaoCloneReservationItens.status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CloneItensSuccess</targetReference>
+            </connector>
+            <label>Decisão Verdadeiro</label>
+        </rules>
+        <rules>
+            <name>DecisionFalse</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>AcaoCloneReservationItens.status</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ScreenError</targetReference>
+            </connector>
+            <label>Decisão Falso</label>
+        </rules>
+    </decisions>
+    <description>Flow utilizado para clonar os itens da reserva, a partir do código informado.</description>
+    <interviewLabel>ProdutoReserva {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Produto da reserva - Clonar itens da reserva</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>CloneItens</name>
+        <label>Clonar itens</label>
+        <locationX>478</locationX>
+        <locationY>184</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>AcaoCloneReservationItens</targetReference>
+        </connector>
+        <fields>
+            <name>InputResevationCode</name>
+            <dataType>String</dataType>
+            <fieldText>Código da reserva</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>&lt;p&gt;Código da reserva que você deseja clonar os itens (Filial + código da reserva no protheus).&lt;/p&gt;&lt;p&gt;Ex. 17001000008&lt;/p&gt;</helpText>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>CloneItensSuccess</name>
+        <label>Show!</label>
+        <locationX>1192</locationX>
+        <locationY>297</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>TextSuccessClone</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;{!AcaoCloneReservationItens.message}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>refresh</name>
+            <extensionName>c:refreshReservationProductComponent</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>ErrorScreenMessage</name>
+        <label>Tela de falha</label>
+        <locationX>667</locationX>
+        <locationY>527</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>ErrorMessage</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Ocorreu um erro durante a clonagem do registro.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Entre em contato com o administrador do sistema para obter mais informações.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>ScreenError</name>
+        <label>Erro na clonagem</label>
+        <locationX>910</locationX>
+        <locationY>540</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>TextError</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;{!AcaoCloneReservationItens.message}&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;{!AcaoCloneReservationItens.messageAdminDefault}&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;﻿&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>352</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>CloneItens</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Id do registro</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

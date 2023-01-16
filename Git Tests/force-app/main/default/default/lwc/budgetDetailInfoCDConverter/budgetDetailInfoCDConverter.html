@@ -1,0 +1,86 @@
+<template>
+    <lightning-layout-item size="6">
+        <br>
+        <div class="slds-media__body slds-col">
+            <lightning-layout class="slds-m-bottom_xx-small">
+                <lightning-layout-item>
+                    <div style="font-size: .85rem; padding: 0 0 10px 0;">
+                        <div class="slds-grid slds-grid_align-center">
+                            <div class="slds-col">
+                                <strong>Conversão &nbsp;&nbsp;</strong>
+                            </div>
+                            <div class="slds-col slds-p-horizontal_medium"></div>
+                            <template for:each={radioOptionsConversao} for:item="item">
+                                <div key={item.value} class="slds-col">
+                                    <fieldset>
+                                        <!-- style="display: block; float: left;" -->
+                                        <div class="slds-form-element__control">
+                                            <span class="slds-radio">
+                                                <input name="radiogroup" id={item.value} type="radio"  checked={item.checked} value={tipoConversaoProd} data-id={item.value} onchange={handleSelectedRadioConversao} />
+                                                <label class="slds-radio__label" for={item.value}>
+                                                    <span class="slds-radio_faux"></span>
+                                                    <span class="slds-form-element__label">{item.label}</span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </template>
+                            <div class="slds-col slds-p-left_x-small">
+                                <span class="slds-radio">
+                                    <label class="slds-form-element__label">Fator de conversão</label>
+                                </span>
+                            </div>
+                            <div class="slds-col fatorConversao">
+                                <lightning-input
+                                    required
+                                    name="fatorConversao" 
+                                    type="number" 
+                                    min="1" step="1" 
+                                    value={fatorConversaoProd} 
+                                    label="" variant="label-hidden" 
+                                    onchange={handleFatorConversao}
+                                    message-when-range-underflow="Vlr. inválido para fator de conversão"
+                                    message-when-bad-input="Vlr. inválido para fator de conversão"
+                                    message-when-step-mismatch="Vlr. inválido para fator de conversão"
+                                    message-when-value-missing="Vlr. inválido para fator de conversão"
+                                    message-when-pattern-mismatch="Vlr. inválido para fator de conversão"
+                                ></lightning-input>
+                            </div>                                    
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-layout-item>
+    <lightning-layout-item size="6">
+        <!-- <lightning-layout class="slds-m-bottom_xx-small"> -->
+        <lightning-layout >
+            <div class="slds-grid slds-wrap" style="flex: auto; place-content: center;">
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-12">
+                            <strong  style="width: 100%;"> Observação </strong>
+                        </div>
+                        <div class="slds-col slds-size_11-of-12"> 
+                            <!-- <lightning-input type="text" value={comentario} label=""  variant="label-hidden"
+                                    onblur={handlecomentario}>
+                                </lightning-input> -->
+                            <lightning-textarea 
+                                max-length={limiteCaracter}
+                                label=""  
+                                variant="label-hidden"  
+                                value={resp.comentario}
+                                onchange={handleObservacao}
+                                onblur={handleObservacao}>
+                            </lightning-textarea>
+                            <div class="slds-grid slds-grid_reverse">
+                                <span>{caracteresRestantes}/{limiteCaracter}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-layout>
+    </lightning-layout-item>
+</template>

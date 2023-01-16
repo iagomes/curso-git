@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Submotivo__c</fullName>
+    <externalId>false</externalId>
+    <label>Submotivo</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Motivo__c</controllingField>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Alterar data de entrega</fullName>
+                <default>false</default>
+                <label>Alterar data de entrega</label>
+            </value>
+            <value>
+                <fullName>Alterar endereço de entrega</fullName>
+                <default>false</default>
+                <label>Alterar endereço de entrega</label>
+            </value>
+            <value>
+                <fullName>Alvará Vencido</fullName>
+                <default>false</default>
+                <label>Alvará Vencido</label>
+            </value>
+            <value>
+                <fullName>Arrependimento de Compra</fullName>
+                <default>false</default>
+                <label>Arrependimento de Compra</label>
+            </value>
+            <value>
+                <fullName>Atendimento ao Cliente</fullName>
+                <default>false</default>
+                <label>Atendimento ao Cliente</label>
+            </value>
+            <value>
+                <fullName>Atraso na rota de entrega</fullName>
+                <default>false</default>
+                <label>Atraso na rota de entrega</label>
+            </value>
+            <value>
+                <fullName>Atraso na separação</fullName>
+                <default>false</default>
+                <label>Atraso na separação</label>
+            </value>
+            <value>
+                <fullName>Avaria</fullName>
+                <default>false</default>
+                <label>Avaria</label>
+            </value>
+            <value>
+                <fullName>Bloqueado por crédito</fullName>
+                <default>false</default>
+                <label>Bloqueado por crédito</label>
+            </value>
+            <value>
+                <fullName>Cadastro Desatualizado</fullName>
+                <default>false</default>
+                <label>Cadastro Desatualizado</label>
+            </value>
+            <value>
+                <fullName>Cadastro do Cliente</fullName>
+                <default>false</default>
+                <label>Cadastro do Cliente</label>
+            </value>
+            <value>
+                <fullName>Cadastro do Produto</fullName>
+                <default>false</default>
+                <label>Cadastro do Produto</label>
+            </value>
+            <value>
+                <fullName>Cliente Não Aceita Lotes Variados</fullName>
+                <default>false</default>
+                <label>Cliente Não Aceita Lotes Variados</label>
+            </value>
+            <value>
+                <fullName>Cliente Não Usa a Marca</fullName>
+                <default>false</default>
+                <label>Cliente Não Usa a Marca</label>
+            </value>
+            <value>
+                <fullName>CNPJ Divergente do Cotado</fullName>
+                <default>false</default>
+                <label>CNPJ Divergente do Cotado</label>
+            </value>
+            <value>
+                <fullName>Código de Barra Incorreto</fullName>
+                <default>false</default>
+                <label>Código de Barra Incorreto</label>
+            </value>
+            <value>
+                <fullName>Conversão / Unidade de Medida</fullName>
+                <default>false</default>
+                <label>Conversão / Unidade de Medida</label>
+            </value>
+            <value>
+                <fullName>Cotação Errada</fullName>
+                <default>false</default>
+                <label>Cotação Errada</label>
+            </value>
+            <value>
+                <fullName>Dados de Qualidade</fullName>
+                <default>false</default>
+                <label>Dados de Qualidade</label>
+            </value>
+            <value>
+                <fullName>Descrição Incorreta</fullName>
+                <default>false</default>
+                <label>Descrição Incorreta</label>
+            </value>
+            <value>
+                <fullName>Desvio de Qualidade</fullName>
+                <default>false</default>
+                <label>Desvio de Qualidade</label>
+            </value>
+            <value>
+                <fullName>EAN/REGISTRO ANVISA</fullName>
+                <default>false</default>
+                <label>EAN/REGISTRO ANVISA</label>
+            </value>
+            <value>
+                <fullName>Erro de Estoque</fullName>
+                <default>false</default>
+                <label>Erro de Estoque</label>
+            </value>
+            <value>
+                <fullName>Erro Integração de Sistemas</fullName>
+                <default>false</default>
+                <label>Erro Integração de Sistemas</label>
+            </value>
+            <value>
+                <fullName>Erro na Separação</fullName>
+                <default>false</default>
+                <label>Erro na Separação</label>
+            </value>
+            <value>
+                <fullName>Erro no cadastro do produto</fullName>
+                <default>false</default>
+                <label>Erro no cadastro do produto</label>
+            </value>
+            <value>
+                <fullName>Erro VDE</fullName>
+                <default>false</default>
+                <label>Erro VDE</label>
+            </value>
+            <value>
+                <fullName>Erro VDI</fullName>
+                <default>false</default>
+                <label>Erro VDI</label>
+            </value>
+            <value>
+                <fullName>Extravio de Mercadoria</fullName>
+                <default>false</default>
+                <label>Extravio de Mercadoria</label>
+            </value>
+            <value>
+                <fullName>Fabricante</fullName>
+                <default>false</default>
+                <label>Fabricante</label>
+            </value>
+            <value>
+                <fullName>Falta de volumes</fullName>
+                <default>false</default>
+                <label>Falta de volumes</label>
+            </value>
+            <value>
+                <fullName>Faturamento em Duplicidade</fullName>
+                <default>false</default>
+                <label>Faturamento em Duplicidade</label>
+            </value>
+            <value>
+                <fullName>Financeiro</fullName>
+                <default>false</default>
+                <label>Financeiro</label>
+            </value>
+            <value>
+                <fullName>Mercadoria Avariada</fullName>
+                <default>false</default>
+                <label>Mercadoria Avariada</label>
+            </value>
+            <value>
+                <fullName>Não Aplicável</fullName>
+                <default>false</default>
+                <label>Não Aplicável</label>
+            </value>
+            <value>
+                <fullName>NF NÃO AUTORIZADA (FISCAL)</fullName>
+                <default>false</default>
+                <label>NF NÃO AUTORIZADA (FISCAL)</label>
+            </value>
+            <value>
+                <fullName>Nota Retida pelo Fisco</fullName>
+                <default>false</default>
+                <label>Nota Retida pelo Fisco</label>
+            </value>
+            <value>
+                <fullName>Pedido não Digitado</fullName>
+                <default>false</default>
+                <label>Pedido não Digitado</label>
+            </value>
+            <value>
+                <fullName>Prazo de Entrega não atende</fullName>
+                <default>false</default>
+                <label>Prazo de Entrega não atende</label>
+            </value>
+            <value>
+                <fullName>Precificação incorreta</fullName>
+                <default>false</default>
+                <label>Precificação incorreta</label>
+            </value>
+            <value>
+                <fullName>Produto divergente do cotado</fullName>
+                <default>false</default>
+                <label>Produto divergente do cotado</label>
+            </value>
+            <value>
+                <fullName>Produto Fora da Temperatura</fullName>
+                <default>false</default>
+                <label>Produto Fora da Temperatura</label>
+            </value>
+            <value>
+                <fullName>Produtos Avariados</fullName>
+                <default>false</default>
+                <label>Produtos Avariados</label>
+            </value>
+            <value>
+                <fullName>Produto Vencido</fullName>
+                <default>false</default>
+                <label>Produto Vencido</label>
+            </value>
+            <value>
+                <fullName>Quantidade divergente da cotada</fullName>
+                <default>false</default>
+                <label>Quantidade divergente da cotada</label>
+            </value>
+            <value>
+                <fullName>Rastreamento de Pedido</fullName>
+                <default>false</default>
+                <label>Rastreamento de Pedido</label>
+            </value>
+            <value>
+                <fullName>Telefonia</fullName>
+                <default>false</default>
+                <label>Telefonia</label>
+            </value>
+            <value>
+                <fullName>Transacional</fullName>
+                <default>false</default>
+                <label>Transacional</label>
+            </value>
+            <value>
+                <fullName>Transporte Inadequado</fullName>
+                <default>false</default>
+                <label>Transporte Inadequado</label>
+            </value>
+            <value>
+                <fullName>Vendas</fullName>
+                <default>false</default>
+                <label>Vendas</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Inconsistência Geral</controllingFieldValue>
+            <controllingFieldValue>Falta de Estoque</controllingFieldValue>
+            <controllingFieldValue>Documentos de Filiais</controllingFieldValue>
+            <controllingFieldValue>Erro XML/ 2ª via</controllingFieldValue>
+            <controllingFieldValue>Histórico de Pedidos</controllingFieldValue>
+            <controllingFieldValue>Pedido não digitado</controllingFieldValue>
+            <controllingFieldValue>Entrega Programada</controllingFieldValue>
+            <controllingFieldValue>2ª Via de Nota Fiscal/Boleto</controllingFieldValue>
+            <controllingFieldValue>Ausência na Entrega</controllingFieldValue>
+            <controllingFieldValue>Validade Curta</controllingFieldValue>
+            <controllingFieldValue>Validade Inferior a 12 meses</controllingFieldValue>
+            <controllingFieldValue>NPS</controllingFieldValue>
+            <controllingFieldValue>Falta de Informação no COMPROVEI/ LYNCROS</controllingFieldValue>
+            <controllingFieldValue>Tracking do Pedido</controllingFieldValue>
+            <controllingFieldValue>Devolução</controllingFieldValue>
+            <controllingFieldValue>Reclamação</controllingFieldValue>
+            <controllingFieldValue>Faturamento do Pedido</controllingFieldValue>
+            <controllingFieldValue>Histórico de Pagamentos</controllingFieldValue>
+            <controllingFieldValue>Paciente Veio a Óbto/Alta</controllingFieldValue>
+            <controllingFieldValue>Carta de Comprometimento de Troca</controllingFieldValue>
+            <controllingFieldValue>Cotação</controllingFieldValue>
+            <controllingFieldValue>Carta de Correção</controllingFieldValue>
+            <controllingFieldValue>Financeiro</controllingFieldValue>
+            <controllingFieldValue>Sinistro</controllingFieldValue>
+            <controllingFieldValue>Recall</controllingFieldValue>
+            <controllingFieldValue>Renegociação</controllingFieldValue>
+            <controllingFieldValue>Solicitação de Desconto no Boleto</controllingFieldValue>
+            <controllingFieldValue>Solicitação de reembolso</controllingFieldValue>
+            <controllingFieldValue>Transporte Entregou Para Cliente Errado</controllingFieldValue>
+            <controllingFieldValue>Troca de Data de Entrega</controllingFieldValue>
+            <controllingFieldValue>Não Aplicável</controllingFieldValue>
+            <valueName>Não Aplicável</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cadastro</controllingFieldValue>
+            <controllingFieldValue>Atualização de Cadastro</controllingFieldValue>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Cadastro do Cliente</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cadastro</controllingFieldValue>
+            <controllingFieldValue>Atualização de Cadastro</controllingFieldValue>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Cadastro do Produto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelamento do Pedido</controllingFieldValue>
+            <valueName>Arrependimento de Compra</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelamento do Pedido</controllingFieldValue>
+            <valueName>Prazo de Entrega não atende</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Endereço errado</controllingFieldValue>
+            <valueName>Cadastro Desatualizado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Endereço errado</controllingFieldValue>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Erro VDE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Endereço errado</controllingFieldValue>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Erro VDI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entrega em Atraso</controllingFieldValue>
+            <valueName>Atraso na rota de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Entrega em Atraso</controllingFieldValue>
+            <valueName>Atraso na separação</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Erro no Cadastro Produto</controllingFieldValue>
+            <valueName>Código de Barra Incorreto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Erro no Cadastro Produto</controllingFieldValue>
+            <valueName>Conversão / Unidade de Medida</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Erro no Cadastro Produto</controllingFieldValue>
+            <valueName>Descrição Incorreta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Erro no Cadastro Produto</controllingFieldValue>
+            <valueName>EAN/REGISTRO ANVISA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desvio de Qualidade</controllingFieldValue>
+            <valueName>Fabricante</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desvio de Qualidade</controllingFieldValue>
+            <valueName>Produto Fora da Temperatura</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desvio de Qualidade</controllingFieldValue>
+            <valueName>Produtos Avariados</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desvio de Qualidade</controllingFieldValue>
+            <valueName>Produto Vencido</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desvio de Qualidade</controllingFieldValue>
+            <valueName>Transporte Inadequado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Extravio do Pedido</controllingFieldValue>
+            <valueName>Falta de volumes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Extravio do Pedido</controllingFieldValue>
+            <valueName>Mercadoria Avariada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Cliente Não Aceita Lotes Variados</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Cliente Não Usa a Marca</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>CNPJ Divergente do Cotado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Cotação Errada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <controllingFieldValue>Produto Faltante no Físico</controllingFieldValue>
+            <valueName>Erro na Separação</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Faturamento em Duplicidade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Precificação incorreta</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Produto divergente do cotado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Faturamento Incorreto</controllingFieldValue>
+            <valueName>Quantidade divergente da cotada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Produto Faltante no Físico</controllingFieldValue>
+            <valueName>Avaria</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Produto Faltante no Físico</controllingFieldValue>
+            <valueName>Erro no cadastro do produto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Atendimento</controllingFieldValue>
+            <valueName>Financeiro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Atendimento</controllingFieldValue>
+            <valueName>Telefonia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Atendimento</controllingFieldValue>
+            <valueName>Vendas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Atualização de Cadastro</controllingFieldValue>
+            <valueName>Dados de Qualidade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Regulatórios</controllingFieldValue>
+            <valueName>Desvio de Qualidade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NPS</controllingFieldValue>
+            <valueName>Atendimento ao Cliente</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>NPS</controllingFieldValue>
+            <valueName>Transacional</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Fiscal</controllingFieldValue>
+            <valueName>Nota Retida pelo Fisco</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tracking do Pedido</controllingFieldValue>
+            <valueName>Alterar data de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tracking do Pedido</controllingFieldValue>
+            <valueName>Alterar endereço de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Tracking do Pedido</controllingFieldValue>
+            <valueName>Rastreamento de Pedido</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Não Faturado</controllingFieldValue>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Erro de Estoque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Alvará Vencido</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Bloqueado por crédito</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Erro Integração de Sistemas</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>NF NÃO AUTORIZADA (FISCAL)</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido Parado</controllingFieldValue>
+            <valueName>Pedido não Digitado</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

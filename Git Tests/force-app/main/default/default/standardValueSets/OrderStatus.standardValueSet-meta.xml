@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <groupingStringEnum>OrderStatusCode</groupingStringEnum>
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Activated</fullName>
+        <default>false</default>
+        <label>Ativado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Em aberto (Histórico)</fullName>
+        <default>false</default>
+        <label>Em aberto (Histórico)</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Faturado (Histórico)</fullName>
+        <default>false</default>
+        <label>Faturado (Histórico)</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelado (Histórico)</fullName>
+        <default>false</default>
+        <label>Cancelado (Histórico)</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Novo</fullName>
+        <default>false</default>
+        <label>Novo</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Em digitação</fullName>
+        <default>false</default>
+        <label>Em digitação</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Pedido com inconsistências</fullName>
+        <default>false</default>
+        <label>Pedido com inconsistências</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Gerado pedido filho</fullName>
+        <default>false</default>
+        <label>Gerado pedido filho</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando integração</fullName>
+        <default>false</default>
+        <label>Aguardando integração</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>ErroIntegracao</fullName>
+        <default>false</default>
+        <label>Erro de Integração</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>IntegradoReservado</fullName>
+        <default>false</default>
+        <label>Integrado/Reservado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando processamento na integradora</fullName>
+        <default>false</default>
+        <label>Aguardando processamento na integradora</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Rejeitado na integradora</fullName>
+        <default>false</default>
+        <label>Rejeitado na integradora</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Bloqueado por divergência de preços</fullName>
+        <default>false</default>
+        <label>Bloqueado por divergência de preços</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aprovado na integradora</fullName>
+        <default>false</default>
+        <label>Aprovado na integradora</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando aprovação</fullName>
+        <default>false</default>
+        <label>Aguardando aprovação</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Reprovado</fullName>
+        <default>false</default>
+        <label>Reprovado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aprovado</fullName>
+        <default>false</default>
+        <label>Aprovado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando faturamento</fullName>
+        <default>false</default>
+        <label>Aguardando faturamento</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Pai - Em aprovação</fullName>
+        <default>false</default>
+        <label>Pai - Em aprovação</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Pai - Aprovado</fullName>
+        <default>false</default>
+        <label>Pai - Aprovado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando comprovante</fullName>
+        <default>false</default>
+        <label>Aguardando comprovante</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando aprovação RA</fullName>
+        <default>false</default>
+        <label>Aguardando aprovação RA</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Bloqueado ERP</fullName>
+        <default>false</default>
+        <label>Bloqueado ERP</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Liberado ERP</fullName>
+        <default>false</default>
+        <label>Liberado ERP</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando separação</fullName>
+        <default>false</default>
+        <label>Aguardando separação</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Separado</fullName>
+        <default>false</default>
+        <label>Separado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Faturado</fullName>
+        <default>false</default>
+        <label>Faturado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando envio de cancelamento</fullName>
+        <default>false</default>
+        <label>Aguardando envio de cancelamento</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Aguardando envio de rejeição</fullName>
+        <default>false</default>
+        <label>Aguardando envio de rejeição</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelado</fullName>
+        <default>false</default>
+        <label>Cancelado</label>
+        <groupingString>Draft</groupingString>
+    </standardValue>
+</StandardValueSet>

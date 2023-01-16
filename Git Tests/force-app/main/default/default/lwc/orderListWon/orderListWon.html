@@ -1,0 +1,18 @@
+<template>
+
+    <lightning-card  variant="Narrow"  title="Pedidos Ganhos" icon-name="standard:orders">
+        
+        <lightning-datatable
+            key-field="id"
+            data={data}
+            show-row-number-column
+            row-number-offset={rowOffset}
+            hide-checkbox-column
+            wrap-text-max-lines="5"
+            column-widths-mode="auto"
+            columns={columns}>
+        </lightning-datatable>
+
+    </lightning-card>
+
+</template>

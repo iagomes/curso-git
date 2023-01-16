@@ -1,0 +1,94 @@
+.main-container {  
+    min-height: 500px;
+    min-width: 1200px;
+  }
+
+.header {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-header {    
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f2f2f2;
+}
+
+.flex-end{
+    display:flex;
+    justify-content: flex-end;
+}
+
+/* Formatações do FORM */
+.box-form .row-form{
+    padding: 10px 0;
+}
+
+.box-form .row-form,
+.box-form .row-form .col-form{
+    display:flex;
+    justify-content: space-between;
+}
+
+.box-form .row-form .col-form .lb-form {
+    min-width: 70px;
+    display: flex;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    color:#555;
+}
+
+.box-form .row-form .col-form .lb-input {
+    display: flex;
+    align-items: center;
+    max-width: 80px;
+}
+
+.box-form .row-form .col-form .lb-input-100 {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.box-form {
+    padding: 0px 12px 0px 15px;
+    border-radius: 3px;
+}
+
+.borderCard {
+    margin-bottom: 10px;
+    padding:15px;
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0 0 3px rgb(0 0 0 / 10%);
+}
+
+.borderDefault {
+    border-bottom: 3px solid #0070d2;
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.borderError {
+    border-color: red;
+    border-bottom: 3px solid red;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    border-left: 1px solid red;
+}

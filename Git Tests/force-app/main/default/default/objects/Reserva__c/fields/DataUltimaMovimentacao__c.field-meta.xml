@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DataUltimaMovimentacao__c</fullName>
+    <externalId>false</externalId>
+    <label>Data última movimentação</label>
+    <summarizedField>ProdutoReserva__c.DataUltimaMovimentacao__c</summarizedField>
+    <summaryForeignKey>ProdutoReserva__c.Reserva__c</summaryForeignKey>
+    <summaryOperation>max</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

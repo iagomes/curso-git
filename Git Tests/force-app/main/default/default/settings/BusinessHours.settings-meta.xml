@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessHours>
+        <active>true</active>
+        <default>true</default>
+        <fridayEndTime>19:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>19:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Atendimento ao Cliente</name>
+        <thursdayEndTime>19:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Sao_Paulo</timeZoneId>
+        <tuesdayEndTime>19:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>19:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>19:00:00.000Z</fridayEndTime>
+        <fridayStartTime>08:00:00.000Z</fridayStartTime>
+        <mondayEndTime>19:00:00.000Z</mondayEndTime>
+        <mondayStartTime>08:00:00.000Z</mondayStartTime>
+        <name>Default</name>
+        <thursdayEndTime>19:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>08:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Sao_Paulo</timeZoneId>
+        <tuesdayEndTime>19:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>08:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>19:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>08:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>23:59:00.000Z</fridayEndTime>
+        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <mondayEndTime>23:59:00.000Z</mondayEndTime>
+        <mondayStartTime>00:00:00.000Z</mondayStartTime>
+        <name>workingDays</name>
+        <thursdayEndTime>23:59:00.000Z</thursdayEndTime>
+        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Sao_Paulo</timeZoneId>
+        <tuesdayEndTime>23:59:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>23:59:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>18:00:00.000Z</fridayEndTime>
+        <fridayStartTime>09:00:00.000Z</fridayStartTime>
+        <mondayEndTime>18:00:00.000Z</mondayEndTime>
+        <mondayStartTime>09:00:00.000Z</mondayStartTime>
+        <name>Áreas Resolvedoras</name>
+        <thursdayEndTime>18:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>09:00:00.000Z</thursdayStartTime>
+        <timeZoneId>America/Sao_Paulo</timeZoneId>
+        <tuesdayEndTime>18:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>09:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>18:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>09:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Confraternização Universal</name>
+        <recurrenceDayOfWeek>Sunday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Monday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Tuesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Wednesday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Thursday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Friday</recurrenceDayOfWeek>
+        <recurrenceDayOfWeek>Saturday</recurrenceDayOfWeek>
+        <recurrenceInstance>First</recurrenceInstance>
+        <recurrenceMonthOfYear>January</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-01-01</recurrenceStartDate>
+        <recurrenceType>RecursYearlyNth</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2022-06-16</activityDate>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi</name>
+    </holidays>
+    <holidays>
+        <activityDate>2023-06-08</activityDate>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Corpus Christi</name>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Dia do Trabalho</name>
+        <recurrenceDayOfMonth>1</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>May</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-05-01</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Finados</name>
+        <recurrenceDayOfMonth>2</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>November</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-11-02</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Independência do Brasil</name>
+        <recurrenceDayOfMonth>7</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>September</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-09-07</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Natal</name>
+        <recurrenceDayOfMonth>25</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>December</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-12-25</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Nossa Sra. Aparecida - Padroeira do Brasil</name>
+        <recurrenceDayOfMonth>12</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>October</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-10-12</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <activityDate>2022-04-15</activityDate>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Paixão de Cristo</name>
+    </holidays>
+    <holidays>
+        <activityDate>2023-04-07</activityDate>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>false</isRecurring>
+        <name>Paixão de Cristo</name>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Proclamação da República</name>
+        <recurrenceDayOfMonth>15</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>November</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-11-15</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+    <holidays>
+        <businessHours>Atendimento ao Cliente</businessHours>
+        <businessHours>Default</businessHours>
+        <businessHours>workingDays</businessHours>
+        <businessHours>Áreas Resolvedoras</businessHours>
+        <isRecurring>true</isRecurring>
+        <name>Tiradentes</name>
+        <recurrenceDayOfMonth>21</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>April</recurrenceMonthOfYear>
+        <recurrenceStartDate>2021-04-21</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
+    </holidays>
+</BusinessHoursSettings>

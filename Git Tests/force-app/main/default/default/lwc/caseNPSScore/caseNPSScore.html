@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title={labels.NPS} icon-name="standard:customer_lifecycle_analytics" class="card slds-card_boundary">
+        <div class="slds-card__body slds-card__body_inner slds-clearfix">
+            <template if:true={nps}>
+                <template if:false={nodata}>
+                    <span class={scoreClass}>{nps.value}</span>
+                    <p><strong>{labels.NPSOrigin}</strong><br />{nps.source}</p>
+                </template>
+                <template if:true={nodata}>
+                    <p>{labels.NPSNoScore}</p>
+                </template>
+            </template>
+            <template if:true={error}>
+                <p>{labels.NPSScoreError}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

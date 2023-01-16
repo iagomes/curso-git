@@ -1,0 +1,32 @@
+<template>
+	<template if:true={isSaving}>
+		<div style="font-size: 12px; height: 100%; display: flex;">
+			<div
+				style="display: flex; width: 100%; height: 100%; color: #969492;">
+				<p><strong>Salvando alterações...</strong></p>
+			</div>
+			<div style="display:inline-block; width:100%">
+				<lightning-spinner alternative-text="Loading" size="small" style="position:relative"></lightning-spinner>
+			</div>
+		</div>
+	</template>
+	<template if:false={isSaving}>
+		<div style="max-width: 100%">
+			<lightning-layout multiple-rows style="display: inline;">
+				<lightning-layout-item size="12">
+					<div if:true={_objData.lastSaveDate} style="font-size: 12px;">
+						<div if:true={_objData.sobject} style="display: flex">
+							<p><strong>{_objData.sobject}: </strong></p> 
+							<a data-order-id={_objData.registerName} onclick={navigateToOrder} class="slds-m-left_xx-small">{recNumber}</a>
+						</div>
+					</div>
+				</lightning-layout-item>
+				<lightning-layout-item size="12">
+					<div if:true={_objData.lastSaveDate} style="font-size: 12px;">
+						<p>Última modificação: {_objData.lastSaveDate}</p>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+	</template>
+</template>

@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title={labels.Timeline} icon-name="standard:action_list_component" class="timer-card slds-card_boundary">
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={timelines}>
+                <ul class="slds-timeline">
+                    <template for:each={timelines} for:item="timeline">
+                        <li key={timeline.id}>
+                            <div class="slds-timeline__item_expandable slds-timeline__item_task">
+                                <span class="slds-assistive-text">{labels.Timeline}</span>
+                                <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                        <button class="slds-button slds-button_icon" >
+                                            <span class="slds-assistive-text">{timeline.name}</span>
+                                         </button>
+                                        <lightning-icon icon-name="standard:business_hours" size="small" alternative-text="Timeline" title="Timeline"></lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                            <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                                <h3 class="slds-truncate" title={timeline.name}>
+                                                    <strong>{timeline.name}</strong>
+                                                </h3>
+                                            </div>
+                                            <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                                <p class="slds-timeline__date">
+                                                    <lightning-formatted-date-time day="numeric" month="numeric" year="numeric" value={timeline.startDate}></lightning-formatted-date-time>
+                                                    <template if:true={timeline.endDate}> - <lightning-formatted-date-time day="numeric" month="numeric" year="numeric" value={timeline.endDate}></lightning-formatted-date-time></template></p>
+                                            </div>  
+                                        </div>    
+                                        <p class="slds-m-horizontal_xx-small">
+                                            <template if:true={timeline.hasYears}>
+                                                <span>{timeline.years}</span>&nbsp;{labels.Years}&nbsp;&nbsp;
+                                            </template>
+                                            <template if:true={timeline.hasDays}>
+                                                <span>{timeline.days}</span>&nbsp;{labels.Days}&nbsp;&nbsp;
+                                            </template>
+                                            <span>{timeline.hours}</span>&nbsp;{labels.Hours}&nbsp;&nbsp;
+                                            <span>{timeline.mins}</span>&nbsp;{labels.Minutes}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>  
+                    </template>  
+                </ul>                
+            </template>
+        </div>
+    </lightning-card>
+</template>

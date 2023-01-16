@@ -1,0 +1,11 @@
+.slds-timeline__item_expandable:before {
+  background-color: #e1be5c;
+}
+
+.completed.slds-timeline__item_expandable:before {
+  background-color: #4bc076;
+}
+
+.error.slds-timeline__item_expandable:before {
+  background-color: #e9696e;
+}

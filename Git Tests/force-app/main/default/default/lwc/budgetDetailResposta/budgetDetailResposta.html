@@ -1,0 +1,31 @@
+<template>
+    <div class="static-style-budget-detail-resposta"></div>
+    <div class="style-element-color-bg-edit-item"></div>
+    <div class="slds-is-relative">
+        <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="loading"></lightning-spinner>
+        <c-budget-detail-resposta-data-table 
+            key-field="id"
+            class="slds-table slds-table_cell-buffer slds-table_bordered"
+            data={itens}
+            wrap-text-max-lines="2"
+            columns={columns}
+            oncustombuttonclick={handleDeletebuttonclick}
+            draft-values={draftValues}
+            onrowselection={handleProductRowSelection}
+            selected-rows={respostaSelectedId}
+            max-row-selection="1"
+            oncustomvaluechange={handleCustomValueChange}
+            hide-checkbox-column={maxRow}
+        ></c-budget-detail-resposta-data-table>
+    </div>
+    <template if:true={openConfirmationErase}>
+        <c-confirmation-modal
+            title="Atenção"
+            text-label="Deseja apagar o conteúdo da linha de resposta?"
+            cancel-label="Não"
+            confirmation-label="Sim"
+            onclosemodal={handleCloseEraseModal}
+            onconfirm={handleConfirmEraseModal}
+        ></c-confirmation-modal>
+    </template>
+</template>

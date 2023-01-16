@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FatorConversao__c</fullName>
+    <description>
+        campo utilizado para armazenar o fator de conversão inputado pelo vendedor durante a resposta cotada
+        Também pode ser visto como a quantidade presente em caixa caso o valor do TipoConversao__c seja Dividir
+    </description>
+    <externalId>false</externalId>
+    <label>Fator de Conversao</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>8</scale>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TabulacaoN2__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Este campo é o segundo refinamento do valor do campo Status</inlineHelpText>
+    <label>Tabulação N2</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>TabulacaoN1__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cotação Enviada TT</fullName>
+                <default>false</default>
+                <label>Cotação Enviada TT</label>
+            </value>
+            <value>
+                <fullName>Cotação Enviada Parcial</fullName>
+                <default>false</default>
+                <label>Cotação Enviada Parcial</label>
+            </value>
+            <value>
+                <fullName>Fora de Malha</fullName>
+                <default>false</default>
+                <label>Fora de Malha</label>
+            </value>
+            <value>
+                <fullName>Falta de estoque</fullName>
+                <default>false</default>
+                <label>Falta de estoque</label>
+            </value>
+            <value>
+                <fullName>Não temos o item no portifólio</fullName>
+                <default>false</default>
+                <label>Não temos o item no portifólio</label>
+            </value>
+            <value>
+                <fullName>Não temos a apresentação solicitada</fullName>
+                <default>false</default>
+                <label>Não temos a apresentação solicitada</label>
+            </value>
+            <value>
+                <fullName>Não temos a validade solicitada</fullName>
+                <default>false</default>
+                <label>Não temos a validade solicitada</label>
+            </value>
+            <value>
+                <fullName>Não temos a quantidade solicitada</fullName>
+                <default>false</default>
+                <label>Não temos a quantidade solicitada</label>
+            </value>
+            <value>
+                <fullName>Não trabalhamos</fullName>
+                <default>false</default>
+                <label>Não trabalhamos</label>
+            </value>
+            <value>
+                <fullName>Não conseguimos atender no prazo solicitado</fullName>
+                <default>false</default>
+                <label>Não conseguimos atender no prazo solicitado</label>
+            </value>
+            <value>
+                <fullName>Não atinge o faturamento mínimo</fullName>
+                <default>false</default>
+                <label>Não atinge o faturamento mínimo</label>
+            </value>
+            <value>
+                <fullName>Área Restrita / Regionalização</fullName>
+                <default>false</default>
+                <label>Área Restrita / Regionalização</label>
+            </value>
+            <value>
+                <fullName>Bloqueio Financeiro</fullName>
+                <default>false</default>
+                <label>Bloqueio Financeiro</label>
+            </value>
+            <value>
+                <fullName>Cotação Vencida</fullName>
+                <default>false</default>
+                <label>Cotação Vencida</label>
+            </value>
+            <value>
+                <fullName>BU Material</fullName>
+                <default>false</default>
+                <label>BU Material</label>
+            </value>
+            <value>
+                <fullName>BU Genérico</fullName>
+                <default>false</default>
+                <label>BU Genérico</label>
+            </value>
+            <value>
+                <fullName>BU Especialidade</fullName>
+                <default>false</default>
+                <label>BU Especialidade</label>
+            </value>
+            <value>
+                <fullName>Envio Automático</fullName>
+                <default>false</default>
+                <label>Envio Automático</label>
+            </value>
+            <value>
+                <fullName>BLACK LIST</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>BLACK LIST</label>
+            </value>
+            <value>
+                <fullName>NÃO É CLIENTE ALVO</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>NÃO É CLIENTE ALVO</label>
+            </value>
+            <value>
+                <fullName>PARCIAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>PARCIAL</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS FORA DE MALHA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS FORA DE MALHA</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS FORA DO PORTFOLIO</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS FORA DO PORTFOLIO</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS SEM A APRESENTAÇÃO SOLICITADA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS SEM A APRESENTAÇÃO SOLICITADA</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS SEM A QUANTIDADE SOLICITADA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS SEM A QUANTIDADE SOLICITADA</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS SEM A VALIDADE SOLICITADA</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS SEM A VALIDADE SOLICITADA</label>
+            </value>
+            <value>
+                <fullName>TODOS OS ITENS SEM ESTOQUE</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TODOS OS ITENS SEM ESTOQUE</label>
+            </value>
+            <value>
+                <fullName>TOTAL</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>TOTAL</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Recusa</controllingFieldValue>
+            <valueName>Cotação Vencida</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aceite</controllingFieldValue>
+            <valueName>Cotação Enviada TT</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aceite</controllingFieldValue>
+            <valueName>Cotação Enviada Parcial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Fora de Malha</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Falta de estoque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não temos o item no portifólio</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não temos a apresentação solicitada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não temos a validade solicitada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não temos a quantidade solicitada</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não conseguimos atender no prazo solicitado</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Não atinge o faturamento mínimo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Área Restrita / Regionalização</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>Bloqueio Financeiro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>BU Material</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>BU Genérico</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Improdutiva</controllingFieldValue>
+            <valueName>BU Especialidade</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Envio Automático</controllingFieldValue>
+            <valueName>Envio Automático</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

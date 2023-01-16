@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DataCriacao__c</fullName>
+    <description>Campo criado para armazenar data e hora do momento em que o botão &apos;Criar pedido&apos; é clicado.</description>
+    <externalId>false</externalId>
+    <label>Data de criação</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

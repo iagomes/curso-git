@@ -1,0 +1,1742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CondicaoPagamentoPL__c</fullName>
+    <externalId>false</externalId>
+    <label>Condição de Pagamento</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Integradora__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>002/28 D</fullName>
+                <default>false</default>
+                <label>002/28 D</label>
+            </value>
+            <value>
+                <fullName>003/30 D</fullName>
+                <default>false</default>
+                <label>003/30 D</label>
+            </value>
+            <value>
+                <fullName>004/45 D</fullName>
+                <default>false</default>
+                <label>004/45 D</label>
+            </value>
+            <value>
+                <fullName>042/60 D</fullName>
+                <default>false</default>
+                <label>042/60 D</label>
+            </value>
+            <value>
+                <fullName>012/30,45,60 D</fullName>
+                <default>false</default>
+                <label>012/30,45,60 D</label>
+            </value>
+            <value>
+                <fullName>028/35 D</fullName>
+                <default>false</default>
+                <label>028/35 D</label>
+            </value>
+            <value>
+                <fullName>058/56 D</fullName>
+                <default>false</default>
+                <label>058/56 D</label>
+            </value>
+            <value>
+                <fullName>046/45,60 D</fullName>
+                <default>false</default>
+                <label>046/45,60 D</label>
+            </value>
+            <value>
+                <fullName>013/30,60 D</fullName>
+                <default>false</default>
+                <label>013/30,60 D</label>
+            </value>
+            <value>
+                <fullName>036/21 D</fullName>
+                <default>false</default>
+                <label>036/21 D</label>
+            </value>
+            <value>
+                <fullName>115/20 D</fullName>
+                <default>false</default>
+                <label>115/20 D</label>
+            </value>
+            <value>
+                <fullName>065/25 D</fullName>
+                <default>false</default>
+                <label>065/25 D</label>
+            </value>
+            <value>
+                <fullName>007/28,35 D</fullName>
+                <default>false</default>
+                <label>007/28,35 D</label>
+            </value>
+            <value>
+                <fullName>008/28,35,42 D</fullName>
+                <default>false</default>
+                <label>008/28,35,42 D</label>
+            </value>
+            <value>
+                <fullName>010/28,35,42,49,56</fullName>
+                <default>false</default>
+                <label>010/28,35,42,49,56</label>
+            </value>
+            <value>
+                <fullName>081/28,42 D</fullName>
+                <default>false</default>
+                <label>081/28,42 D</label>
+            </value>
+            <value>
+                <fullName>011/30,45 D</fullName>
+                <default>false</default>
+                <label>011/30,45 D</label>
+            </value>
+            <value>
+                <fullName>049/14 DIAS</fullName>
+                <default>false</default>
+                <label>049/14 DIAS</label>
+            </value>
+            <value>
+                <fullName>066/10 D</fullName>
+                <default>false</default>
+                <label>066/10 D</label>
+            </value>
+            <value>
+                <fullName>045/120 D</fullName>
+                <default>false</default>
+                <label>045/120 D</label>
+            </value>
+            <value>
+                <fullName>006/90 D</fullName>
+                <default>false</default>
+                <label>006/90 D</label>
+            </value>
+            <value>
+                <fullName>043/A VISTA</fullName>
+                <default>false</default>
+                <label>043/A VISTA</label>
+            </value>
+            <value>
+                <fullName>001/30 D - 5,15,25</fullName>
+                <default>false</default>
+                <label>001/30 D - 5,15,25</label>
+            </value>
+            <value>
+                <fullName>003</fullName>
+                <default>false</default>
+                <label>003</label>
+            </value>
+            <value>
+                <fullName>004</fullName>
+                <default>false</default>
+                <label>004</label>
+            </value>
+            <value>
+                <fullName>005</fullName>
+                <default>false</default>
+                <label>005</label>
+            </value>
+            <value>
+                <fullName>005/49 D</fullName>
+                <default>false</default>
+                <label>005/49 D</label>
+            </value>
+            <value>
+                <fullName>006</fullName>
+                <default>false</default>
+                <label>006</label>
+            </value>
+            <value>
+                <fullName>009/28,35,42,49 D</fullName>
+                <default>false</default>
+                <label>009/28,35,42,49 D</label>
+            </value>
+            <value>
+                <fullName>014/30,60,90 D</fullName>
+                <default>false</default>
+                <label>014/30,60,90 D</label>
+            </value>
+            <value>
+                <fullName>015/30,60,90,120 D</fullName>
+                <default>false</default>
+                <label>015/30,60,90,120 D</label>
+            </value>
+            <value>
+                <fullName>016/35,42,49 D</fullName>
+                <default>false</default>
+                <label>016/35,42,49 D</label>
+            </value>
+            <value>
+                <fullName>017/35,42,49,56 D</fullName>
+                <default>false</default>
+                <label>017/35,42,49,56 D</label>
+            </value>
+            <value>
+                <fullName>018/35,49,63 D</fullName>
+                <default>false</default>
+                <label>018/35,49,63 D</label>
+            </value>
+            <value>
+                <fullName>019/35,53,70,84 D</fullName>
+                <default>false</default>
+                <label>019/35,53,70,84 D</label>
+            </value>
+            <value>
+                <fullName>020/42,63,84 D</fullName>
+                <default>false</default>
+                <label>020/42,63,84 D</label>
+            </value>
+            <value>
+                <fullName>021/40,50 D</fullName>
+                <default>false</default>
+                <label>021/40,50 D</label>
+            </value>
+            <value>
+                <fullName>022/40,50,60 D</fullName>
+                <default>false</default>
+                <label>022/40,50,60 D</label>
+            </value>
+            <value>
+                <fullName>023/45 D</fullName>
+                <default>false</default>
+                <label>023/45 D</label>
+            </value>
+            <value>
+                <fullName>024/60,90 D</fullName>
+                <default>false</default>
+                <label>024/60,90 D</label>
+            </value>
+            <value>
+                <fullName>025/7 DIAS</fullName>
+                <default>false</default>
+                <label>025/7 DIAS</label>
+            </value>
+            <value>
+                <fullName>026/65,72,79,86</fullName>
+                <default>false</default>
+                <label>026/65,72,79,86</label>
+            </value>
+            <value>
+                <fullName>027/21,28,35 D</fullName>
+                <default>false</default>
+                <label>027/21,28,35 D</label>
+            </value>
+            <value>
+                <fullName>029/30,40,50 D</fullName>
+                <default>false</default>
+                <label>029/30,40,50 D</label>
+            </value>
+            <value>
+                <fullName>030/42,63,84 D</fullName>
+                <default>false</default>
+                <label>030/42,63,84 D</label>
+            </value>
+            <value>
+                <fullName>031/21,28,35 D</fullName>
+                <default>false</default>
+                <label>031/21,28,35 D</label>
+            </value>
+            <value>
+                <fullName>032/31,38,45 D</fullName>
+                <default>false</default>
+                <label>032/31,38,45 D</label>
+            </value>
+            <value>
+                <fullName>033/28,56,84 D</fullName>
+                <default>false</default>
+                <label>033/28,56,84 D</label>
+            </value>
+            <value>
+                <fullName>034/45,60,75 D</fullName>
+                <default>false</default>
+                <label>034/45,60,75 D</label>
+            </value>
+            <value>
+                <fullName>035/56,63,70 D</fullName>
+                <default>false</default>
+                <label>035/56,63,70 D</label>
+            </value>
+            <value>
+                <fullName>037/30,40 D</fullName>
+                <default>false</default>
+                <label>037/30,40 D</label>
+            </value>
+            <value>
+                <fullName>038/100 D</fullName>
+                <default>false</default>
+                <label>038/100 D</label>
+            </value>
+            <value>
+                <fullName>039/35,42,49,56,63</fullName>
+                <default>false</default>
+                <label>039/35,42,49,56,63</label>
+            </value>
+            <value>
+                <fullName>040/28,42,56 D</fullName>
+                <default>false</default>
+                <label>040/28,42,56 D</label>
+            </value>
+            <value>
+                <fullName>041/28,56 D</fullName>
+                <default>false</default>
+                <label>041/28,56 D</label>
+            </value>
+            <value>
+                <fullName>044/40,60,90 D</fullName>
+                <default>false</default>
+                <label>044/40,60,90 D</label>
+            </value>
+            <value>
+                <fullName>047/1PG 10-20-27 DF</fullName>
+                <default>false</default>
+                <label>047/1PG 10-20-27 DF</label>
+            </value>
+            <value>
+                <fullName>048/VENC ESPECIFICO</fullName>
+                <default>false</default>
+                <label>048/VENC ESPECIFICO</label>
+            </value>
+            <value>
+                <fullName>050/VINDI</fullName>
+                <default>false</default>
+                <label>050/VINDI</label>
+            </value>
+            <value>
+                <fullName>051/30,45,60,75 D</fullName>
+                <default>false</default>
+                <label>051/30,45,60,75 D</label>
+            </value>
+            <value>
+                <fullName>052/7 D, 7 PARC</fullName>
+                <default>false</default>
+                <label>052/7 D, 7 PARC</label>
+            </value>
+            <value>
+                <fullName>053/30 D, 12 PARC</fullName>
+                <default>false</default>
+                <label>053/30 D, 12 PARC</label>
+            </value>
+            <value>
+                <fullName>054/30 D, 6 PARC</fullName>
+                <default>false</default>
+                <label>054/30 D, 6 PARC</label>
+            </value>
+            <value>
+                <fullName>055/VENC ESPECIFICO</fullName>
+                <default>false</default>
+                <label>055/VENC ESPECIFICO</label>
+            </value>
+            <value>
+                <fullName>056/20 D, 30 E 40</fullName>
+                <default>false</default>
+                <label>056/20 D, 30 E 40</label>
+            </value>
+            <value>
+                <fullName>057/30,35,42 D</fullName>
+                <default>false</default>
+                <label>057/30,35,42 D</label>
+            </value>
+            <value>
+                <fullName>059/35,49,63,77</fullName>
+                <default>false</default>
+                <label>059/35,49,63,77</label>
+            </value>
+            <value>
+                <fullName>060/6 X 30 D</fullName>
+                <default>false</default>
+                <label>060/6 X 30 D</label>
+            </value>
+            <value>
+                <fullName>061/30,35 D</fullName>
+                <default>false</default>
+                <label>061/30,35 D</label>
+            </value>
+            <value>
+                <fullName>062/88,95,102,109 D</fullName>
+                <default>false</default>
+                <label>062/88,95,102,109 D</label>
+            </value>
+            <value>
+                <fullName>063/118,125,132,139</fullName>
+                <default>false</default>
+                <label>063/118,125,132,139</label>
+            </value>
+            <value>
+                <fullName>064/40,48,56 D</fullName>
+                <default>false</default>
+                <label>064/40,48,56 D</label>
+            </value>
+            <value>
+                <fullName>067/NAO LIBERADO</fullName>
+                <default>false</default>
+                <label>067/NAO LIBERADO</label>
+            </value>
+            <value>
+                <fullName>068/11 PARCELAS</fullName>
+                <default>false</default>
+                <label>068/11 PARCELAS</label>
+            </value>
+            <value>
+                <fullName>069/10 PARCELAS</fullName>
+                <default>false</default>
+                <label>069/10 PARCELAS</label>
+            </value>
+            <value>
+                <fullName>070/33 D</fullName>
+                <default>false</default>
+                <label>070/33 D</label>
+            </value>
+            <value>
+                <fullName>071/30/45/60/75/90/</fullName>
+                <default>false</default>
+                <label>071/30/45/60/75/90/</label>
+            </value>
+            <value>
+                <fullName>072/15,30,45,60,75D</fullName>
+                <default>false</default>
+                <label>072/15,30,45,60,75D</label>
+            </value>
+            <value>
+                <fullName>073/60,75,90 D</fullName>
+                <default>false</default>
+                <label>073/60,75,90 D</label>
+            </value>
+            <value>
+                <fullName>074/60,70,80 D</fullName>
+                <default>false</default>
+                <label>074/60,70,80 D</label>
+            </value>
+            <value>
+                <fullName>075/60,75,90,105 D</fullName>
+                <default>false</default>
+                <label>075/60,75,90,105 D</label>
+            </value>
+            <value>
+                <fullName>076/40 D</fullName>
+                <default>false</default>
+                <label>076/40 D</label>
+            </value>
+            <value>
+                <fullName>077/20,51,80,111...</fullName>
+                <default>false</default>
+                <label>077/20,51,80,111...</label>
+            </value>
+            <value>
+                <fullName>078/30,60,90,120...</fullName>
+                <default>false</default>
+                <label>078/30,60,90,120...</label>
+            </value>
+            <value>
+                <fullName>079/14,18,21 D</fullName>
+                <default>false</default>
+                <label>079/14,18,21 D</label>
+            </value>
+            <value>
+                <fullName>080/7x DE 30</fullName>
+                <default>false</default>
+                <label>080/7x DE 30</label>
+            </value>
+            <value>
+                <fullName>082/1,9,15,22,30 D</fullName>
+                <default>false</default>
+                <label>082/1,9,15,22,30 D</label>
+            </value>
+            <value>
+                <fullName>083/1,20,25,30,60 D</fullName>
+                <default>false</default>
+                <label>083/1,20,25,30,60 D</label>
+            </value>
+            <value>
+                <fullName>084/10,30,60 D</fullName>
+                <default>false</default>
+                <label>084/10,30,60 D</label>
+            </value>
+            <value>
+                <fullName>085/1,5,10,15,20...</fullName>
+                <default>false</default>
+                <label>085/1,5,10,15,20...</label>
+            </value>
+            <value>
+                <fullName>086/1,20,30 D</fullName>
+                <default>false</default>
+                <label>086/1,20,30 D</label>
+            </value>
+            <value>
+                <fullName>087/1,15,25,90 D</fullName>
+                <default>false</default>
+                <label>087/1,15,25,90 D</label>
+            </value>
+            <value>
+                <fullName>088/1,20,50 D</fullName>
+                <default>false</default>
+                <label>088/1,20,50 D</label>
+            </value>
+            <value>
+                <fullName>089/15,45 D</fullName>
+                <default>false</default>
+                <label>089/15,45 D</label>
+            </value>
+            <value>
+                <fullName>090/10,30,50 D</fullName>
+                <default>false</default>
+                <label>090/10,30,50 D</label>
+            </value>
+            <value>
+                <fullName>091/20,27,33,40 D</fullName>
+                <default>false</default>
+                <label>091/20,27,33,40 D</label>
+            </value>
+            <value>
+                <fullName>092/1,15,20,25 D</fullName>
+                <default>false</default>
+                <label>092/1,15,20,25 D</label>
+            </value>
+            <value>
+                <fullName>093/1,14,24,45 D</fullName>
+                <default>false</default>
+                <label>093/1,14,24,45 D</label>
+            </value>
+            <value>
+                <fullName>094/1,15,45 D</fullName>
+                <default>false</default>
+                <label>094/1,15,45 D</label>
+            </value>
+            <value>
+                <fullName>095/1,4,60 D</fullName>
+                <default>false</default>
+                <label>095/1,4,60 D</label>
+            </value>
+            <value>
+                <fullName>096/1,13,23,30 D</fullName>
+                <default>false</default>
+                <label>096/1,13,23,30 D</label>
+            </value>
+            <value>
+                <fullName>097/7,30 D</fullName>
+                <default>false</default>
+                <label>097/7,30 D</label>
+            </value>
+            <value>
+                <fullName>098/43 D</fullName>
+                <default>false</default>
+                <label>098/43 D</label>
+            </value>
+            <value>
+                <fullName>099/42,56,70 D</fullName>
+                <default>false</default>
+                <label>099/42,56,70 D</label>
+            </value>
+            <value>
+                <fullName>1,2,3/1,2,3 D</fullName>
+                <default>false</default>
+                <label>1,2,3/1,2,3 D</label>
+            </value>
+            <value>
+                <fullName>100/75 DIAS</fullName>
+                <default>false</default>
+                <label>100/75 DIAS</label>
+            </value>
+            <value>
+                <fullName>101/25,50,75,90 D</fullName>
+                <default>false</default>
+                <label>101/25,50,75,90 D</label>
+            </value>
+            <value>
+                <fullName>102/56,84,112 D</fullName>
+                <default>false</default>
+                <label>102/56,84,112 D</label>
+            </value>
+            <value>
+                <fullName>103/35,70 D</fullName>
+                <default>false</default>
+                <label>103/35,70 D</label>
+            </value>
+            <value>
+                <fullName>104/4 D</fullName>
+                <default>false</default>
+                <label>104/4 D</label>
+            </value>
+            <value>
+                <fullName>105/25,50 D</fullName>
+                <default>false</default>
+                <label>105/25,50 D</label>
+            </value>
+            <value>
+                <fullName>106/25,50,65,80 D</fullName>
+                <default>false</default>
+                <label>106/25,50,65,80 D</label>
+            </value>
+            <value>
+                <fullName>107/25,50,75 D</fullName>
+                <default>false</default>
+                <label>107/25,50,75 D</label>
+            </value>
+            <value>
+                <fullName>108/45,75,105 D</fullName>
+                <default>false</default>
+                <label>108/45,75,105 D</label>
+            </value>
+            <value>
+                <fullName>109/25,40,55,70 D</fullName>
+                <default>false</default>
+                <label>109/25,40,55,70 D</label>
+            </value>
+            <value>
+                <fullName>110/35,50 D</fullName>
+                <default>false</default>
+                <label>110/35,50 D</label>
+            </value>
+            <value>
+                <fullName>111/25,50,65,80,105</fullName>
+                <default>false</default>
+                <label>111/25,50,65,80,105</label>
+            </value>
+            <value>
+                <fullName>112/30,45,60,75,90D</fullName>
+                <default>false</default>
+                <label>112/30,45,60,75,90D</label>
+            </value>
+            <value>
+                <fullName>113/38 D</fullName>
+                <default>false</default>
+                <label>113/38 D</label>
+            </value>
+            <value>
+                <fullName>114/20,40 D</fullName>
+                <default>false</default>
+                <label>114/20,40 D</label>
+            </value>
+            <value>
+                <fullName>116/28,42,49,56,70D</fullName>
+                <default>false</default>
+                <label>116/28,42,49,56,70D</label>
+            </value>
+            <value>
+                <fullName>117/30,40,50,60,70</fullName>
+                <default>false</default>
+                <label>117/30,40,50,60,70</label>
+            </value>
+            <value>
+                <fullName>118/28,42,56,70</fullName>
+                <default>false</default>
+                <label>118/28,42,56,70</label>
+            </value>
+            <value>
+                <fullName>119/28,42,56,70,84</fullName>
+                <default>false</default>
+                <label>119/28,42,56,70,84</label>
+            </value>
+            <value>
+                <fullName>120/20 PARC 30 DIAS</fullName>
+                <default>false</default>
+                <label>120/20 PARC 30 DIAS</label>
+            </value>
+            <value>
+                <fullName>122/CC - 2X</fullName>
+                <default>false</default>
+                <label>122/CC - 2X</label>
+            </value>
+            <value>
+                <fullName>123/CC - 3X</fullName>
+                <default>false</default>
+                <label>123/CC - 3X</label>
+            </value>
+            <value>
+                <fullName>124/CC - 4X</fullName>
+                <default>false</default>
+                <label>124/CC - 4X</label>
+            </value>
+            <value>
+                <fullName>125/CC - 5X</fullName>
+                <default>false</default>
+                <label>125/CC - 5X</label>
+            </value>
+            <value>
+                <fullName>140/60D EM DT FIXA</fullName>
+                <default>false</default>
+                <label>140/60D EM DT FIXA</label>
+            </value>
+            <value>
+                <fullName>3,35,80/3,35,80 DIAS</fullName>
+                <default>false</default>
+                <label>3,35,80/3,35,80 DIAS</label>
+            </value>
+            <value>
+                <fullName>3,6,9,12/3,6,9,12 D</fullName>
+                <default>false</default>
+                <label>3,6,9,12/3,6,9,12 D</label>
+            </value>
+            <value>
+                <fullName>30</fullName>
+                <default>false</default>
+                <label>30</label>
+            </value>
+            <value>
+                <fullName>4,8,12/4,8,12 D</fullName>
+                <default>false</default>
+                <label>4,8,12/4,8,12 D</label>
+            </value>
+            <value>
+                <fullName>40,60/40,60 D</fullName>
+                <default>false</default>
+                <label>40,60/40,60 D</label>
+            </value>
+            <value>
+                <fullName>45,60,90/45,60,90 D</fullName>
+                <default>false</default>
+                <label>45,60,90/45,60,90 D</label>
+            </value>
+            <value>
+                <fullName>5,10,15,20,40/5,10,15,20,40 D</fullName>
+                <default>false</default>
+                <label>5,10,15,20,40/5,10,15,20,40 D</label>
+            </value>
+            <value>
+                <fullName>5,10/5,10 D</fullName>
+                <default>false</default>
+                <label>5,10/5,10 D</label>
+            </value>
+            <value>
+                <fullName>50,60,70,80,90,100/50,60,70,80,90,</fullName>
+                <default>false</default>
+                <label>50,60,70,80,90,100/50,60,70,80,90,</label>
+            </value>
+            <value>
+                <fullName>51/30D, 24 PARC</fullName>
+                <default>false</default>
+                <label>51/30D, 24 PARC</label>
+            </value>
+            <value>
+                <fullName>555/75 DD, DATAS</fullName>
+                <default>false</default>
+                <label>555/75 DD, DATAS</label>
+            </value>
+            <value>
+                <fullName>70/75DD, DATA</fullName>
+                <default>false</default>
+                <label>70/75DD, DATA</label>
+            </value>
+            <value>
+                <fullName>80/42,49,56,63</fullName>
+                <default>false</default>
+                <label>80/42,49,56,63</label>
+            </value>
+            <value>
+                <fullName>81/1 X CARTAO</fullName>
+                <default>false</default>
+                <label>81/1 X CARTAO</label>
+            </value>
+            <value>
+                <fullName>84/4 X CARTAO</fullName>
+                <default>false</default>
+                <label>84/4 X CARTAO</label>
+            </value>
+            <value>
+                <fullName>C10/CARTAO CRED 10X</fullName>
+                <default>false</default>
+                <label>C10/CARTAO CRED 10X</label>
+            </value>
+            <value>
+                <fullName>C11/CARTAO CRED 11X</fullName>
+                <default>false</default>
+                <label>C11/CARTAO CRED 11X</label>
+            </value>
+            <value>
+                <fullName>C12/CARTAO CRED 12X</fullName>
+                <default>false</default>
+                <label>C12/CARTAO CRED 12X</label>
+            </value>
+            <value>
+                <fullName>CC1/CARTAO CRED 1X</fullName>
+                <default>false</default>
+                <label>CC1/CARTAO CRED 1X</label>
+            </value>
+            <value>
+                <fullName>CC2/CARTAO CRED 2X</fullName>
+                <default>false</default>
+                <label>CC2/CARTAO CRED 2X</label>
+            </value>
+            <value>
+                <fullName>CC3/CARTAO CRED 3X</fullName>
+                <default>false</default>
+                <label>CC3/CARTAO CRED 3X</label>
+            </value>
+            <value>
+                <fullName>CC4/CARTAO CRED 4X</fullName>
+                <default>false</default>
+                <label>CC4/CARTAO CRED 4X</label>
+            </value>
+            <value>
+                <fullName>CC5/CARTAO CRED 5X</fullName>
+                <default>false</default>
+                <label>CC5/CARTAO CRED 5X</label>
+            </value>
+            <value>
+                <fullName>CC6/CARTAO CRED 6X</fullName>
+                <default>false</default>
+                <label>CC6/CARTAO CRED 6X</label>
+            </value>
+            <value>
+                <fullName>CC7/CARTAO CRED 7X</fullName>
+                <default>false</default>
+                <label>CC7/CARTAO CRED 7X</label>
+            </value>
+            <value>
+                <fullName>CC8/CARTAO CRED 8X</fullName>
+                <default>false</default>
+                <label>CC8/CARTAO CRED 8X</label>
+            </value>
+            <value>
+                <fullName>CC9/CARTAO CRED 9X</fullName>
+                <default>false</default>
+                <label>CC9/CARTAO CRED 9X</label>
+            </value>
+            <value>
+                <fullName>CD/CARTAO DEBITO</fullName>
+                <default>false</default>
+                <label>CD/CARTAO DEBITO</label>
+            </value>
+            <value>
+                <fullName>CH/CHEQUE</fullName>
+                <default>false</default>
+                <label>CH/CHEQUE</label>
+            </value>
+            <value>
+                <fullName>CH1/CHEQUE 1X</fullName>
+                <default>false</default>
+                <label>CH1/CHEQUE 1X</label>
+            </value>
+            <value>
+                <fullName>CH2/CHEQUE 2X</fullName>
+                <default>false</default>
+                <label>CH2/CHEQUE 2X</label>
+            </value>
+            <value>
+                <fullName>CH3/CHEQUE 3X</fullName>
+                <default>false</default>
+                <label>CH3/CHEQUE 3X</label>
+            </value>
+            <value>
+                <fullName>CH4/CHEQUE 4X</fullName>
+                <default>false</default>
+                <label>CH4/CHEQUE 4X</label>
+            </value>
+            <value>
+                <fullName>CH5/CHEQUE 5X</fullName>
+                <default>false</default>
+                <label>CH5/CHEQUE 5X</label>
+            </value>
+            <value>
+                <fullName>CH6/CHEQUE 6X</fullName>
+                <default>false</default>
+                <label>CH6/CHEQUE 6X</label>
+            </value>
+            <value>
+                <fullName>DIN/A VISTA ESPECIE</fullName>
+                <default>false</default>
+                <label>DIN/A VISTA ESPECIE</label>
+            </value>
+            <value>
+                <fullName>R$/A VISTA ESPECIE</fullName>
+                <default>false</default>
+                <label>R$/A VISTA ESPECIE</label>
+            </value>
+            <value>
+                <fullName>RA</fullName>
+                <default>false</default>
+                <label>RA</label>
+            </value>
+            <value>
+                <fullName>RA/RECEB. ANTECIP.</fullName>
+                <default>false</default>
+                <label>RA/RECEB. ANTECIP.</label>
+            </value>
+            <value>
+                <fullName>Test</fullName>
+                <default>false</default>
+                <label>Test</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>002/28 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>003/30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>004/45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>042/60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>012/30,45,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>028/35 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>058/56 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>046/45,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>013/30,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>036/21 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>115/20 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>065/25 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>007/28,35 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>008/28,35,42 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>010/28,35,42,49,56</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>081/28,42 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>011/30,45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>049/14 DIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>066/10 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>045/120 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>006/90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>043/A VISTA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>014/30,60,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>025/7 DIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Bionexo</controllingFieldValue>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>140/60D EM DT FIXA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>009/28,35,42,49 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>001/30 D - 5,15,25</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>003</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>004</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>005</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>005/49 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>006</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>015/30,60,90,120 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>016/35,42,49 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>017/35,42,49,56 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>018/35,49,63 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>019/35,53,70,84 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>020/42,63,84 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>021/40,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>022/40,50,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>023/45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>024/60,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>026/65,72,79,86</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>027/21,28,35 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>029/30,40,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>030/42,63,84 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>031/21,28,35 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>032/31,38,45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>033/28,56,84 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>034/45,60,75 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>035/56,63,70 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>037/30,40 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>038/100 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>039/35,42,49,56,63</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>040/28,42,56 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>041/28,56 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>044/40,60,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>047/1PG 10-20-27 DF</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>048/VENC ESPECIFICO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>050/VINDI</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>051/30,45,60,75 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>052/7 D, 7 PARC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>053/30 D, 12 PARC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>054/30 D, 6 PARC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>055/VENC ESPECIFICO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>056/20 D, 30 E 40</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>057/30,35,42 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>059/35,49,63,77</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>060/6 X 30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>061/30,35 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>062/88,95,102,109 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>063/118,125,132,139</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>064/40,48,56 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>067/NAO LIBERADO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>068/11 PARCELAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>069/10 PARCELAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>070/33 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>071/30/45/60/75/90/</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>072/15,30,45,60,75D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>073/60,75,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>074/60,70,80 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>075/60,75,90,105 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>076/40 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>077/20,51,80,111...</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>078/30,60,90,120...</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>079/14,18,21 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>080/7x DE 30</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>082/1,9,15,22,30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>083/1,20,25,30,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>084/10,30,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>085/1,5,10,15,20...</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>086/1,20,30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>087/1,15,25,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>088/1,20,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>089/15,45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>090/10,30,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>091/20,27,33,40 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>092/1,15,20,25 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>093/1,14,24,45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>094/1,15,45 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>095/1,4,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>096/1,13,23,30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>097/7,30 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>098/43 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>099/42,56,70 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>1,2,3/1,2,3 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>100/75 DIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>101/25,50,75,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>102/56,84,112 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>103/35,70 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>104/4 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>105/25,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>106/25,50,65,80 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>107/25,50,75 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>108/45,75,105 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>109/25,40,55,70 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>110/35,50 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>111/25,50,65,80,105</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>112/30,45,60,75,90D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>113/38 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>114/20,40 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>116/28,42,49,56,70D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>117/30,40,50,60,70</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>118/28,42,56,70</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>119/28,42,56,70,84</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>120/20 PARC 30 DIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>122/CC - 2X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>123/CC - 3X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>124/CC - 4X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>125/CC - 5X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>3,35,80/3,35,80 DIAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>3,6,9,12/3,6,9,12 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>30</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>4,8,12/4,8,12 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>40,60/40,60 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>45,60,90/45,60,90 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>5,10,15,20,40/5,10,15,20,40 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>5,10/5,10 D</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>50,60,70,80,90,100/50,60,70,80,90,</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>51/30D, 24 PARC</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>555/75 DD, DATAS</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>70/75DD, DATA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>80/42,49,56,63</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>81/1 X CARTAO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>84/4 X CARTAO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>C10/CARTAO CRED 10X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>C11/CARTAO CRED 11X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>C12/CARTAO CRED 12X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC1/CARTAO CRED 1X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC2/CARTAO CRED 2X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC3/CARTAO CRED 3X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC4/CARTAO CRED 4X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC5/CARTAO CRED 5X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC6/CARTAO CRED 6X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC7/CARTAO CRED 7X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC8/CARTAO CRED 8X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CC9/CARTAO CRED 9X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CD/CARTAO DEBITO</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH/CHEQUE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH1/CHEQUE 1X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH2/CHEQUE 2X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH3/CHEQUE 3X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH4/CHEQUE 4X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH5/CHEQUE 5X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>CH6/CHEQUE 6X</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>DIN/A VISTA ESPECIE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>R$/A VISTA ESPECIE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>RA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>RA/RECEB. ANTECIP.</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Apoio</controllingFieldValue>
+            <controllingFieldValue>Sintese</controllingFieldValue>
+            <valueName>Test</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

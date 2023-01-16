@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Numero_do_Pedido__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Informar o número do pedido gerado pela NF informada, vinculada ao Caso aberto contra uma empresa do Grupo, que não esteja &quot;dentro do Nexos&quot;.</inlineHelpText>
+    <label>Número do Pedido</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

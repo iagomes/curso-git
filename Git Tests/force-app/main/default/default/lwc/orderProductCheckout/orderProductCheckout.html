@@ -1,0 +1,1056 @@
+<template>
+    <lightning-card title="Checkout" icon-name="standard:checkout" variant="base">
+        <div style="padding-left:15px; padding-right:15px; padding-bottom: 10px;">
+            <lightning-layout multiple-rows style="align-items: center;">
+                <lightning-layout-item size="6" small-device-size="6" medium-device-size="3" large-device-size="3">
+                    <lightning-input type="checkbox" checked="true" onchange={handleAllCheckbox} label="Selecionar todos"></lightning-input>
+                </lightning-layout-item>
+                <template if:true={device}>
+                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="9" large-device-size="9">
+                        <div style="float:right; display: flex; align-items: center;">
+                            <div class="slds-m-right_x-small">
+                                <c-automatic-saving is-saving={isSaving} obj-data={savingObjData} str-obj-data={savingStrData} rec-id={newRecordId}
+                                    is-budget={isBudget}>
+                                </c-automatic-saving>
+                            </div>
+                            <lightning-radio-group class="slds-m-right_x-small" options={radioSortOptions} value={filtroPDF} 
+                                type="radio" onchange={handleListSort}>
+                            </lightning-radio-group>
+                            <lightning-button onclick={handleRemoveAllSelectedProducts} variant="brand" label="Remover selecionados"
+                                size="large" icon-name="utility:delete" disabled={isAddItemDisabled}>
+                            </lightning-button>
+                        </div>
+                    </lightning-layout-item>
+                </template>
+                <template if:false={device}>
+                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="3" large-device-size="3">
+                        <div class="slds-m-right_x-small">
+                            <c-automatic-saving is-saving={isSaving} obj-data={savingObjData} str-obj-data={savingStrData} rec-id={newRecordId}
+                                is-budget={isBudget}>
+                            </c-automatic-saving>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="3" large-device-size="3">
+                        <lightning-radio-group class="slds-m-right_x-small" options={radioSortOptions} value="Ordem alfabética" type="radio"  style="float: left;"
+                            onchange={handleListSort}>
+                        </lightning-radio-group>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="3" large-device-size="3">
+                        <lightning-button onclick={handleRemoveAllSelectedProducts} variant="brand"
+                            label="Remover selecionados" size="large" icon-name="utility:delete" disabled={isAddItemDisabled} style="float: right; margin-top: 10px">
+                        </lightning-button>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+        <lightning-accordion
+            class="slds-border_top slds-border_bottom slds-border_left slds-border_right slds-card slds-card_boundary"
+            name="accordion" allow-multiple-sections-open active-section-name="cdaccordion">
+            <lightning-accordion-section name="cdaccordion" label="Itens do carrinho - Checkout"
+                class="divAccordionSection" style="display:block;">
+                <template if:true={cdListCloneSelected}>
+                    <template for:each={cdListCloneSelected} for:item="cd">
+                        <div class="" data-name="divAllProducts" data-product-id={cd.prodId} style="padding: 15px;
+                            width: 100%;
+                            border-radius: 0;
+                            margin-bottom: 0;
+                            border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(81 167 126);
+                            border-left: 1px solid #ddd;
+                            border-right: 1px solid #ddd;
+                            border-top: 1px solid #ddd;
+                            border-bottom: 1px dashed #999;
+                            " key={cd.prodId}>
+                            <div data-name="divAllProducts" data-product-id={cd.prodId} class="slds-grid slds-wrap"
+                                style="margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap; width: 100%;">
+                                <lightning-layout multiple-rows horizontal-align="spread" style="width: 100%;">
+                                    <lightning-layout-item size="10" small-device-size="10" medium-device-size="3" large-device-size="3">
+                                        <div class="slds-col slds-size_12-of-12">
+                                            <div style="display:flex;">
+                                                <lightning-input checked={cd.selected} type="checkbox" data-cd-id={cd.id} onchange={handleCheckbox} disabled={cd.disableCheckbox}>
+                                                </lightning-input>
+                                                <div style="display:flex;flex-direction:column">
+                                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 14px;color:#0070d2">
+                                                                <p><strong>{cd.prodCode} - {cd.nome}</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;font-weight:600">
+                                                                <p>{cd.principioAtivo}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 13px;color:#999">
+                                                                <p>{cd.fabricante}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                                    </lightning-layout>
+                                                    <lightning-layout class="slds-m-bottom_xx-small">
+                                                        <lightning-layout-item>
+                                                            <div style="font-size: 12px;">
+                                                                <p>{cd.cds}</p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                    <div class="box-legendas">
+                                                        <template if:true={cd.showBadgeOL}>
+                                                            <span class="badge badge-color1">
+                                                                Produto OL
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeAcordoComercial}>
+                                                            <span class="badge badge-color4">
+                                                                Acordo Comercial
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeShelflifeCNPJ}>
+                                                            <span class="badge badge-color5">
+                                                                Produto shelflife
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeCampanhaCD}>
+                                                            <span class="badge badge-color2">
+                                                                Campanha Produto
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeCampanhaVendedor}>
+                                                            <span class="badge badge-color6">
+                                                                Campanha Vendedor
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeConsignado}>
+                                                            <span class="badge badge-color3">
+                                                                Produto Consignado
+                                                            </span>
+                                                        </template>
+                                                        <template if:true={cd.showBadgeReservadoCNPJ}>
+                                                            <span class="badge badge-color7">
+                                                                Produto reservado
+                                                            </span>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <template if:false={device}>
+                                        <lightning-layout-item size="1" small-device-size="1" medium-device-size="1" large-device-size="1">
+                                            <lightning-layout-item>
+                                                <lightning-button-icon style="display:block" alternative-text="" icon-class="" variant="border"
+                                                    type="button" value={cd} data-prod-id={cd.prodId} data-cd-id={cd.id} tooltip="Excluir"
+                                                    icon-name="utility:delete" onclick={handleRemoveCd} disabled={isAddItemDisabled} size="medium">
+                                                </lightning-button-icon>
+                                                <lightning-button-icon style="display:block" alternative-text="" value={cd} data-prod-id={cd.prodId}
+                                                    data-cd-id={cd.id} data-prod-code={cd.prodCode} variant="border" type="button" tooltip="Editar"
+                                                    icon-name="utility:edit" size="medium" icon-class="" onclick={handleNavigateOrderProduct}
+                                                    disabled={isAddItemDisabled}>
+                                                </lightning-button-icon>
+                                            </lightning-layout-item>
+                                        </lightning-layout-item>
+                                    </template>
+
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Sequência OC</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div style="width:60%;display:flex;align-items:center;">
+                                                        <lightning-input name="valueInput" 
+                                                            data-prod-id={cd.prodId} onblur={SequenciaOC} data-cd-id={cd.id}
+                                                            variant="label-hidden" type="number" value={cd.SequenciaOC}>
+                                                        </lightning-input>
+    
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Qtde(1{cd.unidadePrincipal})/Saldo</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div style="width:80%;align-items:center;">
+                                                        <template if:true={cd.showBadgeShelflifeCNPJ}>
+                                                            <template if:true={goToCheckout}>                                                            
+                                                                <lightning-input name="quantityInput" data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                                    onchange={calcPriceUnitCx} variant="label-hidden" type="number"
+                                                                    value={cd.quantidadeCx} disabled=true>
+                                                                </lightning-input>
+                                                            </template>
+                                                            <template if:false={goToCheckout}>
+                                                                <lightning-input name="quantityInput" data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                                    onchange={calcPriceUnitCx} variant="label-hidden" type="number"
+                                                                    value={cd.quantidadeCx} disabled=true>
+                                                                </lightning-input>
+                                                            </template>
+                                                        </template>
+                                                        <template if:false={cd.showBadgeShelflifeCNPJ}>
+                                                            <template if:true={goToCheckout}>                                                            
+                                                                <lightning-input name="quantityInput" data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                                    onchange={calcPriceUnitCx} variant="label-hidden" type="number"
+                                                                    value={cd.quantidadeCx} disabled=true>
+                                                                </lightning-input>
+                                                            </template>
+                                                            <template if:false={goToCheckout}>
+                                                                <lightning-input name="quantityInput" data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                                    onchange={calcPriceUnitCx} variant="label-hidden" type="number"
+                                                                    value={cd.quantidadeCx} disabled={isAddItemDisabled}>
+                                                                </lightning-input>
+                                                            </template>
+                                                        </template>
+                                                        <div>
+                                                            <template if:true={isLoadingScore}>
+                                                                <div style="height:2rem;position:relative;padding-left:20px">
+                                                                    <div role="status" class="slds-spinner slds-spinner_xx-small">
+                                                                        <span class="slds-assistive-text">Loading</span>
+                                                                        <div class="slds-spinner__dot-a"></div>
+                                                                        <div class="slds-spinner__dot-b"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </template>
+                                                            <template if:false={isLoadingScore}>
+                                                                / {cd.estoque}
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Valor({cd.unidadePrincipal})</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div style="width:80%;">
+                                                        <template if:true={goToCheckout}>
+                                                            <lightning-input name="valueInput" formatter="currency" step=".000001" 
+                                                                data-prod-id={cd.prodId} onblur={calcCxValue} data-cd-id={cd.id}
+                                                                variant="label-hidden" type="number" value={cd.caixa}>
+                                                            </lightning-input>
+                                                        </template>
+                                                        <template if:false={goToCheckout}>
+                                                            <lightning-input name="valueInput" formatter="currency" step=".000001" disabled={cd.valorBloqueadoPrice} 
+                                                                data-prod-id={cd.prodId} onblur={calcCxValue} data-cd-id={cd.id}
+                                                                variant="label-hidden" type="number" value={cd.caixa}>
+                                                            </lightning-input>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Desconto</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div style="width:80%;">
+                                                        <lightning-input name="valueInput" formatter="percent-fixed" step=".01"
+                                                            data-prod-id={cd.prodId} data-cd-id={cd.id} value={cd.desconto} variant="label-hidden" disabled={cd.valorBloqueado}
+                                                            type="number" onblur={calcDiscount}>
+                                                        </lightning-input>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Valor Total</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div>
+                                                        <lightning-formatted-number format-style="currency" currency-code="BRL"
+                                                            value={cd.valorTotal}></lightning-formatted-number>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <template if:true={verMargem}>
+                                                        <lightning-layout-item>
+                                                            <div class="slds-m-left_xx-small"
+                                                                style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                                <strong>M. Atual</strong>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </template>
+                                                    <div class="slds-m-right_xx-small" style="width:60%">
+                                                        <template if:true={verMargem}>
+                                                            <lightning-input name="margemInput" formatter="percent-fixed" step="0.01"
+                                                                data-prod-id={cd.prodId} onblur={handleMargin} data-cd-id={cd.id}
+                                                                variant="label-hidden" type="number" value={cd.margem}  disabled={cd.valorBloqueado}>
+                                                            </lightning-input>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <template if:true={verMargem}>
+                                                        <lightning-layout-item>
+                                                            <div class="slds-m-left_xx-small"
+                                                                style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                                <strong>M. Alvo</strong>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </template>
+                                                    <div class="slds-m-right_xx-small">
+                                                        <template if:true={verMargem}>
+                                                            <lightning-formatted-number
+                                                                value={cd.margemAlvo}
+                                                                formatter="percent-fixed"
+                                                                step="0.01"
+                                                                type="number">
+                                                            </lightning-formatted-number>%
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                        <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                            <lightning-layout
+                                                class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                                <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>Score</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <div class="slds-m-right_xx-small">
+                                                        <lightning-formatted-number value={cd.scoreItem}>
+                                                        </lightning-formatted-number>
+                                                    </div>
+                                                </div>
+                                            </lightning-layout>
+                                        </div>
+                                    </lightning-layout-item>
+                                    <!-- <div class="slds-col slds-size_2-of-12" style="text-align: center;"></div> -->
+                                    <template if:true={device}>
+                                        <lightning-layout-item size="1" small-device-size="1" medium-device-size="1" large-device-size="1">
+                                            <div style="float: right;">
+                                                <lightning-layout-item>
+                                                    <lightning-button-icon style="display:block" alternative-text=""
+                                                        icon-class="" variant="border" type="button" value={cd} data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                        tooltip="Excluir" icon-name="utility:delete" onclick={handleRemoveCd} disabled={isAddItemDisabled}
+                                                        size="medium">
+                                                    </lightning-button-icon>
+                                                    <lightning-button-icon style="display:block" alternative-text="" value={cd} data-prod-id={cd.prodId} data-cd-id={cd.id} data-prod-code={cd.prodCode}
+                                                        variant="border" type="button" tooltip="Editar" icon-name="utility:edit" size="medium" icon-class=""
+                                                        onclick={handleNavigateOrderProduct} disabled={isAddItemDisabled}>
+                                                    </lightning-button-icon>
+                                                </lightning-layout-item>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </template>
+                                </lightning-layout>
+                            </div>
+                        </div>
+                    </template>
+                </template>    
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <lightning-accordion style="margin: 0px;"
+            class="slds-border_top slds-border_bottom slds-border_left slds-border_right slds-card slds-card_boundary"
+            name="accordion" allow-multiple-sections-open active-section-name="cdaccordion">
+            <lightning-accordion-section name="cdaccordion" label="Itens removidos - Checkout" class="divAccordionSection"
+                style="display:block;">
+            <template if:true={cdListClone}>
+                <template for:each={cdListClone} for:item="cd">
+                    <div class="" data-name="divAllProducts" data-product-id={cd.prodId} style="padding: 15px;
+                                        width: 100%;
+                                        border-radius: 0;
+                                        margin-bottom: 0;
+                                        border-color: rgb(221, 221, 221) rgb(221, 221, 221) rgb(81 167 126);
+                                        border-left: 1px solid #ddd;
+                                        border-right: 1px solid #ddd;
+                                        border-top: 1px solid #ddd;
+                                        border-bottom: 1px dashed #999;
+                                        " key={cd.prodId}>
+                        <div data-name="divAllProducts" data-product-id={cd.prodId} class="slds-grid slds-wrap"
+                            style="margin:auto;display:flex;justify-content:space-between;flex-wrap:wrap; width: 100%;">
+                            <lightning-layout multiple-rows horizontal-align="spread" style="width: 100%;">
+                                <lightning-layout-item size="10" small-device-size="10" medium-device-size="3" large-device-size="3">
+                                    <div class="slds-col slds-size_12-of-12">
+                                        <div style="display:flex;">
+                                            <lightning-input checked={cd.selected} type="checkbox" data-cd-id={cd.id} onchange={handleCheckbox} disabled={cd.disableCheckbox}>
+                                            </lightning-input>
+                                            <div style="display:flex;flex-direction:column">
+                                                <template if:true={cd.disableCheckbox}> 
+                                                    <lightning-layout class="slds-m-bottom_xx-small"> 
+                                                        <lightning-layout-item> 
+                                                            <div style="font-size: 14px;color:#ff0000"> 
+                                                                <p><strong>Este item não está disponível para este cliente</strong></p>
+                                                            </div>
+                                                        </lightning-layout-item>
+                                                    </lightning-layout>
+                                                </template>
+                                                <lightning-layout class="slds-m-bottom_xx-small">
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 14px;color:#0070d2">
+                                                            <p><strong>{cd.prodCode} - {cd.nome}</strong></p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <lightning-layout class="slds-m-bottom_xx-small">
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 13px;font-weight:600">
+                                                            <p>{cd.principioAtivo}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <lightning-layout class="slds-m-bottom_xx-small">
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 13px;color:#999">
+                                                            <p>{cd.fabricante}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <lightning-layout class="slds-m-bottom_xx-small">
+                                                </lightning-layout>
+                                                <lightning-layout class="slds-m-bottom_xx-small">
+                                                    <lightning-layout-item>
+                                                        <div style="font-size: 12px;">
+                                                            <p>{cd.cds}</p>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                                <div class="box-legendas">
+                                                    <template if:true={cd.showBadgeOL}>
+                                                        <span class="badge badge-color1">
+                                                            Produto OL
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeAcordoComercial}>
+                                                        <span class="badge badge-color4">
+                                                            Acordo Comercial
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeShelflifeCNPJ}>
+                                                        <span class="badge badge-color5">
+                                                            Produto shelflife
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeCampanha}>
+                                                        <span class="badge badge-color2">
+                                                            Campanha Produto
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeCampanhaVendedor}>
+                                                        <span class="badge badge-color6">
+                                                            Campanha Vendedor
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeConsignado}>
+                                                        <span class="badge badge-color3">
+                                                            Produto Consignado
+                                                        </span>
+                                                    </template>
+                                                    <template if:true={cd.showBadgeReservadoCNPJ}>
+                                                        <span class="badge badge-color7">
+                                                            Produto reservado
+                                                        </span>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                                <template if:false={device}>
+                                    <lightning-layout-item size="1" small-device-size="1" medium-device-size="1" large-device-size="1">
+                                        <lightning-layout-item>
+                                            <lightning-button-icon style="display:block" alternative-text="" icon-class="" variant="border"
+                                                type="button" value={cd} data-prod-id={cd.prodId} data-cd-id={cd.id} tooltip="Excluir"
+                                                icon-name="utility:delete" onclick={handleRemoveCd} disabled={isAddItemDisabled} size="medium">
+                                            </lightning-button-icon>
+                                            <lightning-button-icon style="display:block" alternative-text="" value={cd} data-prod-id={cd.prodId}
+                                                data-cd-id={cd.id} data-prod-code={cd.prodCode} variant="border" type="button" tooltip="Editar"
+                                                icon-name="utility:edit" size="medium" icon-class="" onclick={handleNavigateOrderProduct}
+                                                disabled={isAddItemDisabled}>
+                                            </lightning-button-icon>
+                                        </lightning-layout-item>
+                                    </lightning-layout-item>
+                                </template>
+                            
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <lightning-layout-item>
+                                                    <div style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                        <strong>Qtde(2{cd.unidadePrincipal})/Saldo</strong>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <div style="width:60%;display:flex;align-items:center;">
+                                                    <lightning-input name="quantityInput" data-prod-id={cd.prodId} data-cd-id={cd.id}
+                                                        onchange={calcPriceUnitCx} variant="label-hidden" type="number" value={cd.quantidadeCx}
+                                                        disabled={isAddItemDisabled}></lightning-input>/
+                                                    <template if:true={isLoadingScore}>
+                                                        <div style="height:2rem;position:relative;padding-left:20px">
+                                                            <div role="status" class="slds-spinner slds-spinner_xx-small">
+                                                                <span class="slds-assistive-text">Loading</span>
+                                                                <div class="slds-spinner__dot-a"></div>
+                                                                <div class="slds-spinner__dot-b"></div>
+                                                            </div>
+                                                        </div>
+                                                    </template>
+                                                    <template if:false={isLoadingScore}>
+                                                        {cd.estoque}
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                            
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <lightning-layout-item>
+                                                    <div class="slds-m-left_xx-small"
+                                                        style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                        <strong>Valor({cd.unidadePrincipal})</strong>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <div style="width:80%;">
+                                                    <lightning-input name="valueInput" formatter="currency" step=".000001"
+                                                        disabled={cd.valorBloqueadoPrice} data-prod-id={cd.prodId} onblur={calcCxValue}
+                                                        data-cd-id={cd.id} variant="label-hidden" type="number" value={cd.caixa}>
+                                                    </lightning-input>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <lightning-layout-item>
+                                                    <div class="slds-m-left_xx-small"
+                                                        style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                        <strong>Desconto</strong>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <div style="width:80%;">
+                                                    <lightning-input name="valueInput" formatter="percent-fixed" step=".01" data-prod-id={cd.prodId}
+                                                        data-cd-id={cd.id} value={cd.desconto} variant="label-hidden" disabled={cd.valorBloqueado}
+                                                        type="number" onblur={calcDiscount}>
+                                                    </lightning-input>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <lightning-layout-item>
+                                                    <div class="slds-m-left_xx-small"
+                                                        style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                        <strong>Valor Total</strong>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <div>
+                                                    <lightning-formatted-number format-style="currency" currency-code="BRL" value={cd.valorTotal}>
+                                                    </lightning-formatted-number>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <template if:true={verMargem}>
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>M. Atual</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </template>
+                                                <div class="slds-m-right_xx-small" style="width:60%">
+                                                    <template if:true={verMargem}>
+                                                        <lightning-input name="margemInput" formatter="percent-fixed" step="0.01"
+                                                            data-prod-id={cd.prodId} onblur={handleMargin} data-cd-id={cd.id} variant="label-hidden"
+                                                            type="number" value={cd.margem} disabled={cd.valorBloqueado}>
+                                                        </lightning-input>
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <template if:true={verMargem}>
+                                                    <lightning-layout-item>
+                                                        <div class="slds-m-left_xx-small"
+                                                            style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                            <strong>M. Alvo</strong>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </template>
+                                                <div class="slds-m-right_xx-small">
+                                                    <template if:true={verMargem}>
+                                                        <lightning-formatted-number value={cd.margemAlvo} formatter="percent-fixed" step="0.01"
+                                                            type="number">
+                                                        </lightning-formatted-number>%
+                                                    </template>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" small-device-size="6" medium-device-size="1" large-device-size="1">
+                                    <div class="slds-col slds-size_12-of-12" style="text-align: center;">
+                                        <lightning-layout class="slds-m-bottom_xx-small slds-grid slds-gutters slds-align_absolute-center">
+                                            <div style="display:inline-flex;align-items:center;flex-direction:column; align-items: center;">
+                                                <lightning-layout-item>
+                                                    <div class="slds-m-left_xx-small"
+                                                        style="font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                                        <strong>Score</strong>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <div class="slds-m-right_xx-small">
+                                                    <lightning-formatted-number value={cd.scoreItem}>
+                                                    </lightning-formatted-number>
+                                                </div>
+                                            </div>
+                                        </lightning-layout>
+                                    </div>
+                                </lightning-layout-item>
+                                <template if:true={device}>
+                                    <lightning-layout-item size="1" small-device-size="1" medium-device-size="1" large-device-size="1">
+                                        <div style="float: right;">
+                                            <lightning-layout-item>
+                                                <lightning-button-icon style="display:block" alternative-text="" icon-class="" variant="border"
+                                                    type="button" value={cd} data-prod-id={cd.prodId} data-cd-id={cd.id} tooltip="Excluir"
+                                                    icon-name="utility:delete" onclick={handleRemoveCd} disabled={isAddItemDisabled} size="medium">
+                                                </lightning-button-icon>
+                                                <lightning-button-icon style="display:block" alternative-text="" value={cd} data-prod-id={cd.prodId}
+                                                    data-cd-id={cd.id} data-prod-code={cd.prodCode} variant="border" type="button" tooltip="Editar"
+                                                    icon-name="utility:edit" size="medium" icon-class="" onclick={handleNavigateOrderProduct}
+                                                    disabled={isAddItemDisabled}>
+                                                </lightning-button-icon>
+                                            </lightning-layout-item>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                </template>
+            </template>
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <template if:true={filterList}>
+            <div style="padding:10px 20px;font-size:0.8rem;">
+                <template for:each={filterList} for:item="cd">
+                    <span key={cd}
+                        style="color:#00b835;display:inline-block;margin-right:10px;border:1px solid #00b835;padding:5px 15px;border-radius:50px;">
+                        {cd}
+                        <lightning-icon alternative-text="" icon-class="" variant="border-filled" type="button"
+                            icon-name="utility:close" size="xx-small" data-value={cd} onclick={removeCdFilter}>
+                        </lightning-icon>
+                    </span>
+                </template>
+                <a href="#" onclick={removeAllFilters}>
+                    Remover todos os filtros
+                </a>
+            </div>
+        </template>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6" style="justify-content:flex-start">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_2-of-2" style="display:flex;padding:15px;justify-content:flex-start">
+                        <template for:each={cdListFilter} for:item="cd">
+                            <div key={cd.id} class="checkout-cd-card cd-card-unselected" data-div-prodid={cd.prodId} data-div-name="divCd"
+                                data-div-cds={cd.cds} onclick={handleCdFilter}>
+                                <p style="color:#0070d2">{cd.cds}</p>
+                                <div class="slds-text-heading_medium">
+                                    <lightning-formatted-number value={cd.valorTotal} format-style="currency" currency-code="BRL">
+                                    </lightning-formatted-number>
+                                </div>
+                                <div style="font-size: 0.8125rem;">
+                                    <template if:true={verMargem}>
+                                        <p>Margem Atual/Alvo</p>
+                                    </template>
+                                    <template if:false={verMargem}>
+                                        <p>Score</p>
+                                    </template>
+                                </div>
+                                <div style="font-size: 0.8125rem;">
+                                    <template if:true={verMargem}>
+                                        <p>{cd.margem}%/{cd.margemAlvo}%</p>
+                                    </template>
+                                    <template if:false={verMargem}>
+                                        <p>{cd.scoreCd}</p>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </lightning-layout-item>
+            
+            <lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div style="text-align: center;float:right;">
+                    <div style="display:flex; align-items: center; justify-content: center;">
+                        <div style="padding-top:15px;padding-right:15px;padding-bottom:15px;">
+                            <lightning-layout-item>
+                                <div class="slds-m-left_xx-small"
+                                    style="font-size:20px;font-weight: 400; margin-bottom: 8px; display: inline-block;">
+                                    <strong>Total de itens</strong>
+                                    <div class="slds-m-right_xx-small">
+                                        {totalItens}
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                            <lightning-layout-item>
+                                <div class="slds-m-left_xx-small"
+                                    style="font-size:20px;font-weight: 400; margin-bottom: 8px; display: inline-block;">
+                                    <strong>Total do pedido</strong>
+                                    <div class="slds-m-right_xx-small">
+                                        {totalOrderValue}
+                                    </div>
+                                </div>
+                            </lightning-layout-item>
+                        </div>
+    
+                        <div style="padding:15px;">
+                            <template if:true={verMargem}>
+                                <lightning-layout-item>
+                                    <div class="slds-m-left_xx-small"
+                                        style="font-size:20px;font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                        <strong>M. Atual</strong>
+                                        <div class="slds-m-right_xx-small">
+                                            <template if:true={isLoadingScore}>
+                                                <div style="height:2rem;position:relative">
+                                                    <div role="status" class="slds-spinner slds-spinner_x-small">
+                                                        <span class="slds-assistive-text">Loading</span>
+                                                        <div class="slds-spinner__dot-a"></div>
+                                                        <div class="slds-spinner__dot-b"></div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template if:false={isLoadingScore}>
+                                                {margemAtualGeral}
+                                            </template>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                            <template if:false={verMargem}>
+                                <lightning-layout-item>
+                                    <div class="slds-m-left_xx-small"
+                                        style="font-size:20px;font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                        <strong>Score</strong>                                        
+                                        <div class="slds-m-right_xx-small">
+                                            <template if:true={isLoadingScore}>
+                                                <div style="height:2rem;position:relative">
+                                                    <div role="status" class="slds-spinner slds-spinner_x-small">
+                                                        <span class="slds-assistive-text">Loading</span>
+                                                        <div class="slds-spinner__dot-a"></div>
+                                                        <div class="slds-spinner__dot-b"></div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template if:false={isLoadingScore}>
+                                                {scoreFinalGeral}
+                                            </template>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                        </div>
+                        <div style="padding:15px;">
+                            <template if:true={verMargem}>
+                                <lightning-layout-item>
+                                    <div class="slds-m-left_xx-small"
+                                        style="font-size:20px;font-weight: 400; color: #666; margin-bottom: 8px; display: inline-block;">
+                                        <strong>M. Alvo</strong>
+                                        <div class="slds-m-right_xx-small">
+                                            <template if:true={isLoadingScore}>
+                                                <div style="height:2rem;position:relative">
+                                                    <div role="status" class="slds-spinner slds-spinner_x-small">
+                                                        <span class="slds-assistive-text">Loading</span>
+                                                        <div class="slds-spinner__dot-a"></div>
+                                                        <div class="slds-spinner__dot-b"></div>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                            <template if:false={isLoadingScore}>
+                                                {margemAtualAlvo}
+                                            </template>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                        </div>
+                    </div>
+                    <div>
+
+                        <template if:true={device}>
+                            <div style="display:flex; flex-direction: row; justify-content: flex-end;" class="slds-m-right_small">
+                                <template if:true={freteNecessario}>
+                                    <c-freight-cd
+                                        received-cd-list={orderList}
+                                        disabled={isInstallmentDisabled}
+                                        onfreightvalues={handleOnFreightValues}>
+                                    </c-freight-cd>
+                                </template>
+                                <!--<template if:true={openUnitMeasurement}>
+                                    <c-unit-measurement
+                                        products={prodListMeas}
+                                        onunitmeasurementvalues={handleOnFreightValues}
+                                        onselected={handleProductSelected}>
+                                    </c-unit-measurement>
+                                </template>-->
+                                <template if:true={parcelamentoManual}>
+                                    <c-installment-dates
+                                        total-value={totalOrderValue}
+                                        received-dt-list={dtList}
+                                        dt-quantity-allowed={dtQuantityAllowed}
+                                        disabled={isInstallmentDisabled}
+                                        onselectdates={handleOnSelectDates}>
+                                    </c-installment-dates>
+                                </template>
+                                <template if:true={hasPermissionERB}>
+                                    <lightning-button label="Recomendações" alternative-text="Recomendações" variant="brand" disabled={isAddItemDisabled}
+                                        class="slds-m-left_xx-small" onclick={handleNavigateOrderProduct} data-recommendation="true"></lightning-button>
+                                </template>
+                                <lightning-button label="Adicionar Item" alternative-text="Adicionar Item" variant="brand" disabled={isAddItemDisabled}
+                                    class="slds-m-left_xx-small" onclick={handleNavigateOrderProduct}></lightning-button>
+                                <!--<lightning-button 
+                                    label="Unid. de Medida" 
+                                    alternative-text="Unid. de Medida" 
+                                    variant="brand" 
+                                    class="slds-m-left_xx-small" 
+                                    onclick={handleNavigateOrderUnitMed}></lightning-button>-->
+
+                                <lightning-button if:true={isBudget} label="Gerar orçamento" alternative-text="Gerar orçamento" onclick={handleSaveOrderOrOpp} disabled={isSendToApprovalDisabled} value="true"
+                                    variant="brand" class="slds-m-left_xx-small"></lightning-button>
+                                <lightning-button if:false={isBudget} label="Gerar pedido" alternative-text="Gerar pedido" onclick={getStockFromMalha} disabled={isSendToApprovalDisabled} value="true"
+                                variant="brand" class="slds-m-left_xx-small"></lightning-button>
+                                <template if:true={goToCheckout}>
+                                    <lightning-button label="Salvar" alternative-text="Salvar" class="slds-m-left_xx-small" onclick={handleEditOrder} disable={disableLabOrderSave}  value="false">
+                                    </lightning-button>
+                                </template>
+                                <template if:false={goToCheckout}>
+                                    <lightning-button label="Salvar" alternative-text="Salvar" class="slds-m-left_xx-small" onclick={handleSaveOrderOrOpp} disabled={isSaveDisabled} value="false">
+                                    </lightning-button>
+                                </template>
+                                <lightning-button if:true={isBudget} style="margin-right: 10px;" label="Gerar pedido" alternative-text="Gerar" class="slds-m-left_xx-small" onclick={handleGenerateOrderByOpp} disabled={isGenerateOrderByOpp}>
+                                </lightning-button>
+                            </div>
+                        </template>
+                        <template if:false={device}>
+                            <lightning-layout multiple-rows>
+                                <lightning-layout-item size="6" style="float: left">
+                                    <template if:true={freteNecessario}>
+                                        <c-freight-cd received-cd-list={orderList} disabled={isInstallmentDisabled}
+                                            onfreightvalues={handleOnFreightValues}>
+                                        </c-freight-cd>
+                                    </template>
+                                </lightning-layout-item>
+                                <!-- <lightning-layout-item size="6" style="float: left">
+                                    <template if:true={openUnitMeasurement}>
+                                        <c-unit-measurement
+                                            products={prodList}
+                                            onunitmeasurementvalues={handleOnFreightValues}
+                                            onselected={handleProductSelected}>
+                                        </c-unit-measurement>
+                                    </template>
+                                </lightning-layout-item> -->
+                                <lightning-layout-item size="6" style="float: right">
+                                    <template if:true={parcelamentoManual}>
+                                        <c-installment-dates total-value={totalOrderValue} received-dt-list={dtList}
+                                            dt-quantity-allowed={dtQuantityAllowed} disabled={isInstallmentDisabled}
+                                            onselectdates={handleOnSelectDates}>
+                                        </c-installment-dates>
+                                    </template>
+                                </lightning-layout-item>
+                                <div style="margin-bottom: 10px; margin-top: 10px; width: 100%;">
+                                    <lightning-layout-item size="6" style="float: left">
+                                        <lightning-button label="Recomendações" alternative-text="Recomendações" variant="brand" disabled={isAddItemDisabled}
+                                            class="slds-m-left_xx-small" onclick={handleNavigateOrderProduct} data-recommendation="true">
+                                        </lightning-button>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" style="float: left">
+                                        <lightning-button label="Adicionar Item" alternative-text="Adicionar Item" variant="brand"
+                                            disabled={isAddItemDisabled} class="slds-m-left_xx-small" onclick={handleNavigateOrderProduct}>
+                                        </lightning-button>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item size="6" style="float: right">
+                                        <lightning-button if:true={isBudget} label="Gerar orçamento" alternative-text="Gerar orçamento"
+                                            onclick={handleSaveOrderOrOpp} disabled={isSendToApprovalDisabled} value="true" variant="brand"
+                                            class="slds-m-left_xx-small"></lightning-button>
+                                        <lightning-button if:false={isBudget} label="Gerar pedido" alternative-text="Gerar pedido"
+                                            onclick={getStockFromMalha} disabled={isSendToApprovalDisabled} value="true" variant="brand"
+                                            class="slds-m-left_xx-small"></lightning-button>
+                                    </lightning-layout-item>
+                                </div>
+                                <lightning-layout-item size="6" style="float: right">
+                                    <template if:true={goToCheckout}>
+                                        <lightning-button label="Salvar" alternative-text="Salvar" class="slds-m-left_xx-small" onclick={handleEditOrder} disable={disableLabOrderSave} value="false">
+                                        </lightning-button>
+                                    </template>
+                                    <template if:false={goToCheckout}>
+                                        <lightning-button label="Salvar" alternative-text="Salvar" class="slds-m-left_xx-small" onclick={handleSaveOrderOrOpp} disabled={isSaveDisabled} value="false">
+                                        </lightning-button>
+                                    </template>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" style="float: right">
+                                    <lightning-button if:true={isBudget} style="margin-right: 10px;" label="Gerar pedido" alternative-text="Gerar"
+                                        class="slds-m-left_xx-small" onclick={handleGenerateOrderByOpp} disabled={isGenerateOrderByOpp}>
+                                    </lightning-button>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </div>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+
+    <!-- Modal descrição do CD -->
+    <template if:true={showCDDescriptionModal}>
+        <div>
+            <section role="dialog" tabindex="-1" aria-modal="true"
+                class="slds-modal slds-fade-in-open slds-modal_medium">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={closeCDDescription}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <div class="slds-text-heading_medium">Informações - Centro de Distribuição</div>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <table
+                            class="colorborderblue slds-table_resizable-cols slds-table slds-table_cell-buffer slds-table_fixed-layout slds-max-medium-table_stacked-horizontal slds-table_bordered"
+                            style="font-size:12px;">
+                            <thead>
+                                <tr class="slds-text-title_caps">
+                                    <th>
+                                        <div class="slds-truncate" title="Data pedido">Lote</div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-truncate" title="Valor Unitário">Validade</div>
+                                    </th>
+                                    <th>
+                                        <div class="slds-truncate" title="Centro de Distribuição">Saldo</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="slds-hint-parent">
+                                    <td>
+                                        <div>
+                                            <p><span>23456764</span>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p><span><strong>30/07/2022</strong></span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p><strong>290</strong></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="slds-hint-parent">
+                                    <td>
+                                        <div>
+                                            <p><span>23456798</span>
+                                            </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p><span><strong>30/07/2022</strong></span></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p><strong>300</strong></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button label="Fechar" onclick={closeCDDescription}></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+    <!-- /Modal descrição do CD -->
+</template>

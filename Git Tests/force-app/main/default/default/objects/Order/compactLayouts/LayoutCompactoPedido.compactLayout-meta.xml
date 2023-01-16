@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoPedido</fullName>
+    <fields>OrderNumber</fields>
+    <fields>RecordTypeId</fields>
+    <fields>Type</fields>
+    <fields>PedidoPendente__c</fields>
+    <fields>ComplementoPedido__c</fields>
+    <fields>Margem__c</fields>
+    <fields>Score__c</fields>
+    <label>Layout compacto de pedido</label>
+</CompactLayout>

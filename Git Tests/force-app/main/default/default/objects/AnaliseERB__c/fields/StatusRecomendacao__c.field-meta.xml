@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusRecomendacao__c</fullName>
+    <externalId>false</externalId>
+    <label>Status da Recomendação</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aceita efetuou a compra</fullName>
+                <default>false</default>
+                <label>Aceita efetuou a compra</label>
+            </value>
+            <value>
+                <fullName>Aceita vai efetuar a compra</fullName>
+                <default>false</default>
+                <label>Aceita vai efetuar a compra</label>
+            </value>
+            <value>
+                <fullName>Aceita porém cliente sem budget</fullName>
+                <default>false</default>
+                <label>Aceita porém cliente sem budget</label>
+            </value>
+            <value>
+                <fullName>Aceita porém cliente não quer agora</fullName>
+                <default>false</default>
+                <label>Aceita porém cliente não quer agora</label>
+            </value>
+            <value>
+                <fullName>Aceita (Outros justificar)</fullName>
+                <default>false</default>
+                <label>Aceita (Outros justificar)</label>
+            </value>
+            <value>
+                <fullName>Recusada sem interesse por ainda ter estoque</fullName>
+                <default>false</default>
+                <label>Recusada sem interesse por ainda ter estoque</label>
+            </value>
+            <value>
+                <fullName>Recusada não trabalha com este produto</fullName>
+                <default>false</default>
+                <label>Recusada não trabalha com este produto</label>
+            </value>
+            <value>
+                <fullName>Recusada sem interesse por ser laboratório/marca não padronizada</fullName>
+                <default>false</default>
+                <label>Recusada sem interesse por ser laboratório/marca não padronizada</label>
+            </value>
+            <value>
+                <fullName>Recusada sem interesse por prazo de entrega</fullName>
+                <default>false</default>
+                <label>Recusada sem interesse por prazo de entrega</label>
+            </value>
+            <value>
+                <fullName>Recusada sem interesse pelo preço</fullName>
+                <default>false</default>
+                <label>Recusada sem interesse pelo preço</label>
+            </value>
+            <value>
+                <fullName>Recusada (Outros Justificar)</fullName>
+                <default>false</default>
+                <label>Recusada (Outros Justificar)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

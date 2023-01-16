@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Cargo --></label>
+    <name>Cargo__c</name>
+    <picklistValues>
+        <masterLabel>Auxiliar de Compras</masterLabel>
+        <translation><!-- Auxiliar de Compras --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Estoquista</masterLabel>
+        <translation><!-- Estoquista --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Farmacêutico</masterLabel>
+        <translation><!-- Farmacêutico --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Gerente</masterLabel>
+        <translation><!-- Gerente --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Médico</masterLabel>
+        <translation><!-- Médico --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outros</masterLabel>
+        <translation><!-- Outros --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Proprietário</masterLabel>
+        <translation><!-- Proprietário --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Recebedor</masterLabel>
+        <translation><!-- Recebedor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Secretária</masterLabel>
+        <translation><!-- Secretária --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Superintendente</masterLabel>
+        <translation><!-- Superintendente --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

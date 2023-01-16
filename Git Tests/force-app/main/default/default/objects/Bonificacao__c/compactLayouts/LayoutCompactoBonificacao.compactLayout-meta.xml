@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoBonificacao</fullName>
+    <fields>Name</fields>
+    <fields>DataVigencia__c</fields>
+    <fields>Ativo__c</fields>
+    <label>Layout compacto de bonificação</label>
+</CompactLayout>

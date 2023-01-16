@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CPFFml__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(LEN(CPF__c) = 11,
+LEFT(CPF__c, 3) &amp; &quot;.&quot; &amp; LEFT(RIGHT(CPF__c, 8), 3) &amp; &quot;.&quot; &amp; LEFT(RIGHT(CPF__c, 5), 3) &amp; &quot;-&quot; &amp; RIGHT(CPF__c, 2),
+CPF__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CPF</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

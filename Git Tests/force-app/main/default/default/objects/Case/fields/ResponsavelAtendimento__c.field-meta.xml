@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ResponsavelAtendimento__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Informação do atendente responsável pelo caso</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Nome do Atendente responsável pelo Caso</inlineHelpText>
+    <label>Responsável pelo Atendimento</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Selecionar APENAS um responsável dentro da área de Atendimento ao Cliente do Grupo Elfa.</errorMessage>
+        <filterItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>Atendimento ao Cliente</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

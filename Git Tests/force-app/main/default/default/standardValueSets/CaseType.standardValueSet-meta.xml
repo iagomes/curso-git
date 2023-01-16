@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Incidente</fullName>
+        <default>false</default>
+        <label>Incidente</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Reclamação</fullName>
+        <default>false</default>
+        <label>Reclamação</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Solicitação</fullName>
+        <default>false</default>
+        <label>Solicitação</label>
+    </standardValue>
+    <standardValue>
+        <fullName>NPS</fullName>
+        <default>false</default>
+        <label>NPS</label>
+    </standardValue>
+</StandardValueSet>

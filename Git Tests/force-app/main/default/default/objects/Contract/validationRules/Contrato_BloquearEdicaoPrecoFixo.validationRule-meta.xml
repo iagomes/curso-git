@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contrato_BloquearEdicaoPrecoFixo</fullName>
+    <active>true</active>
+    <description>Regra de validação para bloquear a edição de qualquer contrato de preço fixo dentro do Salesforce por usuários comerciais.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(TipoRegra__c, &apos;Preço Fixo&apos;), 				
+			 NOT(ISBLANK(CreatedDate)),
+    $Profile.Name != &apos;Administrador do sistema&apos;
+)</errorConditionFormula>
+    <errorMessage>Não é permitido editar contrato de preço fixo.</errorMessage>
+</ValidationRule>

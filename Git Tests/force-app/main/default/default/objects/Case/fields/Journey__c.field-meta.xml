@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Journey__c</fullName>
+    <description>From/To journey values from NPS</description>
+    <externalId>false</externalId>
+    <formula>CASE( EmpresaDemandante__c , 
+&quot;Agilfarma&quot;,
+	&quot;agilfarma&quot;,
+&quot;Anbioton&quot;,
+	&quot;anbioton&quot;,
+&quot;ArtMedica&quot;,
+	&quot;artmed&quot;,
+&quot;BioDent&quot;,
+	&quot;biodent&quot;,
+&quot;Biohosp&quot;,
+	&quot;biohosp&quot;,
+&quot;CDM&quot;,
+	&quot;cdm&quot;,
+&quot;Commed&quot;,
+	&quot;nch&quot;,
+&quot;Cristal Pharma&quot;,
+	&quot;cristal&quot;,
+&quot;Dupatri&quot;,
+	&quot;dupatri&quot;,
+&quot;Elfa&quot;,
+	&quot;elfa&quot;,
+&quot;Fenergy&quot;,
+	&quot;fenergy&quot;,
+&quot;Jaw&quot;,
+	&quot;jaw&quot;,
+&quot;Majela&quot;,
+	&quot;elfa&quot;,
+&quot;Medcom&quot;,
+	&quot;medcom&quot;,
+&quot;Mostaert&quot;,
+	&quot;mostaert&quot;,
+&quot;Nacional&quot;,
+	&quot;nch&quot;,
+&quot;Oncorio&quot;,
+	&quot;oncorio&quot;,
+&quot;Prescrita&quot;,
+	&quot;prescrita&quot;,
+&quot;Surya&quot;,
+	&quot;horus&quot;,
+&quot;Vital Procifar&quot;,
+	&quot;vitalpro&quot;,
+&quot;elfa&quot;)</formula>
+    <inlineHelpText>Internal use only</inlineHelpText>
+    <label>Journey</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

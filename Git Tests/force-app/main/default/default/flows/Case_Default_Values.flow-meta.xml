@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <description>Flow criado para auto-preenchimento com os valores padrões nos Campos &quot;Status Área Demandante&quot; e &quot;Análise do Caso&quot;</description>
+    <interviewLabel>Case Default Values {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Case Default Values</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>Ação criada para garantir o preenchimento dos campos &quot;Status Área Demandante&quot; e &quot;Análise do Caso&quot;, com os respectivos valores padrões, quando o Caso é criado via Formulários do Web-to-Case</description>
+        <name>UpdateDefaultValues</name>
+        <label>Update default values</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Portal do Cliente</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AnaliseDoCaso__c</field>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>StatusResponsibleArea__c</field>
+            <value>
+                <stringValue>N/A</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>UpdateDefaultValues</targetReference>
+        </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Web</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Origin</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Portal do Cliente</stringValue>
+            </value>
+        </filters>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

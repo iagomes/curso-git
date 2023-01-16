@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Departamento --></label>
+    <name>Departamento__c</name>
+    <picklistValues>
+        <masterLabel>Compras</masterLabel>
+        <translation><!-- Compras --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Financeiro</masterLabel>
+        <translation><!-- Financeiro --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Logística</masterLabel>
+        <translation><!-- Logística --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Outros</masterLabel>
+        <translation><!-- Outros --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Padronização</masterLabel>
+        <translation><!-- Padronização --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

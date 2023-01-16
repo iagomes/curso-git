@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>CaseNewEmailNotificationTitle</fullName>
+        <categories>Custom notification</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Case New Email Notification Title</shortDescription>
+        <value>Novo email para o Caso!</value>
+    </labels>
+    <labels>
+        <fullName>Case_New_Email_Notification_Body</fullName>
+        <categories>Custom notification</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Case New Email Notification Body</shortDescription>
+        <value>Você recebeu um novo e-mail para o caso: __CASENUMBER__</value>
+    </labels>
+    <labels>
+        <fullName>ClienteInativo</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo</shortDescription>
+        <value>Cliente inativo para inserção de pedidos</value>
+    </labels>
+    <labels>
+        <fullName>ClienteInativoImsert</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo inclusão</shortDescription>
+        <value>Caso aceite, o pedido será integrado com erro.</value>
+    </labels>
+    <labels>
+        <fullName>ClienteInativoInsert</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo inclusão</shortDescription>
+        <value>Cliente bloqueado para inserção de pedidos no ERP. Deseja realmente continuar?</value>
+    </labels>
+    <labels>
+        <fullName>ClienteInativoInsertPositivo</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo inclusão</shortDescription>
+        <value>Caso aceite, o pedido será integrado com erro.</value>
+    </labels>
+    <labels>
+        <fullName>ClienteRecebedorInativo</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo</shortDescription>
+        <value>Cliente recebedor inativo para inserção de pedidos</value>
+    </labels>
+    <labels>
+        <fullName>ClienteRecebedorInativoInsert</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cliente Inativo inclusão</shortDescription>
+        <value>Cliente recebedor bloqueado para inserção de pedidos no ERP. Deseja realmente Continuar?</value>
+    </labels>
+    <labels>
+        <fullName>FreightCdError</fullName>
+        <categories>Frete, Erro</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Definição de frete</shortDescription>
+        <value>Defina o tipo de frente antes de prosseguir.</value>
+    </labels>
+    <labels>
+        <fullName>NotificationOrderError</fullName>
+        <categories>Erro, Pedido, Pendente, Notificação</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Erro de notificação de pedido pendente</shortDescription>
+        <value>Erro ao tentar enviar noficação de pedido pendente:</value>
+    </labels>
+    <labels>
+        <fullName>PendingOrder</fullName>
+        <categories>Order, Pedido, Pendente, Pending</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Pedido pendente</shortDescription>
+        <value>Você tem um pedido com pendências.</value>
+    </labels>
+    <labels>
+        <fullName>PendingOrderEmail</fullName>
+        <categories>Email</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Email do pedido pendente</shortDescription>
+        <value>tatiana.santos@grupoelfa.com.br</value>
+    </labels>
+    <labels>
+        <fullName>PendingOrderTitle</fullName>
+        <categories>Titulo, Pedido, Order, Title</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Titulo da notificação</shortDescription>
+        <value>Notificação de pedido pendente.</value>
+    </labels>
+    <labels>
+        <fullName>StockNotification</fullName>
+        <categories>Notificação, estoque</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Notificação de estoque</shortDescription>
+        <value>Chegou novo estoque para um de seus pedidos pendentes!</value>
+    </labels>
+    <labels>
+        <fullName>UnableToCancelOrder</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>UnableToCancelOrder</shortDescription>
+        <value>Não foi possível cancelar este pedido pois já havia sido faturado no ERP.</value>
+    </labels>
+    <labels>
+        <fullName>UnableToCancelOrderTitle</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>UnableToCancelOrderTitle</shortDescription>
+        <value>Aviso de pedido não cancelado</value>
+    </labels>
+    <labels>
+        <fullName>CannotSaveNewCaseWhenOngoingCaseWithSameInvoiceNumber</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cannot save new case when ongoing case with same invoice number</shortDescription>
+        <value>Essa NF corresponde ao caso número __CASENUMBER__ que já está em tratativa</value>
+    </labels>
+    <labels>
+        <fullName>Forward</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Forward</shortDescription>
+        <value>Encaminhar</value>
+    </labels>
+    <labels>
+        <fullName>Are_sure_you_want_to_forward_the_case</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Are you sure you want to forward the case?</shortDescription>
+        <value>Tem certeza que deseja encaminhar?</value>
+    </labels>
+    <labels>
+        <fullName>Error</fullName>
+        <categories>General</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Error</shortDescription>
+        <value>Erro</value>
+    </labels>
+    <labels>
+        <fullName>Success</fullName>
+        <categories>General</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Success</shortDescription>
+        <value>Sucesso</value>
+    </labels>
+    <labels>
+        <fullName>Error_performing_the_request_action</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Error_performing_the_requested_action</shortDescription>
+        <value>Erro ao executar a ação requisitada. Por favor, tente mais tarde ou contate o administrador do sistema.</value>
+    </labels>
+    <labels>
+        <fullName>The_case_was_successfully_forwarded</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>The case was successfully forwarded</shortDescription>
+        <value>O caso foi encaminhado corretamente!</value>
+    </labels>
+    <labels>
+        <fullName>Interactions</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Interactions</shortDescription>
+        <value>Interações</value>
+    </labels>
+    <labels>
+        <fullName>Customer_service</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Customer service</shortDescription>
+        <value>Atendimento ao cliente</value>
+    </labels>
+    <labels>
+        <fullName>Return_area</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Return area</shortDescription>
+        <value>Devolução</value>
+    </labels>
+    <labels>
+        <fullName>Customer_survey</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Customer survey</shortDescription>
+        <value>Pesquisa de Satisfação</value>
+    </labels>
+    <labels>
+        <fullName>NPS_token</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>NPS Token</shortDescription>
+        <value>3ae3d79c40c96ede6f4ba16379f6a685</value>
+    </labels>
+    <labels>
+        <fullName>Registration</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Registration</shortDescription>
+        <value>Cadastro</value>
+    </labels>
+    <labels>
+        <fullName>Years</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Years</shortDescription>
+        <value>ano(s)</value>
+    </labels>
+    <labels>
+        <fullName>Days</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Days</shortDescription>
+        <value>dia(s)</value>
+    </labels>
+    <labels>
+        <fullName>Hours</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Hours</shortDescription>
+        <value>hora(s)</value>
+    </labels>
+    <labels>
+        <fullName>Minutes</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Minutes</shortDescription>
+        <value>minuto(s)</value>
+    </labels>
+    <labels>
+        <fullName>Seconds</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Seconds</shortDescription>
+        <value>second(s)</value>
+    </labels>
+    <labels>
+        <fullName>Chronometer</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Chronometer</shortDescription>
+        <value>Cronômetro</value>
+    </labels>
+    <labels>
+        <fullName>Confirm</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Confirm</shortDescription>
+        <value>Confirmar</value>
+    </labels>
+    <labels>
+        <fullName>Cancel</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancelar</value>
+    </labels>
+    <labels>
+        <fullName>OK</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>OK</shortDescription>
+        <value>OK</value>
+    </labels>
+    <labels>
+        <fullName>Save</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Save</shortDescription>
+        <value>Salvar</value>
+    </labels>
+    <labels>
+        <fullName>Timeline</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Timeline</shortDescription>
+        <value>Timeline</value>
+    </labels>
+    <labels>
+        <fullName>Queue_registration_required_fields</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Queue registration required fields</shortDescription>
+        <value>Só é possível encaminhar para cadastro com os campos motivos e submotivos preenchidos.</value>
+    </labels>
+    <labels>
+        <fullName>Click_here_to_download_your_invoice</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Click here to download your invoice</shortDescription>
+        <value>Sua nota foi gerada com sucesso! &lt;a name=&quot;download&quot; title=&quot;Download&quot; href=&quot;#&quot;&gt;Clique aqui&lt;/a&gt; para fazer o download.</value>
+    </labels>
+    <labels>
+        <fullName>Click_here_to_download_your_payment_slip</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Click here to download your payment slip</shortDescription>
+        <value>Seu boleto foi gerado com sucesso! &lt;a name=&quot;download&quot; title=&quot;Download&quot; href=&quot;#&quot;&gt;Clique aqui&lt;/a&gt; para fazer o download.</value>
+    </labels>
+    <labels>
+        <fullName>Error_when_generating_invoice</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Error when generating invoice</shortDescription>
+        <value>Não foi possível gerar a nota fiscal. Por favor, tente mais tarde.</value>
+    </labels>
+    <labels>
+        <fullName>Error_when_generating_payment_slip</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Error when generating payment slip</shortDescription>
+        <value>Não foi possível gerar o boleto. Por favor, tente mais tarde.</value>
+    </labels>
+    <labels>
+        <fullName>Wait</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Wait</shortDescription>
+        <value>Aguarde</value>
+    </labels>
+    <labels>
+        <fullName>Already_assigned_to_the_queue</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Already assigned to the queue</shortDescription>
+        <value>O caso já esta na fila {0}</value>
+    </labels>
+    <labels>
+        <fullName>No_foward_route_assigned</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>No foward route assigned</shortDescription>
+        <value>Não existe regra de Encaminhamento para a árvore do Caso!</value>
+    </labels>
+    <labels>
+        <fullName>EmailVDESetorizado</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>EmailVDESetorizado</shortDescription>
+        <value>&lt;p&gt; A cotação {0} ID {1} - {2} com vencimento em {3}, foi respondida por  {4}, em {5}.&lt;/p&gt;&lt;br/&gt;&lt;br/&gt;+&lt;a href={6}/{7}&gt;Link do Orçamento.&lt;/a&gt;</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_1</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 1</shortDescription>
+        <value>Não foi encontrado uma reserva com este código {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_10</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 10</shortDescription>
+        <value>Entre em contato com o administrador do sistema para obter mais informações.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_2</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 2</shortDescription>
+        <value>Não foi encontrado o centro de distribuição para a reserva de produto {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_3</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 3</shortDescription>
+        <value>Não foram encontrados produtos que podem ser atribuídos na reserva {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_4</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 4</shortDescription>
+        <value>Não foi encontrado o centro de distribuição para o estoque {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_5</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 5</shortDescription>
+        <value>Não foi encontrado estoque para o produto {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_6</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 6</shortDescription>
+        <value>Não foi encontrado estoque para os produtos da reserva {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_7</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 7</shortDescription>
+        <value>Todos os itens foram atribuídos com sucesso!</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_8</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 8</shortDescription>
+        <value>Erro ao atribuir os itens da reserva {0}.</value>
+    </labels>
+    <labels>
+        <fullName>CLONE_RESERVATION_ITENS_MESSAGE_9</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Clonar itens da reserva - Mensagem nº 9</shortDescription>
+        <value>A reserva {0} não possuí saldo suficiente para atribuir os produtos.</value>
+    </labels>
+    <labels>
+        <fullName>RESERVATION_PRODUCT_SCREEN_CSV_COL_1</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Reserva de produto - coluna csv nº 1</shortDescription>
+        <value>codProd</value>
+    </labels>
+    <labels>
+        <fullName>RESERVATION_PRODUCT_SCREEN_CSV_COL_2</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Reserva de produto - coluna csv nº 2</shortDescription>
+        <value>codArmazem</value>
+    </labels>
+    <labels>
+        <fullName>RESERVATION_PRODUCT_SCREEN_CSV_COL_3</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Reserva de produto - coluna csv nº 3</shortDescription>
+        <value>quantidade</value>
+    </labels>
+    <labels>
+        <fullName>Customer_accessed_requested_document</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Customer accessed requested document</shortDescription>
+        <value>O cliente acessou a url gerada.</value>
+    </labels>
+    <labels>
+        <fullName>Service_didnt_find_the_requested_document</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Service didn't find the requested document</shortDescription>
+        <value>O serviço não encontrou o documento solicitado.</value>
+    </labels>
+    <labels>
+        <fullName>Service_found_the_requested_document</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Service found the requested document</shortDescription>
+        <value>O serviço retornou o documento solicitado.</value>
+    </labels>
+    <labels>
+        <fullName>Click_here_to_access_log_details</fullName>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Click here to access log details</shortDescription>
+        <value>Para mais detalhes, acesse o log através do link https://elfa.lightning.force.com/__LOGID__, ou entre em contato com um administrador da plataforma.</value>
+    </labels>
+    <labels>
+        <fullName>NPS</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>NPS</shortDescription>
+        <value>NPS</value>
+    </labels>
+    <labels>
+        <fullName>NPSOrigin</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Origin</shortDescription>
+        <value>Origem</value>
+    </labels>
+    <labels>
+        <fullName>NPSScore</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>NPS Score</shortDescription>
+        <value>Nota</value>
+    </labels>
+    <labels>
+        <fullName>NPSScoreError</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>NPS score error</shortDescription>
+        <value>Não foi possível recuperar o NPS.</value>
+    </labels>
+    <labels>
+        <fullName>NPSNoScore</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>NPS no score</shortDescription>
+        <value>Este caso não tem um NPS disponível.</value>
+    </labels>
+    <labels>
+        <fullName>CannotLoadElpasedTimeInformation</fullName>
+        <categories>Case</categories>
+        <language>pt_BR</language>
+        <protected>false</protected>
+        <shortDescription>Cannt load elpased time information</shortDescription>
+        <value>Não foi possível carregar as informações do cronômetro.</value>
+    </labels>
+</CustomLabels>

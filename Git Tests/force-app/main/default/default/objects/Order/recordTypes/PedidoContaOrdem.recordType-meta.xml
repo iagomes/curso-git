@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PedidoContaOrdem</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>LayoutCompactoPedidoFilho</compactLayoutAssignment>
+    <label>Pedido de conta e ordem</label>
+    <picklistValues>
+        <picklist>CanalEntrada__c</picklist>
+        <values>
+            <fullName>ACSC - Associação Congregação de Santa Catarina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apoio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ariba%2FAmil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bionexo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONTRATO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-MAIL MARKETING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GERENCIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GTPLAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Humma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INPART</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICROSOFT TEAMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MVM RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Max Cotações</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Movi Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NEOGRID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nimbi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PANFLETO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL FAEPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL MULTICENTRAIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL MV SISTEMA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SAO MARTINHO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SGHCOT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SINCONECTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL UNIFENAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL UNIMED LIMEIRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL WARELINE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paradigma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plani Max</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pro Saude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sintese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skype</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Smarkets Marketplace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Smart Compras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tasy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telefone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TerNet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tivox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unifor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VENDEDOR EXTERNO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VS Supply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FormaPagamento__c</picklist>
+        <values>
+            <fullName>Boleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carteira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Depósito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cartão de Credito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cartão de Debito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dinheiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eletrônico</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>GerarBoleto__c</picklist>
+        <values>
+            <fullName>Não</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sim</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>MotivoCancelamento__c</picklist>
+        <values>
+            <fullName>Cancelado para correção</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desistência do cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falha operacional</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origem__c</picklist>
+        <values>
+            <fullName>Desktop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobile</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status</picklist>
+        <values>
+            <fullName>Aguardando aprovação RA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando comprovante</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando integração</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando separação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ErroIntegracao</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloqueado ERP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando envio de cancelamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando envio de rejeição</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>IntegradoReservado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liberado ERP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pai - Aprovado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pai - Em aprovação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Separado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando processamento na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejeitado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloqueado por divergência de preços</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusAprovacao__c</picklist>
+        <values>
+            <fullName>Aprovado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em aprovação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em digitação</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusCartaTroca__c</picklist>
+        <values>
+            <fullName>Aguardando envio ao ERP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro de integração</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando aprovação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reprovada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta gerada</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusEntrega__c</picklist>
+        <values>
+            <fullName>A caminho</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Abortada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Agendado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chegou</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coletado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Com ajudante</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conferido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conferindo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devolvido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em pausa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em Rota</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em transferência</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entregue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entregue SL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Link de rastreamento disponível</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não coletado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não entregue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Programado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sem rota</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transferido</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusIntegracao__c</picklist>
+        <values>
+            <fullName>Erro integração %28Envio ao Protheus%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro integração %28geração do pedido no Protheus%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não integrado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro de aprovação/rejeição</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nota fiscal cancelada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido aguardando saldo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido aguardando separação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado na alçada de desconto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado por crédito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado por crédito e estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado por estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado por regra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido bloqueado por regra de bonificação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido com SC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido com resíduo eliminado %28com faturamento%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido com resíduo eliminado %28sem faturamento%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido em aberto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido em separação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido faturado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido liberado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido rejeitado na alçada financeira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido rejeitado no Salesforce</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido separado%2Faguardando faturamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido aguardando envio/processamento do comprovante de pagamento RA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido aguardando aprovação de pagamento RA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido rejeitado na alçada de aprovação de pagamento RA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando processamento na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rejeitado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloqueado por divergência de preços</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>SubmotivosCancelamento__c</picklist>
+        <values>
+            <fullName>Aprovação de cadastro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovação fora do prazo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Condição de pagamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Correção de preço</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devolução e troca do material</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Endereço de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro de estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro na descrição</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Exclusão de item</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fator de conversão e unidade de medida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturado o mesmo pedido duas vezes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inclusão de item</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Marca do produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prazo de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preferiu a concorrência</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preço</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qualidade do produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quantidade diferente da nota fiscal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quantidade do item</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quantidade insuficiente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tamanho diferente da nota fiscal</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TipoFrete__c</picklist>
+        <values>
+            <fullName>CIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FOB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CLIENTE RETIRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Por conta de terceiros</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Por conta destinatário</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Por conta remetente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sem frete</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Pedido histórico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PedidoBonificacao</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PedidoContaOrdem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PedidoMae</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PedidoVenda</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

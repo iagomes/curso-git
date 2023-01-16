@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <formulas>
+        <name>formulaHoje</name>
+        <dataType>DateTime</dataType>
+        <expression>NOW()</expression>
+    </formulas>
+    <interviewLabel>Reserva - Atualizar status {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Reserva - Atualizar status para Expirada</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>AtualizarStatus</name>
+        <label>Atualizar status</label>
+        <locationX>176</locationX>
+        <locationY>276</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>FimReserva__c</field>
+            <operator>LessThan</operator>
+            <value>
+                <elementReference>formulaHoje</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>StatusReserva__c</field>
+            <value>
+                <stringValue>Expirada</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Reserva__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>AtualizarStatus</targetReference>
+        </connector>
+        <object>Reserva__c</object>
+        <schedule>
+            <frequency>Daily</frequency>
+            <startDate>2022-06-21</startDate>
+            <startTime>00:00:00.000Z</startTime>
+        </schedule>
+        <triggerType>Scheduled</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

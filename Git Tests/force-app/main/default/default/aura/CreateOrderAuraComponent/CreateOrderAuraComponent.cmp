@@ -1,0 +1,220 @@
+<aura:component implements="force:appHostable,force:hasRecordId,forceCommunity:availableForAllPageTypes">
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />  
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="newRecordId" type="Id"/>
+    <aura:attribute name="isEdit" type="Boolean" />
+    <aura:attribute name="isBudget" type="Boolean" default="false"/>
+    <aura:attribute name="isSonOrder" type="Boolean" default="false"/>
+    <aura:attribute name="isCreateOrderFromBudget" type="Boolean" default="false"/>
+    <aura:attribute name="isFromBudgetScreen" type="Boolean" default="false"/>
+    <aura:attribute name="isReturn" type="Boolean" default="false"/>
+    <aura:attribute name="headerObject" type="Object" />
+    <aura:attribute name="headerObjectselectedProd" type="String"/>
+    <aura:attribute name="headerObjectgetRecommendation" type="Boolean"/>
+
+    <aura:attribute name="productLayout"  type="Boolean" default="false"/>
+    <aura:attribute name="checkoutLayout" type="Boolean" default="false"/>
+    
+    <aura:attribute name="headerObjectclienteEmissor"            type="String"/>
+    <aura:attribute name="headerObjectclienteEmissorId"          type="String"/>
+    <aura:attribute name="headerObjectclienteEmissorCGC"         type="String"/>
+    <aura:attribute name="headerObjectmedico"                    type="String"/>
+    <aura:attribute name="headerObjectmedicoId"                  type="String"/>
+    <aura:attribute name="headerObjectmedicoCRM"                 type="String"/>
+    <aura:attribute name="headerObjecttabelaPreco"               type="String"/>
+    <aura:attribute name="headerObjecttabelaPrecoNome"           type="String"/>
+    <aura:attribute name="headerObjecttipoFrete"                 type="String"/>
+    <aura:attribute name="headerObjectvalorFrete"                type="String"/>
+    <aura:attribute name="headerObjectnumeroPedidoCliente"       type="String"/>
+    <aura:attribute name="headerObjectcondicaoPagamento"         type="String"/>
+    <aura:attribute name="headerObjectcondicaoPagamentoNome"     type="String"/>
+    <aura:attribute name="headerObjectcontatoOrcamento"          type="String"/>
+    <aura:attribute name="headerObjectcanalVendas"               type="String"/>
+    <aura:attribute name="headerObjecttipoOrdem"                 type="String"/>
+    <aura:attribute name="headerObjectformaPagamento"            type="String"/>
+    <aura:attribute name="headerObjectdtPrevistaEntrega"         type="String"/>
+    <aura:attribute name="headerObjectclienteRecebedor"          type="String"/>
+    <aura:attribute name="headerObjectclienteRecebedorCGC"       type="String"/>
+    <aura:attribute name="headerObjectenderecoEntrega"           type="String"/>
+    <aura:attribute name="headerObjectenderecoEntregaId"         type="String"/>
+    <aura:attribute name="headerObjectenderecoEntregaContaOrdem" type="String"/>
+    <aura:attribute name="headerObjectobservacao"                type="String"/>
+    <aura:attribute name="headerObjectobservacaoNF"              type="String"/>
+    <aura:attribute name="headerObjectobservacaoPedido"          type="String"/>
+    <aura:attribute name="headerObjectdtParcelas"                type="String"/>
+    <aura:attribute name="headerObjectfretesPorCd"               type="String"/>
+    <aura:attribute name="headerObjectcnpjCd"                    type="String"/>
+    <aura:attribute name="headerObjectpedidoComplementar"        type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectorderList"                 type="String"/>
+    <aura:attribute name="headerObjecthasPermissionERB"          type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectgoToCheckout"              type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectorderListReturned"         type="String"/>
+    <aura:attribute name="headerObjectIdportalcotacoes"          type="String"/>
+    <aura:attribute name="headerObjectrecomendacaoRespondida"    type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectcreateOrderDt"             type="String"/>
+    <aura:attribute name="headerObjectenderecoAdicional"         type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectalreadySaved"              type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectsavingStrData"             type="String"/>
+    
+    <aura:attribute name="headerLayout"   type="Boolean" default="true"/>
+    
+    <aura:attribute name="navigateCheckout" type="Boolean" default="true" />
+
+    <lightning:workspaceAPI aura:id="workspace" />
+    <c:closeConsoleTabAura />
+
+    <aura:if isTrue="{!v.headerLayout}">
+		<c:insertOrder 
+            recordId="{!v.recordId}" 
+            newRecordId="{!v.newRecordId}" 
+            isEdit="{!v.isEdit}" 
+            isSonOrder="{!v.isSonOrder}" 
+            isBudget="{!v.isBudget}" 
+            isReturn="{!v.isReturn}"
+            isCreateOrderFromBudget="{!v.isCreateOrderFromBudget}"  
+            isFromBudgetScreen="{!v.isFromBudgetScreen}"  
+
+            clienteEmissorOrderProduct            = "{!v.headerObjectclienteEmissor}"
+            clienteEmissorIdOrderProduct          = "{!v.headerObjectclienteEmissorId}"
+            clienteEmissorCGCOrderProduct         = "{!v.headerObjectclienteEmissorCGC}"
+            medicoOrderProduct                    = "{!v.headerObjectmedico}"
+            medicoIdOrderProduct                  = "{!v.headerObjectmedicoId}"
+            medicoCRMOrderProduct                = "{!v.headerObjectmedicoCRM}"
+            tabelaPrecoOrderProduct               = "{!v.headerObjecttabelaPreco}"
+            tabelaPrecoNomeOrderProduct           = "{!v.headerObjecttabelaPrecoNome}"
+            tipoFreteOrderProduct                 = "{!v.headerObjecttipoFrete}"
+            valorFreteOrderProduct                = "{!v.headerObjectvalorFrete}"
+            numeroPedidoClienteOrderProduct       = "{!v.headerObjectnumeroPedidoCliente}"
+            condicaoPagamentoOrderProduct         = "{!v.headerObjectcondicaoPagamento}"
+            condicaoPagamentoNomeOrderProduct     = "{!v.headerObjectcondicaoPagamentoNome}"
+            contatoOrcamentoOrderProduct          = "{!v.headerObjectcontatoOrcamento}"
+            canalVendasOrderProduct               = "{!v.headerObjectcanalVendas}"
+            tipoOrdemOrderProduct                 = "{!v.headerObjecttipoOrdem}"
+            formaPagamentoOrderProduct            = "{!v.headerObjectformaPagamento}"
+            dtPrevistaEntregaOrderProduct         = "{!v.headerObjectdtPrevistaEntrega}"
+            clienteRecebedorOrderProduct          = "{!v.headerObjectclienteRecebedor}"
+            clienteRecebedorCGCOrderProduct       = "{!v.headerObjectclienteRecebedorCGC}"
+            enderecoEntregaIdOrderProduct         = "{!v.headerObjectenderecoEntregaId}"
+            enderecoEntregaOrderProduct           = "{!v.headerObjectenderecoEntrega}"
+            enderecoEntregaContaOrdemOrderProduct = "{!v.headerObjectenderecoEntregaContaOrdem}"
+            observacaoOrderProduct                = "{!v.headerObjectobservacao}"
+            observacaoNFOrderProduct              = "{!v.headerObjectobservacaoNF}"
+            observacaoPedidoOrderProduct          = "{!v.headerObjectobservacaoPedido}"
+            hasPermissionERB                      = "{!v.headerObjecthasPermissionERB}"
+            goToCheckout                          = "{!v.headerObjectgoToCheckout}"
+            dtParcelasOrderProduct                = "{!v.headerObjectdtParcelas}"
+            fretesPorCdOrderProduct               = "{!v.headerObjectfretesPorCd}"
+            pedidoComplementarOrderProduct        = "{!v.headerObjectpedidoComplementar}"
+            utilizarEnderecoAdicionalOrderProduct = "{!v.headerObjectenderecoAdicional}"
+            Idportalcotacoes                      = "{!v.headerObjectIdportalcotacoes}"
+            createOrderDt                         = "{!v.headerObjectcreateOrderDt}"
+            allRecAnswered                        = "{!v.headerObjectrecomendacaoRespondida}"
+            alreadySaved                          = "{!v.headerObjectalreadySaved}"
+            savingStrData                         = "{!v.headerObjectsavingStrData}"
+            orderListReturned         = "{!v.headerObjectorderListReturned}"
+            ondisplaymyvaluenew="{!c.handleFilterChange}" 
+            oncloseclicked="{!c.handleCloseClicked}">
+        </c:insertOrder>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.navigateCheckout}">
+            <c:orderProduct 
+            isEdit                    = "{!v.isEdit}"
+            isBudget                  = "{!v.isBudget}"
+            newRecordId               = "{!v.newRecordId}" 
+            clienteEmissor            = "{!v.headerObjectclienteEmissor}"
+            recordId                  = "{!v.recordId}"
+            clienteEmissorId          = "{!v.headerObjectclienteEmissorId}"
+            clienteEmissorCGC         = "{!v.headerObjectclienteEmissorCGC}"
+            medico                    = "{!v.headerObjectmedico}"
+            medicoId                  = "{!v.headerObjectmedicoId}"
+            medicoCRM                 = "{!v.headerObjectmedicoCRM}"
+            tabelaPreco               = "{!v.headerObjecttabelaPreco}"
+            tabelaPrecoNome           = "{!v.headerObjecttabelaPrecoNome}"
+            tipoFrete                 = "{!v.headerObjecttipoFrete}"
+            valorFrete                = "{!v.headerObjectvalorFrete}"
+            numeroPedidoCliente       = "{!v.headerObjectnumeroPedidoCliente}"
+            condicaoPagamento         = "{!v.headerObjectcondicaoPagamento}"
+            condicaoPagamentoNome     = "{!v.headerObjectcondicaoPagamentoNome}"
+            contatoOrcamento          = "{!v.headerObjectcontatoOrcamento}"
+            canalVendas               = "{!v.headerObjectcanalVendas}"
+            tipoOrdem                 = "{!v.headerObjecttipoOrdem}"
+            formaPagamento            = "{!v.headerObjectformaPagamento}"
+            dtPrevistaEntrega         = "{!v.headerObjectdtPrevistaEntrega}"
+            clienteRecebedor          = "{!v.headerObjectclienteRecebedor}"
+            clienteRecebedorCGC       = "{!v.headerObjectclienteRecebedorCGC}"
+            enderecoEntregaId         = "{!v.headerObjectenderecoEntregaId}"
+            enderecoEntrega           = "{!v.headerObjectenderecoEntrega}"
+            enderecoEntregaContaOrdem = "{!v.headerObjectenderecoEntregaContaOrdem}"
+            observacao                = "{!v.headerObjectobservacao}"
+            observacaoNF              = "{!v.headerObjectobservacaoNF}"
+            observacaoPedido          = "{!v.headerObjectobservacaoPedido}"
+            hasPermissionERB          = "{!v.headerObjecthasPermissionERB}"
+            goToCheckout              = "{!v.headerObjectgoToCheckout}"
+            dtParcelas                = "{!v.headerObjectdtParcelas}"
+            fretesPorCd               = "{!v.headerObjectfretesPorCd}"
+            Idportalcotacoes          = "{!v.headerObjectIdportalcotacoes}"
+            allRecAnswered            = "{!v.headerObjectrecomendacaoRespondida}"
+            createOrderDt             = "{!v.headerObjectcreateOrderDt}"
+            alreadySaved              = "{!v.headerObjectalreadySaved}"
+            savingStrData             = "{!v.headerObjectsavingStrData}"
+            pedidoComplementar        = "{!v.headerObjectpedidoComplementar}"
+            orderListReturned         = "{!v.headerObjectorderListReturned}"
+            utilizarEnderecoAdicional = "{!v.headerObjectenderecoAdicional}"
+            productToSearch           = "{!v.headerObjectselectedProd}"
+            getRecommendation         = "{!v.headerObjectgetRecommendation}"
+            ondisplaymyvaluenew       = "{!c.handleNavigateToCheckout}"
+            ongenerateorder           = "{!c.handleRetorno}" >
+            </c:orderProduct>
+                <aura:set attribute="else">
+                    <c:orderProductCheckout 
+                        isEdit                    = "{!v.isEdit}"
+                        isBudget                  = "{!v.isBudget}"
+                        recordId                  = "{!v.recordId}"
+                        newRecordId               = "{!v.newRecordId}" 
+                        clienteEmissor            = "{!v.headerObjectclienteEmissor}"
+                        clienteEmissorId          = "{!v.headerObjectclienteEmissorId}"
+                        clienteEmissorCGC         = "{!v.headerObjectclienteEmissorCGC}"
+                        medico                    = "{!v.headerObjectmedico}"
+                        medicoId                  = "{!v.headerObjectmedicoId}"
+                        medicoCRM                 = "{!v.headerObjectmedicoCRM}"
+                        tabelaPreco               = "{!v.headerObjecttabelaPreco}"
+                        tabelaPrecoNome           = "{!v.headerObjecttabelaPrecoNome}"
+                        tipoFrete                 = "{!v.headerObjecttipoFrete}"
+                        valorFrete                = "{!v.headerObjectvalorFrete}"
+                        numeroPedidoCliente       = "{!v.headerObjectnumeroPedidoCliente}"
+                        condicaoPagamento         = "{!v.headerObjectcondicaoPagamento}"
+                        condicaoPagamentoNome     = "{!v.headerObjectcondicaoPagamentoNome}"
+                        contatoOrcamento          = "{!v.headerObjectcontatoOrcamento}"
+                        canalVendas               = "{!v.headerObjectcanalVendas}"
+                        tipoOrdem                 = "{!v.headerObjecttipoOrdem}"
+                        formaPagamento            = "{!v.headerObjectformaPagamento}"
+                        dtPrevistaEntrega         = "{!v.headerObjectdtPrevistaEntrega}"
+                        clienteRecebedor          = "{!v.headerObjectclienteRecebedor}"
+                        clienteRecebedorCGC       = "{!v.headerObjectclienteRecebedorCGC}"
+                        enderecoEntregaId         = "{!v.headerObjectenderecoEntregaId}"
+                        enderecoEntrega           = "{!v.headerObjectenderecoEntrega}"
+                        enderecoEntregaContaOrdem = "{!v.headerObjectenderecoEntregaContaOrdem}"
+                        observacao                = "{!v.headerObjectobservacao}"
+                        observacaoNF              = "{!v.headerObjectobservacaoNF}"
+                        observacaoPedido          = "{!v.headerObjectobservacaoPedido}"
+                        dtParcelas                = "{!v.headerObjectdtParcelas}"
+                        fretesPorCd               = "{!v.headerObjectfretesPorCd}"
+                        alreadySaved              = "{!v.headerObjectalreadySaved}"
+                        savingStrData             = "{!v.headerObjectsavingStrData}"
+                        pedidoComplementar        = "{!v.headerObjectpedidoComplementar}"
+                        cnpjCd                    = "{!v.headerObjectcnpjCd}"
+                        hasPermissionERB          = "{!v.headerObjecthasPermissionERB}"
+                        goToCheckout              = "{!v.headerObjectgoToCheckout}"
+                        orderList                 = "{!v.headerObjectorderList}"
+                        utilizarEnderecoAdicional = "{!v.headerObjectenderecoAdicional}"
+                        Idportalcotacoes          = "{!v.headerObjectIdportalcotacoes}"
+                        allRecAnswered            = "{!v.headerObjectrecomendacaoRespondida}"
+                        createOrderDt             = "{!v.headerObjectcreateOrderDt}"
+                        ondisplaymyvaluenew       = "{!c.handleNavigateToOrderProduct}"
+                        oncloseclicked            = "{!c.handleCloseClicked}">
+                    </c:orderProductCheckout>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>
+</aura:component>

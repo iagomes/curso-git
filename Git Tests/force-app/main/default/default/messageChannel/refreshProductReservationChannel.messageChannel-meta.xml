@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>refreshProductReservationChannel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>This message channel was created to refresh the productReservation component.</description>
+    <lightningMessageFields>
+        <fieldName>refreshComponent</fieldName>
+        <description>refresh productReservation component</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

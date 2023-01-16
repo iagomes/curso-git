@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Closed Case - Service Desk</name>
+    <style>none</style>
+    <subject>Notificação de Caso finalizado!</subject>
+    <textOnly>Olá!
+
+Informamos que o caso de número {!Case.CaseNumber}, referente ao cliente {!Case.Account} foi finalizado.
+
+Equipe de Atendimento ao Cliente Grupo Elfa
+
+{!Case.OwnerFullName}
+(16) 99643-0417
+atendimentoaocliente@grupoelfa.com.br</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

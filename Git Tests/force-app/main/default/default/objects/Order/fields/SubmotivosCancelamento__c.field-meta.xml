@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SubmotivosCancelamento__c</fullName>
+    <externalId>false</externalId>
+    <label>Submotivo de cancelamento</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>MotivoCancelamento__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Preço</fullName>
+                <default>false</default>
+                <label>Preço</label>
+            </value>
+            <value>
+                <fullName>Prazo de entrega</fullName>
+                <default>false</default>
+                <label>Prazo de entrega</label>
+            </value>
+            <value>
+                <fullName>Condição de pagamento</fullName>
+                <default>false</default>
+                <label>Condição de pagamento</label>
+            </value>
+            <value>
+                <fullName>Qualidade do produto</fullName>
+                <default>false</default>
+                <label>Qualidade do produto</label>
+            </value>
+            <value>
+                <fullName>Quantidade insuficiente</fullName>
+                <default>false</default>
+                <label>Quantidade insuficiente</label>
+            </value>
+            <value>
+                <fullName>Preferiu a concorrência</fullName>
+                <default>false</default>
+                <label>Preferiu a concorrência</label>
+            </value>
+            <value>
+                <fullName>Inclusão de item</fullName>
+                <default>false</default>
+                <label>Inclusão de item</label>
+            </value>
+            <value>
+                <fullName>Exclusão de item</fullName>
+                <default>false</default>
+                <label>Exclusão de item</label>
+            </value>
+            <value>
+                <fullName>Erro de estoque</fullName>
+                <default>false</default>
+                <label>Erro de estoque</label>
+            </value>
+            <value>
+                <fullName>Correção de preço</fullName>
+                <default>false</default>
+                <label>Correção de preço</label>
+            </value>
+            <value>
+                <fullName>Marca do produto</fullName>
+                <default>false</default>
+                <label>Marca do produto</label>
+            </value>
+            <value>
+                <fullName>Quantidade do item</fullName>
+                <default>false</default>
+                <label>Quantidade do item</label>
+            </value>
+            <value>
+                <fullName>Endereço de entrega</fullName>
+                <default>false</default>
+                <label>Endereço de entrega</label>
+            </value>
+            <value>
+                <fullName>Tamanho diferente da nota fiscal</fullName>
+                <default>false</default>
+                <label>Tamanho diferente da nota fiscal</label>
+            </value>
+            <value>
+                <fullName>Quantidade diferente da nota fiscal</fullName>
+                <default>false</default>
+                <label>Quantidade diferente da nota fiscal</label>
+            </value>
+            <value>
+                <fullName>Aprovação fora do prazo</fullName>
+                <default>false</default>
+                <label>Aprovação fora do prazo</label>
+            </value>
+            <value>
+                <fullName>Aprovação de cadastro</fullName>
+                <default>false</default>
+                <label>Aprovação de cadastro</label>
+            </value>
+            <value>
+                <fullName>Erro na descrição</fullName>
+                <default>false</default>
+                <label>Erro na descrição</label>
+            </value>
+            <value>
+                <fullName>Devolução e troca do material</fullName>
+                <default>false</default>
+                <label>Devolução e troca do material</label>
+            </value>
+            <value>
+                <fullName>Faturado o mesmo pedido duas vezes</fullName>
+                <default>false</default>
+                <label>Faturado o mesmo pedido duas vezes</label>
+            </value>
+            <value>
+                <fullName>Fator de conversão e unidade de medida</fullName>
+                <default>false</default>
+                <label>Fator de conversão e unidade de medida</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <valueName>Preço</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Prazo de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Condição de pagamento</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <valueName>Qualidade do produto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <valueName>Quantidade insuficiente</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Desistência do cliente</controllingFieldValue>
+            <valueName>Preferiu a concorrência</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Inclusão de item</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Exclusão de item</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Erro de estoque</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Correção de preço</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Marca do produto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Quantidade do item</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Cancelado para correção</controllingFieldValue>
+            <valueName>Endereço de entrega</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Tamanho diferente da nota fiscal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Quantidade diferente da nota fiscal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Aprovação fora do prazo</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Aprovação de cadastro</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Erro na descrição</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Devolução e troca do material</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Faturado o mesmo pedido duas vezes</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Falha operacional</controllingFieldValue>
+            <valueName>Fator de conversão e unidade de medida</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

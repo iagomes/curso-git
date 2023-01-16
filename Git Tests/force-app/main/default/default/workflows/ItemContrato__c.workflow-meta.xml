@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>AguardandoIntegracao</fullName>
+        <field>Status__c</field>
+        <literalValue>Aguardando integração</literalValue>
+        <name>Aguardando integração</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>AlteracaoStatus</fullName>
+        <description>Alterar o status do item do contrato para &quot;Em Aprovação&quot;</description>
+        <field>Status__c</field>
+        <literalValue>Em Aprovação</literalValue>
+        <name>Alteração do status</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>Rejeitado</fullName>
+        <field>Status__c</field>
+        <literalValue>Rejeitado</literalValue>
+        <name>Rejeitado</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

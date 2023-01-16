@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-box produto-vinculado slds-m-horizontal_small">
+        <label><b>Produtos vinculados anteriormente</b></label>
+        <div>
+            <template if:false={productsData}>
+                <label>Não existem vínculos a serem exibidos.</label>
+            </template>
+            <template if:true={productsData}>
+                <c-budget-detail-list-product
+                    key-field="id"
+                    columns={productColumns_}
+                    max-row-selection="1"
+                    data={productsData}
+                    hide-checkbox-column
+                ></c-budget-detail-list-product>
+            </template>
+        </div>
+    </div>
+</template>

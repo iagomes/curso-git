@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OpportunityLineItemCount__c</fullName>
+    <description>Esse campo soma todos os itens de oportunidade (OpportunityLineItem) dessa oportunidade.
+Campo usado para validação &apos;DontAllowNewItensToExpiredOpportunity&apos;.</description>
+    <externalId>false</externalId>
+    <label>Quantidade de itens de oportunidade</label>
+    <summaryForeignKey>OpportunityLineItem.OpportunityId</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

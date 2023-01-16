@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template criado para notificar o dono do caso, quando o SLA dele estiver próximo de estourar.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SLA Case Notification</name>
+    <style>none</style>
+    <subject>Notificação de Caso com SLA próximo de Estourar!</subject>
+    <textOnly>Prezado (a) {!Case.OwnerFullName},
+
+Informamos que o Caso número {!Case.CaseNumber} está com o seu SLA de atendimento próximo de estourar!
+
+A partir do recebimento dessa mensagem, você tem 2 (duas) horas para conclusão do mesmo.
+
+Atenciosamente,
+
+Equipe de Atendimento ao Cliente
+Grupo Elfa</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

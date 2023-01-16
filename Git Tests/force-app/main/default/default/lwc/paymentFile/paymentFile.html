@@ -1,0 +1,31 @@
+<template>
+	<div class="slds-card_boundary">
+		<div class="slds-grid slds-page-header slds-card_boundary">
+			<div class="slds-list_horizontal slds-media_center slds-truncate" style="width: 100%;">
+				<lightning-icon
+					icon-name="standard:payment_gateway"
+					title="standard:payment_gateway"
+					size="small"
+					class="slds-var-m-right_small">
+				</lightning-icon>
+				<h1 style="font-weight: 700">Comprovante de pagamento</h1>
+			</div>
+		</div>
+		<div class="slds-align_absolute-center" style="width: 100%;">
+			<div if:true={isSale}>
+				<h1 class="slds-align_absolute-center" if:true={hasAttachment} style="margin-left: 10px; padding-top: 10px; margin-bottom: 5px;">Comprovante anexado!</h1>
+				<h1 if:true={orderStatusIntegration} style="font-weight: 700; text-align: center;">{orderStatusIntegration}</h1>
+				<lightning-file-upload
+					name="fileUploader"
+					accept={acceptedFormats}
+					record-id={recordId}
+					onuploadfinished={handleUploadFinished}
+					if:false={hasAttachment}>
+				</lightning-file-upload>
+			</div>
+			<div if:false={isSale}>
+				<h1 class="slds-align_absolute-center" style="margin-left: 10px; padding-top: 10px; margin-bottom: 5px;">Pedido de remessa não necessita de comprovante!</h1>
+			</div>
+		</div>
+	</div>
+</template>

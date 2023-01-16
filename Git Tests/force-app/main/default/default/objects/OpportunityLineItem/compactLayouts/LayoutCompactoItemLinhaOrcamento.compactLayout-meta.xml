@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoItemLinhaOrcamento</fullName>
+    <fields>OpportunityId</fields>
+    <fields>Product2Id</fields>
+    <fields>ProductCode</fields>
+    <fields>CategoriaComercial__c</fields>
+    <fields>ForaMalha__c</fields>
+    <label>Layout compacto da linha do orçamento</label>
+</CompactLayout>

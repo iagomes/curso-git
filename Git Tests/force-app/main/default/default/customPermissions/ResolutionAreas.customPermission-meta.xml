@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Custom Permission criada para dar Permissionamento às áreas Resolvedoras de EDITAR um Caso, com permissão de alteração a um número limitado de Campos.</description>
+    <isLicensed>false</isLicensed>
+    <label>ResolutionAreas</label>
+</CustomPermission>

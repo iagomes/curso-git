@@ -1,0 +1,26 @@
+<template>
+    
+    <div class="content" data-record-id={recordId}>
+
+        <!-- <lightning-button name="nao-trabalhamos" label="Não trabalhamos" title="Não trabalhamos" onclick={handleButtonClick} class="slds-m-around_xx-small"></lightning-button> -->
+        
+        <!-- <template if:false={isVinculado}>
+            <lightning-button name="vincular" label="Vincular" title="Vincular" onclick={handleButtonClick} class="slds-m-around_xx-small" variant={variant}></lightning-button>
+        </template> -->
+
+        <!-- <template if:true={isVinculado}> -->
+    
+            <!-- <div class="mostrar-produto" data-row-visibility-setter={itemData.show} if:true={itemData.show}>
+                <lightning-button-icon name="mostrar-produto" alternative-text="Mostrar Produto" title="Mostrar Produto" onclick={handleButtonClick} class="slds-m-around_xx-small" icon-name="utility:zoomin"></lightning-button-icon>
+            </div> -->
+
+        <!-- </template> -->
+        <lightning-button-icon onclick={handleButtonClick} name="editar-vinculo" icon-name="utility:edit" label="Editar" size="large" variant="bare" alternative-text="Editar" class="slds-m-around_xx-small"></lightning-button-icon>
+            
+        <template if:true={isEntrega}>
+                <lightning-button-icon name="mostrar-Entrega" alternative-text="Mostrar Entrega" title="Mostrar Entrega" onclick={handleButtonClick} class="slds-m-around_xx-small" icon-name="utility:truck"></lightning-button-icon>
+        </template>
+
+    </div>
+
+</template>

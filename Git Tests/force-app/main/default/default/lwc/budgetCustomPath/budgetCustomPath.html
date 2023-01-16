@@ -1,0 +1,14 @@
+<template>
+    <div class="style-budget-custom-path"></div>
+    <div class="content budget-custom-path slds-is-relative">
+        <div class="slds-card slds-p-around_small">
+            <div class="slds-container_center">
+                <lightning-progress-indicator current-step={oppStageName} type="path" variant="base">
+                    <template for:each={stageOptions} for:item="stage">
+                        <lightning-progress-step label={stage.label} value={stage.value} key={stage.value} class={stage.class}></lightning-progress-step>
+                    </template>
+                </lightning-progress-indicator>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BudgetTabFilters__c</fullName>
+    <description>Filtros customizados da tela de orçamentos do portal.</description>
+    <externalId>false</externalId>
+    <label>BudgetTabFilters</label>
+    <length>4095</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>8</visibleLines>
+</CustomField>

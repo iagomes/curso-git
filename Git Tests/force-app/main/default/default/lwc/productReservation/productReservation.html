@@ -1,0 +1,1080 @@
+<template>
+    <template if:true={isLoadingScreen}>
+        <div class="slds-var-m-around_xx-large">
+            <lightning-spinner size="small"></lightning-spinner>
+        </div>
+    </template>
+    <template if:false={isLoadingScreen}>
+        <!-- <template if:true={transferProductsMode}> -->
+        <c-product-reservation-modal ontransferproducts={handleTransferProductToUpdate} disable-continue={disableContinue} reserve-to-transfer={reserveToTransfer} transfer-products-mode={transferProductsMode} reserve={reserve} onselectrecord={handleSelectedTransferReserve} onselectrecordclear={handleSelectedClearTransferReserve}></c-product-reservation-modal>
+        <!-- </template> -->
+        <lightning-layout>
+            <lightning-layout-item size="12">
+                <article class="slds-card" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                    <div class="slds-m-around_x-small">
+                        <header class="slds-media slds-media_center slds-has-flexi-truncate" style="justify-content: space-between">
+    
+                            <!-- <div style="display: flex;"> -->
+                                <div class="">
+                                    <h2>
+                                        <span class="slds-text-title_bold">Reserva de produtos</span>
+                                    </h2>
+                                    <template if:true={insertCSV}>
+                                        <template if:true={isValidCSV}>
+                                            <div class="slds-m-top_x-small">
+                                                <lightning-input type="checkbox" checked="true" onchange={handleAllCheckbox} label="Selecionar todos"></lightning-input>
+                                            </div>
+                                        </template>
+                                    </template>                           
+                                </div>
+        
+        
+                                <div class="slds-no-flex" style="margin-bottom: auto;display: flex;">
+                                    <!-- <template if:false={transferProductsMode}> -->
+                                        <template if:true={insertCSV}>
+                                            <button disabled={disableAllButtons} class="slds-button slds-button_neutral" onclick={handleCSVImport}>Voltar</button>                                
+                                            <template if:true={isValidCSV}>
+                                                <lightning-button disabled={disableAllButtons} class="slds-m-left_x-small" variant="brand" onclick={handleAddAllSelectedProducts} label="Adicionar selecionados"></lightning-button>
+                                            </template>
+                                        </template>
+                                    <!-- </template> -->
+                                    <template if:false={insertCSV}>
+                                        <template if:true={hasProductsAdd}>
+                                            <template if:false={wantAddProduct}>
+                                                <lightning-button-icon if:true={showGetAllProducts} class="slds-m-right_x-small" icon-name="utility:filter" alternative-text="Buscar todos os produtos" title="Buscar todos os produtos" onclick={handleGetAllProductsReservation}></lightning-button-icon>
+                                            </template>
+                                            <lightning-button-icon icon-name="utility:refresh" alternative-text="Atualizar produtos" title="Atualizar produtos" onclick={handleRefreshProducts}></lightning-button-icon>
+                                            <template if:false={wantAddProduct}>
+                                                <!-- <template if:false={transferProductsMode}> -->
+                                                <lightning-button icon-name="utility:product_transfer" disabled={disableAllButtons} class="slds-m-left_x-small slds-button_neutral" variant="neutral" onclick={handleTransferProducts} label="Transferir produtos"></lightning-button>
+                                                <!-- </template> -->
+                                            </template>
+                                        </template>
+                                        <!-- <template if:false={transferProductsMode}> -->
+                                            <lightning-button disabled={disableAllButtons} class="slds-m-left_x-small" onclick={handleCSVImport} icon-name="utility:file" label="Importar CSV"></lightning-button>
+                                        <!-- </template> -->
+                                        <!-- <template if:false={transferProductsMode}> -->
+                                            <template if:true={wantAddProduct}>
+                                                <lightning-button disabled={disableAllButtons} class="slds-m-left_x-small" variant="brand" onclick={handleAddProductAdicionados} label="Produtos adicionados" icon-name="utility:checkout"></lightning-button>
+                                                <!-- <button disabled={disableAllButtons} class="slds-button slds-button_neutral" onclick={handleAddProduct}>Produtos adicionados</button> -->
+                                            </template>
+                                            <template if:false={wantAddProduct}>
+                                                <lightning-button class="slds-m-left_x-small" icon-name="utility:add" disabled={disableAllButtons} label="Adicionar produtos" onclick={handleAddProduct}></lightning-button>
+                                            </template>
+                                        </template>
+                                    <!-- </template> -->
+                                </div>
+                            <!-- </div> -->
+                        
+    
+    
+                        </header>
+                    </div>
+                    <template if:false={insertCSV}>
+                        <div>
+                            <lightning-layout horizontal-align="space" vertical-align="center" class="slds-m-bottom_medium">
+                                <lightning-layout-item size="3" class="slds-m-top_x-small" style="text-align:center">
+                                    Total de produtos na reserva<a class="noHover" style="cursor:auto;"><strong><br>{totalProducts}</strong></a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="3" class="slds-m-top_x-small" style="text-align:center">
+                                    Valor total reservado <a class="noHover" style="cursor:auto;"><strong><br>{valorTotalReservadoTela}</strong></a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="3" class="slds-m-top_x-small" style="text-align:center">
+                                    Valor total da alteração <a class="noHover" style="cursor:auto;"><strong><br>{valorTotalDifTela}</strong></a>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="3" class="slds-m-top_x-small" style="text-align:center">
+                                    Última atualização <a class="noHover" style="cursor:auto;"><strong><br>{ultimaAtualizacao}</strong></a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </template>
+                    <template if:false={insertCSV}>
+                        <template if:true={wantAddProduct}>
+                            <header class="slds-var-p-around_medium" style="background-color: #f3f2f2; margin-top: -5px;" >
+                                <div class="second-section">
+                                    <div class="search-header">
+                                        <div style="width: 100%">
+                                            <lightning-input label="Procurar produto" placeholder="Digite o nome ou código do produto ou principio ativo"
+                                                type="search" variant="standard" name="searchProduct" onkeyup={onKeyUpSearchProductNome} onchange={onChangeSearchProductNome}>
+                                            </lightning-input>
+                                        </div>
+                                        <div style="width: 100%" class="slds-m-left_x-small">
+                                            <lightning-input label="Procurar por fabricante" placeholder="Digite o fabricante do produto"
+                                                type="search" variant="standard" name="searchProduct" onkeyup={onKeyUpSearchProductByFabricator} onchange={onChangeSearchProductByFabricator}>
+                                            </lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </header>
+                        </template>
+                    </template>
+                    <template if:true={insertCSV}>
+                        <div>
+                            <lightning-file-upload
+                                class="slds-m-around_x-small"
+                                style="text-align: center;"
+                                name="fileUploader"
+                                accept={acceptedFormats}
+                                record-id={recordId}
+                                onuploadfinished={handleUploadFinished}
+                                multiple
+                            >
+                            </lightning-file-upload>
+                        </div>
+                    </template>
+    
+                    <template if:false={insertCSV}>
+                        <template if:true={wantAddProduct}>
+                            <lightning-tabset variant="scoped">
+                                <lightning-tab label="Não reservados" value="1" onactive={handleChangeRadioButton} onclick={handleOnClickRadioButton}>
+                                    <div class="slds-scrollable_y slds-m-top_medium" style="max-height: calc(100vh - 240px);" onscroll={handleNotification}>
+    
+                                        <template if:true={hasProducts}>
+    
+                                            <template for:each={prodFilterList} for:item="prod">
+                    
+                    
+                    
+                    
+                    
+                                                <lightning-layout key={prod.productId} multiple-rows  class="slds-m-left_medium slds-m-right_medium slds-m-bottom_medium is-relative" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                                                    <lightning-spinner if:true={prod.isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+                                                    <lightning-layout-item size="12">
+                                                        <div class="slds-m-around_x-small" style="font-size: 15px;color:#0070d2; display: flex;">
+                                                            <template if:true={insertCSV}>
+                                                                <template if:true={prod.haveInventory}>
+                                                                    <div>
+                                                                        <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                                        </lightning-input>
+                                                                    </div>
+                                                                </template>
+                                                            </template>
+                                                            <template if:false={wantAddProduct}>
+                                                                <a cursor="pointer" onclick={handleClickProductName} data-productid={prod.id}><strong>{prod.name} - {prod.productCode}</strong></a>
+                                                                <!-- <lightning-button-icon></lightning-button-icon> -->
+                                                            </template>
+                                                            <template if:true={wantAddProduct}>
+                                                                <p><strong>{prod.name} - {prod.productCode}</strong></p>
+                                                            </template>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    
+                                                    <lightning-layout-item size="12">
+                                                        <div style="display: flex;">
+                                                            <div class="slds-m-around_x-small" style="font-size: 14px;">
+                                                                <p>{prod.provider}</p>
+                                                            </div>
+                                                            <template if:true={prod.alreadyReserved}>
+                                                                <lightning-badge label={prod.prodResStatus} class={prod.prodResStatusClassBadge}></lightning-badge>
+                                                            </template>
+                                                        </div>
+                                                    </lightning-layout-item>
+                        
+                                                    <lightning-layout-item size="8">
+                                                        <lightning-layout>
+                                                            <template if:false={prod.alreadyReserved}>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Armazém" 
+                                                                        value={prod.storage} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Preço médio" 
+                                                                        value={prod.priceAverageTela}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>                                    
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Valor total" 
+                                                                        value={prod.valorTotalTela} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Estoque" 
+                                                                        value={prod.balance}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                            </template>
+                                                            <template if:true={prod.alreadyReserved}>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Armazém" 
+                                                                        value={prod.storage} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Preço médio" 
+                                                                        value={prod.priceAverageTela}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>                                    
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Valor total" 
+                                                                        value={prod.valorTotalTela} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Estoque" 
+                                                                        value={prod.balance} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <!-- <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade reservado" 
+                                                                        value={prod.reservedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item> -->
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade solicitada" 
+                                                                        value={prod.reservedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade consumida" 
+                                                                        value={prod.consumedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <!-- <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade na reserva" 
+                                                                        value={prod.availableQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>                                                         -->
+                                                            </template>                                    
+                                                        </lightning-layout>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="4" style="margin-top: auto;">
+                                                        <lightning-layout multiple-rows>
+                                                            <lightning-layout-item size="6">
+                                                                <template if:true={wantAddProduct}>
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        data-productid={prod.productId}
+                                                                        data-armazem={prod.storage}
+                                                                        label="Quantidade"
+                                                                        type="number"
+                                                                        variant="standard"
+                                                                        onchange={onChangeQuantity}
+                                                                        value={prod.quantidade}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                            </lightning-layout-item>
+                                                            <lightning-layout-item size="6" style="margin-top: auto;">
+                                                                <div class="slds-no-flex slds-m-around_x-small" style="float: right">
+                                                                    <template if:true={wantAddProduct}>
+                                                                        <template if:true={prod.alreadyReserved}>
+                                                                            <!-- <template if:true={insertCSV}>
+                                                                                <template if:true={prod.haveInventory}>
+                                                                                    <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                                </template>
+                                                                            </template> -->
+                                                                            <template if:false={insertCSV}>
+                                                                                <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                            </template>
+                                                                        </template>
+                                                                        <template if:false={prod.alreadyReserved}>
+                                                                            <template if:false={insertCSV}>
+                                                                                <lightning-button disabled={disableAllButtons} data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Adicionar"></lightning-button>
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                    <template if:false={wantAddProduct}>
+                                                                        <div style="display: inline-flex;">
+                                                                            <template if:false={prod.consumedQuantity}>
+                                                                                <lightning-button disabled={disableAllButtons} icon-name="utility:delete" value={prod.id}
+                                                                                    alternative-text="Delete" label="Remover" onclick={removeReservedProduct}>
+                                                                                </lightning-button>
+                                                                            </template>
+                                                                        </div>
+                                                                    </template>
+                                                                </div>
+                                                            </lightning-layout-item>
+                                                        </lightning-layout>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                        
+                        
+                        
+                        
+                        
+                                            </template>
+                                        </template>
+                                        <template if:false={hasProducts}>
+                                            Nenhum produto encontrado.
+                                        </template>
+                                        
+                                    </div>
+                                </lightning-tab>
+                                <lightning-tab label="Reservados" value="2" onactive={handleChangeRadioButton} onclick={handleOnClickRadioButton}>
+                                    <div class="slds-scrollable_y slds-m-top_medium" style="max-height: calc(100vh - 240px);" onscroll={handleNotification}>
+    
+                                        <template if:true={hasProducts}>
+                                            <template for:each={prodFilterList} for:item="prod">
+                    
+                    
+                    
+                    
+                    
+                                                <lightning-layout key={prod.productId} multiple-rows  class="slds-m-left_medium slds-m-right_medium slds-m-bottom_medium is-relative" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                                                    <lightning-spinner if:true={prod.isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+                                                    <lightning-layout-item size="12">
+                                                        <div class="slds-m-around_x-small" style="font-size: 15px;color:#0070d2; display: flex;">
+                                                            <template if:true={insertCSV}>
+                                                                <template if:true={prod.haveInventory}>
+                                                                    <div>
+                                                                        <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                                        </lightning-input>
+                                                                    </div>
+                                                                </template>
+                                                            </template>
+                                                            <a cursor="pointer" onclick={handleClickProductName} data-productid={prod.id}><strong>{prod.name} - {prod.productCode}</strong></a>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    
+                                                    <lightning-layout-item size="12">
+                                                        <div style="display: flex;">
+                                                            <div class="slds-m-around_x-small" style="font-size: 14px;">
+                                                                <p>{prod.provider}</p>
+                                                            </div>
+                                                            <template if:true={prod.alreadyReserved}>
+                                                                <lightning-badge label={prod.prodResStatus} class={prod.prodResStatusClassBadge}></lightning-badge>
+                                                            </template>
+                                                        </div>
+                                                    </lightning-layout-item>
+                        
+                                                    <lightning-layout-item size="8">
+                                                        <lightning-layout>
+                                                            <template if:false={prod.alreadyReserved}>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Armazém" 
+                                                                        value={prod.storage} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Preço médio" 
+                                                                        value={prod.priceAverageTela}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>                                    
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Valor total" 
+                                                                        value={prod.valorTotalTela} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="3">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Estoque" 
+                                                                        value={prod.balance}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                            </template>
+                                                            <template if:true={prod.alreadyReserved}>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Armazém" 
+                                                                        value={prod.storage} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Preço médio" 
+                                                                        value={prod.priceAverageTela}
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>                                    
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Valor total" 
+                                                                        value={prod.valorTotalTela} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Estoque" 
+                                                                        value={prod.balance} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <!-- <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade reservado" 
+                                                                        value={prod.reservedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item> -->
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade solicitada" 
+                                                                        value={prod.reservedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade consumida" 
+                                                                        value={prod.consumedQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                                <!-- <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        type="text" 
+                                                                        label="Quantidade na reserva" 
+                                                                        value={prod.availableQuantity} 
+                                                                        readonly>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>  -->
+                                                            </template>                                    
+                                                        </lightning-layout>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="4" style="margin-top: auto;">
+                                                        <lightning-layout multiple-rows>
+                                                            <lightning-layout-item size="6">
+                                                                <template if:true={wantAddProduct}>
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        data-productid={prod.productId}
+                                                                        data-armazem={prod.storage}
+                                                                        label="Quantidade"
+                                                                        type="number"
+                                                                        variant="standard"
+                                                                        onchange={onChangeQuantity}
+                                                                        value={prod.quantidade}>
+                                                                    </lightning-input>
+                                                                </template>
+                                                            </lightning-layout-item>
+                                                            <lightning-layout-item size="6" style="margin-top: auto;">
+                                                                <div class="slds-no-flex slds-m-around_x-small" style="float: right">
+                                                                    <template if:true={wantAddProduct}>
+                                                                        <template if:true={prod.alreadyReserved}>
+                                                                            <!-- <template if:true={insertCSV}>
+                                                                                <template if:true={prod.haveInventory}>
+                                                                                    <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                                </template>
+                                                                            </template> -->
+                                                                            <template if:false={insertCSV}>
+                                                                                <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                            </template>
+                                                                        </template>
+                                                                        <template if:false={prod.alreadyReserved}>
+                                                                            <template if:false={insertCSV}>
+                                                                                <lightning-button disabled={disableAllButtons} data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Adicionar"></lightning-button>
+                                                                            </template>
+                                                                        </template>
+                                                                    </template>
+                                                                    <template if:false={wantAddProduct}>
+                                                                        <div style="display: inline-flex;">
+                                                                            <template if:false={prod.consumedQuantity}>
+                                                                                <lightning-button disabled={disableAllButtons} icon-name="utility:delete" value={prod.id}
+                                                                                    alternative-text="Delete" label="Remover" onclick={removeReservedProduct}>
+                                                                                </lightning-button>
+                                                                            </template>
+                                                                        </div>
+                                                                    </template>
+                                                                </div>
+                                                            </lightning-layout-item>
+                                                        </lightning-layout>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                        
+                        
+                                            </template>
+    
+                                        </template>
+                                        
+    
+                                        <template if:false={hasProducts}>
+                                            Nenhum produto encontrado.
+                                        </template>
+                                    </div>
+                                </lightning-tab>
+                            </lightning-tabset>
+                            <lightning-formatted-text value={activeValueMessage} ></lightning-formatted-text>
+                            <!-- <lightning-layout class="slds-m-top_medium" horizontal-align="space" vertical-align="center"> -->
+                                <!-- <lightning-layout-item>
+                                    <input class="slds-m-right_x-small" type="checkbox" id="reserved" name="reserved" value={checkBoxReserved}>
+                                    <label for="reserved">Ver reservados</label><br>
+                                    <input class="slds-m-left_x-small" type="checkbox" id="notReserved" name="notReserved" value={checkBoxNotReserved}>
+                                    <label for="notReserved">Ver não reservados</label><br>
+                                </lightning-layout-item> -->
+    
+                                <!-- <lightning-radio-group name="radioGroup"
+                                    variant="label-hidden"
+                                    options={options}
+                                    value={radioButtonValue}
+                                    type="button"
+                                    onchange={handleChangeRadioButton}>
+                                </lightning-radio-group>
+                            </lightning-layout> -->
+                        </template>
+                    </template>
+    
+                    <template if:false={insertCSV}>
+                        <template if:false={wantAddProduct}>
+                            <div class="slds-scrollable_y slds-m-top_medium" style="max-height: calc(100vh - 240px);" onscroll={handleNotification}>
+                                
+                                <template if:true={hasProductsAdd}>
+    
+                                    <template for:each={prodFilterList} for:item="prod">
+            
+            
+            
+            
+            
+                                        <lightning-layout key={prod.productId} multiple-rows  class="slds-m-left_medium slds-m-right_medium slds-m-bottom_medium is-relative" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                                            <lightning-spinner if:true={prod.isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+                                            <lightning-layout-item size="12">
+                                                <div class="slds-m-around_x-small" style="font-size: 15px;color:#0070d2; display: flex;">
+                                                    <template if:true={insertCSV}>
+                                                        <template if:true={prod.haveInventory}>
+                                                            <div>
+                                                                <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                                </lightning-input>
+                                                            </div>
+                                                        </template>
+                                                    </template>
+                                                    <!-- <template if:true={transferProductsMode}>
+                                                        <template if:true={prod.canSelect}>
+                                                            <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                            </lightning-input>
+        
+                                                        </template>
+                                                    </template> -->
+                                                    <template if:false={wantAddProduct}>
+                                                        <a cursor="pointer" onclick={handleClickProductName} data-productid={prod.id}><strong>{prod.name} - {prod.productCode}</strong></a>
+                                                    </template>
+                                                    <template if:true={wantAddProduct}>
+                                                        <p><strong>{prod.name} - {prod.productCode}</strong></p>
+                                                    </template>
+                                                </div>
+                                            </lightning-layout-item>
+                                            
+                                            <lightning-layout-item size="12">
+                                                <div style="display: flex;">
+                                                    <div class="slds-m-around_x-small" style="font-size: 14px;">
+                                                        <p>{prod.provider}</p>
+                                                    </div>
+                                                    <template if:true={prod.alreadyReserved}>
+                                                        <lightning-badge label={prod.prodResStatus} class={prod.prodResStatusClassBadge}></lightning-badge>
+                                                    </template>
+                                                </div>
+                                            </lightning-layout-item>
+                
+                                            <lightning-layout-item size="8">
+                                                <lightning-layout>
+                                                    <template if:false={prod.alreadyReserved}>
+                                                        <lightning-layout-item size="3">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Armazém" 
+                                                                value={prod.storage} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="3">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Preço médio" 
+                                                                value={prod.priceAverageTela}
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>                                    
+                                                        <lightning-layout-item size="3">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Valor total" 
+                                                                value={prod.valorTotalTela} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="3">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Estoque" 
+                                                                value={prod.balance}
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                    </template>
+                                                    <template if:true={prod.alreadyReserved}>
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Armazém" 
+                                                                value={prod.storage} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Preço médio" 
+                                                                value={prod.priceAverageTela}
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>                                    
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Valor total" 
+                                                                value={prod.valorTotalTela} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+        
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Estoque" 
+                                                                value={prod.balance} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+        
+                                                        <!-- <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Quantidade reservado" 
+                                                                value={prod.reservedQuantity} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item> -->
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Quantidade solicitada" 
+                                                                value={prod.reservedQuantity} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+        
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Quantidade consumida" 
+                                                                value={prod.consumedQuantity} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item>
+                                                        <lightning-layout-item size="2">
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                type="text" 
+                                                                label="Quantidade na reserva" 
+                                                                value={prod.availableQuantity} 
+                                                                readonly>
+                                                            </lightning-input>
+                                                        </lightning-layout-item> 
+        
+                                                    </template>                                    
+                                                </lightning-layout>
+                                            </lightning-layout-item>
+                                            <lightning-layout-item size="4" style="margin-top: auto;">
+                                                <lightning-layout multiple-rows>
+                                                    <lightning-layout-item size="6">
+                                                        <template if:true={wantAddProduct}>
+                                                            <lightning-input
+                                                                class="slds-m-around_x-small"
+                                                                data-productid={prod.productId}
+                                                                data-armazem={prod.storage}
+                                                                label="Quantidade"
+                                                                type="number"
+                                                                variant="standard"
+                                                                onchange={onChangeQuantity}
+                                                                value={prod.quantidade}>
+                                                            </lightning-input>
+                                                        </template>
+                                                        <!-- <template if:true={prod.canSelect}>
+                                                            <template if:true={transferProductsMode}>
+                                                                <lightning-layout-item size="2">
+                                                                    <lightning-input
+                                                                        class="slds-m-around_x-small"
+                                                                        data-productid={prod.productId}
+                                                                        data-armazem={prod.storage}
+                                                                        label="Quantidade à transferir"
+                                                                        type="number"
+                                                                        variant="standard"
+                                                                        onchange={onChangeQuantityTransfer}
+                                                                        value={prod.quantityTransfer}>
+                                                                    </lightning-input>
+                                                                </lightning-layout-item>
+                                                            </template>
+                                                        </template> -->
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="6" style="margin-top: auto;">
+                                                        <div class="slds-no-flex slds-m-around_x-small" style="float: right">
+                                                            <template if:true={wantAddProduct}>
+                                                                <template if:true={prod.alreadyReserved}>
+                                                                    <!-- <template if:true={insertCSV}>
+                                                                        <template if:true={prod.haveInventory}>
+                                                                            <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                        </template>
+                                                                    </template> -->
+                                                                    <template if:false={insertCSV}>
+                                                                        <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                    </template>
+                                                                </template>
+                                                                <template if:false={prod.alreadyReserved}>
+                                                                    <template if:false={insertCSV}>
+                                                                        <lightning-button disabled={disableAllButtons} data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Adicionar"></lightning-button>
+                                                                    </template>
+                                                                </template>
+                                                            </template>
+                                                            <template if:false={wantAddProduct}>
+                                                                <div style="display: inline-flex;">
+                                                                    <!-- <template if:false={transferProductsMode}> -->
+                                                                        <template if:false={prod.consumedQuantity}>
+                                                                            <lightning-button disabled={disableAllButtons} icon-name="utility:delete" value={prod.id}
+                                                                                alternative-text="Delete" label="Remover" onclick={removeReservedProduct}>
+                                                                            </lightning-button>
+                                                                        </template>
+                                                                    <!-- </template> -->
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                </lightning-layout>
+                                            </lightning-layout-item>
+                                        </lightning-layout>
+                
+                
+                
+                
+                
+                                    </template>
+    
+                                </template>
+    
+                                
+    
+                                <template if:false={hasProductsAdd}>
+                                    <div class="slds-p-around_medium">
+    
+                                        Não foi encontrado nenhum produto...
+    
+                                    </div>
+                                </template>
+    
+                            </div>
+                        </template>
+                    </template>
+    
+                    <template if:true={insertCSV}>
+                        <template if:true={wantAddProduct}>
+                            <div class="slds-scrollable_y slds-m-top_medium" style="max-height: calc(100vh - 240px);" onscroll={handleNotification}>
+    
+    
+                                <template for:each={prodFilterList} for:item="prod">
+            
+            
+            
+            
+            
+                                    <lightning-layout key={prod.productId} multiple-rows  class="slds-m-left_medium slds-m-right_medium slds-m-bottom_medium is-relative" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                                        <lightning-spinner if:true={prod.isLoading} alternative-text="Loading" size="small"></lightning-spinner>
+                                        <lightning-layout-item size="12">
+                                            <div class="slds-m-around_x-small" style="font-size: 15px;color:#0070d2; display: flex;">
+                                                <template if:true={insertCSV}>
+                                                    <template if:true={prod.haveInventory}>
+                                                        <div>
+                                                            <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                            </lightning-input>
+                                                        </div>
+                                                    </template>
+                                                </template>
+                                                <template if:false={wantAddProduct}>
+                                                    <a cursor="pointer" onclick={handleClickProductName} data-productid={prod.id}><strong>{prod.name} - {prod.productCode}</strong></a>
+                                                </template>
+                                                <template if:true={wantAddProduct}>
+                                                    <p><strong>{prod.name} - {prod.productCode}</strong></p>
+                                                </template>
+                                            </div>
+                                        </lightning-layout-item>
+                                        
+                                        <lightning-layout-item size="12">
+                                            <div style="display: flex;">
+                                                <div class="slds-m-around_x-small" style="font-size: 14px;">
+                                                    <p>{prod.provider}</p>
+                                                </div>
+                                                <template if:true={prod.alreadyReserved}>
+                                                    <lightning-badge label={prod.prodResStatus} class={prod.prodResStatusClassBadge}></lightning-badge>
+                                                </template>
+                                            </div>
+                                        </lightning-layout-item>
+            
+                                        <lightning-layout-item size="8">
+                                            <lightning-layout>
+                                                <template if:false={prod.alreadyReserved}>
+                                                    <lightning-layout-item size="3">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Armazém" 
+                                                            value={prod.storage} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="3">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Preço médio" 
+                                                            value={prod.priceAverageTela}
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>                                    
+                                                    <lightning-layout-item size="3">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Valor total" 
+                                                            value={prod.valorTotalTela} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="3">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Estoque" 
+                                                            value={prod.balance}
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                </template>
+                                                <template if:true={prod.alreadyReserved}>
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Armazém" 
+                                                            value={prod.storage} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Preço médio" 
+                                                            value={prod.priceAverageTela}
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>                                    
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Valor total" 
+                                                            value={prod.valorTotalTela} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Estoque" 
+                                                            value={prod.balance} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <!-- <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Quantidade reservado" 
+                                                            value={prod.reservedQuantity} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item> -->
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Quantidade solicitada" 
+                                                            value={prod.reservedQuantity} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Quantidade consumida" 
+                                                            value={prod.consumedQuantity} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item>
+                                                        <lightning-layout-item size="2">
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            type="text" 
+                                                            label="Quantidade na reserva" 
+                                                            value={prod.availableQuantity} 
+                                                            readonly>
+                                                        </lightning-input>
+                                                    </lightning-layout-item> 
+                                                </template>                                    
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="4" style="margin-top: auto;">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item size="6">
+                                                    <template if:true={wantAddProduct}>
+                                                        <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            data-productid={prod.productId}
+                                                            data-armazem={prod.storage}
+                                                            label="Quantidade"
+                                                            type="number"
+                                                            variant="standard"
+                                                            onchange={onChangeQuantity}
+                                                            value={prod.quantidade}>
+                                                        </lightning-input>
+                                                    </template>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="6" style="margin-top: auto;">
+                                                    <div class="slds-no-flex slds-m-around_x-small" style="float: right">
+                                                        <template if:true={wantAddProduct}>
+                                                            <template if:true={prod.alreadyReserved}>
+                                                                <!-- <template if:true={insertCSV}>
+                                                                    <template if:true={prod.haveInventory}>
+                                                                        <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                    </template>
+                                                                </template> -->
+                                                                <template if:false={insertCSV}>
+                                                                    <lightning-button disabled={disableAllButtons} variant="brand" data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Atualizar"></lightning-button>
+                                                                </template>
+                                                            </template>
+                                                            <template if:false={prod.alreadyReserved}>
+                                                                <template if:false={insertCSV}>
+                                                                    <lightning-button disabled={disableAllButtons} data-productid={prod.productId} data-armazem={prod.storage} data-productadd="true" onclick={handleAddProductToReservation} label="Adicionar"></lightning-button>
+                                                                </template>
+                                                            </template>
+                                                        </template>
+                                                        <template if:false={wantAddProduct}>
+                                                            <div style="display: inline-flex;">
+                                                                <template if:false={prod.consumedQuantity}>
+                                                                    <lightning-button disabled={disableAllButtons} icon-name="utility:delete" value={prod.id}
+                                                                        alternative-text="Delete" label="Remover" onclick={removeReservedProduct}>
+                                                                    </lightning-button>
+                                                                </template>
+                                                            </div>
+                                                        </template>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+            
+            
+            
+            
+            
+                                </template>
+                            </div>
+                        </template>
+                    </template>
+                    
+                    <template if:true={hasMoreProducts}>
+                        <template if:false={insertCSV}>
+                            <div style="text-align-last: center;">
+                                <!-- <a onclick={handleGetMoreProducts}>Ver mais..</a> -->
+                            </div>
+                        </template>
+                    </template>
+                </article>
+                
+                <template if:true={isLoadingProducts}>
+                    <lightning-spinner alternative-text="Loading" size="small" style="z-index: 10;"></lightning-spinner>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+</template>

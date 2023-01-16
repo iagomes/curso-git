@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigaInformarProdutoTermolabil</fullName>
+    <active>true</active>
+    <description>Regra criada para obrigar o preenchimento do campo &quot;Produto Termolábel&quot;, quando se tratar de um Caso de Devolução.</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(Razao__c, &quot;Devolução&quot;),
+ISPICKVAL(ProdutoTermolabil__c,&quot;&quot;),
+AND(
+!ISPICKVAL(EmpresaDemandante__c,&quot;ArtMedica&quot;),
+!ISPICKVAL(EmpresaDemandante__c,&quot;Vital Procifar&quot;),
+!ISPICKVAL(EmpresaDemandante__c,&quot;Nacional&quot;),
+!ISPICKVAL(EmpresaDemandante__c,&quot;Commed&quot;)
+)
+)</errorConditionFormula>
+    <errorMessage>PARA CASOS CUJA RAZÃO É &apos;DEVOLUÇÃO&quot;, SE FAZ NECESSÁRIO PREENCHIMENTO DO CAMPO &quot;PRODUTO TERMOLÁBIL?&quot;.</errorMessage>
+</ValidationRule>

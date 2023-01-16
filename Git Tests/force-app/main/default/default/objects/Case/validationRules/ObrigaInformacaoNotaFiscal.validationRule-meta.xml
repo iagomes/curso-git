@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigaInformacaoNotaFiscal</fullName>
+    <active>true</active>
+    <description>Regra que obriga a informação da NF, quando o TIPO do caso for &quot;Incidente&quot;</description>
+    <errorConditionFormula>AND(ISPICKVAL(Type, &quot;Incidente&quot;), ISBLANK(NotaFiscal__c), NOT(ISPICKVAL(Razao__c, &quot;Pedido não faturado&quot;)),  NOT(Fora_do_Nexos__c) )</errorConditionFormula>
+    <errorDisplayField>NotaFiscal__c</errorDisplayField>
+    <errorMessage>PARA CASOS DO TIPO &quot;INCIDENTE&quot;, É OBRIGATÓRIA A INFORMAÇÃO DA NOTA FISCAL.</errorMessage>
+</ValidationRule>

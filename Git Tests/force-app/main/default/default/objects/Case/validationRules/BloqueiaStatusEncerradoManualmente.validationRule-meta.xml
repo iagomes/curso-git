@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BloqueiaStatusEncerradoManualmente</fullName>
+    <active>true</active>
+    <description>Para ignorar esta regra, o update deve ser feito com o campo BypassValidationRules__c = true.</description>
+    <errorConditionFormula>AND(
+BypassValidationRules__c == false,
+ISCHANGED(BypassValidationRules__c) == false,
+ISCHANGED(Status),
+ISPICKVAL(Status, &quot;Closed&quot;) 
+)</errorConditionFormula>
+    <errorMessage>O CASO DEVE SER ENCERRADO ATRAVÉS DO BOTÃO &quot;ENCERRAR&quot;.</errorMessage>
+</ValidationRule>

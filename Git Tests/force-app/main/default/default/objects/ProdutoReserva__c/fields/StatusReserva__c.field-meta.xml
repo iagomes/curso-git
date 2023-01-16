@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusReserva__c</fullName>
+    <externalId>false</externalId>
+    <label>Status da reserva</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Aguardando aprovação</fullName>
+                <default>false</default>
+                <label>Aguardando aprovação</label>
+            </value>
+            <value>
+                <fullName>Ativa</fullName>
+                <default>false</default>
+                <label>Ativa</label>
+            </value>
+            <value>
+                <fullName>Rejeitada</fullName>
+                <default>false</default>
+                <label>Rejeitada</label>
+            </value>
+            <value>
+                <fullName>Aguardando integração</fullName>
+                <default>false</default>
+                <label>Aguardando integração</label>
+            </value>
+            <value>
+                <fullName>Erro de integração</fullName>
+                <default>false</default>
+                <label>Erro de integração</label>
+            </value>
+            <value>
+                <fullName>Aguardando exclusão</fullName>
+                <default>false</default>
+                <label>Aguardando exclusão</label>
+            </value>
+            <value>
+                <fullName>Expirada</fullName>
+                <default>false</default>
+                <label>Expirada</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

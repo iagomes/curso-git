@@ -1,0 +1,14 @@
+<template>
+    <template if:true={typeAttributes.picklistValues}>
+        <c-budget-detail-products-datatable-column-picklist
+            record-id={typeAttributes.recordId}
+            record-type-id={typeAttributes.recordTypeId}
+            field-api-name={typeAttributes.fieldApiName}
+            is-editable={typeAttributes.isEditable}
+            controller-value={typeAttributes.controllerValue}
+            controller-field-api-name={typeAttributes.controllerFieldApiName}
+            picklist-values={typeAttributes.picklistValues}
+            value={typeAttributes.value}
+        ></c-budget-detail-products-datatable-column-picklist>
+    </template>
+</template>

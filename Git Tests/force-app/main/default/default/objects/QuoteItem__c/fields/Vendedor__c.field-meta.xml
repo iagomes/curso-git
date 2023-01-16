@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vendedor__c</fullName>
+    <description>
+        Vendedor responsável por dar a resposta, advem da setorização, relacionado a VendedorSuporte__c
+        Também chamado de VDS ou VDI
+    </description>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Vendedor</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>ItensOrcamentosPortal</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

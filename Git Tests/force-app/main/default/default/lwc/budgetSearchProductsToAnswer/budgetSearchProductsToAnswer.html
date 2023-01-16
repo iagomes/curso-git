@@ -1,0 +1,109 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-box produto-vinculado slds-m-horizontal_small">
+        <label><b>Buscar produto Elfa</b></label>
+
+        <div class="slds-var-p-bottom_medium">
+            <lightning-layout multiple-rows vertical-align="start">
+                <lightning-layout-item size="4">
+                    <lightning-input 
+                        name="search-product"
+                        label="Procurar produto" 
+                        placeholder="Digite o nome ou código do produto ou principio ativo"
+                        type="search"
+                        variant="standard"
+                        value={searchProductValue}
+                        oncommit={handleInputCommit}
+                        is-loading={isLoadingData}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="3" padding="horizontal-small">
+                    <lightning-input 
+                        name="search-producer"
+                        label="Procurar produto por fabricante"
+                        placeholder="Digite o fabricante do produto"
+                        type="search"
+                        variant="standard"
+                        value={searchProducerValue}
+                        oncommit={handleInputCommit}
+                        is-loading={isLoadingData}>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="2">
+                    <div style="height: 14px">&nbsp;</div>
+                    <lightning-radio-group 
+                        class="radio"
+                        options={stockOptions}
+                        value={selectedStockOption}
+                        type="radio"
+                        onchange={handleRadioFilter}>
+                    </lightning-radio-group>  
+                </lightning-layout-item>
+                <lightning-layout-item size="3">
+                    <lightning-combobox
+                        name="delivery-center-combo"
+                        label="Filial preferencial"
+                        value={selectedDeliveryCenter}
+                        placeholder="Selecione uma filial"
+                        options={deliveryCenterOptions}
+                        onchange={handleChangeDeliveryCenter}>
+                    </lightning-combobox>
+                    <div class="refreshing-label-container">
+                        <template if:true={isRefreshingValues}>
+                            <span>Buscando preços e estoques</span>
+                            <div class="custom-spinner-container">
+                                <div class="slds-spinner_container">
+                                    <div role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small">
+                                    <span class="slds-assistive-text">Loading</span>
+                                    <div class="slds-spinner__dot-a"></div>
+                                    <div class="slds-spinner__dot-b"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <template if:false={isRefreshingValues}>
+                            <span>Dados atualizados.</span>
+                            <div class="slds-var-m-left_small">
+                                <lightning-icon 
+                                    icon-name="utility:check" 
+                                    size="x-small"
+                                    variant="success">
+                                </lightning-icon>
+                            </div>
+                        </template>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+
+        <div class="slds-scrollable" style="height: 264px;">
+            <template if:false={productsData}>
+                <label>Não há produtos a serem exibidos.</label>
+            </template>
+            <template if:true={productsData}>
+                <lightning-datatable
+                    key-field="id"
+                    columns={columns}
+                    data={productsData}
+                    hide-checkbox-column
+                    column-widths-mode="auto"
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsort={handleSort}
+                    wrap-text-max-lines="2"
+                    onrowaction={handleRowAction}
+                    is-loading={isLoadingData}>
+                </lightning-datatable>
+            </template>
+        </div>
+    </div>
+
+    <template if:true={productDescriptionModalVisible}>
+        <c-product-description 
+            show={productDescriptionModalVisible}
+            prod={productDetails}
+            onproductdescriptioncloseclick={handleCloseProductDescriptionModal}>
+        </c-product-description>
+    </template>
+</template>

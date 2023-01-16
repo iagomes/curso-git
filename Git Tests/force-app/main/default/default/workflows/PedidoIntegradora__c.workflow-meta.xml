@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>RejeicaoProcesso</fullName>
+        <field>RejeicaoProcesso__c</field>
+        <literalValue>1</literalValue>
+        <name>Rejeição processo</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>SolicitacaoAprovada</fullName>
+        <field>SolicitacaoAprovada__c</field>
+        <literalValue>1</literalValue>
+        <name>Solicitação aprovada</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAguardandoAnalise</fullName>
+        <field>Status__c</field>
+        <literalValue>Aguardando análise</literalValue>
+        <name>Status aguardando análise</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAguardandoConfirmacao</fullName>
+        <field>Status__c</field>
+        <literalValue>Aguardando confirmação do Protheus</literalValue>
+        <name>Status aguardando confirmação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAguradandoAnalise</fullName>
+        <field>Status__c</field>
+        <literalValue>Aguardando análise</literalValue>
+        <name>Status aguardando análise</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusAprovacao</fullName>
+        <field>StatusAprovacao__c</field>
+        <literalValue>Aprovado</literalValue>
+        <name>Status de aprovação</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>StatusRejeicao</fullName>
+        <field>StatusAprovacao__c</field>
+        <literalValue>Reprovado</literalValue>
+        <name>Status de rejeição</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Literal</operation>
+        <protected>false</protected>
+        <reevaluateOnChange>false</reevaluateOnChange>
+    </fieldUpdates>
+</Workflow>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NotaFiscal__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Nota fiscal</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Favor informar uma Nota Fiscal que se relacione ao CLIENTE informado no CASO.</errorMessage>
+        <filterItems>
+            <field>NotasFiscais__c.Conta__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.AccountId</valueField>
+        </filterItems>
+        <infoMessage>Favor informar uma Nota Fiscal que se relacione ao CLIENTE informado no CASO..</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>NotasFiscais__c</referenceTo>
+    <relationshipLabel>Cases</relationshipLabel>
+    <relationshipName>Cases</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Lookup</type>
+</CustomField>

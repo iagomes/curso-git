@@ -1,0 +1,13 @@
+<template>
+    <template if:true={timelines}>
+        <lightning-card title={labels.Interactions} icon-name="standard:activations" class="card slds-card_boundary">
+            <div class="slds-card__body slds-card__body_inner">
+                <template for:each={timelines} for:item="timeline">
+                    <div class="container slds-badge slds-badge_lightest" key={timeline.name}>
+                        <b>{timeline.name}</b>&nbsp;&nbsp;<span class="counter">{timeline.counter}</span>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <lightning-quick-action-panel header={labels.Forward}>
+        {labels.Are_sure_you_want_to_forward_the_case}
+        <div slot="footer">
+            <lightning-button
+                variant="neutral"
+                label={labels.Cancel}
+                onclick={closeQuickAction}
+            ></lightning-button>
+            <lightning-button
+                variant="brand"
+                label={labels.Confirm}
+                class="slds-m-left_x-small"
+                onclick={handleChangeOwner}
+            ></lightning-button>
+        </div>
+    </lightning-quick-action-panel> 
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Emissor_do_Pedido__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Informar o nome do Emissor do Pedido, vinculado a NF citada no Caso aberto contra uma empresa do Grupo, que não esteja &quot;dentro do Nexos&quot;.</inlineHelpText>
+    <label>Emissor do Pedido</label>
+    <length>255</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

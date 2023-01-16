@@ -1,0 +1,51 @@
+<template>
+    <lightning-card title={labels.Chronometer} icon-name="standard:business_hours" class="timer-card slds-card_boundary">
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:false={opened.watch}>
+                {labels.CannotLoadElpasedTimeInformation}
+            </template>
+            <template if:true={opened.watch}>
+                <template if:true={opened.watch.hasYears}>
+                    <div class="timer-portion-container slds-badge slds-badge_lightest">
+                        <span class="time-ref">{opened.watch.years}</span>&nbsp;{labels.Years}
+                    </div>
+                </template>
+                <template if:true={opened.watch.hasDays}>
+                    <div class="timer-portion-container slds-badge slds-badge_lightest">
+                        <span class="time-ref">{opened.watch.days}</span>&nbsp;{labels.Days}
+                    </div>
+                </template>
+                <div class="timer-portion-container slds-badge slds-badge_lightest">
+                    <span class="time-ref">{opened.watch.hours}</span>&nbsp;{labels.Hours}&nbsp;&nbsp;
+                    <span class="time-ref">{opened.watch.minutes}</span>&nbsp;{labels.Minutes}
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+    <template if:true={wasReopened}>
+        <lightning-card title="Cronômetro Reabertura" icon-name="standard:business_hours" class="timer-card slds-card_boundary">
+            <div class="slds-card__body slds-card__body_inner">
+                <template if:false={reopened.watch}>
+                    {labels.CannotLoadElpasedTimeInformation}
+                </template>
+                <template if:true={reopened.watch}>
+                    {labels.CannotLoadElpasedTimeInformation}
+                    <template if:true={reopened.watch.hasYears}>
+                        <div class="timer-portion-container slds-badge slds-badge_lightest">
+                            <span class="time-ref">{reopened.watch.years}</span>&nbsp;{labels.Years}
+                        </div>
+                    </template>
+                    <template if:true={reopened.watch.hasDays}>
+                        <div class="timer-portion-container slds-badge slds-badge_lightest">
+                            <span class="time-ref">{reopened.watch.days}</span>&nbsp;{labels.Days}
+                        </div>
+                    </template>
+                    <div class="timer-portion-container slds-badge slds-badge_lightest">
+                        <span class="time-ref">{reopened.watch.hours}</span>&nbsp;{labels.Hours}&nbsp;&nbsp;
+                        <span class="time-ref">{reopened.watch.minutes}</span>&nbsp;{labels.Minutes}
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+</template>

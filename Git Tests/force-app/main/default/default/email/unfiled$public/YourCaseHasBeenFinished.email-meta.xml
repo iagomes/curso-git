@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Your case has been finished</name>
+    <style>none</style>
+    <subject>Notificação de Caso finalizado!</subject>
+    <textOnly>Prezado Cliente,
+
+Sua solicitação que consta sob o protocolo de número {!Case.CaseNumber} com o assunto: &quot;{!Case.Subject}&quot;, foi encerrada. Esperamos que a resolução tenha sido de acordo com sua expectativa.
+
+Considerando a experiência que você teve, qual a nota que você daria para o time de Atendimento ao Cliente?
+
+Sua avaliação ajudará a melhorar nossos serviços. Obrigado!
+
+Caso não concorde com a Finalização desse Caso, lembre-se que você tem até 72 horas para contestar a resolução.
+
+Para tal, responda esse e-mail.
+
+Obrigado!
+
+{!Case.OwnerFullName}
+(16) 99643-0417
+atendimentoaocliente@grupoelfa.com.br</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

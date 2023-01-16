@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Produto_BloquearEdicaoNomeProduto</fullName>
+    <active>true</active>
+    <description>Regra de validação para impedir a edição do campo &quot;Nome do produto&quot; e &quot;Ativo&quot;, que não possui a possibilidade de bloquear pelo layout ou pela segurança de campos.</description>
+    <errorConditionFormula>AND(
+$Profile.Name != &apos;Administrador do sistema&apos;,
+OR(
+				ISCHANGED(Name),
+				ISCHANGED(IsActive))
+)</errorConditionFormula>
+    <errorMessage>O campos &quot;Nome do produto&quot; e &quot;Ativo&quot; não podem ser editados.</errorMessage>
+</ValidationRule>

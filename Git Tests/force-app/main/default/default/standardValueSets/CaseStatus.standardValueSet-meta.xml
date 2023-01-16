@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>Novo</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Em Andamento</fullName>
+        <default>false</default>
+        <label>Em Andamento</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Em Espera</fullName>
+        <default>false</default>
+        <label>Em Espera</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Atrasado</fullName>
+        <default>false</default>
+        <label>Atrasado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Finalizado</fullName>
+        <default>false</default>
+        <label>Finalizado</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Encerrado</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Merged</fullName>
+        <default>false</default>
+        <label>Merged</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pendente aprovação</fullName>
+        <default>false</default>
+        <label>Pendente aprovação</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

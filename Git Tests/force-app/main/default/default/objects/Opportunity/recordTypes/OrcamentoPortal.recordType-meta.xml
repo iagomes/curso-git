@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrcamentoPortal</fullName>
+    <active>true</active>
+    <businessProcess>Portal de Cotações</businessProcess>
+    <compactLayoutAssignment>LayoutCompactoOrcamentoPortal</compactLayoutAssignment>
+    <label>Orçamento do Portal</label>
+    <picklistValues>
+        <picklist>CanalEntrada__c</picklist>
+        <values>
+            <fullName>ACSC - Associação Congregação de Santa Catarina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Apoio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ariba%2FAmil</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bionexo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONTRATO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Chat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-MAIL MARKETING</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>E-mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GERENCIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GT Plan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Humma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>INPART</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MICROSOFT TEAMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MVM RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Max Cotações</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical VM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Movi Tech</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NEOGRID</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nimbi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PANFLETO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL FAEPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL MULTICENTRAIS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL MV SISTEMA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SAO MARTINHO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SGHCOT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL SINCONECTA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL UNIFENAS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL UNIMED LIMEIRA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL WARELINE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paradigma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Plani Max</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal GTPLAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal HR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal Sintese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pro Saude</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sintese</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Skype</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Smarkets Marketplace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Smart Compras</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tasy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telefone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TerNet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tivox</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unifor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VENDEDOR EXTERNO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VS Supply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Whatsapp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>CanalVendas__c</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PORTAL DE COTAÇÕES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ForecastCategoryName</picklist>
+        <values>
+            <fullName>Best Case</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Omitted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pipeline</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FormaPagamento__c</picklist>
+        <values>
+            <fullName>Boleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carteira</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cartão de Credito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cartão de Debito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cheque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Depósito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dinheiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eletrônico</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FretePicklist__c</picklist>
+        <values>
+            <fullName>CIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FOB</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <!-- <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Advertisement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Customer Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Employee Referral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Google AdWords</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Partner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Purchased List</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trade Show</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Webinar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Website</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues> -->
+    <!-- <picklistValues>
+        <picklist>Loss_Reason__c</picklist>
+        <values>
+            <fullName>Lost to Competitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Budget %2F Lost Funding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Decision %2F Non-Responsive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Price</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues> -->
+    <picklistValues>
+        <picklist>StatusAprovacao__c</picklist>
+        <values>
+            <fullName>Aprovado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em aprovação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em digitação</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusIntegracaoPortalCotacoes__c</picklist>
+        <values>
+            <fullName>Falha na Integração</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Integrado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Integrado</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Recebendo dados</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recebida</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TabulacaoN1__c</picklist>
+        <values>
+            <fullName>Aceite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Improdutiva</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envio Automático</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recusa</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TabulacaoN2__c</picklist>
+        <values>
+            <fullName>BU Especialidade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BU Genérico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BU Material</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloqueio Financeiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação Enviada Parcial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação Enviada TT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação Vencida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falta de estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fora de Malha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não atinge o faturamento mínimo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não conseguimos atender no prazo solicitado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não temos a apresentação solicitada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não temos a quantidade solicitada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não temos a validade solicitada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não temos o item no portifólio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não trabalhamos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Área Restrita %2F Regionalização</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envio Automático</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Existing Business</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Business</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

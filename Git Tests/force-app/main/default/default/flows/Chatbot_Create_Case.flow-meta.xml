@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <formulas>
+        <name>JoinedDescription</name>
+        <dataType>String</dataType>
+        <expression>{!Description} &amp; &quot; &quot; &amp; {!ExtraInfo}</expression>
+    </formulas>
+    <formulas>
+        <name>NormalizeMotive</name>
+        <dataType>String</dataType>
+        <expression>CASE({!Motive}, 
+	&quot;Atualizar dados cadastrais&quot;, 
+		&quot;Atualização de Cadastro&quot;, 
+	&quot;Reportar Erro no Cadastro&quot;, 
+		&quot;Erro no Cadastro&quot;,
+	&quot;Atualizar dados de qualidade&quot;, 
+		&quot;Atualização de dados de qualidade&quot;, 
+	&quot;Solicitar Reembolso&quot;, 
+		&quot;Solicitação de reembolso&quot;,
+	&quot;Solicitar Desconto no Boleto&quot;, 
+		&quot;Solicitação de Desconto no Boleto&quot;,
+	&quot;Solicitar uma Renegociação&quot;, 
+		&quot;Renegociação&quot;,
+	&quot;Alterar o endereço de entrega&quot;,
+		&quot;Troca de Endereço&quot;,
+	&quot;Alterar data do pedido&quot;,
+		&quot;Troca de Data de Entrega&quot;,
+	&quot;Faturamento incorreto&quot;,
+		&quot;Faturamento incorreto (Cancelamento)&quot;,
+	&quot;Arrependimento de compra&quot;,
+		&quot;Arrependimento de Compra&quot;,
+	&quot;Precificação incorreta&quot;,
+		&quot;Precificação Incorreta&quot;,
+	&quot;Entrega em atraso&quot;,
+		&quot;Entrega em Atraso (Cancelamento)&quot;,
+	&quot;CNPJ divergente do cotado&quot;,
+		&quot;CNPJ Divergente do Cotado&quot;,
+	&quot;Cancelar um pedido&quot;,
+		&quot;Cancelamento do Pedido&quot;,
+&quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>NormalizeReturnBeforeOrAfterDelivery</name>
+        <dataType>String</dataType>
+        <expression>CASE({!ReturnBeforeOrAfterDelivery}, 
+	&quot;Devolução no ato da entrega&quot;, 
+		&quot;No Ato&quot;, 
+	&quot;Devolução no após entrega&quot;, 
+		&quot;Pós Entrega&quot;,
+&quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>NormalizeReturnType</name>
+        <dataType>String</dataType>
+        <expression>CASE({!ReturnType}, 
+	&quot;Parcial&quot;, 
+		&quot;Devolução Parcial&quot;, 
+	&quot;Total&quot;, 
+		&quot;Devolução Total&quot;,
+&quot;&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>Subject</name>
+        <dataType>String</dataType>
+        <expression>&quot;Chatbot - &quot; &amp; {!Type}  &amp; &quot; - &quot; &amp; {!Reason} &amp; &quot; - &quot; &amp; {!NormalizeMotive}</expression>
+    </formulas>
+    <interviewLabel>Chatbot - Create Case {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Chatbot - Create Case</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Case</name>
+        <label>Create Case</label>
+        <locationX>572</locationX>
+        <locationY>446</locationY>
+        <assignRecordIdToReference>CaseId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Get_Case_Number</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ContactId</field>
+            <value>
+                <elementReference>Get_Contact_Info.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Description</field>
+            <value>
+                <elementReference>JoinedDescription</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>DevolucaoAtoOuPosEntrega__c</field>
+            <value>
+                <elementReference>NormalizeReturnBeforeOrAfterDelivery</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FormatoDeDevolucao__c</field>
+            <value>
+                <elementReference>ReturnFormat</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Motivo__c</field>
+            <value>
+                <elementReference>NormalizeMotive</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NotaFiscal__c</field>
+            <value>
+                <elementReference>InvoiceId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Origin</field>
+            <value>
+                <stringValue>Chatbot</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>Get_Queue_Info.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Razao__c</field>
+            <value>
+                <elementReference>Reason</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <elementReference>Status</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subject</field>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Submotivo__c</field>
+            <value>
+                <elementReference>SubMotive</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TipoDeDevolucao__c</field>
+            <value>
+                <elementReference>NormalizeReturnType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <elementReference>Type</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Case</object>
+    </recordCreates>
+    <recordLookups>
+        <description>Get the case number of the case that was just created.</description>
+        <name>Get_Case_Number</name>
+        <label>Get Case Number</label>
+        <locationX>572</locationX>
+        <locationY>566</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_message_session</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CaseId</elementReference>
+            </value>
+        </filters>
+        <object>Case</object>
+        <outputAssignments>
+            <assignToReference>Case_Number</assignToReference>
+            <field>CaseNumber</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Info</name>
+        <label>Get Contact Info</label>
+        <locationX>572</locationX>
+        <locationY>206</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Queue_Info</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>AccountId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Queue_Info</name>
+        <label>Get Queue Info</label>
+        <locationX>572</locationX>
+        <locationY>326</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>AtendimentoAoClienteQueue</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_message_session</name>
+        <label>Update message session</label>
+        <locationX>572</locationX>
+        <locationY>686</locationY>
+        <connector>
+            <targetReference>Update_messaging_end_user</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>RoutableId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>CaseId</field>
+            <value>
+                <elementReference>CaseId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>MessagingSession</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_messaging_end_user</name>
+        <label>Update messaging end user</label>
+        <locationX>572</locationX>
+        <locationY>806</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>EndUserId</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>AccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>MessagingEndUser</object>
+    </recordUpdates>
+    <start>
+        <locationX>446</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Contact_Info</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>AccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Case_Number</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <description>ID of created case</description>
+        <name>CaseId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Description</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Chatbot eva</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>EndUserId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ExtraInfo</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>InvoiceId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Motive</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Reason</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ReturnBeforeOrAfterDelivery</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ReturnFormat</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ReturnType</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>RoutableId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Status</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>New</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>SubMotive</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Type</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

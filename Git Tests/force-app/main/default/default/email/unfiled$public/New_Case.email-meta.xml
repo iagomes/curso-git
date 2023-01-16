@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>New Case</name>
+    <style>none</style>
+    <subject>Novo caso criado</subject>
+    <textOnly>Olá!
+
+O caso de número {!Case.CaseNumber} foi criado. O processo de tratativa já pode ser iniciado.
+
+Equipe de Atendimento ao Cliente Grupo Elfa
+
+{!Case.OwnerFullName}
+(16) 99643-0417
+atendimentoaocliente@grupoelfa.com.br</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

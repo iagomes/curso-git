@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TipoDeDevolucao__c</fullName>
+    <externalId>false</externalId>
+    <label>Tipo de Devolução</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Razao__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Devolução Parcial</fullName>
+                <default>false</default>
+                <label>Devolução Parcial</label>
+            </value>
+            <value>
+                <fullName>Devolução Total</fullName>
+                <default>false</default>
+                <label>Devolução Total</label>
+            </value>
+            <value>
+                <fullName>Não Aplicável</fullName>
+                <default>false</default>
+                <label>Não Aplicável</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Devolução</controllingFieldValue>
+            <valueName>Devolução Parcial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Devolução</controllingFieldValue>
+            <valueName>Devolução Total</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pedido não faturado</controllingFieldValue>
+            <controllingFieldValue>Pesquisa Ativa</controllingFieldValue>
+            <controllingFieldValue>Fechamento de Loop</controllingFieldValue>
+            <controllingFieldValue>Financeiro</controllingFieldValue>
+            <controllingFieldValue>Reclamação</controllingFieldValue>
+            <controllingFieldValue>Carta de Correção</controllingFieldValue>
+            <controllingFieldValue>Cadastro</controllingFieldValue>
+            <controllingFieldValue>Faturamento Pedido</controllingFieldValue>
+            <controllingFieldValue>Tracking do Pedido</controllingFieldValue>
+            <controllingFieldValue>Carta de Comprometimento de Troca</controllingFieldValue>
+            <controllingFieldValue>Cotação</controllingFieldValue>
+            <valueName>Não Aplicável</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

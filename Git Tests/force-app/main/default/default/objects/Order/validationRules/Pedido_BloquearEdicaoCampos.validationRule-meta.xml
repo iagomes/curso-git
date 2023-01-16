@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pedido_BloquearEdicaoCampos</fullName>
+    <active>true</active>
+    <description>Regra de validação para impedir a edição dos campos &quot;Status&quot;, &quot;Nome do cliente&quot; e &quot;Data de emissão&quot;.</description>
+    <errorConditionFormula>AND(
+$Profile.Name != &apos;Administrador do sistema&apos;,
+RecordType.DeveloperName = &apos;PedidoHistorico&apos;,
+OR(
+				ISCHANGED( Status ),
+				ISCHANGED( EffectiveDate ),
+		 	ISCHANGED( AccountId ))
+)</errorConditionFormula>
+    <errorMessage>Os campos &quot;Status&quot;, &quot;Nome do cliente&quot; e &quot;Data de emissão&quot; não podem ser editados.</errorMessage>
+</ValidationRule>

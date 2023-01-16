@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoNotaFiscal</fullName>
+    <fields>Name</fields>
+    <fields>CNPJ__c</fields>
+    <fields>CodigoLoja__c</fields>
+    <fields>ValorTotal__c</fields>
+    <fields>DataEmissao__c</fields>
+    <label>Layout compacto de nota fiscal</label>
+</CompactLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoFornecedor</fullName>
+    <fields>ExternalId__c</fields>
+    <fields>Name</fields>
+    <fields>CNPJ__c</fields>
+    <fields>NomeContato__c</fields>
+    <fields>Email__c</fields>
+    <label>Layout compacto de fornecedor</label>
+</CompactLayout>

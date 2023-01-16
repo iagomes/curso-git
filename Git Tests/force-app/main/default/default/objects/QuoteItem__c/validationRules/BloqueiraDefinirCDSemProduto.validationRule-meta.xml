@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BloqueiraDefinirCDSemProduto</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT(ISBLANK(CNPJCD__c)),
+ISCHANGED(CNPJCD__c),
+ISBLANK(Product__c)
+)</errorConditionFormula>
+    <errorDisplayField>CNPJCD__c</errorDisplayField>
+    <errorMessage>Não é possível selecionar um CD sem vincular um produto.</errorMessage>
+</ValidationRule>

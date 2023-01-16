@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Layout de pedido conta e ordem</layout>
+        <sections>
+            <label><!-- Informações de entrega --></label>
+            <section>Informações de entrega</section>
+        </sections>
+        <sections>
+            <label><!-- Informações do pedido --></label>
+            <section>Informações do pedido</section>
+        </sections>
+        <sections>
+            <label><!-- Links personalizados --></label>
+            <section>Links personalizados</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de pedido de bonificação</layout>
+        <sections>
+            <label><!-- Informações do pedido --></label>
+            <section>Informações do pedido</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de pedido de venda</layout>
+        <sections>
+            <label><!-- Informações do pedido --></label>
+            <section>Informações do pedido</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de pedido histórico</layout>
+        <sections>
+            <label><!-- Dados Financeiros --></label>
+            <section>Dados Financeiros</section>
+        </sections>
+        <sections>
+            <label><!-- Informações de entrega --></label>
+            <section>Informações de entrega</section>
+        </sections>
+        <sections>
+            <label><!-- Informações do pedido --></label>
+            <section>Informações do pedido</section>
+        </sections>
+        <sections>
+            <label><!-- Informações do sistema --></label>
+            <section>Informações do sistema</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Pedido de bonificação --></label>
+        <name>PedidoBonificacao</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pedido de conta e ordem --></label>
+        <name>PedidoContaOrdem</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pedido histórico --></label>
+        <name>PedidoHistorico</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Pedido de venda --></label>
+        <name>PedidoVenda</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Os campos &quot;Status&quot;, &quot;Nome do cliente&quot; e &quot;Data de emissão&quot; não podem ser editados. --></errorMessage>
+        <name>Pedido_BloquearEdicaoCampos</name>
+    </validationRules>
+</CustomObjectTranslation>

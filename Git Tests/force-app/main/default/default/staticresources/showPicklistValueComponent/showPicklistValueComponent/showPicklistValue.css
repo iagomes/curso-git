@@ -1,0 +1,13 @@
+.required-change label {
+    display: flex;
+    margin: none;
+    padding: unset;
+    align-items: end;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.required-change label abbr {
+    font-size: var(--lwc-fontSize4,0.875rem);
+    font-weight: var(--lwc-fontWeightBold,700);
+}

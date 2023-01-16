@@ -1,0 +1,95 @@
+<template>      
+    <!-- Modal/Popup Box LWC starts here -->
+    <lightning-quick-action-panel title="Quick Action Title">
+        <template if:true={isLoading}>
+            <lightning-spinner variant="brand" size="medium"> </lightning-spinner>
+        </template>
+        <div style="width: 100%;" id={recordId}>
+            <!-- Modal/Popup Box LWC header here -->
+            <header style="position: relative; border-top-right-radius: .25rem; border-top-left-radius: .25rem; text-align: center; background-color: #fff;">
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12">
+                        <div class="header" style="float: left; display: flex; align-items: center;">
+                            <lightning-icon icon-name="standard:opportunity" alternative-text="Opportunity" title="Opportunity"></lightning-icon>
+                            <h2 class="slds-m-left_x-small slds-text-heading_medium" style="font-weight: bold;">{oppNumber}</h2>                    
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12">
+                        <div class="header" style="float: right">
+                            <lightning-input type="checkbox" onchange={handleCheckAllItens} label="Aplicar em todos itens"></lightning-input>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </header>
+            <template for:each={productList} for:item="item">
+                <div key={item.chave} style="padding-top:15px;background-color: #fff; border-bottom-right-radius: 0.25rem; border-bottom-left-radius: 0.25rem; max-height: 30rem">
+                    <div style="padding:15px; border-radius: 5px 5px 0px 0px; box-shadow: 0 0 3px rgb(0 0 0 / 10%);border-bottom: 3px solid #0070d2; border-top: 1px solid #ddd; border-right: 1px solid #ddd; border-left: 1px solid #ddd;">
+                        <div style="display:flex;" data-item-id={item.chave}>
+                            <div class="slds-col slds-m-left_medium">
+                                <div class="slds-media__body slds-col">
+                                    <lightning-layout class="slds-m-bottom_x-small">
+                                        <lightning-layout-item>
+                                            <div style="font-size: 15px;color:#0070d2">
+                                                <p><strong>{item.code} - {item.name}</strong></p>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                    <lightning-layout class="slds-m-bottom_x-small">
+                                        <lightning-layout-item>
+                                            <div style="font-size: 13px;color:#999">
+                                                <p>{item.fornecedor}</p>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="border-top: 1px solid #dddbda; margin-top: 15px;">
+                            <div style="display:flex; margin-top: 15px;" onclick={handleCd}>                            
+                                <div class="slds-col slds-m-left_small" style="align-self: center;">
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item size="6">
+                                            <lightning-layout multiple-rows>
+                                                <lightning-layout-item size="12">
+                                                    <div style="font-size: 14px; font-weight: bold;">
+                                                        <p>{item.cd}</p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12">
+                                                    <div style="font-size: 13px;">
+                                                        <p>{item.quantidade} x {item.valorFormatado}</p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                                <lightning-layout-item size="12">
+                                                    <div style="font-size: 13px;color:#969492">
+                                                        <p>Score do item: {item.scoreItem}</p>
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="6">
+                                            <div style="float: right; width: 75%;">
+                                                <lightning-combobox disabled={item.desabilitarMotivo} value={item.motivoCancelamento} data-item-id={item.chave} label="Motivo de cancelamento" options={cancelReasonOptions}
+                                                    dropdown-alignment="left" variant="default" onchange={onChangeItemCancelReason}>
+                                                </lightning-combobox>
+                                            </div>
+                                        </lightning-layout-item>
+                                        <lightning-layout-item size="12">
+                                            <div style="float: left; width: 100%;">
+                                                <lightning-textarea disabled={item.desabilitarObs} label="Observações de cancelamento" onblur={onBlurCancelDescription} data-item-id={item.chave} value={item.obsCancelamento} variant="standard" style="width: 100%;"></lightning-textarea>
+                                            </div>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div slot="footer">
+            <!-- <lightning-button class="slds-m-right_x-small" variant="neutral" label="Salvar alterações" onclick={handleSaveChanges}></lightning-button> -->
+            <lightning-button disabled={disableButton} variant="brand" label="Nova versão" onclick={handleNewVersion}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

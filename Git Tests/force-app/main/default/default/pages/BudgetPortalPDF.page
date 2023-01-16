@@ -1,0 +1,387 @@
+<apex:page standardController="Opportunity" extensions="BudgetPortalPDFController"  applyHtmlTag="false" sidebar="false" showHeader="false" applyBodyTag="false" renderAs="PDF">
+    <html>
+        <head>
+            <style>
+                @page{
+                    size: A4 landscape;
+                } 
+
+                body{
+                    margin: 5%;
+                }
+                
+                h1 {
+                    margin-block-start: 5px;
+                    padding: 5px;
+                    background-color: rgb(230, 230, 230);
+                    border: solid #000;
+                    border-width: 1px 1px;
+                    font-size: 20px;
+                    text-align: center;
+                }
+
+                .primary-infos table {
+                    border-collapse: collapse;
+                    margin-top: 25px;
+                    width: 100%;
+                }
+
+                .primary-infos th {
+                    background-color: rgb(195, 195, 195);
+                    border: solid #000;
+                    border-width: 0px 1px;
+                    border-top-width: 1px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: bold;
+                    padding: 5px;
+                    width: 16.66%;
+                }
+                
+                .primary-infos td {
+                    background-color: rgb(230, 230, 230);
+                    border: solid #000;
+                    border-width: 1px 1px;
+                    font-size: 12px;
+                    padding: 3px;
+                    text-align: center;
+                    width: 16.66%;
+                }
+
+                #tdspace{
+                    background-color: white;
+                    border-width: 0px
+                }
+                .additional-infos{
+                    page-break-after:always;
+                }
+
+                .additional-infos .info-pill h4{
+                    display: block;
+                    margin-block-start: 0px;
+                    margin-block-end: 0px;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                    padding: 0px;
+                    margin: 0px;
+                    font-weight: bold;
+                    font-size: 13px;
+                }
+
+                .additional-infos .info-pill span{
+                    margin-block-start: 5px;
+                    margin-block-end: 0px;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 5px;
+                    font-size: 12px;
+                }
+                .additional-infos .info-pill{
+                    margin-top: 5px;
+                    margin-block-start: 10px;
+                    padding: 5px;
+                    background-color: rgb(230, 230, 230);
+                    border: solid #000;
+                    border-width: 1px 1px;
+                }
+
+                .additional-infos .info-pill .align-inline{
+                    display: inline;
+                }
+
+                .requests{
+                    page-break-after:always;
+                }
+                .requests table {
+                    border-collapse: collapse;
+                    margin-top: 5px;
+                    width: 100%;
+                    
+                }
+
+                .requests .table-head{
+                    text-align: center;
+                }
+
+                .requests .table-head-text{
+                    display: inline;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+                .requests tr{
+                    page-break-inside: avoid;
+                }
+
+                .requests th {
+                    background-color: rgb(195, 195, 195);
+                    border: solid #000;
+                    border-width: 0px 1px;
+                    border-top-width: 1px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: bold;
+                    padding: 5px;
+                    
+                }
+
+                .requests .left-text{
+                    text-align: left;
+                }
+                
+                .requests td {
+                    background-color: rgb(230, 230, 230);
+                    border: solid #000;
+                    border-width: 1px 1px;
+                    font-size: 12px;
+                    padding: 3px;
+                    text-align: center;
+                    
+                }
+
+                .requests .table-footer{
+                    border-width: 1px 1px;
+                }
+
+                .requests .align-inline{
+                    display: inline;
+                }
+
+                .simbol-map{
+                    margin: 10px;
+                }
+                .simbol-map .simbol-info{
+
+                    font-size: 11px;
+                }
+
+                .distribution-center{
+                    margin-bottom: 40px;
+                    page-break-inside: avoid;
+                }
+
+                .distribution-center table {
+                    border-collapse: collapse;
+                    margin-top: 5px;
+                    width: 100%;
+                    
+                }
+
+                .distribution-center .table-head{
+                    text-align: center;
+                }
+
+                .distribution-center .table-head-text{
+                    display: inline;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .distribution-center th {
+                    background-color: rgb(195, 195, 195);
+                    border: solid #000;
+                    border-width: 0px 1px;
+                    border-top-width: 1px;
+                    text-align: center;
+                    font-size: 13px;
+                    font-weight: bold;
+                    padding: 5px;
+                    
+                }
+                
+                .distribution-center td {
+                    background-color: rgb(230, 230, 230);
+                    border: solid #000;
+                    border-width: 1px 1px;
+                    font-size: 12px;
+                    padding: 3px;
+                    text-align: center;
+                    
+                }
+
+                .distribution-center .align-inline{
+                    display: inline;
+                }
+                .distribution-center .left-text{
+                    text-align: left;
+                }
+            </style>
+        </head>
+        <body>
+            <apex:pageBlock >
+                <div class="header">
+                    <h1>{!orcamento.NumeroOrcamento}</h1>
+                </div>
+                <div class="conteiner primary-infos">
+                    <table>
+                        <tr>
+                            <th  colspan="2">Integradora</th>
+                            <th  colspan="2">Id do Integrador</th>
+                            <th  colspan="2">Id Portal</th>
+                            <th  colspan="2">Região</th>
+                            <th  colspan="2">Data de Vencimento</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{!orcamento.Integradora}</td>
+                            <td colspan="2">{!orcamento.IdIntegrador}</td>
+                            <td colspan="2">{!orcamento.IdPortal}</td>
+                            <td colspan="2">{!orcamento.Regiao}</td>
+                            <td colspan="2">{!orcamento.DataVencimento}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" id="tdspace"></td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Cliente</th>
+                            <th colspan="2">CNPJ</th>
+                            <th colspan="2">Nome do Contato</th>
+                            <th colspan="2">Quantidade de Itens</th>
+                            <th colspan="2">Condição de Pag. (cliente)</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{!orcamento.Cliente}</td>
+                            <td colspan="2">{!orcamento.CNPJ}</td>
+                            <td colspan="2">{!orcamento.NomeContato}</td>
+                            <td colspan="2">{!orcamento.QuantidadeItens}</td>
+                            <td colspan="2">{!orcamento.CondicaoPagCliente}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="10" id="tdspace"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="container additional-infos">
+                    <div class="info-pill">
+                        <h4>Título do Orçamento:</h4>
+                        <span>{!orcamento.TituloOrcamento}</span>
+                    </div>
+                    <div class="info-pill">
+                        <h4>Endereço de entrega:</h4>
+                        <span>{!orcamento.EnderecoEntrega}</span>
+                    </div>
+                    <div class="info-pill">
+                        <h4>Termos do Cliente:</h4>
+                        <span>{!orcamento.TermosCliente}</span>
+                    </div>
+                    <div class="info-pill">
+                        <h4>Observações do Cliente:</h4>
+                        <span>{!orcamento.ObservacoesCliente}</span>
+                    </div>
+                    <div class="info-pill">
+                        <h4 class="align-inline">Total Portal: </h4><span>{!orcamento.TotalPortal}</span>
+                    </div>
+                </div>
+            </apex:pageBlock>
+            <apex:pageBlock >
+                <div class="container requests">
+                    <table>
+                        <tr>
+                            <th colspan="10" class="table-head"><h4 class="table-head-text">Respostas</h4></th>
+                        </tr>
+                        <apex:repeat value="{!Respostas}" var="head" id="respList">
+                            <tr>
+                                <th colspan="4" class="left-text">
+                                    <h3 class="align-inline">Vendedor: </h3><span>{!membrosTime[head].Name}</span>
+                                </th>
+                                <th colspan="6" class="left-text">
+                                    <h3 class="align-inline">BU: </h3><span>{!membrosTime[head].BUsText}</span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>Código</th>
+                                <th>Produto Solicitado</th>
+                                <th>Código Elfa</th>
+                                <th>Produto Elfa</th>
+                                <th>Marca Produto Elfa</th>
+                                <th>Unidade de Medida</th>
+                                <th>Quantidade Solicitada</th>
+                                <th>Tabulação</th>
+                                <th>Preço Unitário</th>
+                                <th>Valor Total</th>
+                            </tr>
+                                <apex:repeat value="{!Respostas[head]}" var="resp" id="respList">
+                                    <tr>
+                                        <td>{!resp.SequenciaOc}</td>
+                                        <td>{!resp.ProdutoSolicitado}</td>          
+                                        <td>{!resp.CodigoElfa}</td>          
+                                        <td>{!resp.ProdutoElfa}</td>
+                                        <td>{!resp.MarcaProdutoElfa}</td>
+                                        <td>{!resp.UnidadedeMedida}</td>
+                                        <td>{!resp.QuantidadeSolicitada}</td>
+                                        <td>{!resp.tabulacao}</td>
+                                        <td>{!resp.PrecoUnitario}</td>
+                                        <td>{!resp.ValorTotal}</td>
+                                    </tr>
+                                </apex:repeat>
+                            </apex:repeat>
+                            <tr>
+                                <th class="table-footer">Total</th>
+                                <th class="table-footer" colspan="8"></th>
+                                <th class="table-footer">{!orcamento.TotalValorRespostas}</th>
+                            </tr>
+                        
+                    </table>
+                    <apex:pageBlockSection rendered="{!(orcamento.Status = 'RESPONDIDO')}">
+
+                        <div class="simbol-map">
+                            <span class="simbol-info">* item atualizado</span>
+                        </div>
+                    </apex:pageBlockSection>
+                </div>
+            </apex:pageBlock>
+            <apex:pageBlock >
+                <apex:repeat value="{!CentrosDistribuicao}" var="cd" id="cdList">
+                    <div class="container distribution-center">
+                        <table>
+                            <tr>
+                                <th colspan="3" class="table-head"><h4 class="table-head-text">Centro de Distribuição</h4></th>
+                            </tr>
+                            <tr>
+                                <th colspan="3">{!cd.Nome}</th>
+                            </tr>
+                            <tr>
+                                <th>Respondidos</th>
+                                <th>Quantidade total de itens</th>
+                                <th>Valor total de itens</th>
+                            </tr>
+                            <tr>
+                                <td>{!cd.QuantidadeRespondidos}</td>
+                                <td>{!cd.QuantidadeTotalItens}</td>
+                                <td>{!cd.ValorTotalItens}</td>
+                            </tr>
+                            <tr>
+                                <th>Data de validade</th>
+                                <th>Prazo de validade (dias)</th>
+                                <th>Prazo de Entrega</th>
+                            </tr>
+                            <tr>
+                                <td>{!cd.DataValidade}</td>
+                                <td>{!cd.PrazoValidade}</td>
+                                <td>{!cd.PrazoEntrega}</td>
+                            </tr>
+                            <tr>
+                                <th>Condição de Pagamento</th>
+                                <th>Faturamento Mínimo</th>
+                                <th>Tipo de Frete</th>
+                            </tr>
+                            <tr>
+                                <td>{!cd.CondicaoPagamento}</td>
+                                <td>{!cd.FaturamentoMinimo}</td>
+                                <td>{!cd.TipoFrete}</td>
+                            </tr>
+                        </table>
+                        <apex:pageBlockSection rendered="{!(cd.Observacoes != null)}">
+                            <div class="left-text">
+
+                                <!-- <tr>
+                                    <td colspan="3" class="left-text"> -->
+                                <h4 class="align-inline">Observações:</h4>
+                                <span>{!cd.Observacoes}</span>
+                                        <!-- </td>
+                                        </tr> -->
+                            </div>
+                        </apex:pageBlockSection>
+                    </div>
+                </apex:repeat>
+            </apex:pageBlock>
+        </body>
+    </html>
+</apex:page>

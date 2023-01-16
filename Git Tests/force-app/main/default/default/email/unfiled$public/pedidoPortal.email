@@ -1,0 +1,5 @@
+<p>Foram confirmados itens da cotação <b>{!Order.Idportalcotacoes__c}</b></p>
+<p>Com vencimento  {!Order.DataVencimento__c}</p>
+<p>Com  Valor Total R$ {!Order.TotalAmount}</p>
+<p>Cotada pela empresa {!Order.AccountName__c}.</p>
+<p><a href={Order.Link}>Link do Pedido.</a>

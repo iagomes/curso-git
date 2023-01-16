@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Número do Contrato</label>
+    <protected>false</protected>
+    <values>
+        <field>Data_type__c</field>
+        <value xsi:type="xsd:string">TEXT</value>
+    </values>
+    <values>
+        <field>Field_Name_CSV__c</field>
+        <value xsi:type="xsd:string">NumeroContrato</value>
+    </values>
+    <values>
+        <field>Field_Name_SF__c</field>
+        <value xsi:type="xsd:string">NumeroContrato__c</value>
+    </values>
+    <values>
+        <field>OrderShow__c</field>
+        <value xsi:type="xsd:string">02</value>
+    </values>
+</CustomMetadata>

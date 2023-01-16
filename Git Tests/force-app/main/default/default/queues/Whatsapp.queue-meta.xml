@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Whatsapp</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>AtendimentoAoClientePublicGroup</publicGroup>
+            <publicGroup>AtendimentoAoClienteKeyAccounts</publicGroup>
+        </publicGroups>
+        <users>
+            <user>test-nihvs9evue32@example.com</user>
+        </users>
+    </queueMembers>
+    <queueRoutingConfig>AtendimentoAoClienteRoteamento</queueRoutingConfig>
+    <queueSobject>
+        <sobjectType>MessagingEndUser</sobjectType>
+    </queueSobject>
+    <queueSobject>
+        <sobjectType>MessagingSession</sobjectType>
+    </queueSobject>
+</Queue>

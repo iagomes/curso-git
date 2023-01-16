@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contato_ObrigarPreenchimentoNome</fullName>
+    <active>true</active>
+    <description>Regra de validação para obrigar preencher o nome do contato.</description>
+    <errorConditionFormula>ISBLANK(FirstName)</errorConditionFormula>
+    <errorDisplayField>FirstName</errorDisplayField>
+    <errorMessage>É necessário preencher o primeiro nome do contato.</errorMessage>
+</ValidationRule>

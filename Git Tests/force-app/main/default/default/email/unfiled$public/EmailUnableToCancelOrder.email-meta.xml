@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>E-mail será enviado a partir de um pedido que não pode ser cancelado.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>E-mail de pedido não cancelado</name>
+    <style>none</style>
+    <subject>Não foi possível cancelar o pedido</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

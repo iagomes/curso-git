@@ -1,0 +1,10 @@
+Olá, Sr.(a) {!Contact.FirstName}.
+
+Conforme solicitado, segue  o orçamento {!Opportunity.NumeroOrcamento__c}.
+
+
+Obrigado
+
+{!Opportunity.OwnerFullName}
+{!User.Email}
+{!User.Phone}

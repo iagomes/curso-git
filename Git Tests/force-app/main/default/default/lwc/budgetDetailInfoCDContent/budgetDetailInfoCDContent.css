@@ -1,0 +1,270 @@
+.slds-cell-wrap{
+    padding:5px;
+}
+.header_color {
+    font-size:11px;
+}
+.divHist{   
+	width: 700px;
+    margin: auto;
+    padding:15px;
+}
+.spanClass{
+    margin: auto;
+}
+.stockDiv{
+    color:red;
+}
+.nextButton{
+    --sds-c-icon-color-foreground-default: #0070d2;
+}
+.divAccordionSection{
+    --sds-c-accordion-heading-text-color:#0070d2;
+}
+.cflex_row {
+    display: flex;
+    flex-direction: row;
+  }
+.cflex_ai_start {
+    align-items: flex-start;
+}
+
+.custom-header{
+    text-align: center;
+    font-size: 18px;
+    color: rgb(0, 112, 210);
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: -10px;
+}
+.p-prevision-text {
+    font-weight: bold;
+    color:rgb(0, 112, 210);
+}
+
+/* CUSTOM JAIRO / MARCO */
+.slider{
+    background: #f2f2f2;
+    padding:15px;
+    display: flex;
+}
+
+.card-custom{
+    padding: 0px;
+    background: #f9f9f9;
+    border-radius: 5px 5px 0 0;
+    border:1px solid #ddd;
+    border-bottom:3px solid #ccc;
+    margin: 5px;
+}
+
+.card-custom .card-header{
+    font-size: 14px;
+    padding: 8px;
+    background: #f9f9f9;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px 3px 0 0;
+}
+
+.card-body{
+    width: 100%;
+}
+/* AQUI */
+.card-body .info{
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 0px 0px 7px 10px;
+    border-top: 1px dashed #ccc;
+}
+
+.card-body .info2{
+    margin-bottom: 0;
+    flex-flow: wrap;
+    background: #fff;
+    padding: 0px 0px 7px 10px;
+    border-bottom: 1px dashed #ccc;
+}
+.card-body .info2 div{
+    color:#999;
+}
+.dark{
+    color:#333;
+    font-size:0.9rem;
+}
+
+.box-legendas{
+    display:flex;
+}
+.box-legendas .badge{
+    border-radius: 25px;
+    padding:5px;
+    text-transform: uppercase;
+    font-size:9px;
+    font-weight:bold;
+    margin-right:6px;
+}
+
+.badge-portal{
+    --slds-c-badge-line-height: 1;
+    --slds-c-badge-sizing-border: 0;
+    --slds-c-badge-font-size: 65%;
+    width: 100%;
+    justify-content: center;
+}
+
+.OCss{
+    background:#ffcc20;
+    color: #333;
+}
+.CampanhaCss{
+    background:#0070d2;
+    color: rgb(255, 255, 255);
+}
+.ProdutoConsignadoCss{
+    background:#1d8a01;
+    color: #fff;
+}
+.ACss{
+    background:#ff1e1ee0;
+    color: rgb(255, 255, 255);
+}
+.ContratoShelfLifeCss{
+    background:#2d1efff6;
+    color: rgb(255, 255, 255);
+}
+.CampanhaVendedorCss{
+    background:#df5b04f6;
+    color: rgb(255, 255, 255);
+}
+
+.card-body .qtde{
+    display: flex;
+    font-size: 1.2rem;
+}
+.card-body .qtde.small{
+    display: flex;
+    font-size: 0.9rem;
+}
+
+.card-body .qtde .lb-sec{
+    color:#666;
+    font-size: 0.7rem;
+}
+
+.card-header .icon{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f2f2f2;
+}
+
+.title{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-cd-card{
+    font-size:11px;
+    padding:10px;
+    text-align:center;
+    cursor:pointer;
+    border-radius:3px;
+}
+
+.cd-card-selected{
+    border: 1px solid #00b835;
+}
+.cd-card-unselected{
+    border: 1px solid #ddd;
+}
+
+.box-icons{
+    display:flex;
+}
+
+.px-2{
+    padding:0 1rem;
+}
+
+.text-right{
+    text-align: right;
+}
+
+/* .box-form {
+    min-height: 343px !important;
+    display: grid;
+} */
+
+.box-form .last-row {
+    background-color: red;
+}
+
+/* Formatações do FORM */
+.box-form .row-form{
+    padding: 4px 0;
+    min-height: 45px !important; 
+}
+
+.box-form .row-form,
+.box-form .row-form .col-form{
+    display:flex;
+    justify-content: space-between;
+}
+
+.box-form .row-form .valor-zerado-help-text .slds-form-element__icon{
+    vertical-align: -webkit-baseline-middle;
+}
+
+.box-form .row-form .col-form .lb-form {
+    min-width: 70px;
+    display: flex;
+    font-size: 0.7rem;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    color:#555;
+}
+
+.box-form .row-form .col-form .lb-input {
+    display: flex;
+    align-items: center;
+    max-width: 100px;
+}
+.box-form .row-form .col-form .lb-input-100 {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+}
+
+.no-border-bg{
+    border: none !important;
+    background: transparent !important;
+}
+
+.flex-end{
+    display:flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.box-form {
+    padding: 0px 12px 0px 15px;
+    border-radius: 3px;
+}
+.w-50{
+    width:50%;
+}
+.w-25{
+    width:25%;
+}
+.pt-20px{
+    padding-top:20px;
+}

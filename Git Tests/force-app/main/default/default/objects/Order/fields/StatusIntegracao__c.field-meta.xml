@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusIntegracao__c</fullName>
+    <externalId>false</externalId>
+    <label>Status da integração</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Integrado</fullName>
+                <default>false</default>
+                <label>Integrado</label>
+            </value>
+            <value>
+                <fullName>Não integrado</fullName>
+                <default>false</default>
+                <label>Não integrado</label>
+            </value>
+            <value>
+                <fullName>Erro de aprovação/rejeição</fullName>
+                <default>false</default>
+                <label>Erro de aprovação/rejeição</label>
+            </value>
+            <value>
+                <fullName>Nota fiscal cancelada</fullName>
+                <default>false</default>
+                <label>Nota fiscal cancelada</label>
+            </value>
+            <value>
+                <fullName>Pedido em aberto</fullName>
+                <default>false</default>
+                <label>Pedido em aberto</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado por regra</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado por regra</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado por crédito</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado por crédito</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado por estoque</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado por estoque</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado por crédito e estoque</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado por crédito e estoque</label>
+            </value>
+            <value>
+                <fullName>Pedido aguardando separação</fullName>
+                <default>false</default>
+                <label>Pedido aguardando separação</label>
+            </value>
+            <value>
+                <fullName>Pedido em separação</fullName>
+                <default>false</default>
+                <label>Pedido em separação</label>
+            </value>
+            <value>
+                <fullName>Pedido separado/aguardando faturamento</fullName>
+                <default>false</default>
+                <label>Pedido separado/aguardando faturamento</label>
+            </value>
+            <value>
+                <fullName>Pedido faturado</fullName>
+                <default>false</default>
+                <label>Pedido faturado</label>
+            </value>
+            <value>
+                <fullName>Pedido com resíduo eliminado (sem faturamento)</fullName>
+                <default>false</default>
+                <label>Pedido com resíduo eliminado (sem faturamento)</label>
+            </value>
+            <value>
+                <fullName>Pedido com resíduo eliminado (com faturamento)</fullName>
+                <default>false</default>
+                <label>Pedido com resíduo eliminado (com faturamento)</label>
+            </value>
+            <value>
+                <fullName>Pedido liberado</fullName>
+                <default>false</default>
+                <label>Pedido liberado</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado na alçada de desconto</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado na alçada de desconto</label>
+            </value>
+            <value>
+                <fullName>Pedido com SC</fullName>
+                <default>false</default>
+                <label>Pedido com SC</label>
+            </value>
+            <value>
+                <fullName>Pedido aguardando saldo</fullName>
+                <default>false</default>
+                <label>Pedido aguardando saldo</label>
+            </value>
+            <value>
+                <fullName>Pedido bloqueado por regra de bonificação</fullName>
+                <default>false</default>
+                <label>Pedido bloqueado por regra de bonificação</label>
+            </value>
+            <value>
+                <fullName>Pedido cancelado</fullName>
+                <default>false</default>
+                <label>Pedido cancelado</label>
+            </value>
+            <value>
+                <fullName>Pedido rejeitado no Salesforce</fullName>
+                <default>false</default>
+                <label>Pedido rejeitado no Salesforce</label>
+            </value>
+            <value>
+                <fullName>Pedido rejeitado na alçada financeira</fullName>
+                <default>false</default>
+                <label>Pedido rejeitado na alçada financeira</label>
+            </value>
+            <value>
+                <fullName>Erro integração (Envio ao Protheus)</fullName>
+                <default>false</default>
+                <label>Erro integração (Envio ao Protheus)</label>
+            </value>
+            <value>
+                <fullName>Erro integração (geração do pedido no Protheus)</fullName>
+                <default>false</default>
+                <label>Erro integração (geração do pedido no Protheus)</label>
+            </value>
+            <value>
+                <fullName>Pedido aguardando envio/processamento do comprovante de pagamento RA</fullName>
+                <default>false</default>
+                <label>Pedido aguardando envio/processamento do comprovante de pagamento RA</label>
+            </value>
+            <value>
+                <fullName>Pedido aguardando aprovação de pagamento RA</fullName>
+                <default>false</default>
+                <label>Pedido aguardando aprovação de pagamento RA</label>
+            </value>
+            <value>
+                <fullName>Pedido rejeitado na alçada de aprovação de pagamento RA</fullName>
+                <default>false</default>
+                <label>Pedido rejeitado na alçada de aprovação de pagamento RA</label>
+            </value>
+            <value>
+                <fullName>Aguardando processamento na integradora</fullName>
+                <default>false</default>
+                <label>Aguardando processamento na integradora</label>
+            </value>
+            <value>
+                <fullName>Aprovado na integradora</fullName>
+                <default>false</default>
+                <label>Aprovado na integradora</label>
+            </value>
+            <value>
+                <fullName>Rejeitado na integradora</fullName>
+                <default>false</default>
+                <label>Rejeitado na integradora</label>
+            </value>
+            <value>
+                <fullName>Bloqueado por divergência de preços</fullName>
+                <default>false</default>
+                <label>Bloqueado por divergência de preços</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

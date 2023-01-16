@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : Raphael Soares
+  @author username   : raphael.holanda.ext@iconit.com.br
+  @company           : Icon IT Solutions
+  @last modified on  : 25-11-2021
+  @last modified by  : raphael.holanda.ext@iconit.com.br
+-->
+<template>
+    <c-custom-modal
+        show-confirmation-button="true" 
+        show-cancel-button="true" 
+        hide-close-button="true"
+        remove-backdrop="true"
+        onmodalresult={handleConfirmationModalResult}
+        title="Encerrar Caso?"
+        init-style=""
+        container-style=""
+        role="custom-dialog">
+        Tem certeza que deseja encerrar este Caso?
+    </c-custom-modal>
+</template>

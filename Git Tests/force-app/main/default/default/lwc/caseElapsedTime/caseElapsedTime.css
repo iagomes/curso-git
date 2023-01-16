@@ -1,0 +1,12 @@
+:host .timer-portion-container {
+    margin: 1px;
+    display: inline-block;
+}
+
+:host .time-ref {
+    font-size: 1.1rem;
+}
+
+:host .timer-card {
+    display: block;
+}

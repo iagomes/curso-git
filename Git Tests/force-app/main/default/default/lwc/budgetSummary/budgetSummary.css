@@ -1,0 +1,14 @@
+.header {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.episodesContainer
+{
+    background-color: #F3F2F2;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,160 @@
+<apex:page controller="FileSelfServiceController" docType="html-5.0" applyHtmlTag="false" applyBodyTag="false" showHeader="false"
+    sidebar="false" standardStylesheets="false">
+
+    <head>
+        <style type="text/css">
+            html,
+            body,
+            .container {
+                height: 100%;
+            }
+
+            body,
+            .container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .spinner {
+                -webkit-animation: rotator 1.4s linear infinite;
+                animation: rotator 1.4s linear infinite;
+            }
+
+            @-webkit-keyframes rotator {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(270deg);
+                }
+            }
+
+            @keyframes rotator {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(270deg);
+                }
+            }
+
+            .path {
+                stroke-dasharray: 187;
+                stroke-dashoffset: 0;
+                transform-origin: center;
+                -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+                animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+            }
+
+            @-webkit-keyframes colors {
+                0% {
+                    stroke: #4285F4;
+                }
+                25% {
+                    stroke: #DE3E35;
+                }
+                50% {
+                    stroke: #F7C223;
+                }
+                75% {
+                    stroke: #1B9A59;
+                }
+                100% {
+                    stroke: #4285F4;
+                }
+            }
+
+            @keyframes colors {
+                0% {
+                    stroke: #4285F4;
+                }
+                25% {
+                    stroke: #DE3E35;
+                }
+                50% {
+                    stroke: #F7C223;
+                }
+                75% {
+                    stroke: #1B9A59;
+                }
+                100% {
+                    stroke: #4285F4;
+                }
+            }
+
+            @-webkit-keyframes dash {
+                0% {
+                    stroke-dashoffset: 187;
+                }
+                50% {
+                    stroke-dashoffset: 46.75;
+                    transform: rotate(135deg);
+                }
+                100% {
+                    stroke-dashoffset: 187;
+                    transform: rotate(450deg);
+                }
+            }
+
+            @keyframes dash {
+                0% {
+                    stroke-dashoffset: 187;
+                }
+                50% {
+                    stroke-dashoffset: 46.75;
+                    transform: rotate(135deg);
+                }
+                100% {
+                    stroke-dashoffset: 187;
+                    transform: rotate(450deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+            <h1>Aguarde, dentro de instantes o download começará...</h1>
+        </div>
+        <apex:form>
+            <apex:actionFunction name="downloadFile" action="{!download}" rerender="out" />
+            <apex:outputPanel id="out">
+                <apex:outputPanel rendered="{!NOT(ISBLANK(url)) && url != 'error'}">
+                    <script type="text/javascript">  
+                        let base64String = "{!url}";
+                        const byteCharacters = atob(base64String);
+                        const byteNumbers = new Array(byteCharacters.length);
+                        for (let i = 0; i < byteCharacters.length; i++) {
+                            byteNumbers[i] = byteCharacters.charCodeAt(i);
+                        }
+
+                        const byteArray = new Uint8Array(byteNumbers);
+                        const blob = new Blob([byteArray], { type: 'application/pdf' });
+                        const blobUrl = URL.createObjectURL(blob);
+                        window.location = blobUrl;
+
+                    </script>
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!NOT(ISBLANK(url)) && url == 'error'}">
+                    <h2>Ocorreu um erro ao fazer o download. Por favor, tente novamente mais tarde ou entre em contato com um
+                        de nossos atendentes.</h2>
+                    <style type="text/css">
+                        .container {
+                            display: none !important;
+                        }
+                    </style>
+                </apex:outputPanel>
+            </apex:outputPanel>
+        </apex:form>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript">  
+            downloadFile();
+        </script>
+    </body>
+</apex:page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MotivoCancelamento__c</fullName>
+    <description>Aparentemente não é usado.</description>
+    <externalId>false</externalId>
+    <label>Motivo de cancelamento</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Desistiu da compra</fullName>
+                <default>false</default>
+                <label>Desistiu da compra</label>
+            </value>
+            <value>
+                <fullName>Não tem mais interesse no produto</fullName>
+                <default>false</default>
+                <label>Não tem mais interesse no produto</label>
+            </value>
+            <value>
+                <fullName>Falta de estoque do produto</fullName>
+                <default>false</default>
+                <label>Falta de estoque do produto</label>
+            </value>
+            <value>
+                <fullName>Preço</fullName>
+                <default>false</default>
+                <label>Preço</label>
+            </value>
+            <value>
+                <fullName>Aprovação interna fora do prazo</fullName>
+                <default>false</default>
+                <label>Aprovação interna fora do prazo</label>
+            </value>
+            <value>
+                <fullName>Analise interna financeira</fullName>
+                <default>false</default>
+                <label>Analise interna financeira</label>
+            </value>
+            <value>
+                <fullName>Prazo de entrega</fullName>
+                <default>false</default>
+                <label>Prazo de entrega</label>
+            </value>
+            <value>
+                <fullName>Orçamento cancelado por falta de tratativa dentro do vencimento</fullName>
+                <default>false</default>
+                <label>Orçamento cancelado por falta de tratativa dentro do vencimento</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

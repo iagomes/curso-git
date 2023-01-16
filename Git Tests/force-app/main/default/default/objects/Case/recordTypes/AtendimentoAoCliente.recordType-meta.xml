@@ -1,0 +1,1243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AtendimentoAoCliente</fullName>
+    <active>true</active>
+    <businessProcess>Atendimento ao Cliente</businessProcess>
+    <compactLayoutAssignment>Atendimento_ao_Cliente</compactLayoutAssignment>
+    <description>Tipo de Registro dedicado ao time de Atendimento ao Cliente</description>
+    <label>Atendimento ao Cliente</label>
+    <picklistValues>
+        <picklist>AnaliseDoCaso__c</picklist>
+        <values>
+            <fullName>Em Análise</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Não Procedente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Procedente</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>AreaDemandante__c</picklist>
+        <values>
+            <fullName>Comercial - Especialidades Farmacêuticas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comercial - Genéricos e Similares</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Comercial - OPME%2C Materiais e Nutrição</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financeiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Gente e Gestão</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inovação e Digital</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jurídico %26 Compliance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operações</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Planejamento Estratégico e Integrações</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Serviços Logísticos</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>DevolucaoAtoOuPosEntrega__c</picklist>
+        <values>
+            <fullName>No Ato</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pós Entrega</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EmpresaDemandante__c</picklist>
+        <values>
+            <fullName>Agilfarma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Anbioton</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ArtMedica</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BioDent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Biohosp</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cristal Pharma</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dupatri</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Elfa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fenergy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jaw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medcom</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mostaert</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nacional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oncorio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prescrita</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surya</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vital Procifar</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>EmpresaFilial__c</picklist>
+        <values>
+            <fullName>AGILFARMA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ART MEDICA - EUSEBIO %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ATMA SSA - ATMA SSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BIOHOSP - BELO HORIZONTE %28FILIAL 02%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BIOHOSP - CONTAGEM %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>BIOHOSP - RIO DE JANIERO %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDM CE - CDM CEARÁ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDM PA - CDM PARÁ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CDM PE - CDM PERNAMBUCO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CIENCIA  - CIENCIA MATRIZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COMERCIAL COMMED - SAO PAULO %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CONSOLIDADORA - CONSOLIDADORA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CRISTAL - CRISTAL MATRIZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DUPATRI - BETIM %28FILIAL 08%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DUPATRI - CATALAO %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DUPATRI - SANTOS %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DUPATRI - SUMARE %28FILIAL 07%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA BSB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED BA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED CE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED CEARA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED DCT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED ITAIM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED JP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED SC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA BSB - ELFA MED SP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ELFA FOR - ELFA FOR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JAW - JAW FILIAL PR</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JAW - JAW FILIAL RS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>JAW - JAW MATRIZ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAJELA MED - MAJELA MED CE ADM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAJELA MED - MAJELA MED CE CD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MAJELA MED - MAJELA MED PB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDCOM - BRASILIA %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDCOM - CAMPO GRANDE %28FILIAL 04%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDCOM - CUIABA %28FILIAL 02%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDCOM - GOIANIA %28FILIAL 05%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MEDCOM - GOIANIA %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MOSTAERT - RECIFE %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - CONTAGEM %28FILIAL 09%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - CONTAGEM %28FILIAL 10%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - MACAE %28FILIAL 08%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - RIBEIRAO PRETO %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - S%2E J%2E RIO PRETO %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - SANT%2E DE PARNAIBA %28FILIAL 05%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - SANT%2E DE PARNAIBA %28FILIAL 06%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NACIONAL - SANT%2E DE PARNAIBA %28FILIAL 07%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ONCORIO - CURITIBA %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ONCORIO - ITUMBIARA %28FILIAL 02%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ONCORIO - PINHAIS %28FILIAL 05%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ONCORIO - RIO CLARO %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESC%2E CENTRO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA BH</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA CABEDELO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA NATAL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA PRAIA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA SP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRESCRITA PRAIA - PRESCRITA SSA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PRIME - PRIME</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PROCIFAR DISTRIB%2E - SALVADOR %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SALUS LATAM - SAO PAULO %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SAN LOG - SAN LOG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VITAL - SALVADOR %28FILIAL 02%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VITAL - SALVADOR %28MATRIZ%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>VITAL - VILA VELHA %28FILIAL 03%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>FormatoDeDevolucao__c</picklist>
+        <values>
+            <fullName>Física</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Virtual</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Motivo__c</picklist>
+        <values>
+            <fullName>2ª Via de Nota Fiscal%2FBoleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atendimento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atualização de Cadastro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ausência na Entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadastro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelamento do Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de Comprometimento de Troca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de Correção</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desvio de Qualidade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devolução</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Documentos de Filiais</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Endereço errado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entrega Programada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entrega em Atraso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro XML%2F 2ª via</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro no Cadastro%C2%A0Produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extravio do Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falta de Estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falta de Informação no COMPROVEI%2F LYNCROS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturamento Incorreto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturamento do Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financeiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiscal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Histórico de Pagamentos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Histórico de Pedidos</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inconsistência Geral</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Paciente Veio a Óbto%2FAlta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido Não Faturado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido Parado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido não digitado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Produto Faltante%C2%A0no Físico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reclamação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regulatórios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Renegociação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sinistro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solicitação de Desconto no Boleto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solicitação de reembolso</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tracking do Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transporte Entregou Para Cliente Errado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Troca de Data de Entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validade Curta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Validade Inferior a 12 meses</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Origin</picklist>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Portal do Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Salesforce - Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Web</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WhatsApp</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ParaExcluir__c</picklist>
+        <values>
+            <fullName>Sim</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Priority</picklist>
+        <values>
+            <fullName>High</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Low</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medium</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ProdutoTermolabil__c</picklist>
+        <values>
+            <fullName>Não</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sim</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Razao__c</picklist>
+        <values>
+            <fullName>Cadastro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de Comprometimento de Troca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de Correção</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devolução</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturamento Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fechamento de Loop</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financeiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido não faturado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pesquisa Ativa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reclamação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tracking do Pedido</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reason</picklist>
+        <values>
+            <fullName>Complex functionality</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Existing problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Instructions not clear</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New problem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>User didn%27t attend training</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>StatusResponsibleArea__c</picklist>
+        <values>
+            <fullName>Agendamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando Retorno da Mercadoria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando liberação de NCC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando outro Setor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alteração de modal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovação da exceção</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso aéreo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso da liberação no aeroporto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso expedição</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso feriado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso liberação sefaz</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso transportador</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Baixa de canhoto errada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boleto com Desconto %28anexar o documento%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bonificação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bonificação autorizada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bonificação não autorizada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de Comprometimento de Troca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Carta de troca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cliente ausente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Coleta pela transportadora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conferência da divergência do ítem</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corrigir Custo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Corte de carga %28aéreo%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desistência do cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Divergência no pedido de compra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicidade do pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Em análise - Cadastro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emblagem avariada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Endereço divergente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Envio da Falta de Produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro de faturamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro fiscal%2Ffinanceiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Excursão de temperatura</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extravio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturar novo pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fiscal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fora de malha</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercadoria Entregue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercadoria em desacordo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercadoria embarcada para rota indevida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercadoria vencida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mudança de voo</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>N%2FA</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>NF retida pela fiscalização</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nota de Devolução</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prazo errado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Problema no recebimento cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reentrega solicitada pelo cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regulatórios</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolvido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roubo de carga</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Voo cancelado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Submotivo__c</picklist>
+        <values>
+            <fullName>Alterar data de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alterar endereço de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Alvará Vencido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Arrependimento de Compra</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atendimento ao Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso na rota de entrega</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Atraso na separação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Avaria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bloqueado por crédito</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CNPJ Divergente do Cotado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadastro Desatualizado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadastro do Cliente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cadastro do Produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cliente Não Aceita Lotes Variados</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cliente Não Usa a Marca</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Conversão %2F Unidade de Medida</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cotação Errada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Código de Barra Incorreto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dados de Qualidade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Descrição Incorreta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Desvio de Qualidade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EAN%2FREGISTRO ANVISA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro Integração de Sistemas</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro VDE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro VDI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro de Estoque</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro na Separação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Erro no cadastro do produto</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Extravio de Mercadoria</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fabricante</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Falta de volumes</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Faturamento em Duplicidade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Financeiro</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mercadoria Avariada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NF NÃO AUTORIZADA %28FISCAL%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Nota Retida pelo Fisco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido não Digitado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prazo de Entrega não atende</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Precificação incorreta</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Produto Fora da Temperatura</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Produto Vencido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Produto divergente do cotado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Produtos Avariados</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quantidade divergente da cotada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rastreamento de Pedido</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Telefonia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transacional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transporte Inadequado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vendas</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TipoDeDevolucao__c</picklist>
+        <values>
+            <fullName>Devolução Parcial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Devolução Total</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>TipoDeTransporte__c</picklist>
+        <values>
+            <fullName>Não Aplicável</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Próprio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Terceiro</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Type</picklist>
+        <values>
+            <fullName>Incidente</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reclamação</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Solicitação</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

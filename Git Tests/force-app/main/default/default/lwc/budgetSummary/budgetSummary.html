@@ -1,0 +1,129 @@
+<template>
+    <lightning-button
+        label="Resumo dos orçamentos"
+        title="Resumo dos orçamentos"
+        icon-name="utility:warning"
+        onclick={openModal}>
+    </lightning-button>
+
+    <template if:true={isModelOpen}>
+        <section
+            role="dialog"
+            tabindex="-1"
+            aria-labelledby="modal-heading-01"
+            aria-modal="true"
+            aria-describedby="modal-content-id-1"
+            class="slds-modal slds-fade-in-open"
+            style="
+                height: 100%; 
+                position: fixed; 
+                width: 100vw; 
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            ">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning-button-icon
+                        class="slds-modal__close"
+                        variant="bare-inverse"
+                        icon-name="utility:close"
+                        alternative-text="Close"
+                        size="large"
+                        onclick={closeModal}>
+                        <label>Close</label>
+                    </lightning-button-icon>
+
+                    <div class="header">
+                        <lightning-icon icon-name="standard:opportunity" alternative-text="Opportunity" title="Opportunity"></lightning-icon>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium" style="font-weight: bold; margin-left: 5px;">Resumo dos orçamentos</h2>
+                    </div>
+                </header>
+
+                <div class="slds-modal__content" id="modal-content-id-1">
+                    <lightning-tabset style="background-color: #FFFFFF;">
+                        <lightning-tab label="Cliente atual" onactive={currentClient}>
+                            <div class="episodesContainer slds-modal__header" style="margin-top: -12px;">
+                                <div>
+                                    <h6 style="color: #969492; margin-bottom: 8px; font-size: 12px;">Cliente</h6>
+                                </div>
+                                <div>
+                                    <h1 style="font-size: 12px;">{accountName}</h1>
+                                </div>
+                            </div>
+
+                            <lightning-layout>
+                                <lightning-layout-item size="12" padding="around-medium">
+                                    <lightning-radio-group
+                                        name="radioGroupBudgetStatusCurrent"
+                                        label="Filtro por status:"
+                                        options={budgetStatusOptions}
+                                        value={budgetStatusValue}
+                                        type="radio"
+                                        onchange={handleChangeBudgetStatus}>
+                                    </lightning-radio-group>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                           
+                            <div style="position: relative; overflow: auto; height: 400px;">
+                                <template if:true={isLoading}>
+                                    <lightning-spinner size="medium"></lightning-spinner>
+                                </template>
+                                <template if:false={isLoading}>
+                                    <template if:true={budgetListIsEmpty}>
+                                        <div class="slds-var-p-around_medium slds-text-align_center">
+                                            <h2 class="slds-text-title">Não existem orçamentos.</h2>
+                                        </div>
+                                    </template>
+                                    <template if:false={budgetListIsEmpty}>
+                                        <template for:each={budgetList} for:item="budget">
+                                            <div key={budget}>
+                                                <c-budget-summary-item key={budget} budget-data={budget}></c-budget-summary-item>
+                                            </div>
+                                        </template>
+                                    </template>
+                                </template>
+                            </div>
+                        </lightning-tab>
+                        <lightning-tab label="Outros orçamentos" onactive={otherBudgets}>
+                            <lightning-layout>
+                                <lightning-layout-item size="12" padding="around-medium">
+                                    <lightning-radio-group
+                                        name="radioGroupBudgetStatusOthers"
+                                        label="Filtro por status:"
+                                        options={budgetStatusOptions}
+                                        value={budgetStatusValue}
+                                        type="radio"
+                                        onchange={handleChangeBudgetStatus}>
+                                    </lightning-radio-group>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <div style="position: relative; overflow: auto; height: 400px;">
+                                <template if:true={isLoading}>
+                                    <lightning-spinner size="medium"></lightning-spinner>
+                                </template>
+                                <template if:false={isLoading}>
+                                    <template if:true={budgetListIsEmpty}>
+                                        <div class="slds-var-p-around_medium slds-text-align_center">
+                                            <h2 class="slds-text-title">Não existem orçamentos.</h2>
+                                        </div>
+                                    </template>
+                                    <template if:false={budgetListIsEmpty}>
+                                        <template for:each={budgetList} for:item="budget">
+                                            <div key={budget}>
+                                                <c-budget-summary-item key={budget} budget-data={budget}></c-budget-summary-item>
+                                            </div>
+                                        </template>
+                                    </template>
+                                </template>
+                            </div>
+                        </lightning-tab>
+                    </lightning-tabset>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" style="position: fixed;"></div>
+    </template>
+</template>

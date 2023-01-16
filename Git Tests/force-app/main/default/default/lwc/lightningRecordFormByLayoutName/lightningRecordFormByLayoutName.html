@@ -1,0 +1,144 @@
+<!--
+  @description       : 
+  @author            : Raphael Soares
+  @author username   : raphael.soares@apllos.com
+  @linkedin          : https://www.linkedin.com/in/raphaelsoares95/
+  @company           : Apllos Solutions
+  @last modified on  : 27-08-2021
+  @last modified by  : raphael.soares@apllos.com
+-->
+<template>
+    <div class="style-element-container"></div>
+    <div class="content" if:true={shouldRender}>
+    
+        <lightning-record-edit-form 
+            record-id={recordId}
+            record-type-id={recordTypeId_}
+            object-api-name={objectApiName}
+            onsuccess={handleSuccess}
+            onerror={handleError}
+            onsubmit={handleSubmit}
+            onload={handleRecordLoaded}
+            class="slds-form">
+
+            <template if:true={hideAccordions}>
+        
+                <template for:each={layout.layoutSections} for:item="section" for:index="sectionIndex">
+    
+                    <template if:true={section.shouldDisplay}>
+                        <template for:each={section.layoutColumns} for:item="column" for:index="columnIndex">
+                            <template for:each={column.layoutItems} for:item="item" for:index="itemIndex">
+                    
+                                <div class="slds-p-top_small slds-p-left_small" key={item.field}>
+    
+                                    <template if:true={viewOnlyMode}>
+                                        <template if:true={item.shouldDisplay}>
+                                            <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} disabled>
+                                            </lightning-input-field>
+                                        </template>
+                                    </template>
+                                    <template if:false={viewOnlyMode}>
+                                    
+                                        <template if:true={item.isReadonly}>
+                                            <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} disabled>
+                                            </lightning-input-field>
+                                        </template>
+
+                                        <template if:false={item.isReadonly}>
+                                        
+                                            <template if:true={item.isRequired}>
+        
+                                                <template if:true={item.shouldDisplay}>
+                                                    <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} onchange={handleChange} required>
+                                                    </lightning-input-field>
+                                                </template>
+        
+                                            </template>
+        
+                                            <template if:false={item.isRequired}>
+                                                
+                                                <template if:true={item.shouldDisplay}>
+                                                    <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} onchange={handleChange}>
+                                                    </lightning-input-field>
+                                                </template>
+        
+                                            </template>
+                                        </template>
+                                    </template>
+                                    
+                                </div>
+                    
+                            </template>
+                        </template>
+                    </template>
+    
+                </template>
+            </template>
+
+            <template if:false={hideAccordions}>
+                <lightning-accordion class="accordion" allow-multiple-sections-open active-section-name={sectionsToDisplay}>
+        
+                    <template for:each={layout.layoutSections} for:item="section" for:index="sectionIndex">
+        
+                        <template if:true={section.shouldDisplay}>
+                            <lightning-accordion-section class="slds-accordion__section" key={section.label} name={section.label} label={section.label}>
+            
+                                <div class="section-content slds-grid slds-wrap" key={column}>
+                                    <template for:each={section.layoutColumns} for:item="column" for:index="columnIndex">
+                                        <template for:each={column.layoutItems} for:item="item" for:index="itemIndex">
+                                
+                                            <div class={item.cssClasses} key={item.field} if:true={item.shouldDisplay}>
+            
+                                                <template if:true={viewOnlyMode}>
+                                                    <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} disabled>
+                                                    </lightning-input-field>
+                                                </template>
+                                                <template if:false={viewOnlyMode}>
+                                        
+                                                    <template if:true={item.isReadonly}>
+                                                        <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} disabled>
+                                                        </lightning-input-field>
+                                                    </template>
+            
+                                                    <template if:false={item.isReadonly}>
+                                                
+                                                        <template if:true={item.isRequired}>
+                                                            <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} onchange={handleChange} required>
+                                                            </lightning-input-field>
+                                                        </template>
+                    
+                                                        <template if:false={item.isRequired}>
+                                                            <lightning-input-field key={item.field} field-name={item.field} name={item.field} class={item.field} onchange={handleChange}>
+                                                            </lightning-input-field>
+                                                        </template>
+                                                    </template>
+                                                </template>
+                                                
+                                            </div>
+                                
+                                        </template>
+                                    </template>
+                                </div>
+        
+                            </lightning-accordion-section>
+                        </template>
+        
+                    </template>
+        
+                </lightning-accordion>
+                
+            </template>
+
+            <lightning-button
+                class="slds-hide submit-button"
+                variant="brand"
+                type="submit"
+                name="update"
+                label="Update">
+            </lightning-button>
+
+        </lightning-record-edit-form>
+            
+    </div>
+    
+</template>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PedidoFluxoManual</fullName>
+    <active>true</active>
+    <label>Pedido de fluxo manual</label>
+    <picklistValues>
+        <picklist>StatusAprovacao__c</picklist>
+        <values>
+            <fullName>Aprovado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reprovado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Aprovado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reprovado na integradora</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando envio de cancelamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando aprovação comercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aprovado comercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reprovado comercial</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Aguardando confirmação de cancelamento</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelado</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pedido gerado</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

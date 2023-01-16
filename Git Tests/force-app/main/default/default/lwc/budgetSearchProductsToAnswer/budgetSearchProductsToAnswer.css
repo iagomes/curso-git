@@ -1,0 +1,18 @@
+.refreshing-label-container {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 32px;
+}
+
+.refreshing-label-container span {
+    color: #747474;
+}
+
+.custom-spinner-container {
+    position: relative;
+    width: 20px;
+    height: 32px;
+    margin-left: 8px
+}

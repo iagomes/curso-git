@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusEntrega__c</fullName>
+    <externalId>false</externalId>
+    <label>Status de entrega</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Link de rastreamento disponível</fullName>
+                <default>false</default>
+                <label>Link de rastreamento disponível</label>
+            </value>
+            <value>
+                <fullName>Em Rota</fullName>
+                <default>false</default>
+                <label>Em rota</label>
+            </value>
+            <value>
+                <fullName>A caminho</fullName>
+                <default>false</default>
+                <label>A caminho</label>
+            </value>
+            <value>
+                <fullName>Chegou</fullName>
+                <default>false</default>
+                <label>Chegou</label>
+            </value>
+            <value>
+                <fullName>Entregue</fullName>
+                <default>false</default>
+                <label>Entregue</label>
+            </value>
+            <value>
+                <fullName>Entregue SL</fullName>
+                <default>false</default>
+                <label>Entregue SL</label>
+            </value>
+            <value>
+                <fullName>Em pausa</fullName>
+                <default>false</default>
+                <label>Em pausa</label>
+            </value>
+            <value>
+                <fullName>Não entregue</fullName>
+                <default>false</default>
+                <label>Não entregue</label>
+            </value>
+            <value>
+                <fullName>Abortada</fullName>
+                <default>false</default>
+                <label>Abortada</label>
+            </value>
+            <value>
+                <fullName>Coletado</fullName>
+                <default>false</default>
+                <label>Coletado</label>
+            </value>
+            <value>
+                <fullName>Não coletado</fullName>
+                <default>false</default>
+                <label>Não coletado</label>
+            </value>
+            <value>
+                <fullName>Conferindo</fullName>
+                <default>false</default>
+                <label>Conferindo</label>
+            </value>
+            <value>
+                <fullName>Conferido</fullName>
+                <default>false</default>
+                <label>Conferido</label>
+            </value>
+            <value>
+                <fullName>Sem rota</fullName>
+                <default>false</default>
+                <label>Sem rota</label>
+            </value>
+            <value>
+                <fullName>Devolvido</fullName>
+                <default>false</default>
+                <label>Devolvido</label>
+            </value>
+            <value>
+                <fullName>Cancelado</fullName>
+                <default>false</default>
+                <label>Cancelado</label>
+            </value>
+            <value>
+                <fullName>Agendado</fullName>
+                <default>false</default>
+                <label>Agendado</label>
+            </value>
+            <value>
+                <fullName>Com ajudante</fullName>
+                <default>false</default>
+                <label>Com ajudante</label>
+            </value>
+            <value>
+                <fullName>Transferido</fullName>
+                <default>false</default>
+                <label>Transferido</label>
+            </value>
+            <value>
+                <fullName>Em transferência</fullName>
+                <default>false</default>
+                <label>Em transferência</label>
+            </value>
+            <value>
+                <fullName>Programado</fullName>
+                <default>false</default>
+                <label>Programado</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

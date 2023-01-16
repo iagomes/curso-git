@@ -1,0 +1,27 @@
+.layout-item, .layout-item-white{
+    padding: 10px;
+}
+.layout-item-first{
+    padding: 10px;
+    background-color: #F3F2F2;
+    border-radius: 15px 15px 0px 0px;
+}
+.layout-item{
+    background-color: #F3F2F2;
+}
+.layout-item-white{
+    background-color: #FAFAF9;
+}
+.borderradius{
+    border-radius: 15px 15px 0px 0px;
+}
+
+.divHist{   
+	width: 700px;
+    margin: auto;
+}
+.divCD{   
+
+    width: 98%;
+    margin: auto;
+}

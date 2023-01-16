@@ -1,0 +1,633 @@
+<template>
+    <div class="slds-m-bottom_medium">
+        <lightning-card>
+            <div class="slds-section slds-is-open">
+                <div class="slds-text-align_center">
+                    <h1> <p> <b>{paymentTitle.NomeCliente}</b> </p></h1>
+                </div>
+            </div>
+        </lightning-card>
+
+        <template if:true={paymentTitle.semTitulo}>
+            <lightning-card>
+                <div class="slds-align_absolute-center">Não há títulos para esta Conta</div>
+            </lightning-card>
+        </template>
+        <lightning-card if:true={device}>
+            <div if:true={paymentTitle.TituloAberto}>
+                <div class="slds-section slds-is-open">
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                    <lightning-input label="Procurar dados" placeholder="Digite o Número do pedido, número do titulo ou Data de vencimento"
+                                            type="search" variant="standard" name="searchProduct" onkeyup={myFunction} >
+                                    </lightning-input>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="slds-section slds-is-open">
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <div class="slds-text-align_center" >ANÁLISE FINANCEIRA</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr><th>
+                                    <div class="slds-text-align_center" onclick={handleShowCreditAnalysis} >
+                                        <div if:false={showCreditAnalysis} >
+                                            <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                            Análise de Crédito
+                                        </div>
+                                        <div if:true={showCreditAnalysis}>
+                                            <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                            Análise de Crédito
+                                        </div>
+                                    </div>
+                                </th></tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="slds-section__content">
+                        <div class="slds-grid" if:true={showCreditAnalysis}>
+                            <lightning-card>
+                                <div class="lgc-bg slds-grid" >
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Grau de Risco" class="slds-p-bottom_medium input" type="text" value={paymentTitle.grauRisco} readonly disabled></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Saldo" class="slds-p-bottom_medium input" type="Text" name="saldo" value={paymentTitle.saldo} readonly disabled></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Saldo a Vencer" class="slds-p-bottom_medium input" type="Text" name="saldoAVencer" value={paymentTitle.saldoAVencer} readonly disabled></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Saldo Vencido" class="slds-p-bottom_medium input" type="Text" name="saldoVencido" value={paymentTitle.saldoVencido} readonly disabled></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Maior Titulo" class="slds-p-bottom_medium input" type="Text" name="maiorCompra" value={paymentTitle.maiorCompra} readonly disabled></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Limite de Crédito" class="slds-p-bottom_medium input" type="Text" name="limCredito" value={paymentTitle.limCredito} readonly disabled></lightning-input>
+                                    </div>
+                                </div>
+                                <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Maior Compra" class="slds-p-bottom_medium input" type="Text" name="maiorCompra" value={paymentTitle.maiorCompra} readonly disabled></lightning-input>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                        <lightning-input label="Média Atraso" class="slds-p-bottom_medium input" type="Text" name="mediaAtraso" value={paymentTitle.mediaAtraso} readonly disabled></lightning-input>
+                                    </div>
+                                </div>
+                            </lightning-card> 
+                        </div>
+                        <div class="slds-section__content">
+                            <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                                <thead>
+                                    <tr><th>
+                                        <div class="slds-text-align_center" onclick={handleShowTitleDue} >
+                                            <div if:false={showTitleDue} >
+                                                <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                                Títulos a Vencer
+                                            </div>
+                                            <div if:true={showTitleDue}>
+                                                <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                                Títulos a Vencer
+                                            </div>
+                                        </div>
+                                    </th></tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="slds-grid" if:true={showTitleDue}>
+                            <lightning-card>
+                                <template for:each={paymentTitleDue} for:item="prod" for:index="index">
+                                    <div class="slds-box slds-box_x-small slds-m-bottom_small" key={prod}>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                                                <lightning-input label="Centro de distribuição" class="slds-p-bottom_medium input" type="Text" name="Empresa" value={prod.EMPRESA} readonly disabled></lightning-input>
+                                            </div>
+                                            <!-- <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Prefixo" class="slds-p-bottom_medium input" type="Text" name="Prefixo" value={prod.PREFIXO} readonly disabled></lightning-input>
+                                            </div> -->
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Número" class="slds-p-bottom_medium input" type="Text" name="NUM" value={prod.NUM} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Parcela" class="slds-p-bottom_medium input" type="Text" name="PARCELA" value={prod.PARCELA} readonly disabled></lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Tipo" class="slds-p-bottom_medium input" type="Text" name="TIPO" value={prod.TIPO} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Saldo" class="slds-p-bottom_medium input" type="Text" name="SALDO" value={prod.SALDO} readonly disabled></lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Valor" class="slds-p-bottom_medium input" type="Text" name="VALOR" value={prod.VALOR} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <div class="slds-grid">
+                                                    <div class="slds-col slds-size_3-of-4" >
+                                                        <lightning-input label="Vencimento Real" class="slds-p-bottom_medium input" type="Text" name="VENCREA" value={prod.VENCREA} readonly disabled></lightning-input>
+                                                    </div>
+                                                    <div class="slds-col slds-size_3-of-4" >
+                                                        <!-- <lightning-input label="Emissão de N/F" class="slds-p-bottom_medium input" type="Text" name="DATA_INCLUSAO" value={prod.DATA_INCLUSAO} readonly disabled></lightning-input> -->
+                                                        {prod.DATA_INCLUSAO}
+                                                    </div>
+                                                    <div class="slds-col slds-size_1-of-4" >
+                                                        <lightning-button-icon style="display:block" alternative-text=""
+                                                            icon-class="" variant="border" type="button"
+                                                            icon-name="utility:description" value={prod} tooltip="Boleto"
+                                                            onclick={boleto} size="medium">
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <div if:true={showTitleDue}>
+                                    <div class="slds-grid">
+                                        <div class="slds-col slds-size_2-of-4" if:true={paymentTitle.pagVencer}>
+                                                <input type="button" value="Anterior" onclick={handlePrev} disabled={pageNumber1} style="width:100px"/>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-4" if:true={paymentTitle.pagVencer}>
+                                            <input type="button" value="Próximo"  disabled={isLastPage} onclick={handleNext} style="width:100px"/>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <div class="slds-section__content">
+                            <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                                <thead><tr><th>
+                                    <div class="slds-text-align_center" onclick={handleShowOverDueTitle} >
+                                        <div if:false={showOverDueTitle} >
+                                            <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                            Títulos em Atraso
+                                        </div>
+                                        <div if:true={showOverDueTitle}>
+                                            <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                            Títulos em Atraso
+                                        </div>
+                                    </div></th></tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="slds-grid" if:true={showOverDueTitle}>
+                            <lightning-card>
+                                <template for:each={overduePaymentTitle} for:item="prod" for:index="index">
+                                    <div class="slds-box slds-box_x-small slds-m-bottom_small" key={prod}>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-1 slds-p-around_x-small">
+                                                <lightning-input label="Centro de distribuição" class="slds-p-bottom_medium input" type="Text" name="Empresa" value={prod.EMPRESA} readonly disabled></lightning-input>
+                                            </div>
+                                            <!-- <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Prefixo" class="slds-p-bottom_medium input" type="Text" name="Prefixo" value={prod.PREFIXO} readonly disabled></lightning-input>
+                                            </div> -->
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Número" class="slds-p-bottom_medium input" type="Text" name="NUM" value={prod.NUM} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Parcela" class="slds-p-bottom_medium input" type="Text" name="PARCELA" value={prod.PARCELA} readonly disabled></lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Tipo" class="slds-p-bottom_medium input" type="Text" name="TIPO" value={prod.TIPO} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Saldo" class="slds-p-bottom_medium input" type="Text" name="SALDO" value={prod.SALDO} readonly disabled></lightning-input>
+                                            </div>
+                                        </div>
+                                        <div class="demo-only demo-only--sizing slds-grid slds-wrap" >
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Valor" class="slds-p-bottom_medium input" type="Text" name="VALOR" value={prod.VALOR} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <lightning-input label="Vencimento Real" class="slds-p-bottom_medium input" type="Text" name="VENCREA" value={prod.VENCREA} readonly disabled></lightning-input>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-2 slds-p-around_x-small">
+                                                <!-- <lightning-input label="Emissão de N/F" class="slds-p-bottom_medium input" type="Text" name="DATA_INCLUSAO" value={prod.DATA_INCLUSAO} readonly disabled></lightning-input> -->
+                                                {prod.DATA_INCLUSAO}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                                <div if:true={showOverDueTitle}>
+                                    <div class="slds-grid">
+                                        <div if:true={paymentTitle.pagVencido}  >
+                                            <input type="button" value="Anterior" onclick={handlePrevVenc} disabled={pageNumber1Venc} style="width:100px"/>
+                                        </div>
+                                        <div if:true={paymentTitle.pagVencido}  >
+                                            <input type="button" value="Próximo"  disabled={isLastPageVenc} onclick={handleNextVenc} style="width:100px"/>
+                                        </div>
+                                    </div>   
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <input type="button" value="Voltar" onclick={mobileVoltar} /> -->
+        </lightning-card>
+
+        <lightning-card if:false={device}>
+            <div if:true={paymentTitle.TituloAberto}>               
+                <div class="slds-section slds-is-open">
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                    <lightning-input label="Procurar dados" placeholder="Digite o Número do pedido, número do titulo ou Data de vencimento"
+                                            type="search" variant="standard" name="searchProduct" onkeyup={myFunction} >
+                                    </lightning-input>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="slds-section slds-is-open">
+                    <div class="slds-section__content">                         
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead>
+                                <tr>                                  
+                                    <th>
+                                        <div class="slds-text-align_center" >ANÁLISE FINANCEIRA</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead><tr><th>
+                                <div class="slds-text-align_center" onclick={handleShowCreditAnalysis} >
+                                    <div if:false={showCreditAnalysis} >
+                                        <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                        Análise de Crédito
+                                    </div>
+                                    <div if:true={showCreditAnalysis}>
+                                        <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                        Análise de Crédito
+                                    </div>
+                                </div></th></tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="slds-section__content">
+                        <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                            <thead if:true={showCreditAnalysis}><tr>
+                                <th style="width:50px">
+                                    <div class="slds-truncate"  title="Column 1">Grau de Risco</div>
+                                </th>
+                                <th style="width:200px">
+                                    <div class="slds-truncate" title="Column 1">Saldo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Saldo a Vencer</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Saldo Vencido</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Maior Titulo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Limite de Crédito</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Maior Compra</div>
+                                </th>
+                                <th style="width:50px">
+                                    <div class="slds-truncate" title="Column 1">Média Atraso</div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody if:true={showCreditAnalysis}>
+                                <tr class="slds-hint-parent" key={id}>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.grauRisco}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p><strong>{paymentTitle.saldo}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.saldoAVencer}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.saldoVencido}</strong> </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.maiorCompra}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.limCredito}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.maiorCompra}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{paymentTitle.mediaAtraso}</strong></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    <!-- </div> -->
+                            <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                                <thead><tr><td rowspan = "1" colspan = "8">
+                                    <div class="slds-text-align_center" onclick={handleShowTitleDue} >
+                                        <div if:false={showTitleDue} >
+                                            <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                            <b> Títulos a Vencer </b>
+                                        </div>
+                                        <div if:true={showTitleDue}>
+                                            <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                            <b> Títulos a Vencer </b>
+                                        </div>
+    
+                                    </div></td></tr>
+                                </thead>
+                                <thead if:true={showTitleDue}><tr>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Centro de distribuição</div>
+                                </th>
+                                <!-- <th>
+                                    <div class="slds-truncate" title="Column 1">Prefixo</div>
+                                </th> -->
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Número</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Parcela</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Tipo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Saldo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Valor</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Vencimento Real</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Emissão de N/F</div>
+                                </th></tr>
+                                </thead>
+                                <tbody if:true={showTitleDue}>
+                                    <template for:each={paymentTitleDue} for:item="prod" for:index="index">
+                                        <tr class="slds-hint-parent" key={prod}>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 13px;">
+                                                    <p><strong>{prod.EMPRESA}</strong></p>
+                                                </div>
+                                            </td>
+                                            <!-- <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.PREFIXO}</strong></p>
+                                                </div>
+                                            </td> -->
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.NUM}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.PARCELA}</strong> </p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.TIPO}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.SALDO}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.VALOR}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-grid">
+                                                    <div class="slds-col slds-size_2-of-4" >
+                                                        <p><strong>{prod.VENCREA}</strong></p>
+                                                    </div>
+                                                    <div class="slds-col slds-size_2-of-4" >
+                                                        <lightning-button-icon style="display:block" alternative-text=""
+                                                            icon-class="" variant="border" type="button"
+                                                            icon-name="utility:description" value={prod} tooltip="Boleto"
+                                                            onclick={boleto} size="medium">
+                                                        </lightning-button-icon>
+                                                    </div>
+                                                </div>
+                                            </td> 
+                                            <td> 
+                                                <div class="slds-grid">
+                                                    <div class="slds-col slds-size_2-of-4" >
+                                                        <p><strong>{prod.DATA_INCLUSAO}</strong></p>
+                                                    </div>
+                                                
+                                                </div>
+                                            </td> 
+                                            </tr>
+                                    </template>
+                                </tbody>
+                                <thead if:true={showTitleDue}><tr>
+                                    <td>
+                                        <div if:true={paymentTitle.pagVencer}  >
+                                            <input type="button" value="Anterior" onclick={handlePrev} disabled={pageNumber1} style="width:100px"/>
+                                        </div>
+                                    </td>
+                                    <td >
+                                        <div if:true={paymentTitle.pagVencer}  >
+                                            <input type="button" value="Próximo"  disabled={isLastPage} onclick={handleNext} style="width:100px"/>
+                                        </div>
+                                    </td></tr>
+                                </thead>
+                                <thead><tr><td rowspan = "1" colspan = "8">
+                                    <div class="slds-text-align_center" onclick={handleShowOverDueTitle} >
+                                        <div if:false={showOverDueTitle} >
+                                            <lightning-icon icon-name="utility:chevronright" size="x-small" ></lightning-icon>
+                                            <b> Títulos em Atraso </b>
+                                        </div>
+                                        <div if:true={showOverDueTitle}>
+                                            <lightning-icon icon-name="utility:chevrondown" size="x-small" ></lightning-icon>
+                                            <b> Títulos em Atraso </b>
+                                        </div>
+    
+                                    </div></td></tr>
+                                </thead>
+
+                                <thead if:true={showOverDueTitle}>
+                                    <tr>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Centro de distribuição</div>
+                                        </th>
+                                        <!-- <th>
+                                            <div class="slds-truncate" title="Column 1">Prefixo</div>
+                                        </th> -->
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Número</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Parcela</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Tipo</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Saldo</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Valor</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Vencimento Real</div>
+                                        </th>
+                                        <th>
+                                            <div class="slds-truncate" title="Column 1">Emissão de N/F</div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody if:true={showOverDueTitle}>
+                                    <template for:each={overduePaymentTitle} for:item="prod" for:index="index">
+                                        <tr class="slds-hint-parent" key={prod}>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 13px;">
+                                                    <p><strong>{prod.EMPRESA}</strong></p>
+                                                </div>
+                                            </td>
+                                            <!-- <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.PREFIXO}</strong></p>
+                                                </div>
+                                            </td> -->
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.NUM}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.PARCELA}</strong> </p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.TIPO}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.SALDO}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                    <p><strong>{prod.VALOR}</strong></p>
+                                                </div>
+                                            </td>
+                                            <td> 
+                                                <div class="slds-grid">
+                                                    <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                        <p><strong>{prod.VENCREA}</strong></p>
+                                                    </div>
+                                                        <!-- <div class="slds-col slds-size_2-of-4" >
+                                                            <lightning-button-icon style="display:block" alternative-text=""
+                                                                icon-class="" variant="border" type="button"
+                                                                icon-name="utility:description" value={prod} tooltip="Boleto"
+                                                                onclick={boleto} size="medium">
+                                                            </lightning-button-icon>
+                                                    </div> -->
+                                                </div>
+
+                                            </td> 
+                                            <td> 
+                                                <div class="slds-grid">
+                                                    <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                                        <p><strong>{prod.DATA_INCLUSAO}</strong></p>
+                                                    </div>                                                      
+                                                </div>
+
+                                            </td>
+                                            </tr>
+                                    </template>
+                                </tbody>
+                                <thead if:true={showOverDueTitle}>
+                                    <td>
+                                    <div if:true={paymentTitle.pagVencido}  >
+                                        <input type="button" value="Anterior" onclick={handlePrevVenc} disabled={pageNumber1Venc} style="width:100px"/>
+                                    </div>
+                                    </td>
+                                    <td >
+                                    <div if:true={paymentTitle.pagVencido}  >
+                                        <input type="button" value="Próximo"  disabled={isLastPageVenc} onclick={handleNextVenc} style="width:100px"/>
+                                    </div>
+                                    </td>
+                                </thead>
+                        </table>
+                    </div>
+                </div>
+                <div class="slds-text-align_center" > <lightning-button variant="Neutral" label="Exportar" title="Exportar" onclick={exportContactData}></lightning-button></div>                     
+            </div>
+        </lightning-card>
+    </div>
+    <template if:true={loading}>
+        <div class="demo-only">
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </div>
+    </template>
+
+</template>

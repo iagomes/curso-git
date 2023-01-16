@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CodigoPedido__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Chave única: Número do pedido + Código do CD</description>
+    <externalId>true</externalId>
+    <label>Código do pedido</label>
+    <length>80</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

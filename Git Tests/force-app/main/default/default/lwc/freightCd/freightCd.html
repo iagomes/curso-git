@@ -1,0 +1,94 @@
+<template>
+    <lightning-button 
+    class="slds-m-left_xx-small"
+       label="Frete"
+       title="Frete"
+       icon-name="utility:fulfillment_order"
+       onclick={openModal}
+       disabled={disabled}>
+    </lightning-button>
+    <!--Use template if:true to display/hide popup based on isModalOpen value--> 
+    <template if:true={isModalOpen}>        
+        <!-- Modal/Popup Box LWC starts here -->
+        <section style="position: fixed; top: 0; left: 0; right: 0; bottom: 0;" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Inserção de frete por CD</h2>
+                </header>
+                <!-- Modal/Popup Box LWC header here -->
+                <div class="slds-scrollable_y">
+                    <template for:each={cdListFilter} for:item="cd">
+                        <header key={cd.id} class="slds-var-p-around_medium" style="background-color: #fff; border-bottom: 1px solid #dddbda;" >
+                            <h1>{cd.cnpjNome}</h1>
+                            <lightning-layout multiple-rows horizontal-align="spread" style="align-items: center;">
+                                <lightning-layout-item size="6">
+                                    <div class="second-section" style="width: 100%">
+                                        <lightning-combobox 
+                                            class="slds-text-align_left" 
+                                            label="Tipo de frete" 
+                                            data-cnpj={cd.cnpjCd}
+                                            options={optionsFreightType} 
+                                            onchange={onChangeFreightType} 
+                                            dropdown-alignment="left" 
+                                            variant="standard" 
+                                            style="width: 100%;" 
+                                            let={cd.id} 
+                                            value={cd.tipoFrete}>
+                                        </lightning-combobox>
+                                    </div>
+                                    <div class="second-section" if:true={cd.freteNecessario}>
+                                        <div style="width: 100%">
+                                            <div class="second-section-form">
+                                                <lightning-input
+                                                    style="width: 100%;"
+                                                    class="slds-text-align_left"
+                                                    data-cnpj={cd.cnpjCd}
+                                                    type="number"
+                                                    formatter="currency" 
+                                                    step=".01"
+                                                    variant="standard"
+                                                    value={cd.valorFrete}
+                                                    onchange={handleFreightValue}>
+                                                </lightning-input>
+                                            </div>                                
+                                            <div if:true={cd.errorMessage}>
+                                                <h1 class="slds-text-align_left slds-var-m-top_x-small slds-text-color_destructive">
+                                                    {cd.errorMessage}
+                                                </h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div style="width: 100%;">
+                                        <h1 class="slds-text-heading_small slds-hyphenate">Valor total</h1>
+                                        <h1 class="slds-text-heading_small slds-hyphenate">
+                                            <lightning-formatted-number 
+                                                format-style="currency"
+                                                currency-code="BRL"
+                                                value={cd.valorTotalScreen}>
+                                            </lightning-formatted-number>
+                                        </h1>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </header>
+                    </template>
+                    <div style="height: 120px;; background-color: #fff; border-bottom: 1px solid #dddbda;"></div>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_brand" onclick={submitDetails} title="Salvar" disabled={disableSave}>Salvar</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

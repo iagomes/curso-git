@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ImpossibilidadeDeEdicao</fullName>
+    <active>true</active>
+    <description>Regra criada visando impedir edições em um caso que se encontra com o Status igual a ENCERRADO.</description>
+    <errorConditionFormula>AND(OR(ISPICKVAL(PRIORVALUE(Status), &quot;Closed&quot;),ISPICKVAL(Status, &quot;Closed&quot;)), !$Permission.ReopenCase, NOT(ISCHANGED( BypassValidationRules__c )) )</errorConditionFormula>
+    <errorMessage>VOCÊ NÃO PODE EDITAR UM CASO JÁ ENCERRADO</errorMessage>
+</ValidationRule>

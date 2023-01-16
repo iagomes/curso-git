@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoEnderecoEntrega</fullName>
+    <fields>Name</fields>
+    <fields>Logradouro__c</fields>
+    <fields>Cidade__c</fields>
+    <fields>Estado__c</fields>
+    <label>Layout compacto de endereço de entrega</label>
+</CompactLayout>

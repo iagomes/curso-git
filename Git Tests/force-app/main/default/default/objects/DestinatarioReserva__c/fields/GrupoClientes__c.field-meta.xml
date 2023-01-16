@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GrupoClientes__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Grupo de clientes</label>
+    <referenceTo>GrupoCliente__c</referenceTo>
+    <relationshipLabel>Destinatários da reserva</relationshipLabel>
+    <relationshipName>DestinatariosReserva</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

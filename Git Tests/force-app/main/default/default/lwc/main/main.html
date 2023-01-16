@@ -1,0 +1,810 @@
+<template>
+    <lightning-layout
+        class=" borderradius slds-wrap slds-border_top slds-border_bottom slds-border_left slds-border_right"
+        multiple-rows="true">
+        <lightning-layout-item size="12" class="layout-item-first">
+            <div
+                class="slds-m-around_xx-small slds-m-bottom_small slds-border_top slds-border_bottom slds-border_left slds-border_right slds-page-header">
+                <div class="slds-media slds-media_center slds-media_small">
+                    <div class="slds-media__figure">
+                        <lightning-icon icon-name="standard:quotes" size="small" variant="slds-icon-inverse">
+                        </lightning-icon>
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__title slds-text-heading_small" style="width: 630px;">HOSPITALL ALBERT EINSTEIN - 60.765.823/0001-30</div>
+                        <ul class="slds-list_horizontal slds-has-dividers_left">
+                            <li class="slds-item">
+                                <div style="font-size: 0.8125rem;">
+                                    <p>30/60/90 Dias</p>
+                                </div>
+                            </li>
+                            <li class="slds-item">
+                                <div style="font-size: 0.8125rem;">
+                                    <p>Tabela de Preço 04</p>
+                                </div>
+                            </li>
+                            <li class="slds-item">
+                                <div style="font-size: 0.8125rem;">
+                                    <p>Data de Validade: 29/03/2021</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="slds-button-group-item" style="float: right">
+                        <lightning-button class="slds-theme_brand" icon-position="left"  
+                            onclick={handleNavigateMix} type="button" label="Exibir Mix do Cliente"></lightning-button>
+                    </div>
+                    <div class="slds-media__figure slds-media__figure_reverse"></div>
+                </div>
+            </div>
+            <lightning-input label="Procure os produtos" placeholder="Digite o Codigo/Nome/Principio Ativio" type="text" onchange={onChangeSearchProduct}
+                variant="standard"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="layout-item-white">
+            <div class={sectionClassProdList}>
+                <h3 class="slds-section__title">
+                    <lightning-button class="slds-theme_base slds-section__title-action" aria-expanded={openSectionProdList} icon-position="left"
+                        variant="base" label="Todos os produtos" icon-name="utility:switch" onclick={handleClickSectionProdList}></lightning-button>
+                </h3>
+                <div class="slds-section__content">
+                    <table class="colorborderblue slds-table slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">#</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Codigo do produto</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Produto</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Principio Ativo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Fabricante</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Número Anvisa</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Categoria</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Preço Fábrica</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Preço Tabela</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Temperatura</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">EAN</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={filteredProdList} for:item="prod">
+                                <tr class="slds-hint-parent" key={prod.id}>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <lightning-input type="checkbox-button" label={prod.id} name="input1">
+                                            </lightning-input>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p><strong>{prod.code}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p><strong>{prod.nome}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.principioAtivo}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.fabricante}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.anvisa}</strong> </p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.categoria}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.precoFabrica}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.precoTabela}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.temperatura}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>{prod.ean}</strong></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="layout-item-white">
+            <template if:true={showDetail}>
+                <div class="slds-section slds-is-open" style="border-bottom: 1px solid grey;">
+                    <h3 class="slds-section__title">
+                        <lightning-button class="slds-theme_base slds-section__title-action" icon-position="left"
+                            variant="base" label="EQ.SISTEMA FECHADO IRRIGADOR              10312556" icon-name="utility:switch" ></lightning-button>
+                    </h3>
+                    <div class="slds-section__content">
+                        <div class="slds-section slds-is-open divHist">
+                            <h3 class="slds-section__title">
+                                <lightning-button class="slds-theme_base slds-section__title-action"
+                                    icon-position="left" variant="base" label="Histórico "></lightning-button>
+                            </h3>
+                            <div class="slds-section__content">
+                                <table
+                                    class="colorborderblue slds-table slds-no-row-hover slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Data pedido</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Valor Unitário</div>
+                                            </th>
+											<th>
+                                                <div class="slds-truncate" title="Column 1">Quantidade</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Status</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Centro de Distribuição</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span style="font-family:'Salesforce Sans';"><strong>10/02/2021</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>R$ 15,00</strong></span></p>
+                                                </div>
+                                            </td>
+											<td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>20 CX</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>Faturado</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>01 - São Paulo</strong></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>05/02/2021</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>R$ 19,00</strong></span></p>
+                                                </div>
+                                            </td>
+											<td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>20 CX</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>Cancelado</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>01 - São Paulo</strong></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="slds-hint-parent">
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>10/01/2021</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>R$ 16,00</strong></span></p>
+                                                </div>
+                                            </td>
+											<td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><span><strong>20 CX</strong></span></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>Em aberto</strong></p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="slds-text-align_center" style="font-size: 13px;">
+                                                    <p><strong>01 - São Paulo</strong></p>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="slds-section slds-is-open divCD">
+                            <h3 class="slds-section__title">
+                                <lightning-button class="slds-theme_base slds-section__title-action"
+                                    icon-position="left" variant="base" label="Centros de Distribuição">
+                                </lightning-button>
+                            </h3>
+                            <div class="slds-section__content">
+                                <table
+                                    class="colorborderblue slds-table slds-no-row-hover slds-table_bordered slds-table_striped slds-table_col-bordered">
+                                    <thead>
+                                        <tr class="slds-text-title_caps">
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">CD</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Lotes</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Estoque</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Preço Tabela</div>
+                                            </th>
+											<th>
+                                                <div class="slds-truncate" title="Column 1">Preço mínimo na UF</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">UN</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Quantidade</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Valor unitário</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Desconto (%)</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Valor Total</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Custo Dif.</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Custo</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Margem Atual</div>
+                                            </th>
+                                            <th>
+                                                <div class="slds-truncate" title="Column 1">Margem Alvo</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <template for:each={cdList} for:item="cd">
+                                            <tr class="slds-hint-parent" key={cd.id}>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>{cd.cds}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>Visualizar os Lotes</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>{cd.estoque} <lightning-icon icon-name="utility:fulfillment_order" alternative-text="Ver Reserva" title="Ver Reserva" size="x-small"></lightning-icon></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>R$ {cd.precotabela}</p>
+                                                    </div>
+                                                </td>												
+												<td>
+													<div class="slds-text-align_left" style="font-size: 13px;">
+														<p>R$ 15,00</p>
+													</div>
+												</td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <div class="slds-form-element__control">
+                                                            <div class="slds-select_container">
+                                                                <select class="slds-select">
+                                                                    <option>CX</option>
+                                                                    <option>UN</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <div class="slds-form-element__control">
+                                                            <input title={cd.index} name="quantidade" type="number" class="slds-input"
+                                                                value={cd.quantidade} onchange={calcPrice} />
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <div class="slds-form-element__control">
+                                                            <input title={cd.index} name="unitario" type="number" class="slds-input"
+                                                                value={cd.unitario} onchange={calcPrice} />
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <div class="slds-form-element__control">
+                                                            <input title={cd.index} name="desconto" type="number" class="slds-input"
+                                                                value={cd.desconto} onchange={calcPrice} />
+                                                        </div>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>R$ {cd.valorTotal}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>R$ {cd.custoDif}</p>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>R$ {cd.custo}</p>
+                                                    </div>
+
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <div class="slds-form-element__control">
+                                                            <input title={cd.index} name="margem" type="number" class="slds-input"
+                                                                value={cd.margem} onchange={calcPrice} />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                                        <p>{cd.margemAlvo}</p>
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-text-body_regular" style="font-size: 0.8125rem; margin: 15px; color: rgb(27, 82, 151)">
+                        <p style="text-align: center; cursor: pointer;"><strong><u>Recolher</u></strong></p>
+                    </div>
+                </div>
+            </template>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="layout-item-white">
+            <div class={sectionClassSelectedItens}>
+                <h3 class="slds-section__title">
+                    <lightning-button class="slds-theme_base slds-section__title-action" aria-expanded={openSectionSelectedItens} icon-position="left"
+                        variant="base" label="Itens Selecionados" icon-name="utility:switch" onclick={handleClickSectionSelectedItens}></lightning-button>
+                </h3>
+                <div class="slds-section__content">
+                    <table class=" colorborderblue slds-table slds-no-row-hover slds-table_bordered slds-table_striped slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-text-title_caps">
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">#</div>
+                                </th>
+								<th>
+                                    <div class="slds-truncate" title="Column 1">OL</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Produto</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Principio Ativo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Fabricante</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Preço Fabrica</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Preço Tabela</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">CD</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">UN</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Quantidade</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Valor Unitario</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Desconto(%)</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Valor Total</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Margem Atual</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Margem Alvo</div>
+                                </th>
+                                <th>
+                                    <div class="slds-truncate" title="Column 1">Remover</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={cdList} for:item="cd">
+                                <tr class="slds-hint-parent" key={cd.id}>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>{cd.index}</p>
+                                        </div>
+                                    </td>
+									<td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <lightning-icon icon-name="standard:case_milestone" alternative-text="Reservar!" title="Reservar"></lightning-icon>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>{cd.nome}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>{cd.principioAtivo}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>{cd.fabricante}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>R$ {cd.precoFabrica}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                            <p><strong>R$ {cd.precotabela}</strong></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left">
+                                            <p>{cd.cds}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-form-element__control">
+                                            <div class="slds-select_container">
+                                                <select class="slds-select">
+                                                    <option>CX</option>
+                                                    <option>UN</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <div class="slds-form-element__control">
+                                                <input title={cd.index} name="quantidade" type="number" class="slds-input"
+                                                    value={cd.quantidade} onchange={calcPrice} />
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <div class="slds-form-element__control">
+                                                <input title={cd.index} name="unitario" type="number" class="slds-input"
+                                                    value={cd.unitario} onchange={calcPrice} />
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <div class="slds-form-element__control">
+                                                <input title={cd.index} name="desconto" type="number" class="slds-input"
+                                                    value={cd.desconto} onchange={calcPrice} />
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>R$ {cd.valorTotal}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <div class="slds-form-element__control">
+                                                <input title={cd.index} name="margem" type="number" class="slds-input" value={cd.margem}
+                                                    onchange={calcPrice} />
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <p>{cd.margemAlvo}</p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-text-align_left" style="font-size: 13px;">
+                                            <lightning-icon icon-name="standard:cancel_checkout" alternative-text="Remover!" title="Remover"></lightning-icon>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
+                            <template for:each={cdListAditional} for:item="cd">
+                            <tr class="slds-hint-parent" key={cd.id}>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>{cd.index}</p>
+                                    </div>
+                                </td>
+								<td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <lightning-icon icon-name="standard:case_milestone" alternative-text="Reservar!" title="Reservar"></lightning-icon>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>{cd.nome}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>{cd.principioAtivo}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>{cd.fabricante}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                        <p><strong>R$ {cd.precoFabrica}</strong></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 0.75rem;">
+                                        <p><strong>R$ {cd.precotabela}</strong></p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left">
+                                        <p>{cd.cds}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-select_container">
+                                            <select class="slds-select">
+                                                <option>CX</option>
+                                                <option>UN</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <div class="slds-form-element__control">
+                                            <input title={cd.index} name="quantidade" type="number" class="slds-input"
+                                                value={cd.quantidade} onchange={calcPrice} />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <div class="slds-form-element__control">
+                                            <input title={cd.index} name="unitario" type="number" class="slds-input"
+                                                value={cd.unitario} onchange={calcPrice} />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <div class="slds-form-element__control">
+                                            <input title={cd.index} name="desconto" type="number" class="slds-input"
+                                                value={cd.desconto} onchange={calcPrice} />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>R$ {cd.valorTotal}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <div class="slds-form-element__control">
+                                            <input title={cd.index} name="margem" type="number" class="slds-input" value={cd.margem}
+                                                onchange={calcPrice} />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <p>{cd.margemAlvo}</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="slds-text-align_left" style="font-size: 13px;">
+                                        <lightning-icon icon-name="standard:cancel_checkout" alternative-text="Remover!" title="Remover"></lightning-icon>
+                                    </div>
+                                </td>
+                            </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                    <div class="slds-illustration slds-illustration_small">
+                        <div class="slds-grid slds-grid_align-end">
+                            <div class="slds-col">
+                                <lightning-input label="Valor Total do Item" disabled="true" type="text"
+                                    variant="standard" value={totalPriceString}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-input label="Margem Total" disabled="true" type="text" variant="standard"
+                                    value={margemTotalString}>
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-input label="Margem Alvo Total" disabled="true" type="text"
+                                    variant="standard" value={margemAlvoTotalString}>
+                                </lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-illustration slds-illustration_small">
+                        <div class="slds-grid slds-wrap">
+                            <div class="slds-col">
+                                <lightning-tile
+                                    class="slds-p-around_xxx-small slds-border_top slds-border_bottom slds-border_left slds-border_right slds-tile_board"
+                                    label="01 - São Paulo">
+                                    <div slot="media"></div>
+                                    <div class="slds-text-heading_medium">R$ 500.00</div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>Margem Atual/Alvo</p>
+                                    </div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>20%/30%</p>
+                                    </div>
+                                </lightning-tile>
+                            </div>
+                            <div class="slds-col">
+                                <lightning-tile
+                                    class="slds-p-around_xxx-small slds-border_top slds-border_bottom slds-border_left slds-border_right slds-tile_board"
+                                    label="04 - Brasilia">
+                                    <div slot="media"></div>
+                                    <div class="slds-text-heading_medium">R$ 7500,00</div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>Margem Atual/Alvo</p>
+                                    </div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>15%/30%</p>
+                                    </div>
+                                </lightning-tile>
+                            </div>
+                            <!--
+                            <div class="slds-col">
+                                <lightning-tile
+                                    class="slds-p-around_xxx-small slds-border_top slds-border_bottom slds-border_left slds-border_right slds-tile_board"
+                                    label="01 - São Paulo">
+                                    <div slot="media"></div>
+                                    <div class="slds-text-heading_medium">R$ 500,00</div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>Margem Atual/Alvo</p>
+                                    </div>
+                                    <div style="font-size: 0.8125rem;">
+                                        <p>20%/30%</p>
+                                    </div>
+                                </lightning-tile>
+                            </div>
+                            -->
+                            <div class="slds-col" style="margin-top: 50px;">
+                                <lightning-button-group class="slds-button-group-row">
+                                    <div class="slds-button-group-item">
+                                        <lightning-button class="slds-theme_brand" icon-position="left" variant="brand"
+                                            onclick={sendApproval} type="button" label="Enviar Aprovação">
+                                        </lightning-button>
+                                    </div>
+                                    <div class="slds-button-group-item">
+                                        <lightning-button class="slds-theme_brand" icon-position="left" variant="brand"
+                                            onclick={createQuote} type="button" label="Salvar Orçamento">
+                                        </lightning-button>
+                                    </div>
+                                    <div class="slds-button-group-item">
+                                        <lightning-button class="slds-theme_brand" icon-position="left" variant="brand"
+                                             onclick={handleNavigate} type="button" label="Gerar Pedido"></lightning-button>
+                                    </div>
+                                </lightning-button-group>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template if:true={loading}>
+        <div class="demo-only">
+            <div class="slds-spinner_container" style="height: 517px; margin: auto;">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </template>
+</template>

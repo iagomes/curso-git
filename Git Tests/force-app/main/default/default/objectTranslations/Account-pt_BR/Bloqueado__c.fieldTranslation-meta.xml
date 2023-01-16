@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Bloqueado --></label>
+    <name>Bloqueado__c</name>
+    <picklistValues>
+        <masterLabel>Ativo</masterLabel>
+        <translation><!-- Ativo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Inativo</masterLabel>
+        <translation><!-- Inativo --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

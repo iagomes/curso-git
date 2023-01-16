@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BloquearAlteracaoTipoRegistro</fullName>
+    <active>true</active>
+    <description>Regra criada para impedir que o Tipo de Registro de uma conta seja alterado por um usuário que não tenha acesso de administrador.</description>
+    <errorConditionFormula>AND(
+    $Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+				$Profile.Name &lt;&gt; &apos;Administrador do sistema&apos;,
+				$Profile.Name &lt;&gt; &apos;System Administrator&apos;,
+				ISCHANGED(RecordTypeId)
+    )</errorConditionFormula>
+    <errorMessage>Não é possível alterar o tipo de registro de um cliente. Procure o administrador do sistema para mais informações.</errorMessage>
+</ValidationRule>

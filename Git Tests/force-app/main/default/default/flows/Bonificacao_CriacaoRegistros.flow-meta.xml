@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <choices>
+        <description>Recurso para armazenar o valor &quot;Não&quot;</description>
+        <name>stringNao</name>
+        <choiceText>Não</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <description>Recurso para armazenar o valor do tipo de registro de item da bonificação &quot;Produto Bonificado&quot;.</description>
+        <name>stringProdutoBonificado</name>
+        <choiceText>Produto bonificado</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <description>Recurso para armazenar o valor do tipo de registro de item da bonificação &quot;Produto Vendido&quot;</description>
+        <name>stringProdutoVendido</name>
+        <choiceText>Produto vendido</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <description>Recurso para armazenar o valor &quot;Sim&quot;</description>
+        <name>stringSim</name>
+        <choiceText>Sim</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <constants>
+        <description>Recurso para armazenar o developer name do tipo de registro de &quot;Produto bonificado&quot;</description>
+        <name>ConsDeveloperNameProdutoBonificado</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>ProdutoBonificado</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>ConsDeveloperNameProdutoVendido</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>ProdutoVendido</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Recurso para armazenar o valor de tipo de registro &quot;Produto vendido&quot;</description>
+        <name>ConstValorVendido</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Produto vendido</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <description>Recurso de mensagem de erro para validação de data de vigência.</description>
+        <name>MensagemValidacaoDataVigencia</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Não é possível inserir uma data menor ou igual a data atual no campo de data de vigência.</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Decisão para validar se o usuário deseja criar mais um item ou se deseja encerrar o fluxo.</description>
+        <name>CriaMaisItemBonificacao</name>
+        <label>Criar mais item de bonificação</label>
+        <locationX>1014</locationX>
+        <locationY>377</locationY>
+        <defaultConnector>
+            <targetReference>EncerrarFluxo</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Encerrar fluxo</defaultConnectorLabel>
+        <rules>
+            <name>CriarMaisItem</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>stringSim</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CadastroItemBonificacao</targetReference>
+            </connector>
+            <label>Criar mais item</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decisão para definir se o fluxo deve ser encerrado ou continuado para criação do item de bonificação.</description>
+        <name>DecisaoCriacaoItemBonificacao</name>
+        <label>Decisão de criação do item de bonificação</label>
+        <locationX>738</locationX>
+        <locationY>573</locationY>
+        <defaultConnector>
+            <targetReference>EncerrarFluxo</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Não cadastrar item</defaultConnectorLabel>
+        <rules>
+            <name>CadastrarItem</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>stringSim</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CadastroItemBonificacao</targetReference>
+            </connector>
+            <label>Cadastrar item</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Decisão para obter o valor de tipo de registro do item de bonificação escolhido pelo usuário.</description>
+        <name>ObterValorTipoRegistro</name>
+        <label>Obter valor do tipo de registro</label>
+        <locationX>1776</locationX>
+        <locationY>570</locationY>
+        <defaultConnector>
+            <targetReference>ObterTipoRegistroProdutoBonificado</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Produto bonificado</defaultConnectorLabel>
+        <rules>
+            <name>ProdutoVendido</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>stringProdutoVendido</leftValueReference>
+                <operator>WasSelected</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>TipoRegistroProdutoVendido</targetReference>
+            </connector>
+            <label>Produto vendido</label>
+        </rules>
+    </decisions>
+    <description>Fluxo para permitir criar bonificações e os itens de bonificação diretos, sem a necessidade de concluir a criação da bonificação para iniciar a dos itens.</description>
+    <dynamicChoiceSets>
+        <description>Buscar tipo de registro.</description>
+        <name>TipoRegistroItemBonificacao</name>
+        <dataType>String</dataType>
+        <displayField>Name</displayField>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ConsDeveloperNameProdutoBonificado</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ConsDeveloperNameProdutoVendido</elementReference>
+            </value>
+        </filters>
+        <object>RecordType</object>
+        <outputAssignments>
+            <assignToReference>NomeTipoRegistro</assignToReference>
+            <field>Name</field>
+        </outputAssignments>
+        <valueField>Name</valueField>
+    </dynamicChoiceSets>
+    <formulas>
+        <description>Recurso para validar a data de vigência da bonificação.</description>
+        <name>ValidarDataVigencia</name>
+        <dataType>Boolean</dataType>
+        <expression>IF(
+{!DataVigencia} &lt;= TODAY(),
+true,
+false)</expression>
+    </formulas>
+    <interviewLabel>Bonificação - Criação de registros {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Bonificação - Criação de registros</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Ação para criar o registro de bonificação com os valores recebidos pela tela</description>
+        <name>CriarRegistroBonificacao</name>
+        <label>Criar registro de bonificação</label>
+        <locationX>176</locationX>
+        <locationY>571</locationY>
+        <assignRecordIdToReference>RecordId</assignRecordIdToReference>
+        <connector>
+            <targetReference>ConfirmacaoCriacaoBonificacao</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>MensagemErro</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>DataVigencia__c</field>
+            <value>
+                <elementReference>DataVigencia</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Descricao__c</field>
+            <value>
+                <elementReference>Descricao</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Bonificacao__c</object>
+    </recordCreates>
+    <recordCreates>
+        <description>Ação para criar o registro do item de bonificação de acordo com os dados inseridos na tela.</description>
+        <name>CriarRegistroItemBonificacao</name>
+        <label>Criar registro de item de bonificação</label>
+        <locationX>1845</locationX>
+        <locationY>201</locationY>
+        <assignRecordIdToReference>RecordIdItem</assignRecordIdToReference>
+        <connector>
+            <targetReference>ConfirmacaoCriacaoItemBonificacao</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>MensagemErroItem</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Ativo__c</field>
+            <value>
+                <elementReference>AtivoItem</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NumeroBonificacao__c</field>
+            <value>
+                <elementReference>RecordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Produto__c</field>
+            <value>
+                <elementReference>NomeProduto.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Quantidade__c</field>
+            <value>
+                <elementReference>Quantidade</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>TipoRegistroProdutoVendido.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ItemBonificacao__c</object>
+    </recordCreates>
+    <recordCreates>
+        <description>Ação para criar item bonificado</description>
+        <name>CriarRegistroItemBonificado</name>
+        <label>Criar registro de item</label>
+        <locationX>1710</locationX>
+        <locationY>200</locationY>
+        <assignRecordIdToReference>RecordIdItem</assignRecordIdToReference>
+        <connector>
+            <targetReference>ConfirmacaoCriacaoItemBonificacao</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>MensagemErroItem</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Ativo__c</field>
+            <value>
+                <elementReference>AtivoItem</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NumeroBonificacao__c</field>
+            <value>
+                <elementReference>NumeroBonificacao.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Produto__c</field>
+            <value>
+                <elementReference>NomeProduto.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Quantidade__c</field>
+            <value>
+                <elementReference>Quantidade</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>ObterTipoRegistroProdutoBonificado.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ItemBonificacao__c</object>
+    </recordCreates>
+    <recordLookups>
+        <description>Obter ID do tipo de registro de produto bonificado.</description>
+        <name>ObterTipoRegistroProdutoBonificado</name>
+        <label>Obter tipo de registro</label>
+        <locationX>1710</locationX>
+        <locationY>347</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CriarRegistroItemBonificado</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ConsDeveloperNameProdutoBonificado</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <description>Ação para buscar o ID do tipo de registro.</description>
+        <name>TipoRegistroProdutoVendido</name>
+        <label>Tipo de registro produto vendido</label>
+        <locationX>1846</locationX>
+        <locationY>347</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>CriarRegistroItemBonificacao</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ConsDeveloperNameProdutoVendido</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <description>Tela para realizar o cadastro de um registro de bonificação.</description>
+        <name>CadastrarBonificacao</name>
+        <label>Cadastrar bonificação</label>
+        <locationX>176</locationX>
+        <locationY>383</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CriarRegistroBonificacao</targetReference>
+        </connector>
+        <fields>
+            <name>CriarBonificacao</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Criar bonificação&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Descricao</name>
+            <dataType>String</dataType>
+            <fieldText>Descrição</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>DataVigencia</name>
+            <dataType>Date</dataType>
+            <fieldText>Data de vigência</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;{!MensagemValidacaoDataVigencia}&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!DataVigencia} &gt;TODAY()</formulaExpression>
+            </validationRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para realizar o cadastro do item de bonificação.</description>
+        <name>CadastroItemBonificacao</name>
+        <label>Cadastro do item de bonificação</label>
+        <locationX>1023</locationX>
+        <locationY>568</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>ObterValorTipoRegistro</targetReference>
+        </connector>
+        <fields>
+            <name>CriarItemBonificacao</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Criar item de bonificação&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>TipoProdutoItem</name>
+            <choiceReferences>stringProdutoVendido</choiceReferences>
+            <choiceReferences>stringProdutoBonificado</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Tipo de produto</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>CadastroItemBonificacao_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>CadastroItemBonificacao_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>NomeProduto</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>ItemBonificacao__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>Produto__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Nome do produto</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>CadastroItemBonificacao_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Quantidade</name>
+                    <dataType>Number</dataType>
+                    <fieldText>Quantidade</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                    <scale>0</scale>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <fields>
+            <name>CadastroItemBonificacao_Section2</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>CadastroItemBonificacao_Section2_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>NumeroBonificacao</name>
+                    <extensionName>flowruntime:lookup</extensionName>
+                    <fieldType>ComponentInstance</fieldType>
+                    <inputParameters>
+                        <name>fieldApiName</name>
+                        <value>
+                            <stringValue>NumeroBonificacao__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>objectApiName</name>
+                        <value>
+                            <stringValue>ItemBonificacao__c</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>label</name>
+                        <value>
+                            <stringValue>Número da bonificação</stringValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>recordId</name>
+                        <value>
+                            <elementReference>RecordId</elementReference>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>required</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>true</isRequired>
+                    <storeOutputAutomatically>true</storeOutputAutomatically>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>CadastroItemBonificacao_Section2_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>AtivoItem</name>
+                    <dataType>Boolean</dataType>
+                    <fieldText>Ativo</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para confirmar para o usuário que o registro de bonificação foi criado.</description>
+        <name>ConfirmacaoCriacaoBonificacao</name>
+        <label>Confirmação de criação da bonificação</label>
+        <locationX>469</locationX>
+        <locationY>571</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>DecisaoCriacaoItemBonificacao</targetReference>
+        </connector>
+        <fields>
+            <name>ConfirmacaoCriacao</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;O registro de bonificação foi criado.&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>ValidarCadastroItemBonificacao</name>
+            <choiceReferences>stringSim</choiceReferences>
+            <choiceReferences>stringNao</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Deseja cadastrar o(s) item(ns) de bonificação?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para confirmar a criação do item e questionar o usuário se deseja continuar o fluxo ou se deseja encerrá-lo.</description>
+        <name>ConfirmacaoCriacaoItemBonificacao</name>
+        <label>Confirmação de criação do item de bonificação</label>
+        <locationX>1362</locationX>
+        <locationY>374</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CriaMaisItemBonificacao</targetReference>
+        </connector>
+        <fields>
+            <name>CriadoItemBonificacao</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b style=&quot;background-color: rgb(255, 255, 255); color: rgb(62, 62, 60);&quot;&gt;O registro de item de bonificação foi criado.&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>DesejaCadastrarMaisItem</name>
+            <choiceReferences>stringSim</choiceReferences>
+            <choiceReferences>stringNao</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Deseja cadastrar mais um item?</fieldText>
+            <fieldType>RadioButtons</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para encerrar o fluxo.</description>
+        <name>EncerrarFluxo</name>
+        <label>Encerrar fluxo</label>
+        <locationX>746</locationX>
+        <locationY>376</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>EncerraCadastro</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;Cadastro finalizado com sucesso.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 12px;&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para mostrar para o usuário caso ocorra qualquer erro durante a execução do processo</description>
+        <name>MensagemErro</name>
+        <label>Mensagem de erro</label>
+        <locationX>177</locationX>
+        <locationY>838</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemErroCriacao</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Ocorreu um erro durante a criação do registro.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(249, 249, 250);&quot;&gt;Entre em contato com o administrador do sistema para obter mais informações.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para apresentar uma mensagem de erro que possa ocorrer na criação do item.</description>
+        <name>MensagemErroItem</name>
+        <label>Mensagem de erro do item</label>
+        <locationX>1779</locationX>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemErroCriacaoItem</name>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;Ocorreu um erro durante a criação do registro.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 12px; color: rgb(0, 0, 0); background-color: rgb(249, 249, 250);&quot;&gt;Entre em contato com o administrador do sistema para obter mais informações.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>172</locationY>
+        <connector>
+            <targetReference>CadastrarBonificacao</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Recurso para armazenar o ID do tipo de registro escolhido pelo usuário.</description>
+        <name>IdTipoRegistro</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Recurso para armazenar o nome do tipo de registro.</description>
+        <name>NomeTipoRegistro</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>RecordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Recurso para armazenar o ID do registro de item de bonificação criado.</description>
+        <name>RecordIdItem</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

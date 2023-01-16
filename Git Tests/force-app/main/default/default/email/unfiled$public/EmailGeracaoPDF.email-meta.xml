@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>E-mail que será enviado a partir do orçamento solicitado</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>E-mail para geração do PDF</name>
+    <style>none</style>
+    <subject>Orçamento solicitado</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

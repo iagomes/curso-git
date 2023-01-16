@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Validade mínima --></label>
+    <name>ValidadeMinima__c</name>
+    <picklistValues>
+        <masterLabel>Entre 3 a 6 meses</masterLabel>
+        <translation><!-- Entre 3 a 6 meses --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Entre 6 a 12 meses</masterLabel>
+        <translation><!-- Entre 6 a 12 meses --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Maior que 12 meses</masterLabel>
+        <translation><!-- Maior que 12 meses --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Menor que 3 meses</masterLabel>
+        <translation><!-- Menor que 3 meses --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

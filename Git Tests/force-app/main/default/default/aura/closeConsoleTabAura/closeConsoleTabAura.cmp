@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable, flexipage:availableForAllPageTypes, flexipage:availableForRecordHome">
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <aura:attribute type="String" name="focusedTabId" />
+
+    <lightning:messageChannel type="CloseConsoleTab__c" onMessage="{!c.handleMessage}" scope="APPLICATION" />
+    <lightning:workspaceAPI aura:id="workspace"/>
+</aura:component>

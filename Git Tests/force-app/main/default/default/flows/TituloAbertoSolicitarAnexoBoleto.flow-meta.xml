@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Ação para chamar a classe do Apex responsável por solicitar o boleto do atual registro.</description>
+        <name>SolicitarTitulo</name>
+        <label>Solicitar Título</label>
+        <locationX>698</locationX>
+        <locationY>294</locationY>
+        <actionName>IntegrationGETAttachment</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>SolicitacaoTituloSucesso</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>titleIdSet</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>MensagemErroTitulo</assignToReference>
+            <name>output</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>49.0</apiVersion>
+    <decisions>
+        <description>Decisão para validar se o atual título está vencido ou não.</description>
+        <name>ValidarVencimento</name>
+        <label>Validar Vencimento</label>
+        <locationX>690</locationX>
+        <locationY>72</locationY>
+        <defaultConnector>
+            <targetReference>ValidacaoDados</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Resultado padrão</defaultConnectorLabel>
+        <rules>
+            <name>TituloNaoVencido</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>DataValidade</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>DiaAtual</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>DataValidade</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SolicitarTitulo</targetReference>
+            </connector>
+            <label>Título Não Vencido</label>
+        </rules>
+    </decisions>
+    <description>Fluxo para solicitar anexo do boleto do atual registro através da página.</description>
+    <interviewLabel>Títulos em Aberto - {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Títulos em aberto - Solicitar anexo do boleto</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <description>Obter o registro de título atual.</description>
+        <name>ObterTitulo</name>
+        <label>Obter Título</label>
+        <locationX>504</locationX>
+        <locationY>69</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ValidarVencimento</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <object>TitulosAbertos__c</object>
+        <outputAssignments>
+            <assignToReference>DataValidade</assignToReference>
+            <field>DataVencimento__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <screens>
+        <description>Tela para apresentar que a solicitação do título em aberto foi realizada com sucesso.</description>
+        <name>SolicitacaoTituloSucesso</name>
+        <label>Solicitação do título em aberto - Sucesso</label>
+        <locationX>896</locationX>
+        <locationY>294</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemSolicitacaoRealizada</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Sua solicitação foi realizada com sucesso. &lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Aguarde um instante e verifique a disponibilidade do documento em anexos.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>MensagemErroTitulo</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>true</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>MensagemErro</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;Ocorreu um erro durante a solicitação.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Erro: {!MensagemErroTitulo}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>MensagemErroTitulo</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>false</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <description>Tela para apresentar a mensagem de erro quando o usuário tenta solicitar o documento de um boleto vencido.</description>
+        <name>ValidacaoDados</name>
+        <label>Validação de Dados</label>
+        <locationX>898</locationX>
+        <locationY>69</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemVencimento</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b&gt;O atual título está vencido, não sendo possível solicitar o anexo.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Verifique com o responsável.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>ObterTitulo</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Variável para armazenar a data de validade do título.</description>
+        <name>DataValidade</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Variável para armazenar o dia atual.</description>
+        <name>DiaAtual</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDate</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <description>Variável para armazenar o erro da execução da classe de solicitação do anexo do boleto.</description>
+        <name>MensagemErroTitulo</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Variável para armazenar o ID do atual registro de título.</description>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

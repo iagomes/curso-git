@@ -1,0 +1,209 @@
+<aura:component implements="force:appHostable,force:hasRecordId,forceCommunity:availableForAllPageTypes" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />  
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="newRecordId" type="Id"/>
+    <aura:attribute name="isEdit" type="Boolean" />
+    <aura:attribute name="isBudget" type="Boolean" default="true"/>
+    <aura:attribute name="isCreateOrderFromBudget" type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectgetRecommendation" type="Boolean"/>
+    
+    <aura:attribute name="headerObjectselectedProd"          type="String"/>
+    <aura:attribute name="headerObjectnumOrcamento"          type="String"/>
+    <aura:attribute name="headerObjectvalorTotal"            type="String"/>
+    <aura:attribute name="headerObjectscore"                 type="String"/>
+    <aura:attribute name="headerObjectclienteEmissorId"      type="String"/>
+    <aura:attribute name="headerObjectclienteEmissor"        type="String"/>
+    <aura:attribute name="headerObjectclienteEmissorCGC"     type="String"/>
+    <aura:attribute name="headerObjecttabelaPreco"           type="String"/>
+    <aura:attribute name="headerObjecttabelaPrecoNome"       type="String"/>
+    <aura:attribute name="headerObjectcanalEntrada"          type="String"/>
+    <aura:attribute name="headerObjectcondicaoPagamento"     type="String"/>
+    <aura:attribute name="headerObjectcondicaoPagamentoNome" type="String"/>
+    <aura:attribute name="headerObjectformaPagamento"        type="String"/>
+    <aura:attribute name="headerObjectcontatoOrcamento"      type="String"/>
+    <aura:attribute name="headerObjectprazoValidade"         type="String"/>
+    <aura:attribute name="headerObjectdtValidade"            type="String"/>
+    <aura:attribute name="headerObjectobservacaoCliente"     type="String"/>
+    <aura:attribute name="headerObjectobservacao"            type="String"/>
+    <aura:attribute name="headerObjectisCoordenador"         type="String"/>
+    <aura:attribute name="headerObjectdtParcelas"            type="String"/>
+    <aura:attribute name="headerObjectfretesPorCd"           type="String"/>
+    <aura:attribute name="headerObjectrecordId"              type="String"/>
+    <aura:attribute name="headerObjectorderList"             type="String"/>
+    <aura:attribute name="headerObjectorderListReturned"     type="String"/>
+    <aura:attribute name="headerObjecthasPermissionERB"      type="Boolean" default="false"/>
+    <aura:attribute name="headerInfoData"                    type="String"/>
+    <aura:attribute name="headerObjectisFromBudgetScreen"    type="Boolean"/>
+    <aura:attribute name="headerObjectIdportalcotacoes"      type="String"/>
+    <aura:attribute name="headerObjectrecomendacaoRespondida" type="Boolean" default="false"/>
+    
+    <aura:attribute name="headerObjectalreadySaved"          type="Boolean" default="false"/>
+    <aura:attribute name="headerObjectsavingStrData"         type="String"/>
+
+    <aura:attribute name="headerLayout"   type="Boolean" default="true"/>
+    <aura:attribute name="isReturn"   type="Boolean" default="false"/>
+    
+    <aura:attribute name="navigateCheckout" type="Boolean" default="true" />
+
+    <aura:attribute name="navigateInsertOrder" type="Boolean" default="true" />
+    <aura:attribute name="filtroPDF" type="String"/>
+
+    <lightning:workspaceAPI aura:id="workspace" />
+    <c:closeConsoleTabAura />
+    <aura:if isTrue="{!v.headerLayout}">
+		<c:createBudget 
+                recordId="{!v.recordId}" 
+                newRecordId="{!v.newRecordId}" 
+                isEdit="{!v.isEdit}" 
+                isBudget="{!v.isBudget}" 
+                isCreateOrderFromBudget="{!v.isCreateOrderFromBudget}" 
+                isReturn="{!v.isReturn}"
+                numOrcamentoOrderProduct          = "{!v.headerObjectnumOrcamento}"
+                valorTotalOrderProduct            = "{!v.headerObjectvalorTotal}"
+                scoreOrderProduct                 = "{!v.headerObjectscore}"
+                clienteEmissorIdOrderProduct      = "{!v.headerObjectclienteEmissorId}"
+                clienteEmissorOrderProduct        = "{!v.headerObjectclienteEmissor}"
+                clienteEmissorCGCOrderProduct     = "{!v.headerObjectclienteEmissorCGC}"
+                tabelaPrecoOrderProduct           = "{!v.headerObjecttabelaPreco}"
+                tabelaPrecoNomeOrderProduct       = "{!v.headerObjecttabelaPrecoNome}"
+                canalEntradaOrderProduct          = "{!v.headerObjectcanalEntrada}"
+                condicaoPagamentoOrderProduct     = "{!v.headerObjectcondicaoPagamento}"
+                condicaoPagamentoNomeOrderProduct = "{!v.headerObjectcondicaoPagamentoNome}"
+                formaPagamentoOrderProduct        = "{!v.headerObjectformaPagamento}"
+                contatoOrcamentoOrderProduct      = "{!v.headerObjectcontatoOrcamento}"
+                prazoValidadeOrderProduct         = "{!v.headerObjectprazoValidade}"
+                dtValidadeOrderProduct            = "{!v.headerObjectdtValidade}"
+                observacaoClienteOrderProduct     = "{!v.headerObjectobservacaoCliente}"
+                observacaoOrderProduct            = "{!v.headerObjectobservacao}"
+                hasPermissionERB                  = "{!v.headerObjecthasPermissionERB}"
+                isCoordenadorOrderProduct         = "{!v.headerObjectisCoordenador}"
+                dtParcelasOrderProduct            = "{!v.headerObjectdtParcelas}"
+                fretesPorCdOrderProduct           = "{!v.headerObjectfretesPorCd}"
+                Idportalcotacoes                  = "{!v.headerObjectIdportalcotacoes}"
+                allRecAnswered                    = "{!v.headerObjectrecomendacaoRespondida}"
+                alreadySaved                      = "{!v.headerObjectalreadySaved}"
+                savingStrData                     = "{!v.headerObjectsavingStrData}"
+                orderListReturned                 = "{!v.headerObjectorderListReturned}"
+                ondisplaymyvaluenew="{!c.handleFilterChange}" 
+                oncloseclicked="{!c.handleCloseClicked}"                
+                filtroPDF             = "{!c.filtroPDF}"></c:createBudget>
+        <aura:set attribute="else">
+            <aura:if isTrue="{!v.navigateCheckout}">
+            <c:orderProduct 
+                newRecordId           ="{!v.newRecordId}" 
+                isEdit                = "{!v.isEdit}"
+                isBudget              = "{!v.isBudget}"
+                recordId              = "{!v.headerObjectrecordId}" 
+                numOrcamento          = "{!v.headerObjectnumOrcamento}"
+                valorTotal            = "{!v.headerObjectvalorTotal}"
+                score                 = "{!v.headerObjectscore}"
+                clienteEmissorId      = "{!v.headerObjectclienteEmissorId}"
+                clienteEmissor        = "{!v.headerObjectclienteEmissor}"
+                clienteEmissorCGC     = "{!v.headerObjectclienteEmissorCGC}"
+                tabelaPreco           = "{!v.headerObjecttabelaPreco}"
+                tabelaPrecoNome       = "{!v.headerObjecttabelaPrecoNome}"
+                canalEntrada          = "{!v.headerObjectcanalEntrada}"
+                condicaoPagamento     = "{!v.headerObjectcondicaoPagamento}"
+                condicaoPagamentoNome = "{!v.headerObjectcondicaoPagamentoNome}"
+                formaPagamento        = "{!v.headerObjectformaPagamento}"
+                contatoOrcamento      = "{!v.headerObjectcontatoOrcamento}"
+                prazoValidade         = "{!v.headerObjectprazoValidade}"
+                dtValidade            = "{!v.headerObjectdtValidade}"
+                observacaoCliente     = "{!v.headerObjectobservacaoCliente}"
+                observacao            = "{!v.headerObjectobservacao}"
+                isCoordenador         = "{!v.headerObjectisCoordenador}"
+                dtParcelas            = "{!v.headerObjectdtParcelas}"
+                fretesPorCd           = "{!v.headerObjectfretesPorCd}"
+                hasPermissionERB      = "{!v.headerObjecthasPermissionERB}"
+                alreadySaved          = "{!v.headerObjectalreadySaved}"
+                savingStrData          = "{!v.headerObjectsavingStrData}"
+                orderListReturned     = "{!v.headerObjectorderListReturned}"
+                Idportalcotacoes      = "{!v.headerObjectIdportalcotacoes}"
+                allRecAnswered        = "{!v.headerObjectrecomendacaoRespondida}"
+                ondisplaymyvaluenew   = "{!c.handleNavigateToCheckout}"
+                productToSearch       = "{!v.headerObjectselectedProd}"
+                getRecommendation     = "{!v.headerObjectgetRecommendation}"
+                ongenerateorder       = "{!c.handleNavigateToInsertOrderInOrder}"
+                filtroPDF = "{!v.filtroPDF}">
+            </c:orderProduct>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{!v.navigateInsertOrder}">
+                    <c:orderProductCheckout 
+                        newRecordId           ="{!v.newRecordId}"
+                        isEdit                = "{!v.isEdit}"
+                        isBudget              = "{!v.isBudget}"
+                        recordId              = "{!v.headerObjectrecordId}" 
+                        numOrcamento          = "{!v.headerObjectnumOrcamento}"
+                        valorTotal            = "{!v.headerObjectvalorTotal}"
+                        score                 = "{!v.headerObjectscore}"
+                        clienteEmissorId      = "{!v.headerObjectclienteEmissorId}"
+                        clienteEmissor        = "{!v.headerObjectclienteEmissor}"
+                        clienteEmissorCGC     = "{!v.headerObjectclienteEmissorCGC}"
+                        tabelaPreco           = "{!v.headerObjecttabelaPreco}"
+                        tabelaPrecoNome       = "{!v.headerObjecttabelaPrecoNome}"
+                        canalEntrada          = "{!v.headerObjectcanalEntrada}"
+                        condicaoPagamento     = "{!v.headerObjectcondicaoPagamento}"
+                        condicaoPagamentoNome = "{!v.headerObjectcondicaoPagamentoNome}"
+                        formaPagamento        = "{!v.headerObjectformaPagamento}"
+                        contatoOrcamento      = "{!v.headerObjectcontatoOrcamento}"
+                        prazoValidade         = "{!v.headerObjectprazoValidade}"
+                        dtValidade            = "{!v.headerObjectdtValidade}"
+                        observacaoCliente     = "{!v.headerObjectobservacaoCliente}"
+                        observacao            = "{!v.headerObjectobservacao}"
+                        isCoordenador         = "{!v.headerObjectisCoordenador}"
+                        dtParcelas            = "{!v.headerObjectdtParcelas}"
+                        fretesPorCd           = "{!v.headerObjectfretesPorCd}"
+                        hasPermissionERB      = "{!v.headerObjecthasPermissionERB}"
+                        alreadySaved          = "{!v.headerObjectalreadySaved}"
+                        savingStrData          = "{!v.headerObjectsavingStrData}"
+                        orderList             = "{!v.headerObjectorderList}"
+                        Idportalcotacoes      = "{!v.headerObjectIdportalcotacoes}"
+                        allRecAnswered        = "{!v.headerObjectrecomendacaoRespondida}"
+                        ondisplaymyvaluenew   = "{!c.handleNavigateToOrderProduct}"
+                        ongenerateorder       = "{!c.handleNavigateToInsertOrder}"
+                        filtroPDF             = "{!v.filtroPDF}">
+                    </c:orderProductCheckout>
+                        <aura:set attribute="else">
+                            <c:insertOrder                                 
+                                newRecordId                     ="{!v.newRecordId}"
+                                fromBudgetisEdit                = "{!v.isEdit}" 
+                                fromBudgetisBudget              = "{!v.isBudget}" 
+                                fromBudgetrecordId              = "{!v.headerObjectrecordId}"
+                                fromBudgetnumOrcamento          = "{!v.headerObjectnumOrcamento}" 
+                                fromBudgetvalorTotal            = "{!v.headerObjectvalorTotal}" 
+                                fromBudgetscore                 = "{!v.headerObjectscore}"
+                                fromBudgetclienteEmissorId      = "{!v.headerObjectclienteEmissorId}" 
+                                fromBudgetclienteEmissor        = "{!v.headerObjectclienteEmissor}"
+                                fromBudgetclienteEmissorCGC     = "{!v.headerObjectclienteEmissorCGC}" 
+                                fromBudgettabelaPreco           = "{!v.headerObjecttabelaPreco}"
+                                fromBudgettabelaPrecoNome       = "{!v.headerObjecttabelaPrecoNome}" 
+                                fromBudgetcanalEntrada          = "{!v.headerObjectcanalEntrada}"
+                                fromBudgetcondicaoPagamento     = "{!v.headerObjectcondicaoPagamento}"
+                                fromBudgetcondicaoPagamentoNome = "{!v.headerObjectcondicaoPagamentoNome}" 
+                                fromBudgetformaPagamento        = "{!v.headerObjectformaPagamento}"
+                                fromBudgetcontatoOrcamento      = "{!v.headerObjectcontatoOrcamento}" 
+                                fromBudgetprazoValidade         = "{!v.headerObjectprazoValidade}"
+                                fromBudgetdtValidade            = "{!v.headerObjectdtValidade}" 
+                                fromBudgetobservacaoCliente     = "{!v.headerObjectobservacaoCliente}"
+                                fromBudgetobservacao            = "{!v.headerObjectobservacao}" 
+                                fromBudgetisCoordenador         = "{!v.headerObjectisCoordenador}"
+                                fromBudgetdtParcelas            = "{!v.headerObjectdtParcelas}"
+                                fromBudgetfretesPorCd           = "{!v.headerObjectfretesPorCd}"
+                                fromBudgetIdportalcotacoes      = "{!v.headerObjectIdportalcotacoes}"
+                                allRecAnswered                  = "{!v.headerObjectrecomendacaoRespondida}"
+                                fromBudgetorderList             = "{!v.headerObjectorderListReturned}"
+                                alreadySaved                    = "{!v.headerObjectalreadySaved}"
+                                headerInfoData                  = "{!v.headerInfoData}"
+                                isFromBudgetScreen              = "{!v.headerObjectisFromBudgetScreen}"
+                                hasPermissionERB                = "{!v.headerObjecthasPermissionERB}"
+                                isCreateOrderFromBudget         = "{!v.isCreateOrderFromBudget}"
+                                ondisplaymyvaluenew             = "{!c.handleNavigateToCheckout}">
+                            </c:insertOrder>
+                        </aura:set>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>
+
+</aura:component>

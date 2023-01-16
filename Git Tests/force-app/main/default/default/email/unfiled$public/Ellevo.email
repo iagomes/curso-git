@@ -1,0 +1,9 @@
+Empresa: {!Case.EmpresaDemandante__c}
+
+Filial: {!Case.NotaFiscalEmpresaFilial__c}
+
+Motivo: {!Case.Motivo__c}
+
+Informação à ser Corrigida:
+
+Informação a ser Incluída:

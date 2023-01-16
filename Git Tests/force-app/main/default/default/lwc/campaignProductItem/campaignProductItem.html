@@ -1,0 +1,133 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <template if:true={isLoading}>
+    <lightning-spinner></lightning-spinner>
+  </template>
+  
+  <div class="slds-var-m-bottom_large">
+    <lightning-card>
+      <h2 slot="title" class="card-title slds-truncate">
+        {productData.ProductCode} - {productData.Name}
+      </h2>
+
+      <lightning-layout multiple-rows>
+        <lightning-layout-item size="12" padding="horizontal-medium" class="slds-var-m-top_large">
+          <p class="slds-truncate">{productData.Fornecedor__r.Name}</p>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="horizontal-medium" class="slds-var-m-top_small">
+          <p class="slds-truncate">{productData.Description}</p>
+        </lightning-layout-item>
+      </lightning-layout>
+
+      <lightning-layout class="slds-var-m-top_large slds-var-m-bottom_x-large">
+        <lightning-layout-item size="4" padding="horizontal-medium">
+          <div style="display: flex; flex-direction: row; align-items: flex-end;">
+            <div class="slds-var-p-top_small" style="flex: 1">
+              <div class="slds-text-title slds-truncate" title="Meta">Centro de distribuição</div>
+              <div class="slds-truncate slds-var-p-top_xx-small" title="100">{distributionCentersCount}</div>
+            </div>
+            <c-pick-distribution-center-modal
+              distribution-center-options={distributionCenterOptions}
+              values={_selectedOptions}
+              onselect={handleOnSelectDistributionCenters}>
+            </c-pick-distribution-center-modal>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+
+      <template for:each={campaignItems} for:item="campaignItem">
+        <lightning-layout key={campaignItems.customKey} vertical-align="end" class="slds-var-m-top_x-large">
+          <lightning-layout-item size="3" class="slds-var-p-left_medium">
+            <lightning-input 
+              label="Centro distribuição"
+              name="delivery-center"
+              type="text"
+              readonly
+              value={campaignItem.NomeEmpresa__c}>
+            </lightning-input>
+          </lightning-layout-item>
+
+          <lightning-layout-item size="4"></lightning-layout-item>
+  
+          <lightning-layout-item size="2" class="slds-var-p-left_small">
+            <lightning-input 
+              label="Meta"
+              data-id={campaignItem.customKey}
+              name="goal-volume"
+              type="number"
+              min="0"
+              value={campaignItem.MetaVolume__c}
+              onchange={handleChangeFieldValue}>
+            </lightning-input>
+          </lightning-layout-item>
+  
+          <lightning-layout-item size="2" class="slds-var-p-left_small">
+            <lightning-input 
+              label="Meta (R$)"
+              data-id={campaignItem.customKey}
+              name="goal-amount"
+              type="number"
+              min="0"
+              formatter="currency"
+              value={campaignItem.Meta__c}
+              onchange={handleChangeFieldValue}>
+            </lightning-input>
+          </lightning-layout-item>
+      
+          <!-- <lightning-layout-item size="2" class="slds-var-p-left_small">
+            <lightning-input 
+              label="Vigência inicial"
+              data-id={campaignItem.customKey}
+              name="validity-from"
+              type="date"
+              value={campaignItem.VigenciaInicial__c}
+              onchange={handleChangeFieldValue}>
+            </lightning-input>
+          </lightning-layout-item>
+  
+          <lightning-layout-item size="2" class="slds-var-p-left_small">
+            <lightning-input
+              label="Vigência final"
+              data-id={campaignItem.customKey}
+              name="validity-to"
+              type="date"
+              min={campaignItem.VigenciaInicial__c}
+              message-when-range-underflow=" "
+              value={campaignItem.VigenciaFinal__c}
+              onchange={handleChangeFieldValue}>
+            </lightning-input>
+          </lightning-layout-item> -->
+  
+          <lightning-layout-item size="5" class="slds-var-p-left_small slds-var-p-right_medium">
+            <lightning-button-icon
+              icon-name="utility:delete"
+              alternative-text="Deletar"
+              title="Delete"
+              data-id={campaignItem.customKey}
+              onclick={handleDeleteProduct}>
+            </lightning-button-icon>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+
+      <footer slot="footer">
+        <div class="slds-clearfix">
+          <lightning-button 
+            class="slds-float_right"
+            if:false={alreadyAdded} 
+            label="Salvar" 
+            onclick={handleAddOrUpdateProduct}>
+          </lightning-button>
+  
+          <lightning-button 
+            class="slds-float_right"
+            if:true={alreadyAdded}
+            label="Atualizar" 
+            onclick={handleAddOrUpdateProduct}>
+          </lightning-button>
+        </div>
+      </footer>
+
+    </lightning-card>
+  </div>
+</template>

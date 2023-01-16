@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ImpedeEdicaoDeCasoPorOutrasAreas</fullName>
+    <active>true</active>
+    <description>Regra de Validação criada para impedir a edição de Casos por outras áreas, que não sejam a de Atendimento ao Cliente.</description>
+    <errorConditionFormula>AND(
+NOT(ISNEW()),
+OR(
+ISCHANGED(Priority),
+ISCHANGED(Type),
+ISCHANGED(Razao__c),
+ISCHANGED(Motivo__c),
+ISCHANGED(Submotivo__c),
+ISCHANGED(TipoDeDevolucao__c),
+ISCHANGED(AccountId),
+ISCHANGED(ContactId),
+ISCHANGED(EmpresaDemandante__c),
+ISCHANGED(NotaFiscal__c),
+ISCHANGED(Subject),
+ISCHANGED(Description),
+ISCHANGED(FormatoDeDevolucao__c),
+	AND(
+		ISCHANGED(Status),
+		NOT(ISCHANGED(OwnerId)),
+		NOT(ISPICKVAL(PRIORVALUE(Status), &quot;Pendente aprovação&quot;))
+	),
+ISCHANGED(Origin),
+ISCHANGED(AreaDemandante__c),
+ISCHANGED(DevolucaoAtoOuPosEntrega__c)),
+$Permission.ResolutionAreas)</errorConditionFormula>
+    <errorMessage>DEPOIS DE CRIADO, VOCÊ SO PODE EDITAR O CAMPO &quot;STATUS ÁREA DEMANDANTE&quot;.</errorMessage>
+</ValidationRule>

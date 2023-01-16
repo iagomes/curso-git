@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Your case has been closed new</name>
+    <style>none</style>
+    <subject>Encerramento de um Caso {!Case.CaseNumber} - Atendimento Grupo Elfa</subject>
+    <textOnly>Prezado Cliente,
+
+Sua solicitação que consta sob o protocolo de número {!Case.CaseNumber} foi encerrada. Esperamos que a resolução tenha sido de acordo com sua expectativa.
+
+Atenciosamente,
+Equipe de Atendimento ao Cliente Grupo Elfa
+
+{!Case.OwnerFullName}
+(16) 99643-0417
+atendimentoaocliente@grupoelfa.com.br</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

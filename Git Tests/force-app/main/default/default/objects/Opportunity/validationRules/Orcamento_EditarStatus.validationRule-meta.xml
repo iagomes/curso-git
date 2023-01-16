@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Orcamento_EditarStatus</fullName>
+    <active>false</active>
+    <description>Não permitir que o usuário altere manualmente o status do orçamento para &quot;Aguardando aprovação&quot; e &quot;Aprovado&quot;. Apenas o status &quot;Fechado/ganho&quot; e &quot;Fechado/perdido&quot; pode ser editado pelo usuário.</description>
+    <errorConditionFormula>AND(
+ISCHANGED(StageName), 
+OR(
+ISPICKVAL(StageName, &apos;Aguardando aprovação&apos;),
+ISPICKVAL(StageName, &apos;Aprovado&apos;))
+)</errorConditionFormula>
+    <errorDisplayField>StageName</errorDisplayField>
+    <errorMessage>Não é possível alterar manualmente o status do orçamento para &quot;Aguardando aprovação&quot; ou &quot;Aprovado&quot;.</errorMessage>
+</ValidationRule>

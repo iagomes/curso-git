@@ -1,0 +1,41 @@
+<template>
+    <div class="style-element-container"></div>
+    <div class="details-form details-form2 content">
+        <div class="slds-p-top_small slds-p-left_small">
+            <lightning-accordion class="accordion" allow-multiple-sections-open active-section-name="tabulacoes">
+                <lightning-accordion-section class="slds-accordion__section" name="tabulacoes" label="Tabulações">
+                    <div class="section-content slds-grid slds-wrap">
+                        <div class="slds-col">
+                            
+                            <lightning-combobox 
+                                label="TabulaçãoN1" 
+                                name="TabulacaoN1__c" 
+                                class="TabulacaoN1__c" 
+                                options={n1Values}
+                                onchange={handleChangetab1} 
+                                value={tabulacaoN1} 
+                                variant="label-inline"
+                                disabled={viewOnly}
+                            ></lightning-combobox>
+                            
+                        </div>
+                        <div class="slds-col">
+                            
+                            <lightning-combobox 
+                                label="TabulaçãoN2" 
+                                name="TabulacaoN2__c" 
+                                options={n2Values}
+                                class="TabulacaoN2__c" 
+                                onchange={handleChangetab2} 
+                                value={tabulacaoN2} 
+                                variant="label-inline"
+                                disabled={viewOnly}
+                            ></lightning-combobox>
+                            
+                        </div>
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </div>
+    </div>
+</template>

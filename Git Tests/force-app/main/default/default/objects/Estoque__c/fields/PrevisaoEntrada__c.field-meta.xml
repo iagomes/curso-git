@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PrevisaoEntrada__c</fullName>
+    <description>Data que informa uma previsão de quando o produto irá receber no estoque.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Data que informa uma previsão de quando o produto irá receber no estoque.</inlineHelpText>
+    <label>Previsão de entrada</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

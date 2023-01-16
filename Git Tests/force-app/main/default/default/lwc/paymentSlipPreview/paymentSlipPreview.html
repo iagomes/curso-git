@@ -1,0 +1,141 @@
+<template>
+    <template if:false={paymentSlip.TituloAberto}>
+        <lightning-card>
+            <div class="slds-align_absolute-center">Não há boletos para essa nota fiscal</div>
+        </lightning-card>
+    </template>
+    <template if:true={paymentSlip.TituloAberto}>
+        <div class="slds-grid slds-wrap">
+            <template for:each={paymentSlip.TituloAberto} for:item="titulo">
+                <div class="slds-col slds-size_1-of-4" style="padding:5px" key={titulo.DIFF}>
+                    <lightning-card key={titulo.DIFF} title="Detalhes do Boleto" icon-name="standard:timesheet"
+                        variant="base">
+                        <div slot="actions"></div>
+                        <div class="slds-card__body_inner"
+                            style="white-space: initial;word-wrap: break-word;padding:10px;">
+                            <div class="slds-form_horizontal slds-form slds-grid slds-wrap" style="font-size:16px">
+                                <strong><span class="spanClass">Empresa:</span></strong>
+                                <div><span><strong>{titulo.EMPRESA}</strong></span></div>
+                            </div>
+                            <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                    class="spanClass">Cliente:</span>
+                                <div><span>{titulo.CLIENTE}</span></div>
+                            </div>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Loja:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.LOJA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Filial:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.FILIAL}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Valor:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.VALOR}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Parcelas:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.PARCELA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Saldo:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.SALDO}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Multa:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.MULTA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Emissão:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.EMISSAO}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Vencimento:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.VENCREA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <div class="slds-form_horizontal slds-form slds-grid slds-wrap" style="font-size:16px">
+                                <strong><span class="spanClass">Banco:</span></strong>
+                                <div><span><strong>{titulo.BANCO}</strong></span></div>
+                            </div>
+                            <div class="slds-form_horizontal slds-grid slds-form slds-wrap"><span
+                                    class="spanClass">Origem:</span>
+                                <div><span>{titulo.ORIGEM}</span></div>
+                            </div>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Ag:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.AGENCIA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Conta:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.CONTA}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Prefixo:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.PREFIXO}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Data Inclusão:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.DATA_INCLUSAO}</span>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout class="slds-wrap" multiple-rows="true">
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Num Bco:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.NUMBCO}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6">
+                                    <div class="slds-form_horizontal slds-form slds-grid slds-wrap"><span
+                                            class="spanClass">Num:</span>
+                                        <div class="slds-form-element__control"><span>{titulo.NUM}</span></div>
+                                    </div>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <div class="slds-form_horizontal slds-form slds-wrap"><span class="spanClass">Linha
+                                    digitável:</span>
+                                <div><span>{titulo.LINDIGITAVEL}</span></div>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

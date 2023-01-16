@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OrderItem__c</fullName>
+    <description>
+        Quando recebemos a confirmação do orçamento do portal é criado um pedido e seus respectivos itens
+        com base nas informações que vem na integração (IntegrationPortalOrderIN) e do que havia no SF no QuoteItem__c
+        Esse item do pedido (OrderItem) fica vinculado ao item da cotação por esse campo. 
+    </description>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Produto do pedido</label>
+    <referenceTo>OrderItem</referenceTo>
+    <relationshipLabel>Items da Cotação</relationshipLabel>
+    <relationshipName>QuoteItems</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ImpedeFinalizacaoDeCasoIncompleto</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( 
+ AND(
+   ISCHANGED( Status ),
+   OR( 
+      ISPICKVAL(Status , &quot;Finalizado&quot;),
+      ISPICKVAL(Status , &quot;Closed&quot;)
+   )),
+ OR(
+  ISPICKVAL(Priority, &quot;&quot;),
+  ISPICKVAL(Type, &quot;&quot;),
+  ISPICKVAL(Razao__c, &quot;&quot;),
+  ISPICKVAL(Motivo__c, &quot;&quot;),
+  ISPICKVAL(Submotivo__c, &quot;&quot;),
+  ISBLANK(AccountId),
+  ISBLANK(ContactId),
+  ISPICKVAL(EmpresaDemandante__c, &quot;&quot;)),
+ NOT(ISCHANGED( BypassValidationRules__c ))
+)</errorConditionFormula>
+    <errorMessage>VERIFICAR SE OS SEGUINTES CAMPOS ESTÃO PREENCHIDOS: &quot;NOME DO CLIENTE&quot;, &quot;CONTATO&quot;, &quot;PRIORIDADE&quot;, &quot;TIPO&quot;, &quot;RAZÃO&quot;, &quot;MOTIVO&quot;, &quot;SUBMOTIVO&quot; E &quot;EMPRESA DEMANDANTE&quot;.</errorMessage>
+</ValidationRule>

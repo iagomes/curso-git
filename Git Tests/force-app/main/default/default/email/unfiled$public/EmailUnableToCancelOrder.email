@@ -1,0 +1,3 @@
+Olá, {!Order.CreatedBy}
+
+O pedido nº {!Order.OrderNumber} não pode ser cancelado pois já havia sido faturado no ERP.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigaInformarFormatoDeDevolucao</fullName>
+    <active>true</active>
+    <description>Regra de validação que obriga o atendente à informar o Formato de Devolução, se é no Virtual ou Física.</description>
+    <errorConditionFormula>AND(ISPICKVAL(Razao__c, &quot;Devolução&quot;), ISPICKVAL(FormatoDeDevolucao__c,&quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>FormatoDeDevolucao__c</errorDisplayField>
+    <errorMessage>PARA CASOS CUJA RAZÃO É &apos;DEVOLUÇÃO&quot;, SE FAZ NECESSÁRIO PREENCHIMENTO DO CAMPO &quot;FORMATO DE DEVOLUÇÃO&quot;.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IntegratorMeasurementUnit__c</fullName>
+    <description>Campo está preenchido e vem da integração, mas parece não ser usado.</description>
+    <externalId>false</externalId>
+    <label>Unidade de Medida do Integrador</label>
+    <length>32</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

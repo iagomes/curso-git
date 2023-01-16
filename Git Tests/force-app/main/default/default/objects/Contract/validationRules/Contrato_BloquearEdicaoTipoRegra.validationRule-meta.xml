@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contrato_BloquearEdicaoTipoRegra</fullName>
+    <active>true</active>
+    <description>Regra de validação para bloquear a edição do campo Tipo da Regra.</description>
+    <errorConditionFormula>AND(
+				ISCHANGED(TipoRegra__c), 
+				$Profile.Name != &quot;Administrador do sistema&quot;
+)</errorConditionFormula>
+    <errorDisplayField>TipoRegra__c</errorDisplayField>
+    <errorMessage>Não é permitido editar este campo.</errorMessage>
+</ValidationRule>

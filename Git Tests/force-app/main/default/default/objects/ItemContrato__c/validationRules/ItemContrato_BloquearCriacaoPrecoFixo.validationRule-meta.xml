@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ItemContrato_BloquearCriacaoPrecoFixo</fullName>
+    <active>true</active>
+    <description>Regra de validação para não permitir a criação de itens do contratos de preço fixo dentro do Salesforce por usuário comercial.</description>
+    <errorConditionFormula>AND(
+ISPICKVAL(NumeroContrato__r.TipoRegra__c, &apos;Preço Fixo&apos;),
+ISBLANK(CreatedDate),
+$Profile.Name != &apos;Administrador do sistema&apos;
+)</errorConditionFormula>
+    <errorMessage>Não é permitido a criação de itens para um contrato de preço fixo.</errorMessage>
+</ValidationRule>

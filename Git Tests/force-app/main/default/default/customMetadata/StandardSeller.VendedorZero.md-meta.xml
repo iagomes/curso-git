@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>VendedorZero</label>
+    <protected>false</protected>
+    <values>
+        <field>Email__c</field>
+        <value xsi:type="xsd:string">jessica.castro@grupoelfa.com.br</value>
+    </values>
+    <values>
+        <field>ExternalID__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>VendedorID__c</field>
+        <!-- 0054x000005ATVwAAO = JESSICA SANTANA ANIZ DE CASTRO - jessica.castro@grupoelfa.com.br - PRODUÇÃO -->
+        <!-- 00521000008p7GeAAI = RAPHAEL FERREIRA DE HOLANDA SOARES - DEVNAC -->
+        <!-- 005q0000007n7ZbAAI = PITER COSTA RANIERI QA  -->
+        <value xsi:type="xsd:string">005q0000007n7ZbAAI</value>
+    </values>
+</CustomMetadata>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Layout de contato</layout>
+        <sections>
+            <label><!-- Informações --></label>
+            <section>Informações</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Layout de contato de fornecedor</layout>
+        <sections>
+            <label><!-- Informações --></label>
+            <section>Informações</section>
+        </sections>
+        <sections>
+            <label><!-- Seção conta --></label>
+            <section>Seção conta</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Contato do cliente --></label>
+        <name>ContatoCliente</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Contato do fornecedor --></label>
+        <name>ContatoFornecedor</name>
+    </recordTypes>
+</CustomObjectTranslation>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigadaInformarValorDoDesconto</fullName>
+    <active>true</active>
+    <description>Regra de Validação criada para obrigar a informação do Valor do Desconto no Caso, quando se tratar de uma Solicitação de Desconto no Boleto (Motivo)</description>
+    <errorConditionFormula>ISPICKVAL(Motivo__c ,&quot;Solicitação de Desconto no Boleto&quot;)</errorConditionFormula>
+    <errorDisplayField>ValorDoDesconto__c</errorDisplayField>
+    <errorMessage>PARA CASOS CUJO MOTIVO É &apos;SOLICITAÇÃO DE DESCONTO NO BOLETO&quot;, SE FAZ NECESSÁRIO PREENCHIMENTO DO CAMPO &quot;VALOR DO DESCONTO&quot;</errorMessage>
+</ValidationRule>

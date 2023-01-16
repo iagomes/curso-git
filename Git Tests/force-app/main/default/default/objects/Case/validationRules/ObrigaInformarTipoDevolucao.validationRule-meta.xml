@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ObrigaInformarTipoDevolucao</fullName>
+    <active>true</active>
+    <description>Regra de validação que obriga o atendente à informar o tipo de Devolução, se é no Ato ou Pós Entrega.</description>
+    <errorConditionFormula>AND(ISPICKVAL(Razao__c, &quot;Devolução&quot;), ISPICKVAL(DevolucaoAtoOuPosEntrega__c,&quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>DevolucaoAtoOuPosEntrega__c</errorDisplayField>
+    <errorMessage>PARA CASOS CUJA RAZÃO É &apos;DEVOLUÇÃO&quot;, SE FAZ NECESSÁRIO PREENCHIMENTO DO CAMPO &quot;DEVOLUÇÃO ATO OU PÓS ENTREGA&quot;</errorMessage>
+</ValidationRule>

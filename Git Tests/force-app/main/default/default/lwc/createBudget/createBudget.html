@@ -1,0 +1,331 @@
+<template>
+	<div class="slds-box" style="max-width: 700px; width:100%; background-color: white; margin: auto" data-id="box1">
+		<template if:true={isEdit}>
+			<div>
+				<div class="slds-var-m-bottom_medium slds-text-align_center slds-text-heading_medium">Editar Orçamento</div>
+			</div>
+		</template>
+		<template if:false={isEdit}>
+			<div>
+				<div class="slds-var-m-bottom_medium slds-text-align_center slds-text-heading_medium">Inserir Orçamento</div>
+			</div>
+		</template>
+		
+		<template if:true={isEdit}>
+			<div class="slds-align_absolute-center" style="margin-bottom: 10px;">
+				<lightning-input  readonly="true" label="Número do Orçamento" type="text" variant="standard" style="width: 100%" value={numOrcamento}></lightning-input>
+				<lightning-input  readonly="true" class="slds-var-m-left_large" label="Valor Total" type="text" variant="standard" style="width: 100%" value={valorTotalScreen}></lightning-input>		
+				<!-- <lightning-input  readonly="true" class="slds-m-left_large" label="Margem" type="text" variant="standard" value={margem}></lightning-input> -->
+				<lightning-input  readonly="true" class="slds-var-m-left_large" label="Score" type="text" variant="standard" value={score}></lightning-input>
+			</div>
+		</template>
+		
+		<lightning-layout multiple-rows>
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<c-custom-lookup-filter 
+					check-type="Account" 
+					selected-record={accountObject} 
+					style="width: 100%;" 
+					object-api-name="Account" 
+					object-icon-name="standard:account" 
+					input-label="Cliente Emissor" 
+					onselectrecord={handleSelectAccountObj} 
+					client-id={clienteEmissorId} 
+					placeholder="Pesquisar Clientes..."
+					required
+					disabled>
+				</c-custom-lookup-filter>
+			</lightning-layout-item>
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<template if:true={device}>
+					<lightning-input if:true={clienteEmissorCNPJ} disabled={isEdit} readonly="true" class="slds-m-left_small" label="CNPJ" type="text" variant="standard" value={clienteEmissorCGC} style="width: 100%; padding-right: 12px"></lightning-input>
+					<lightning-input if:false={clienteEmissorCNPJ} disabled={isEdit} readonly="true" class="slds-m-left_small" label="CPF" type="text" variant="standard" value={clienteEmissorCGC} style="width: 100%; padding-right: 12px"></lightning-input>
+				</template>
+				<template if:false={device}>
+					<lightning-input if:true={clienteEmissorCNPJ} disabled={isEdit} readonly="true" label="CNPJ" type="text" variant="standard" value={clienteEmissorCGC} style="width: 100%; padding-right: 12px"></lightning-input>
+					<lightning-input if:false={clienteEmissorCNPJ} disabled={isEdit} readonly="true" label="CPF" type="text" variant="standard" value={clienteEmissorCGC} style="width: 100%; padding-right: 12px"></lightning-input>
+				</template>
+			</lightning-layout-item>
+			<!-- <div class="slds-grid gridcreate"></div> -->
+			
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<div style="width: 100%;">
+					<template if:true={isFromBudgetScreen}>
+						<c-custom-lookup-filter hide-close="true" check-type="Pricebook2" disabled selected-record={tabelaPrecoObject} style="width: 100%" object-api-name="Pricebook2" object-icon-name="standard:pricebook" input-label="Tabela de Preço" onselectrecord={handleSelectRecordPrice} client-id={clienteEmissorId} condition-id={condicaoPagamento} placeholder="Pesquisar Catálogos de Preço" required></c-custom-lookup-filter>
+					</template>
+					<template if:false={isFromBudgetScreen}>
+						<c-custom-lookup-filter hide-close="true" check-type="Pricebook2" disabled={isEdit} selected-record={tabelaPrecoObject} style="width: 100%" object-api-name="Pricebook2" object-icon-name="standard:pricebook" input-label="Tabela de Preço" onselectrecord={handleSelectRecordPrice} client-id={clienteEmissorId} condition-id={condicaoPagamento} placeholder="Pesquisar Catálogos de Preço" required></c-custom-lookup-filter>
+					</template>
+				</div>
+			</lightning-layout-item>
+			
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<template if:true={device}>
+					<div style="width: 100%; padding-right: 12px;" class="slds-m-left_small">
+						<c-show-picklist-value object-name="Opportunity" field-name="CanalEntrada__c" field-label="Canal de vendas"
+							onselectpicklist={handleSelectSalesChannel} value={canalEntrada}
+							disabled-custom-lookup={checkFieldsDisabledCanalEntrada} style="width: 100%;">
+						</c-show-picklist-value>
+						<h1 class="slds-var-m-vertical_x-small slds-text-color_destructive " style="padding-left: 24px"
+							if:true={canalEntradaErro}>
+							Selecione um canal de vendas correto.
+						</h1>
+					</div>
+				</template>
+				<template if:false={device}>
+					<div style="width: 100%;">
+						<c-show-picklist-value object-name="Opportunity" field-name="CanalEntrada__c" field-label="Canal de vendas"
+							onselectpicklist={handleSelectSalesChannel} value={canalEntrada}
+							disabled-custom-lookup={checkFieldsDisabledCanalEntrada} style="width: 100%;">
+						</c-show-picklist-value>
+						<h1 class="slds-var-m-vertical_x-small slds-text-color_destructive " style="padding-left: 24px"
+							if:true={canalEntradaErro}>
+							Selecione um canal de vendas correto.
+						</h1>
+					</div>
+				</template>
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<c-custom-lookup-filter check-type="CondicaoPagamento__c" selected-record={condicaoPagamentoObject} style="width: 100%;" object-api-name="CondicaoPagamento__c" object-icon-name="standard:webcart" input-label="Condição de Pagamento" onselectrecord={handleSelectRecordCondicaoPagamento} client-id={clienteEmissorId} condition-id={condicaoPagamento} placeholder="Pesquisar Condições de Pagamento" is-not-activated="true" required></c-custom-lookup-filter>
+			</lightning-layout-item>
+			
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<template if:true={device}>
+					<template if:false={disabledFormaPag}>
+						<lightning-combobox class="slds-var-m-left_large" label="Forma de pagamento" options={optionsForma}
+							dropdown-alignment="left" variant="standard" style="width: 100%; padding-right: 12px;" value={formaPagamento}
+							disabled={disabledFormaPag} onchange={handleChangeFormaPag} required>
+						</lightning-combobox>
+					</template>
+					<template if:true={disabledFormaPag}>
+						<lightning-combobox class="slds-var-m-left_large" label="Forma de pagamento" options={optionsFormaRA}
+							dropdown-alignment="left" variant="standard" style="width: 100%; padding-right: 12px;" value={formaPagamento}
+							disabled={disabledFormaPag} onchange={handleChangeFormaPag} required>
+						</lightning-combobox>
+					</template>
+				</template>
+
+				<template if:false={device}>
+					<template if:false={disabledFormaPag}>
+						<lightning-combobox label="Forma de pagamento" options={optionsForma}
+							dropdown-alignment="left" variant="standard" style="width: 100%;" value={formaPagamento}
+							disabled={disabledFormaPag} onchange={handleChangeFormaPag} required>
+						</lightning-combobox>
+					</template>
+					<template if:true={disabledFormaPag}>
+						<lightning-combobox label="Forma de pagamento" options={optionsFormaRA}
+							dropdown-alignment="left" variant="standard" style="width: 100%;" value={formaPagamento}
+							disabled={disabledFormaPag} onchange={handleChangeFormaPag} required>
+						</lightning-combobox>
+					</template>
+				</template>
+
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+			
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<c-lookup
+					input-label="Contatos relacionados"
+					object-icon-name="standard:contact"
+					target-object={relatedContactObjectApi}
+					search-fields={relatedContactSearchFieldsApi}
+					parent-relation-field={relatedContactAccountFieldApi}
+					parent-record-id={clienteEmissorId}
+					more-fields={relatedContactMoreFields}
+					list-item-options={relatedContactListItemOptions}
+					record-id={accountContactRelationId}
+					placeholder="Pesquisar contatos"
+					style="width: 100%;"
+					new-record-button-label="Vincular contato já existente"
+					onselectrecord={onChangeContact}
+					onclearselectedrecord={onClearContact}
+					label-new-record="Vincular contato existente"
+					required={clienteEmissorCNPJ}>
+
+					<lightning-layout multiple-rows slot="record-form">
+						<lightning-layout-item size="12">
+							<lightning-messages></lightning-messages>
+						</lightning-layout-item>
+						<lightning-layout-item size="6">
+							<lightning-input-field 
+								field-name="AccountId" 
+								value={clienteEmissorId}
+								disabled
+								required>
+							</lightning-input-field>
+						</lightning-layout-item>
+						<lightning-layout-item size="6">
+							<lightning-input-field field-name="ContactId" required></lightning-input-field>
+						</lightning-layout-item>
+
+						<lightning-layout-item size="12">
+							<lightning-button 
+								class="slds-var-m-top_large slds-var-m-horizontal_xx-small slds-float_right"
+								type="submit"
+								variant="brand"
+								label="Salvar">
+							</lightning-button>
+						</lightning-layout-item>
+					</lightning-layout>
+				</c-lookup>
+				<a onclick={handleCreateNewContact}>
+					Criar novo contato
+				</a>
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<template if:true={device}>
+					<lightning-input class="slds-m-left_small" label="Id Portal cotações" disabled={IdportalcotacoesAtivo} onblur={handleIdPortal} type="text" variant="standard"
+						value={Idportalcotacoes}>
+					</lightning-input>
+				</template>
+				<template if:false={device}>
+					<lightning-input label="Id Portal cotações" onblur={handleIdPortal} disabled={IdportalcotacoesAtivo} type="text" variant="standard"
+						value={Idportalcotacoes}>
+					</lightning-input>
+				</template>
+				<template if:true={showCreateRecordForm}>
+					<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+						<div class="slds-modal__container">
+							<!-- Modal/Popup Box LWC header here -->
+							<header class="slds-modal__header">
+								<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={handleCreateNewContact}>
+									<lightning-icon icon-name="utility:close"
+										alternative-text="close"
+										variant="inverse"
+										size="small" ></lightning-icon>
+									<span class="slds-assistive-text">Close</span>
+								</button>
+								<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Criar novo contato</h2>
+							</header>
+							<!-- Modal/Popup Box LWC body starts here -->
+							<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="max-height: 25rem;">
+								<lightning-record-edit-form
+									object-api-name="Contact"
+									
+									onsuccess={handleSuccessCreateContact}>
+									<lightning-layout multiple-rows>
+										<lightning-layout-item size="12">
+											<lightning-input-field 
+												field-name="AccountId" 
+												value={clienteEmissorId}
+												disabled>
+											</lightning-input-field>
+										</lightning-layout-item>			
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="FirstName" required></lightning-input-field>
+										</lightning-layout-item>
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="LastName" required></lightning-input-field>
+										</lightning-layout-item>
+			
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="Cargo__c"></lightning-input-field>
+										</lightning-layout-item>
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="Title"></lightning-input-field>
+										</lightning-layout-item>
+			
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="Email" required></lightning-input-field>
+										</lightning-layout-item>
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="Padrao__c"></lightning-input-field>
+										</lightning-layout-item>
+			
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="Phone" required></lightning-input-field>
+										</lightning-layout-item>
+										<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+											<lightning-input-field field-name="MobilePhone"></lightning-input-field>
+										</lightning-layout-item>
+			
+										<lightning-layout-item size="12">
+											<lightning-input-field field-name="Description"></lightning-input-field>
+										</lightning-layout-item>
+			
+										<lightning-layout-item size="12">
+											<lightning-button 
+												class="slds-var-m-top_large slds-var-m-horizontal_xx-small slds-float_right"
+												type="submit"
+												variant="brand"
+												label="Salvar">
+											</lightning-button>
+										</lightning-layout-item>	
+									</lightning-layout>
+									<lightning-messages></lightning-messages>
+								</lightning-record-edit-form>
+							</div>
+							<!-- Modal/Popup Box LWC footer starts here -->
+						</div>
+					</section>
+					<div class="slds-backdrop slds-backdrop_open"></div>
+				</template>
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<lightning-input label="Data de validade" onchange={onChangeDataValidade} type="date" variant="standard" style="width: 100%;" value={dtValidade}></lightning-input>
+			</lightning-layout-item>
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+				<template if:true={device}>
+					<lightning-input class="slds-var-m-left_large" label="Prazo de validade (em dias)" onblur={onBlurPrazoValidade}
+						type="number" variant="standard" style="width: 100%; padding-right: 12px;" value={prazoValidade} min="0">
+					</lightning-input>
+				</template>
+				
+				<template if:false={device}>
+					<lightning-input label="Prazo de validade (em dias)" onblur={onBlurPrazoValidade}
+						type="number" variant="standard" style="width: 100%;" value={prazoValidade} min="0">
+					</lightning-input>
+				</template>
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="12">
+				<lightning-textarea label="Observações (cliente)" onblur={onBlurObservacaoCliente} variant="standard" style="width: 100%;" value={observacaoCliente} disabled></lightning-textarea>
+			</lightning-layout-item>
+
+			<!-- <div class="slds-grid gridcreate"></div> -->
+
+			<lightning-layout-item size="12" small-device-size="12" medium-device-size="6" large-device-size="12">
+				<lightning-textarea name="ObsNotaFiscal" label="Observações" onblur={onBlurObservacao} variant="standard" style="width: 100%;" value={observacao} onchange={handleCheckSpecialCharacter} maxlength="255"></lightning-textarea>
+				</lightning-layout-item>
+
+			<lightning-layout-item size="12">
+				<h1 class="slds-var-m-vertical_x-small slds-text-color_destructive " style="margin-bottom: 8px;"
+				if:true={obsNotaFiscalErro}>
+				Não é permitido caracteres especiais.
+				</h1>
+			</lightning-layout-item>
+
+		</lightning-layout>
+
+		<div>
+			<lightning-layout multiple-rows horizontal-align="spread">
+				<template if:true={device}>
+					<lightning-layout-item flexibility="auto" style="margin-top: 20px;">
+						<lightning-button variant="neutral" label="Cancelar" onclick={onClickWindowBack}>
+						</lightning-button>
+					</lightning-layout-item>
+				</template>
+				<lightning-layout-item flexibility="auto" if:false={isEdit} style="margin-top: 20px;">
+					<c-budget-summary account-name={clienteEmissor}></c-budget-summary>
+				</lightning-layout-item>
+				<lightning-layout-item flexibility="auto" style="margin-top: 20px;">
+					<lightning-button variant="brand" label="Adicionar produtos" onclick={handleNavigate} disabled={disabledNext}>
+					</lightning-button>
+				</lightning-layout-item>
+			</lightning-layout>
+		</div>
+	</div>
+</template>

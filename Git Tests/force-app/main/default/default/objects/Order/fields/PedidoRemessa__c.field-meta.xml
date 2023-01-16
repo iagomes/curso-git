@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>PedidoRemessa__c</fullName>
+    <description>Verifica se é um pedido de remessa, conta e ordem e filho.</description>
+    <externalId>false</externalId>
+    <formula>AND( AccountId != ClienteRecebedor__r.Id,
+ PedidoFilho__c, RecordType.Name == &apos;Pedido de conta e ordem&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Verifica se é um pedido de remessa, conta e ordem e filho.</inlineHelpText>
+    <label>Pedido é de remessa?</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

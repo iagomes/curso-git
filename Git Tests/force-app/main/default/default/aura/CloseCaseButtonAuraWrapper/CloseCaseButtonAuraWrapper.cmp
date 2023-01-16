@@ -1,0 +1,42 @@
+<!--
+  @description       : 
+  @author            : Raphael Soares
+  @author username   : raphael.holanda.ext@iconit.com.br
+  @company           : Icon IT Solutions
+  @last modified on  : 25-11-2021
+  @last modified by  : raphael.holanda.ext@iconit.com.br
+-->
+<aura:component implements="force:appHostable,force:hasRecordId,force:hasSObjectName,force:lightningQuickActionWithoutHeader,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,lightning:actionOverride" access="global">
+    <aura:attribute name="recordId" type="ID"/>
+
+    <c:closeCaseActionButton recordId="{!v.recordId}" oncloseAction="{!c.closeAction}"></c:closeCaseActionButton>
+
+    
+    <aura:html tag="style">
+
+        c-close-case-action-button .custom-modal .slds-modal__container{
+            width:100%;
+        }
+
+       .quick-actions-panel > .slds-modal__content {
+            height: 167px !important;
+            padding: 0 !important;
+        }
+
+        .cuf-content {
+            padding: 0 !important;
+        }
+
+    </aura:html>
+
+    <!-- .forceChatterLightningComponent, .forceChatterPublisherPresentationPanel, .container, .bodyWrapper, .cuf-content, .modal-body {
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+    
+    .campaign-records-table .slds-table_header-fixed_container .slds-scrollable_y {
+        max-height: 32em !important;
+        width: 100%;
+    } -->
+
+</aura:component>

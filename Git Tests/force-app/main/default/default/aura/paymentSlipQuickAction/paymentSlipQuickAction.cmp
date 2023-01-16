@@ -1,0 +1,8 @@
+<aura:component implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction">
+
+    <aura:attribute name="recordId" type="Id" />
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <aura:handler name="init" action="{!c.navigateToPaymentSlip}" value="{!this}" />
+    <lightning:navigation aura:id="navService"/>
+
+</aura:component>

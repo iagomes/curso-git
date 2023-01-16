@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EstoqueEmPoderTerceiro</fullName>
+    <active>true</active>
+    <description>Estoque de contrato consignado em poder de terceiro.</description>
+    <label>Estoque em poder de terceiro</label>
+</RecordType>

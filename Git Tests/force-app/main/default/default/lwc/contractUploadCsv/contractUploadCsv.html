@@ -1,0 +1,50 @@
+<template>
+    
+    <template if:true={showLoadingSpinner}>
+        <div style="z-index: 10000 !important;">
+            <lightning-spinner alternative-text="Carregando......" size="medium" style="z-index: 10000 !important;"></lightning-spinner>
+        </div>
+    </template>
+
+    <lightning-card title="Processar arquivo CSV">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item style="text-align: center;" size="4" medium-device-size="4" padding="around-small">
+                <br/>
+                <lightning-button icon-name="utility:download" label="Download Template" title="Download" onclick={downloadTemplate} variant="brand"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item style="text-align: left;" size="4" medium-device-size="4" padding="around-small">
+                <div  style="text-align: center;">
+                    <lightning-input label="" name="carregar arquivo" type="file" multiple onchange={handleFilesChange}></lightning-input>
+                </div>
+                <div class="slds-text-body_small slds-text-color_error" style="margin-left:4%;text-align: center;">
+                    {fileName}
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item style="text-align: left;" size="4" medium-device-size="4" padding="around-small">
+                <template if:true={isSelectedFile}>
+                    <br/>
+                    <lightning-button icon-name="utility:upload" label="Carregar" title="Carregar" onclick={handleSave} variant="brand"></lightning-button>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+
+    </lightning-card>
+
+    <template if:true={isData}>
+        <lightning-card title="Registros a carregar" icon-name="standard:contract">
+            <div style="text-align: center;">
+                <lightning-button class="slds-m-top--medium" label={UploadFile} onclick ={confirmUpload} variant="brand"></lightning-button>
+            </div>
+            <br/>
+            <div style="width: auto;">
+                <lightning-datatable
+                        data={data}
+                        columns={columns}
+                        key-field="id"
+                        hide-checkbox-column>
+                </lightning-datatable>
+            </div>
+            <br/>
+        </lightning-card>
+    </template>
+</template>

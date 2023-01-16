@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LayoutCompactoCatalogoPreco</fullName>
+    <fields>Name</fields>
+    <fields>Description</fields>
+    <fields>DataInicio__c</fields>
+    <fields>DataFim__c</fields>
+    <fields>IsActive</fields>
+    <label>Layout compacto de catálogo de preços</label>
+</CompactLayout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Canal de entrada --></label>
+    <name>CanalEntrada__c</name>
+    <picklistValues>
+        <masterLabel>Telefone</masterLabel>
+        <translation><!-- Telefone --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Whatsapp</masterLabel>
+        <translation><!-- Whatsapp --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>E-mail</masterLabel>
+        <translation><!-- E-mail --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Skype</masterLabel>
+        <translation><!-- Skype --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chat</masterLabel>
+        <translation><!-- Chat --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bionexo</masterLabel>
+        <translation><!-- Bionexo --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Sintese</masterLabel>
+        <translation><!-- Sintese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Apoio</masterLabel>
+        <translation><!-- Apoio --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Humma</masterLabel>
+        <translation><!-- Humma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>GTPLAN</masterLabel>
+        <translation><!-- GTPLAN --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Ariba/Amil</masterLabel>
+        <translation><!-- Ariba/Amil --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>ACSC - Associação Congregação de Santa Catarina</masterLabel>
+        <translation><!-- ACSC - Associação Congregação de Santa Catarina --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Max Cotações</masterLabel>
+        <translation><!-- Max Cotações --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Smart Compras</masterLabel>
+        <translation><!-- Smart Compras --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>NEOGRID</masterLabel>
+        <translation><!-- NEOGRID --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Smarkets Marketplace</masterLabel>
+        <translation><!-- Smarkets Marketplace --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Movi Tech</masterLabel>
+        <translation><!-- Movi Tech --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>TerNet</masterLabel>
+        <translation><!-- TerNet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tivox</masterLabel>
+        <translation><!-- Tivox --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Nimbi</masterLabel>
+        <translation><!-- Nimbi --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Medical VM</masterLabel>
+        <translation><!-- Medical VM --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>VS Supply</masterLabel>
+        <translation><!-- VS Supply --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Plani Max</masterLabel>
+        <translation><!-- Plani Max --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>INPART</masterLabel>
+        <translation><!-- INPART --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pro Saude</masterLabel>
+        <translation><!-- Pro Saude --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unifor</masterLabel>
+        <translation><!-- Unifor --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Tasy</masterLabel>
+        <translation><!-- Tasy --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Paradigma</masterLabel>
+        <translation><!-- Paradigma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>MVM RS</masterLabel>
+        <translation><!-- MVM RS --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

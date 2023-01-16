@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Pedido do Portal</name>
+    <style>none</style>
+    <subject>Pedido confirmado:  {!Order.CanalEntrada__c} - {!Order.Idportalcotacoes__c} -  {!Order.AccountName__c}</subject>
+    <textOnly>Foram confirmados itens da cotação {!Order.IdPortal__c}
+
+Com vencimento  {!Order.DataVencimento__c}
+
+Com  Valor Total R$ {!Order.TotalAmount}
+
+Cotada pela empresa {!Order.AccountId}.
+
+Link do Pedido.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Setorizacao__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Setorização</label>
+    <referenceTo>Setorizacao__c</referenceTo>
+    <relationshipLabel>Equipe de cliente</relationshipLabel>
+    <relationshipName>Equipe_de_cliente</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

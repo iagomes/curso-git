@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>ReenviarPedido</name>
+        <label>Reenviar pedido</label>
+        <locationX>1032</locationX>
+        <locationY>223</locationY>
+        <actionName>ResendOrder</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>TelaSucessoReenvio</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>TelaMensagemFalha</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>ordIdList</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>ReprocessarPedido</name>
+        <label>Reprocessar pedido</label>
+        <locationX>766</locationX>
+        <locationY>421</locationY>
+        <actionName>IntegrationReprocessOrderOUT</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>TelaSucessoReprocessamento</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>TelaMensagemFalha</targetReference>
+        </faultConnector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>ordIdList</name>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>52.0</apiVersion>
+    <decisions>
+        <name>ErroEnvioProtheus</name>
+        <label>Erro envio ao Protheus</label>
+        <locationX>512</locationX>
+        <locationY>254</locationY>
+        <defaultConnector>
+            <targetReference>StatusPedido</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Não tem erro de envio</defaultConnectorLabel>
+        <rules>
+            <name>ErroEnvio</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>ObterDadosPedido.StatusIntegracao__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Erro integração (Envio ao Protheus)</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ObterDadosPedido.StatusIntegracao__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Erro integração (geração do pedido no Protheus)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ReprocessarPedido</targetReference>
+            </connector>
+            <label>Erro envio</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>StatusPedido</name>
+        <label>Status do pedido?</label>
+        <locationX>766</locationX>
+        <locationY>114</locationY>
+        <defaultConnector>
+            <targetReference>TelaMensagemNaoEnviado</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Sem erro de integração</defaultConnectorLabel>
+        <rules>
+            <name>ErroIntegracao</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>ObterDadosPedido.ErroIntegracaoConfirmacao__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ReenviarPedido</targetReference>
+            </connector>
+            <label>Erro de integração</label>
+        </rules>
+    </decisions>
+    <description>Fluxo para enviar manualmente para o ERP, quando houver algum erro de integração, o pedido aberto em tela.</description>
+    <interviewLabel>Pedido - Envio manual para ERP {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Pedido - Envio manual para ERP</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordLookups>
+        <name>ObterDadosPedido</name>
+        <label>Obter dados do pedido</label>
+        <locationX>177</locationX>
+        <locationY>253</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ObterDadosProdutoPedido</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Order</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>ObterDadosProdutoPedido</name>
+        <label>Obter dados produto do pedido</label>
+        <locationX>337</locationX>
+        <locationY>252</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>ErroEnvioProtheus</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>OrderId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>OrderItem</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <screens>
+        <name>TelaMensagemFalha</name>
+        <label>Tela mensagem falha</label>
+        <locationX>1033</locationX>
+        <locationY>418</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemFalha</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Ocorreu um erro durante o processo.&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;Entre em contato com o administrador do sistema para obter mais informações.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>TelaMensagemNaoEnviado</name>
+        <label>Tela mensagem não enviado</label>
+        <locationX>1037</locationX>
+        <locationY>37</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemNaoEnviado</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;O pedido &lt;b&gt;{!ObterDadosPedido.OrderNumber}&lt;/b&gt; não pode ser enviado manualmente para o ERP.&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>TelaSucessoReenvio</name>
+        <label>Tela de sucesso reenvio</label>
+        <locationX>1200</locationX>
+        <locationY>223</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemSucesso</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt;O pedido &lt;/span&gt;&lt;b style=&quot;color: rgb(0, 0, 0);&quot;&gt;{!ObterDadosPedido.OrderNumber}&lt;/b&gt;&lt;span style=&quot;color: rgb(0, 0, 0);&quot;&gt; foi reenviado com sucesso ao ERP.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>TelaSucessoReprocessamento</name>
+        <label>Tela sucesso reprocessamento</label>
+        <locationX>766</locationX>
+        <locationY>596</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>MensagemSucesso1</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;O pedido &lt;/span&gt;&lt;b style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!ObterDadosPedido.OrderNumber}&lt;/b&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt; foi reprocessado ERP com sucesso no ERP.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>51</locationX>
+        <locationY>46</locationY>
+        <connector>
+            <targetReference>ObterDadosPedido</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

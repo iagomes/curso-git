@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bonificacao_ValidarDataVigencia</fullName>
+    <active>true</active>
+    <description>Regra de validação para impedir a inserção de uma data menor ou igual ao dia atual no campo de Data de vigência.</description>
+    <errorConditionFormula>DataVigencia__c &lt;= TODAY()</errorConditionFormula>
+    <errorDisplayField>DataVigencia__c</errorDisplayField>
+    <errorMessage>Não é possível inserir uma data menor ou igual a data atual no campo de data de vigência,</errorMessage>
+</ValidationRule>

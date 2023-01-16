@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Fornecedor</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Fornecedores</value>
+    </caseValues>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Layout de Fornecedor</layout>
+        <sections>
+            <label><!-- Informações de contato --></label>
+            <section>Informações de contato</section>
+        </sections>
+        <sections>
+            <label><!-- Informações de endereço --></label>
+            <section>Informações de endereço</section>
+        </sections>
+        <sections>
+            <label><!-- Informações do fornecedor --></label>
+            <section>Informações do fornecedor</section>
+        </sections>
+        <sections>
+            <label><!-- Links personalizados --></label>
+            <section>Links personalizados</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nome do fornecedor</nameFieldLabel>
+</CustomObjectTranslation>

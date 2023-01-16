@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OpportunityLineItem__c</fullName>
+    <description>
+        Quando existe oferta para o QuoteItem__c em questão é criado um OpportunityLineItem com as informações do QuoteItem__c
+        Esse item que foi criado fica relacionado por meio desse campo.
+    </description>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Produto de oportunidade</label>
+    <referenceTo>OpportunityLineItem</referenceTo>
+    <relationshipLabel>Items da Cotação</relationshipLabel>
+    <relationshipName>QuoteItems</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

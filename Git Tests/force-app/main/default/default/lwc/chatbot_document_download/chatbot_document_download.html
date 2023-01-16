@@ -1,0 +1,11 @@
+<template>
+    <template if:false={hasError}>
+        <template if:false={loaded}>
+            <div class="loading">{labels.Wait}</div>
+        </template>     
+        <div ishtmlcontainer="true" lwc:dom="manual"></div>
+    </template>
+    <template if:true={hasError}>
+        {errorMessage}
+    </template>    
+</template>

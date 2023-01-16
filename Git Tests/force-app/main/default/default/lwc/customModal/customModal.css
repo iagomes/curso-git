@@ -1,0 +1,65 @@
+.icon-close {
+  --sds-c-icon-color-foreground-default: #fff;
+}
+
+.modal-bg {
+  background-color: #fff;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+/* .slds-modal__content {
+  min-height: 140px;
+} */
+
+.slds-accordion__section {
+    padding-right: 0!important;
+}
+
+.slds-modal__footer {
+    min-height: 28px;
+}
+
+.slds-button {
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.text-modal-proposal {
+  text-align: left;
+  color: #080707;
+  margin-bottom: 15px
+}
+.text-modal-proposal p {
+  color: #080707;
+  font-weight: 700;
+}
+
+.btn-proposal {
+  background: #04844B;
+  color: #fff;
+}
+.btn-proposal:hover {
+  background: #05663a;
+  color: #fff;
+}
+
+.btn-action-icon svg, .btn-action-icon use, .btn-action-icon path {
+  --sds-c-icon-color-foreground-default: white;
+  --sds-c-icon-color-background: white; 
+  --sds-c-icon-color-foreground:  white;
+}
+
+
+.custom-icon svg, .custom-icon use {
+  --sds-c-icon-color-foreground-default: #fffff;
+  --sds-c-icon-color-background: #fffff; 
+  --sds-c-icon-color-foreground:  #fffff;
+  height: 100%;
+  width: 100%;
+  fill: #fff;
+}
+
+svg.section-icon.open-section-icon.custom-icon {
+  fill: #fff;
+}

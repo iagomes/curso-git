@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ValorDoDesconto__c</fullName>
+    <description>Campo usado para informar o valor do desconto, quando o Motivo do Caso for &quot;Solicitação de Desconto no Boleto&quot;</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Informe aqui o valor do desconto pretendido pelo Cliente.</inlineHelpText>
+    <label>Valor do Desconto</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

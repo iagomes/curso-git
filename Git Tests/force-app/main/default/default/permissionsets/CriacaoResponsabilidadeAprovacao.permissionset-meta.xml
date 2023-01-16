@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Conjunto de permissões destinado aos usuários responsáveis pela criação de registros do objeto Responsabilidade de Aprovação.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ResponsabilidadeAprovacao__c.Categorias__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ResponsabilidadeAprovacao__c.CodigoMesa__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ResponsabilidadeAprovacao__c.Regiao__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>ResponsabilidadeAprovacao__c.UsuarioAprovador__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Criação responsabilidade de aprovação</label>
+    <license>Salesforce</license>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>ResponsabilidadeAprovacao__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>ResponsabilidadeAprovacao__c.AprovacaoComercial</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>ResponsabilidadeAprovacao__c.AprovacaoMalha</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>ResponsabilidadeAprovacao__c.AprovacaoPricing</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>ResponsabilidadeAprovacao__c.AprovacaoRegionalizacao</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <tabSettings>
+        <tab>ResponsabilidadeAprovacao__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

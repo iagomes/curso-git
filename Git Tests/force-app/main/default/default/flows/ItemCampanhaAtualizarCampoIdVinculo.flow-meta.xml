@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <assignments>
+        <description>Atualizar o campo &quot;Id vínculo&quot; com o valor da fórmula (NomeProduto__c, Lote__c e CNPJCD__c).</description>
+        <name>AtribuirVariavelItemAtivoCampanha</name>
+        <label>Atribuir variável para item ativo em campanha</label>
+        <locationX>726</locationX>
+        <locationY>156</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IdVinculo__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formulaItemAtivo</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Atualizar o campo &quot;Id vínculo&quot; com o valor da fórmula (NomeProduto__c + Lote__c + &quot;SL&quot;).</description>
+        <name>AtribuirVariavelItemAtivoContratoShelfLife</name>
+        <label>Atribuir variável para item ativo em contrato de shelf life</label>
+        <locationX>728</locationX>
+        <locationY>312</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IdVinculo__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formulaItemAtivoSL</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <description>Atualizar o campo &quot;Id vínculo&quot; com o valor da fórmula (Campanha__r.Id + NomeProduto__c + Lote__c).</description>
+        <name>AtribuirVariavelItemInativo</name>
+        <label>Atribuir variável item inativo</label>
+        <locationX>536</locationX>
+        <locationY>422</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IdVinculo__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>formulaItemInativo</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>CampanhaOuContratoShelfLife</name>
+        <label>Campanha ou contrato de shelf life?</label>
+        <locationX>474</locationX>
+        <locationY>233</locationY>
+        <defaultConnector>
+            <targetReference>AtribuirVariavelItemAtivoContratoShelfLife</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Contrato de Shelf life</defaultConnectorLabel>
+        <rules>
+            <name>Campanha</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>varRecordTypeCampanha</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>AtribuirVariavelItemAtivoCampanha</targetReference>
+            </connector>
+            <label>Campanha</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>ItemAtivo</name>
+        <label>Item Ativo?</label>
+        <locationX>212</locationX>
+        <locationY>333</locationY>
+        <defaultConnector>
+            <targetReference>AtribuirVariavelItemInativo</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Inativo</defaultConnectorLabel>
+        <rules>
+            <name>Ativo</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.VigenciaFinal__c</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <elementReference>Hoje</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CampanhaOuContratoShelfLife</targetReference>
+            </connector>
+            <label>Ativo</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <description>Fórmula para concatenar os campos NomeProduto__c, Lote__c e CNPJCD__c. 
+Esse valor será atribuído posteriormente ao campo &quot;IdVinculo__c&quot;.</description>
+        <name>formulaItemAtivo</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.NomeProduto__r.Name} + &quot;:&quot; + {!$Record.Lote__c} + &quot;:&quot; + {!$Record.CNPJCD__c}</expression>
+    </formulas>
+    <formulas>
+        <name>formulaItemAtivoSL</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.NomeProduto__r.Name} + {!$Record.Lote__c} + &quot;SL&quot;</expression>
+    </formulas>
+    <formulas>
+        <description>Fórmula para concatenar os campos Campanha__r.Id, NomeProduto__c e Lote__c. 
+Esse valor será atribuído posteriormente ao campo &quot;IdVinculo__c&quot;.</description>
+        <name>formulaItemInativo</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Campanha__r.Id} + &quot;:&quot; + {!$Record.NomeProduto__r.Name} + &quot;:&quot; + {!$Record.Lote__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Hoje</name>
+        <dataType>Date</dataType>
+        <expression>TODAY()</expression>
+    </formulas>
+    <interviewLabel>Item da campanha - atualizar campo IdVinculo {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Item de campanha - atualizar campo IdVinculo</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>49</locationY>
+        <connector>
+            <targetReference>ItemAtivo</targetReference>
+        </connector>
+        <object>ItemCampanha__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>varRecordTypeCampanha</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>ItemCampanha</stringValue>
+        </value>
+    </variables>
+</Flow>

@@ -1,0 +1,206 @@
+<template>
+  <template if:false={campaign}>
+    <lightning-spinner></lightning-spinner>
+  </template>
+
+  <template if:true={campaign}>
+    <div class="main-container">
+      <div class="slds-page-header slds-page-header_record-home main-page-header" style="z-index: 20">
+        <div class="slds-page-header__row slds-var-p-around_medium">
+          <div class="slds-page-header__col-title">
+            <div class="slds-media" style="display: flex; flex-direction: row; align-items: center;">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:campaign"></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span>{campaign.RecordType.Name}</span>
+                      <span
+                        class="slds-page-header__title slds-truncate slds-var-m-top_x-small"
+                        title={campaign.Name}>
+                        {campaign.Name}
+                      </span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-page-header__col-actions">
+            <div class="slds-page-header__controls">
+              <template if:true={pageMode.edit}>
+                <div class="slds-page-header__control">
+                  <lightning-button 
+                    label="Carregar CSV" 
+                    class="slds-var-m-horizontal_small" 
+                    onclick={openImportCSVModal}>
+                  </lightning-button>
+                  <lightning-button
+                    label="Adicionar itens"
+                    onclick={handleAddProductsPageMode}>
+                  </lightning-button>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+        <div class="slds-page-header__row slds-page-header__row_gutters">
+          <div class="slds-page-header__col-details">
+            <ul class="slds-page-header__detail-row">
+              <li class="slds-page-header__detail-block">
+                <div class="slds-text-title slds-truncate" title="Validade">Validade</div>
+                <div class="slds-truncate slds-var-m-top_x-small" title={campaign.Validade__c}>
+                  {campaign.Validade__c}
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-filters">
+        <template if:true={pageMode.addproducts}>
+          <lightning-layout multiple-rows class="slds-var-p-vertical_large">
+            <lightning-layout-item size="6" padding="horizontal-medium">
+              <lightning-input
+                type="search"
+                name="filter-product" 
+                label="Procurar produtos"
+                placeholder="Procurar por código, nome ou principio ativo..."
+                is-loading={isFetchingProducts}
+                value={filterProductValue}
+                onchange={handleOnChangeFilter}
+                onkeypress={handleOnKeyPress}>
+              </lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="horizontal-medium">
+              <lightning-input
+                type="search"
+                name="filter-producer" 
+                label="Procurar fornecedor"
+                placeholder="Procurar por fornecedor..."
+                is-loading={isFetchingProducts}
+                value={filterProducerValue}
+                onchange={handleOnChangeFilter}
+                onkeypress={handleOnKeyPress}>
+              </lightning-input>
+            </lightning-layout-item>
+          </lightning-layout>
+        </template>
+      </div>
+  
+      <div class="slds-var-p-around_large slds-scrollable_y">
+        <template if:true={isLoading}>
+          <lightning-spinner></lightning-spinner>
+        </template>
+
+        <template if:false={isLoading}>
+          <template if:true={pageMode.edit}>
+            <template if:true={campaignItemsEmpty}>
+              <p>Nenhum produto adicionado. :(</p>
+            </template>
+            
+            <template if:false={campaignItemsEmpty}>
+              <template for:each={campaignItems} for:item="item">
+                <c-campaign-product-item
+                  key={item.Id}
+                  product-data={item}
+                  campaign-items={item.ItemCampanha__r}
+                  campaign-id={recordId}
+                  distribution-center-options={baseParams.availableDistributionCenters}
+                  onaddproduct={handleOnAddProduct}
+                  ondeleteproduct={handleDeleteProduct}>
+                </c-campaign-product-item>
+              </template>
+            </template>
+  
+          </template>
+  
+          <template if:true={pageMode.addproducts}>
+            <template if:false={isFetchingProducts}>
+              <template if:false={addProductsList}>
+                <p>Nenhum produto foi encontrado. :(</p>
+              </template>
+              <template if:true={addProductsList}>
+                
+                <template for:each={addProductsList} for:item="item">
+                  <c-campaign-product-item
+                    key={item.Id}
+                    product-data={item}
+                    campaign-items={item.ItemCampanha__r}
+                    campaign-id={recordId}
+                    distribution-center-options={baseParams.availableDistributionCenters}
+                    onaddproduct={handleOnAddProduct}
+                    ondeleteproduct={handleDeleteProduct}>
+                  </c-campaign-product-item>
+                </template>
+  
+              </template>
+            </template>
+          </template>
+        </template>
+      </div>
+  
+      <footer class="slds-modal__footer slds-var-p-around_large">
+        <template if:true={pageMode.edit}>
+          <lightning-button 
+            label="Concluir"
+            variant="neutral"
+            onclick={handlePublishCloseTab}>
+          </lightning-button>
+        </template>
+        
+        <template if:true={pageMode.addproducts}>
+          <lightning-button 
+            label="Voltar"
+            variant="neutral"
+            class="slds-var-m-right_small"
+            onclick={handleEditPageMode}>
+          </lightning-button>
+        </template>
+      </footer>
+    </div>
+  </template>
+
+  <template if:true={isImportCSVModalOpen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+      <div class="slds-modal__container">
+        <!-- Modal/Popup Box LWC header here -->
+        <header class="slds-modal__header">
+          <!-- sldsValidatorIgnoreNextLine -->
+          <lightning-button-icon
+            class="slds-modal__close"
+            icon-name="utility:close"
+            variant="bare-inverse"
+            onclick={closeImportCSVModal}>
+          </lightning-button-icon>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+            Importar CSV
+          </h2>
+        </header>
+        <!-- Modal/Popup Box LWC body starts here -->
+        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+          <lightning-file-upload
+            record-id={recordId}
+            accept={acceptedFormats}
+            onuploadfinished={handleUploadFinished}>
+          </lightning-file-upload>
+
+        </div>
+        <!-- Modal/Popup Box LWC footer starts here -->
+        <footer class="slds-modal__footer">
+          <lightning-button
+            class="slds-var-m-right_small"
+            title="Cancel"
+            label="Cancelar"
+            onclick={closeImportCSVModal}>
+          </lightning-button>
+        </footer>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

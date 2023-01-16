@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Z</fullName>
+        <default>false</default>
+        <label>Condição de pagamento</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Y</fullName>
+        <default>false</default>
+        <label>Dia D</label>
+    </standardValue>
+    <standardValue>
+        <fullName>C</fullName>
+        <default>true</default>
+        <label>Campanha normal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>S</fullName>
+        <default>false</default>
+        <label>Shelf life</label>
+    </standardValue>
+</StandardValueSet>

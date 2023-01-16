@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IdCotacaoFormula__c</fullName>
+    <externalId>false</externalId>
+    <formula>ExternalPortal__c + &apos; / &apos; +  IdIntegrator__c</formula>
+    <label>Id da cotação ( Portal / Integradora )</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,57 @@
+<html style="overflow-y: hidden;">
+<head>
+	<title></title>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td>
+<table border="0" cellpadding="0" cellspacing="0" style="width:100%;font-family: 'Public Sans', Verdana;font-size: 18px;font-style: normal;font-weight: 700;line-height: 21px;letter-spacing: 0em;text-align: left;color: #FF003C;">
+	<tbody>
+		<tr>
+			<td style="text-align:left;">N-{!Case.CaseNumber}</td>
+			<td style="text-align:right"><img alt="header-logo" src="https://elfa.my.salesforce.com/file-asset-public/headerlogo?oid=00D4x000004wdQq" style="max-width: 675.91015625px" title="Logo" /></td>
+		</tr>
+	</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td  style="height: auto; min--height: auto;font-family: 'Public Sans', Verdana;font-size: 12px;font-style: normal;font-weight: 400;line-height: 14px;letter-spacing: 0em;text-align: left;color:#333333;padding-top:20px;">
+<p>Prezado cliente,</p>
+<p>Sua solicitação que consta sob o protocolo de número <b>{!Case.CaseNumber}</b> foi finalizada.</p>
+<p>Esperamos que a resolução tenha sido de acordo com sua expectativa.
+Caso não esteja satisfeito, você tem até <b>72 horas para contestar a resolução da sua solicitação</b>.</p>
+<p>Para tal, responda esse e-mail.</p>
+</td>
+</tr>
+<tr>
+<td style="padding-top:35px;">
+<p  style="height: auto; min--height: auto;font-family: 'Public Sans', Verdana;font-size: 12px;font-style: normal;font-weight: 400;line-height: 14px;letter-spacing: 0em;text-align: left;color:#333333;">Atenciosamente,<br/>Equipe de Atendimento ao Cliente Grupo Elfa</p>
+<table border="0" cellpadding="0" cellspacing="0" style="color: #1A305B;font-family: 'Public Sans', Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0em; text-align: left;">
+	<tbody>
+		<tr>
+			<td style="padding-right: 25px;"><img alt="footer-logo" src="https://elfa.my.salesforce.com/file-asset-public/footerlogo?oid=00D4x000004wdQq" style="max-width: 675.91015625px" title="Logo" /></td>
+			<td style="border-left: 1px solid #C4C4C4;padding-left:25px;">
+			<table border="0" cellpadding="0" cellspacing="0" style="color: #1A305B;font-family: 'Public Sans', Verdana; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: 0em; text-align: left;">
+				<tbody>
+					<tr>
+						<td>{!Case.OwnerFullName}</td>
+					</tr>
+					<tr>
+						<td><img alt="footer-phone" src="https://elfa.my.salesforce.com/file-asset-public/footerphone?oid=00D4x000004wdQq" style="max-width: 675.91015625px" title="Phone" />&nbsp;(16) 99643-0417</td>
+					</tr>
+					<tr>
+						<td><img alt="footer-email" src="https://elfa.my.salesforce.com/file-asset-public/footeremail?oid=00D4x000004wdQq" style="max-width: 675.91015625px" title="Email" />&nbsp;<a href="mailto:atendimentoaocliente@grupoelfa.com.br" style="color: #1A305B;text-decoration: none;">atendimentoaocliente@grupoelfa.com.br</a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>

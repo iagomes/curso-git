@@ -1,0 +1,372 @@
+<template>
+    <lightning-spinner if:true={showSpinner} variant="brand" alternative-text="loading"></lightning-spinner>
+
+    <div  slot="actions" style="font-size: .85rem;">
+        <div class="slds-grid slds-grid_align-center slds-grid_vertical-align-center">
+            <template for:each={optionsMalha} for:item="item">
+                <div key={item.value} class="slds-col slds-size_1-of-9" style="padding-bottom: .24rem;">
+                    <fieldset>
+                        <div class="slds-form-element__control">
+                            <span class="slds-radio">
+                                <input name="radiogroup1" id={item.value} type="radio" checked={item.checked}  value={item.value} onchange={handleSelectedMalhaType} />
+                                <label class="slds-radio__label" for={item.value}>
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label">{item.label}</span>
+                                </label>
+                            </span>
+                        </div>
+                    </fieldset>
+                </div>
+            </template>
+            <div class="slds-col slds-p-left_x-small slds-size_1-of-9">
+                <lightning-button 
+                    variant="base" 
+                    label={foraMalhaLabel}
+                    onclick={handleForaMalha} 
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
+    </div>
+
+    <div style="display:flex;">														
+        <div class="slds-grid slds-wrap  slds-grid_align-center">
+            
+            <template for:each={cdList} for:item="cd">
+                
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-grid slds-wrap" key={cd.id}>
+                    <div class="card-custom">
+
+                        <div class="card-header slds-col slds-size_1-of-1">
+                            <div class="title">
+                                <span>{cd.nome}</span>
+                                <div class="box-icons">
+                                    <c-product-distribution-center-lots
+                                        product={resp}
+                                        distribution-center={cd}>
+                                    </c-product-distribution-center-lots>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body slds-p-top_xxx-small slds-p-right_x-small slds-p-bottom_small slds-col slds-size_1-of-1 slds-grid slds-wrap">
+                            <div class="info slds-col slds-size_1-of-2">
+                                <template if:true={cd.conversaoUnidadeTexto}>
+                                    <span>Unidade de venda</span>
+                                </template>
+                            </div>
+                            <div class="info slds-col slds-size_1-of-2 " style="float:right;">
+                                 <template if:true={cd.conversaoUnidadeTexto}>
+                                    <div style="float: right;">
+                                        <span >{cd.conversaoUnidadeTexto}</span>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="qtde" style="padding: 0px 0px 7px 10px">
+                                    <span >{cd.estoque} ({cd.unidadePrincipal})</span>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2" style="float:right;">
+                                 <template if:true={cd.conversaoUnidadeTexto}>
+                                    <div class="qtde" style="float: right;">
+                                        <span >
+                                            <lightning-formatted-number
+                                                value={cd.estoqueSecundario}
+                                                format-style="decimal">
+                                            </lightning-formatted-number>
+                                            &nbsp;({cd.unidadeSecundaria})
+                                        </span>
+                                    </div>
+                                </template>
+                            </div>
+                            <div class="info2 slds-col slds-size_1-of-1 slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <span class="lb-sec dark">Preço &rArr;
+                                        <lightning-formatted-number
+                                            value={cd.preco}
+                                            format-style="currency"
+                                            currency-code="BRL">
+                                        </lightning-formatted-number>
+                                    </span>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <template if:true={cd.conversaoUnidadeTexto}>
+                                        <span class="lb-sec dark" style="float:right;">Preço &rArr;
+                                            <lightning-formatted-number
+                                                value={cd.precoSecundario}
+                                                format-style="currency"
+                                                currency-code="BRL">
+                                            </lightning-formatted-number>
+                                        </span>
+                                    </template> 
+                                     <template if:false={cd.conversaoUnidadeTexto}>
+                                        <span class="lb-sec dark" style="float:right;">Unidade de medida</span> 
+                                    </template>
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <span class="lb-sec">Fábrica &rarr;
+                                        <lightning-formatted-number
+                                            value={cd.precoFabrica}
+                                            format-style="currency"
+                                            currency-code="BRL">
+                                        </lightning-formatted-number>
+                                    </span>                                                                                
+                                </div>
+                                <div class="slds-col slds-size_1-of-2">
+                                    <template if:true={cd.conversaoUnidadeTexto}>
+                                        <span class="lb-sec" style="float:right;">Fábrica &rarr;
+                                            <lightning-formatted-number
+                                                value={cd.precoFabricaSecundario}
+                                                format-style="currency"
+                                                currency-code="BRL">
+                                            </lightning-formatted-number>
+                                        </span> 
+                                    </template>
+                                    <template if:false={cd.conversaoUnidadeTexto}>
+                                        <span class="lb-sec" style="float:right;">secundária inválida</span> 
+                                    </template>
+                                </div>
+                                <template if:true={cd.dataGanho}>
+                                        <div class="slds-col slds-size_1-of-1">
+                                            <font color="green">
+                                                Vlr. Portal Ganho <b>R$ {cd.valorGanho}</b> em <b>{cd.dataGanho}</b>
+                                            </font>
+                                        </div>
+                                </template>
+                                <template if:true={cd.dataPerdido}>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <font color="red">
+                                            Vlr. Portal Perdido <b>R$ {cd.valorPerdido}</b> em <b>{cd.dataPerdido}</b>
+                                        </font>
+                                    </div>
+                                </template>
+                                <div class="slds-col slds-size_1-of-1">
+                                    <div style="background-color: #ffbb00; width: 100%; block-size: fit-content;" >
+                                    <span class="lb-sec dark" >
+                                        <template if:true={cd.cdBloqueado} >
+                                            <font color="white">
+                                                <b>Este CD não está elegível pela integradora.</b>
+                                            </font>
+                                        </template>
+                                    </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info2 slds-col slds-size_1-of-1 slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-1">
+                                    <div if:false={cd.previsaoEntrada}>
+                                        <span>
+                                            <p class="p-prevision-text">Produto sem previsão de entrada</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div if:true={cd.previsaoEntrada}>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <span>
+                                            <p class="p-prevision-text">Previsão de chegada do produto: {cd.previsaoEntrada}</p>
+                                        </span>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <span>
+                                            <p class="p-prevision-text">Quantidade: {cd.quantPrevista}</p>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div if:true={cd.bloqueioRegional}>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <span>
+                                            <font color="red">
+                                                Produto de venda proibida devido a regionalização
+                                            </font>
+                                        </span>
+                                    </div>
+                                </div>
+                                <template for:each={cd.badges} for:item="badge">
+                                        <div class="slds-col slds-medium-size_1-of-2 slds-large-size_1-of-3" key={badge.name}>
+                                            <lightning-badge 
+                                                label={badge.label} 
+                                                class={badge.style}
+                                                title={badge.price}
+                                            ></lightning-badge>
+                                                
+                                        </div>
+                                    
+                                </template>
+                            </div>
+    
+    
+                            
+                            <div class="slds-col slds-size_1-of-4 slds-p-top_xx-small slds-align_absolute-center">
+                                <span class="slds-dl_inline__label">
+                                    Qtde. ({cd.unidadePrincipal})
+                                </span>
+                            </div>
+                            <div class="slds-col slds-p-top_xx-small slds-size_1-of-4">
+                                
+                                <lightning-input type="number"
+                                    value={cd.quantidadeElfa}
+                                    data-cd-id={cd.id}
+                                    name="quantidadeElfa"
+                                    label=""
+                                    variant="label-hidden"
+                                    onchange={handleQuantityChange}
+                                    onblur={checkFieldValidity}
+                                    disabled="true"
+                                ></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-p-top_xx-small slds-align_absolute-center">
+                                <span class="slds-dl_inline__label">
+                                    <font color="red">
+                                        Qtde. Portal
+                                    </font>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-p-top_xx-small slds-size_1-of-4">
+                                
+                                <lightning-input 
+                                    type="number"
+                                    data-cd-id={cd.id}
+                                    name="quantidadePortal" label=""
+                                    step="1"
+                                    value={cd.quantidadePortal}
+                                    variant="label-hidden"
+                                    disabled="true">
+                                </lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                <span>Vlr. ({cd.unidadePrincipal})</span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                
+                                <lightning-input type="number"
+                                    value={cd.valorElfa}
+                                    data-cd-id={cd.id}
+                                    data-name="valorElfa"
+                                    label="" step="0.000001"
+                                    min="0.000001"
+                                    onchange={hanldeValueChange}
+                                    onblur={checkFieldValidity}
+                                    variant="label-hidden"
+                                    message-when-range-underflow="Vlr. necessário maior que zero"
+                                    message-when-bad-input="Vlr. inválido"
+                                    message-when-step-mismatch="Vlr. inválido, máximo 6 casas decimais"
+                                ></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                <span class="slds-dl_inline__label">
+                                    <font color="red">
+                                        Vlr. Portal
+                                    </font>
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                
+                                <lightning-input type="number"
+                                    value={cd.valorPortal}
+                                    data-cd-id={cd.id}
+                                    name="valorPortal"
+                                    step="0.000001" label=""
+                                    min="0.000001"
+                                    variant="label-hidden"
+                                    onchange={hanldeValuePortalChange}
+                                    onblur={checkFieldValidity}
+                                    message-when-range-underflow="Vlr. necessário maior que zero"
+                                    message-when-bad-input="Vlr. inválido"
+                                    message-when-step-mismatch="Vlr. inválido, máximo 6 casas decimais"
+                                ></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4 slds-align_absolute-center">
+                                <span class="slds-dl_inline__label">
+                                    Desconto %
+                                </span>
+                            </div>
+                            <div class="slds-col slds-size_1-of-4">
+                                
+                                <lightning-input 
+                                    type="number"
+                                    value={cd.desconto}
+                                    data-cd-id={cd.id}
+                                    name="desconto"
+                                    label="" step="0.01"
+                                    variant="label-hidden"
+                                    onchange={hanldeDiscountChange}
+                                    onblur={checkFieldValidity}
+                                    message-when-range-underflow=""
+                                    message-when-bad-input="Vlr. inválido"
+                                    message-when-step-mismatch="Vlr. inválido, máximo de 2 casas decimais"
+                                ></lightning-input>
+                            </div>
+                            <div class="slds-col slds-size_2-of-4 slds-align_absolute-center">
+                                <span class="slds-dl_inline__label">
+                                    Valor Total &nbsp;
+                                    <lightning-formatted-number
+                                        value={cd.valorTotal}
+                                        format-style="currency"
+                                        currency-code="BRL">
+                                    </lightning-formatted-number>
+                                </span>
+                            </div>
+                            <template if:true={verMargem}>
+                                <div class="slds-col slds-size_1-of-1 slds-float_left  slds-p-around_x-small" style="align-items: flex-end;">
+                                    <span>
+                                        Margem Alvo <lightning-formatted-number value={cd.margemAlvo}></lightning-formatted-number>%
+                                    </span>
+                                </div>
+                            </template>
+                            <div class="slds-col slds-size_1-of-2 slds-float_left slds-p-around_x-small" style="align-items: flex-end;">
+                                <template if:true={cd.badScore}>
+                                    <span style="color:red">
+                                        Score <lightning-formatted-number value={cd.score}></lightning-formatted-number>
+                                    </span>
+                                </template>
+                                <template if:false={cd.badScore}>
+                                    <span>
+                                        Score <lightning-formatted-number value={cd.score}></lightning-formatted-number>
+                                    </span>
+                                </template>
+                                
+                            </div>
+                            
+                            <div class="slds-col slds-size_1-of-2">
+                                
+                                <template if:true={cd.adicionado}>
+                                    <lightning-button-icon
+                                        icon-name="utility:delete"
+                                        value={cd.id} 
+                                        data-product-card=true
+                                        alternative-text="Delete" 
+                                        class="slds-m-right_x-small"
+                                        title="Delete" 
+                                        onclick={removeOrderedProduct}>
+                                    </lightning-button-icon>
+                                    <lightning-button size="large"
+                                        icon-name="utility:check" value={cd}
+                                        variant="success"
+                                        data-cd-id={cd.id}
+                                        onclick={handleSaveCd}
+                                        label="Adicionado">
+                                    </lightning-button>
+                                </template>
+    
+                                <template if:false={cd.adicionado}>
+                                    <div class="flex-end">
+                                        <lightning-button size="large"
+                                            icon-name="utility:add" value={cd}
+                                            variant="brand"
+                                            data-cd-id={cd.id}
+                                            disabled={cd.cdBloqueado}
+                                            onclick={handleSaveCd}
+                                            label="Adicionar"
+                                        ></lightning-button>
+                                    </div>
+                                </template>
+                            </div> 
+                        </div>
+                    </div>
+                    <!-- /CARD CD -->
+                </div>
+            </template>
+        </div>																						
+    </div>
+</template>

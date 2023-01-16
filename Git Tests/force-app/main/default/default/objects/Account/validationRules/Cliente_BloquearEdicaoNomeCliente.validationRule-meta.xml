@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cliente_BloquearEdicaoNomeCliente</fullName>
+    <active>true</active>
+    <description>Regra de validação para impedir a edição do campo &quot;Nome do cliente&quot;, que não possui a possibilidade de bloquear pelo layout ou pela segurança de campos.</description>
+    <errorConditionFormula>AND(
+    $Profile.Name != &apos;Administrador do sistema&apos;,
+    ISCHANGED(Name)
+)</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>O campo &quot;Nome do cliente&quot; não pode ser editado.</errorMessage>
+</ValidationRule>

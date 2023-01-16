@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QueueRoutingConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <capacityWeight>1.0</capacityWeight>
+    <dropAdditionalSkillsTimeout>5</dropAdditionalSkillsTimeout>
+    <isAttributeBased>false</isAttributeBased>
+    <label>Atendimento ao Cliente - Roteamento</label>
+    <pushTimeout>10</pushTimeout>
+    <routingModel>LEAST_ACTIVE</routingModel>
+    <routingPriority>1</routingPriority>
+</QueueRoutingConfig>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CEPFml__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(LEN(CEP__c) = 8,
+LEFT(CEP__c, 5) &amp; &quot;-&quot; &amp; RIGHT(CEP__c, 3),
+CEP__c
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>CEP</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

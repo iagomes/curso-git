@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Atendimento ao cliente - Líderes</label>
+    <permissionSets>CXLideres</permissionSets>
+    <permissionSets>Coordenadores</permissionSets>
+    <permissionSets>force__ServiceUserPsl</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

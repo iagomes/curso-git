@@ -1,0 +1,5 @@
+<aura:component implements="force:appHostable"  access="global">
+    <lightning:workspaceAPI aura:id="workspace"/>
+    <aura:handler event="lightning:tabFocused" action="{! c.onTabFocused }"/>
+    <c:budgetTab aura:id="budgetTab" onorderclick="{!c.handleOrderClick}"/>
+</aura:component>

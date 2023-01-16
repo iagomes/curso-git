@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Atendimento ao Cliente</fullName>
+    <description>Support Process criado para atender o processo de atendimento ao cliente das empresas do Grupo Elfa</description>
+    <isActive>true</isActive>
+    <values>
+        <fullName>Atrasado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Em Andamento</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Em Espera</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Encerrado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Finalizado</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Novo</fullName>
+        <default>true</default>
+    </values>
+    <values>
+        <fullName>Pendente aprovação</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

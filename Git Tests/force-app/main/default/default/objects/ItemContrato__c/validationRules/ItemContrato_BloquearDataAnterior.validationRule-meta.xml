@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ItemContrato_BloquearDataAnterior</fullName>
+    <active>false</active>
+    <description>Regra de validação para impedir que um item de contrato tenha a data de vigência inicial posterior à vigência final. Além de impedir que a data de vigência inicial seja anterior à data da criação do registro.</description>
+    <errorConditionFormula>OR(
+AND(
+ISNEW(),
+VigenciaInicial__c &lt; TODAY()),
+VigenciaInicial__c &lt;  DATEVALUE(CreatedDate),
+VigenciaInicial__c &gt; VigenciaFinal__c
+)</errorConditionFormula>
+    <errorDisplayField>VigenciaInicial__c</errorDisplayField>
+    <errorMessage>Verificar se a data de vigência inicial para que não seja anterior a data de criação do registro ou posterior a vigência final.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,322 @@
+<apex:page standardController="Opportunity" extensions="GeneratePDFOrcamento" applyHtmlTag="false" sidebar="false" showHeader="false" applyBodyTag="false" renderAs="PDF">
+
+    <apex:variable value="{!1}" var="count"/> 
+
+    <html>
+
+    <head>
+        <style>
+            @page {
+                size: A4 landscape;
+            }
+
+            body {
+                margin: 1%;
+            }
+            .info-pill {
+                background-color: #dee5ec;
+                color: #333;
+                height: 18px;
+                padding: 4px;
+                font: Arial;
+                width: 100%;
+                font-size: 13px;
+            }
+            .observations {
+                width: 790px;
+                max-width: 790px;
+                font: Arial;
+                font-size: 13px;
+            }
+            .divLeft {
+                font: Arial;
+                font-size: 13px;
+                width: 50%;
+                height: 50px;
+                float: left;
+            }
+            .divRight {
+                font: Arial;
+                font-size: 13px;
+                height: 100px;
+                margin-left: 50%;
+                height: 50px;
+            }
+            .space {
+                height: 8px;
+            }
+            .requests {
+                /* page-break-after: always; */
+            }
+            .requests table {
+                border-collapse: collapse;
+                table-layout: fixed;
+                width: 100%;   
+
+            }
+            .requests tr{
+                page-break-inside: avoid;
+            }
+            .requests th {
+                background-color: #767676;
+                color: #f8fafc;
+            }
+            .requests .left-text {
+                text-align: left;
+            }
+            .requests td {
+                background-color: rgb(255, 255, 255);
+            }
+            .requests .table-footer {
+                border-width: 1px 1px;
+            }
+            .requests .align-inline {
+                display: inline;
+            }
+
+       
+            th, td {
+                padding-top: 5px;
+                padding-right: 5px;
+                padding-bottom: 5px;
+                padding-left:5px;
+                word-break: break-all !important;
+                font-size: 10px;
+                font: Arial;
+            }   
+
+        
+
+        </style>
+    </head>
+
+    <body>
+
+        <apex:pageBlock >
+            <div>
+                <div class="header">
+                    <div style="text-align:center">
+                        <apex:image id="Elfa" value="{!$Resource.elfaLogo}" width="220" height="80" />
+                        <div class="space"></div>
+                    </div>
+                </div>
+
+                <div style="width: 100%;">
+                    <div class="info-pill">
+                        <span>Informação de Orçamento</span>
+                    </div>
+                    <div class="space"></div>
+                    <div class="divLeft">
+                        <label for="Nomeoportunidade">Nome do orçamento&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.Nome), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                        <label for="Datavalidade">Data de validade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.DataVencimento), '\\n', '<br/>')}" escape="false"/>
+                    </div>
+
+                    <div class="divRight">
+                        <label for="Formapagamento">Forma de pagamento&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.FormaPagamento), '\\n', '<br/>')}" escape="false"/>
+                            <div class="space"></div>
+                            <label for="Condicaopagamento">Condição de pagamento&nbsp;&nbsp;&nbsp;</label>
+                            <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.CondicaoPagamento), '\\n', '<br/>')}" escape="false"/>
+                            <div class="space"></div>
+                            <label for="CriadoPor">Criado por&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.CriadoPor), '\\n', '<br/>')}" escape="false"/>
+                    </div>
+                    <div class="space"></div>
+                </div>
+
+                <div style="height:15px"></div>
+
+                <div style="width: 100%;">
+                    <div class="info-pill">
+                        <span>Informações do Cliente</span>
+                    </div>
+                    <div class="space"></div>
+                    <div class="divLeft">
+                        <label for="NomeCliente">Nome do Cliente&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.conta.Name), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                        <label for="CNPJ">CNPJ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.CNPJ), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                        <label for="Códigoloja">Código/loja &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.CodigoCliente), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                        <label for="EnderecoCobranca">Endereço de cobrança&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.EnderecoCobranca), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                    </div>
+
+                    <div class="divRight">
+                        <label for="Nomecompleto">Nome Completo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.Contato.Name), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+
+                        <!-- <apex:pageBlockSection id="ContatoPhone" rendered="{!orcamento.Contato.Phone} != null"> -->
+
+                            <label for="Telefone">Telefone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.Contato.Phone), '\\n', '<br/>')}" escape="false"/>
+
+                        <!-- </apex:pageBlockSection> -->
+
+                        <!-- <apex:pageBlockSection id="ContatoEmail" rendered="{!orcamento.Contato.Email} != null"> -->
+                            <div class="space"></div>
+                            <label for="Email">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.Contato.Email), '\\n', '<br/>')}" escape="false"/>
+                            
+                        <!-- </apex:pageBlockSection>   -->
+                        <div class="space"></div>
+                        <label for="EnderecoEntrega">Endereço de entrega&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <apex:outputLabel value="{!SUBSTITUTE(JSENCODE(orcamento.EnderecoEntrega), '\\n', '<br/>')}" escape="false"/>
+                        <div class="space"></div>
+                    </div>
+
+                </div>
+
+                <div style="height:100px"></div>
+                <div style="width: 100%">
+
+                    <div class="info-pill">
+                        <span>Itens do orçamento</span>
+                    </div>
+                    <div class="container requests">
+                        <table>
+
+                            <tr>
+                                <th style="width: 10px;"></th>
+                                <th>Código do item</th>
+                                <th>Produto</th>
+                                <th style="{!IF(orcamento.flags.PrincipioAtivo, 'background-color: #767676;', 'display:none')}">Principio ativo</th>
+                                <th>Registro ANVISA</th>     
+                                <th>Fabricante</th>
+                                <th>Quantidade</th>
+                                <th>Valor venda item</th>
+                                <th>Valor total item</th>
+                                <th>Centro de distribuição</th>
+                                <th>CNPJ do CD</th>
+                                <th style="{!IF(orcamento.flags.ObservacoesComercial, 'background-color: #767676;', 'display:none')}">Observações</th>
+                            </tr>
+                            
+                            <apex:repeat value="{!orcamento.lstOppItens}" var="itens">
+                                <tr>
+                                    <td style="width: 10px;">{!FLOOR(count)} </td> 
+                                    <td>{!itens.Product2.ProductCode}</td>
+                                    <td>{!itens.Product2.name}</td>
+                                    <td style="{!IF(orcamento.flags.PrincipioAtivo, 'background-color: rgb(255, 255, 255);', 'display:none')}">{!itens.Product2.Description}</td>
+                                    <td>{!itens.NumeroAnvisa__c}</td>                                        
+                                    <td>{!itens.Product2.Fornecedor__r.Name}</td>
+                                    <td>{!itens.QuantidadePDF__c}({!itens.UnidadeMedidaPDF__c})</td>
+                                    <td>
+                                        {!itens.PrecoPDF__c}
+                                        <!-- <apex:outputText value="R${0, number, 0.00000}">
+                                            <apex:param value="{!itens.PrecoPDF__c}" />
+                                        </apex:outputText> -->
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="R${0, number, 0.000000}">
+                                            <apex:param value="{!itens.ValorTotal__c}" />
+                                        </apex:outputText>
+                                    </td>
+                                    <td>{!itens.CentroDistribuicao__c}</td>
+                                    <td>{!itens.CNPJCD__c}</td>
+                                    <td style="{!IF(orcamento.flags.ObservacoesComercial, 'background-color: rgb(255, 255, 255);', 'display:none')}">{!itens.ObservacoesComercial__c}</td>
+                                                                      
+                                    <apex:variable var="count" value="{!count+ 1}"/>
+                                </tr>
+                                <div class="space"></div>
+                               
+                            </apex:repeat>
+                            
+                            <tr>
+                                <th class="table-footer"></th>
+                                <th class="table-footer" colspan="9"></th>
+                                <th style="text-align: right;" class="table-footer">Total&nbsp;&nbsp;&nbsp;R$&nbsp;{!orcamento.total}</th>
+                            </tr>
+
+                        </table>
+
+                        <div style="height:20px"></div>
+                        <div style="width: 100%">
+                            <div class="space"></div>
+                            <div class="info-pill">
+                                <span>Observações</span>
+                            </div>
+                            <div class="space"></div>
+                            <div class="space"></div>
+                            <div class="observations">
+                                {!orcamento.ObservacoesCliente}<br></br>
+                                <div class="space"></div>
+                                Assinatura&nbsp;_______________________<br></br>
+                                Nome&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;_______________________<br></br>
+                                Data&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; _______________________<br></br>
+                                <br></br><br></br>
+                            </div>
+                        </div>
+
+                        <div style="height:20px"></div>
+                        <div style="width: 100%">
+                            <span class="observations">Itens abaixo dessa linha são recomendações de compra, portanto não fazendo parte do orçamento acima solicitando</span>
+                        </div>
+                        <div class="space"></div>
+    
+                        <div class="info-pill">
+                            <span>Produtos sugeridos</span>
+                        </div>
+                        <div class="container requests">
+                                <table>
+        
+                                    <tr>
+                                        <th colspan="2">Código do item</th>
+                                        <th colspan="3">Produto</th>
+                                        <th>Valor unitário</th>
+                                        <th colspan="3">Centro de distribuição</th>
+                                        <th colspan="1">Estoque</th>
+                                    </tr>
+        
+                                    <apex:repeat value="{!orcamento.lstOppRecommendation}" var="recommendation">
+                                        <tr>
+                                            <td colspan="2">{!recommendation.Name}</td>
+                                            <td colspan="3">{!recommendation.Produto}</td>
+                                            <td>R$ {!recommendation.ValorUnitario}</td>
+                                            <td colspan="3">{!recommendation.CentroDistribuicao}</td>
+                                            <td colspan="1">{!recommendation.Estoque}</td>
+                                        </tr>
+        
+                                    </apex:repeat>
+        
+                                </table>
+
+                                
+                                <div style="width: 100%">
+                                    <div class="space"></div>
+                                    <div class="info-pill">
+                                        <span>Informações Complementares</span>
+                                    </div>
+                                    <div class="space"></div>
+                                    <div class="space"></div>
+                                    <div class="observations">
+                                        Descrição &nbsp; &nbsp;{!orcamento.observacoes}<br></br>
+                                     
+                                    </div>
+                                </div>
+
+                            </div>
+                           
+                       
+                    </div>
+
+                
+                    
+
+                </div>                
+
+            </div>
+
+        </apex:pageBlock>
+
+    </body>
+
+    </html>
+</apex:page>

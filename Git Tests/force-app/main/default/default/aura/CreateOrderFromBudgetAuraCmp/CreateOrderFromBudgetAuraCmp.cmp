@@ -1,0 +1,13 @@
+<aura:component implements="force:appHostable" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />  
+    <aura:attribute name="recordId" type="Id"/>
+    <aura:attribute name="isCreateOrderFromBudget" type="Boolean" default="true"/>
+
+    <lightning:workspaceAPI aura:id="workspace" />
+        <c:insertOrder 
+            recordId                  = "{!v.recordId}" 
+            isCreateOrderFromBudget   = "{!v.isCreateOrderFromBudget}" 
+            fromBudgetisEdit          = "{!v.isCreateOrderFromBudget}" 
+            oncloseclicked            = "{!c.handleCloseClicked}">
+        </c:insertOrder>
+</aura:component>

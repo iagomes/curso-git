@@ -1,0 +1,255 @@
+<template>
+    <div if:true={_transferProductsMode}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class={sldsModalClass}>
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleCancel}>
+                <!-- <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg> -->
+                <lightning-icon icon-name="utility:close" alternative-text="Fechar!" title="Fechar"></lightning-icon>
+                <span class="slds-assistive-text">Fechar</span>
+              </button>
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Transferir produtos</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="display: flex; justify-content: center;">
+                <!-- <lightning-layout vertical-align="center">
+                    <lightning-layout-item size="12">
+                        <div> -->
+                    <template if:true={isLoadingModal}>
+                        <lightning-spinner alternative-text="Loading" size="small" style="position: inherit;"></lightning-spinner>
+                    </template>
+                    <template if:false={showProductToTransfer}>
+                        <c-base-lookup
+                        input-label="Reserva de produto"
+                        object-icon-name="standard:account"
+                        target-object="Reserva__c"
+                        search-fields={reserveSearchFields}
+                        record-id={reserveId}
+    
+                        list-item-options={reserveItemOptions}
+                        parent-relation-field-list={reserveWhereFieldList}
+                        
+                        operator-list={reserveOperators}
+                        parent-record-list={reserveParentRecordList}
+                        more-fields={reserveMoreFields}
+                        onselectrecord={changeReserved}
+                        onclearselectedrecord={clearReserved}
+                        placeholder="Digite a reserva que você deseja enviar a tranferência de produtos..."
+                        style="width: 100%;"
+                        required
+                        disabled={disabledAccountLookup}
+                    ></c-base-lookup>
+                    </template>
+                        <!-- </div>
+                    </lightning-layout-item>
+                </lightning-layout> -->
+
+                <template if:true={showProductToTransfer}>
+                    <div class="slds-scrollable_y slds-m-top_medium" style="max-height: calc(100vh - 240px);" onscroll={handleNotification}>
+
+
+                        <template for:each={reservationProductList} for:item="prod">
+    
+    
+    
+    
+    
+                            <lightning-layout key={prod.productId} multiple-rows  class="slds-m-left_medium slds-m-right_medium slds-m-bottom_medium" style="border: 1px solid; border-radius: 5px; border-color: darkgray;">
+                                <lightning-layout-item size="12">
+                                    <div class="slds-m-around_x-small" style="font-size: 15px;color:#0070d2; display: flex;">
+                                        <template if:true={insertCSV}>
+                                            <template if:true={prod.haveInventory}>
+                                                <div>
+                                                    <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                    </lightning-input>
+                                                </div>
+                                            </template>
+                                        </template>
+                                        <!-- <template if:true={transferProductsMode}>
+                                            <template if:true={prod.canSelect}>
+                                                <lightning-input checked={prod.selected} type="checkbox" data-productid={prod.productId} data-armazem={prod.storage} onchange={handleProdCheckbox}>
+                                                </lightning-input>
+
+                                            </template>
+                                        </template> -->
+                                        <p><strong>{prod.name} - {prod.productCode}</strong></p>
+                                    </div>
+                                </lightning-layout-item>
+                                
+                                <lightning-layout-item size="12">
+                                    <div style="display: flex;">
+                                        <div class="slds-m-around_x-small" style="font-size: 14px;">
+                                            <p>{prod.provider}</p>
+                                        </div>
+                                        <!-- <template if:true={prod.alreadyReserved}>
+                                            <lightning-badge label={prod.prodResStatus}></lightning-badge>
+                                        </template> -->
+                                    </div>
+                                </lightning-layout-item>
+    
+                                <lightning-layout-item size="12">
+                                    <lightning-layout multiple-rows>
+                                        <template if:true={prod.alreadyReserved}>
+
+                                            <lightning-layout-item size="2">
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Armazém" 
+                                                    value={prod.storage} 
+                                                    readonly>
+                                                </lightning-input> -->
+                                                <div class="slds-m-around_x-small">
+                                                    <label class="slds-form-element__label slds-no-flex" style="margin-bottom: 8px;">Armazém</label><br>
+                                                    <lightning-formatted-number value={prod.storage} format-style="decimal"></lightning-formatted-number>
+                                                </div>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="2">
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Preço médio" 
+                                                    value={prod.priceAverageTela}
+                                                    readonly>
+                                                </lightning-input> -->
+                                                <div class="slds-m-around_x-small">
+                                                    <label class="slds-form-element__label slds-no-flex" style="margin-bottom: 8px;">Preço médio</label><br>
+                                                    <lightning-formatted-number value={prod.priceAverage} format-style="currency" currency-code="BRL"></lightning-formatted-number>
+                                                </div>
+                                            </lightning-layout-item>             
+
+                                            <lightning-layout-item size="2">
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Valor total" 
+                                                    value={prod.valorTotalTela} 
+                                                    readonly>
+                                                </lightning-input> -->
+                                                <div class="slds-m-around_x-small">
+                                                    <label class="slds-form-element__label slds-no-flex" style="margin-bottom: 8px;">Saldo reservado</label><br>
+                                                    <lightning-formatted-number value={prod.reservedQuantity} format-style="decimal"></lightning-formatted-number>
+                                                </div>
+                                            </lightning-layout-item>
+
+                                            <!-- <lightning-layout-item size="2"> -->
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Saldo do estoque" 
+                                                    value={prod.balance} 
+                                                    readonly>
+                                                </lightning-input> -->
+                                            <!-- </lightning-layout-item> -->
+
+                                            <lightning-layout-item size="3">
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Saldo reservado" 
+                                                    value={prod.reservedQuantity} 
+                                                    readonly>
+                                                </lightning-input> -->
+                                                <div class="slds-m-around_x-small">
+                                                    <label class="slds-form-element__label slds-no-flex" style="margin-bottom: 8px;">Quantidade disponível</label><br>
+                                                    <lightning-formatted-number value={prod.availableQuantity} format-style="decimal"></lightning-formatted-number>
+                                                </div>
+                                            </lightning-layout-item>
+
+                                            <lightning-layout-item size="3">
+                                                <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    data-productid={prod.productId}
+                                                    data-armazem={prod.storage}
+                                                    label="Quantidade à transferir"
+                                                    type="number"
+                                                    variant="standard"
+                                                    onchange={onChangeQuantityTransfer}
+                                                    value={prod.quantityTransfer}
+                                                    disabled={prod.statusAprovation}>
+                                                </lightning-input>
+                                            </lightning-layout-item>
+
+                                            <!-- <lightning-layout-item size="2"> -->
+                                                <!-- <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    type="text" 
+                                                    label="Saldo consumido" 
+                                                    value={prod.consumedQuantity} 
+                                                    readonly>
+                                                </lightning-input> -->
+                                            <!-- </lightning-layout-item> -->
+
+                                        </template>                                    
+                                    </lightning-layout>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="12">
+                                    <template if:true={prod.statusAprovation}>
+                                        <div class="slds-text-color_error slds-m-around_x-small">Esta reserva de produto está bloqueada pelo processo de aprovação.</div>
+                                    </template>
+                                </lightning-layout-item>
+                                <!-- <lightning-layout-item size="3" style="margin-top: auto;">
+                                    <lightning-layout multiple-rows>
+                                        <lightning-layout-item size="12"> -->
+                                            <!-- <template if:true={wantAddProduct}>
+                                                <lightning-input
+                                                    class="slds-m-around_x-small"
+                                                    data-productid={prod.productId}
+                                                    data-armazem={prod.storage}
+                                                    label="Quantidade"
+                                                    type="number"
+                                                    variant="standard"
+                                                    onchange={onChangeQuantity}
+                                                    value={prod.quantidade}>
+                                                </lightning-input>
+                                            </template> -->
+                                            <!-- <template if:true={prod.canSelect}>
+                                                <template if:true={transferProductsMode}> -->
+                                                    <!-- <lightning-layout-item size="2"> -->
+                                                        <!-- <lightning-input
+                                                            class="slds-m-around_x-small"
+                                                            data-productid={prod.productId}
+                                                            data-armazem={prod.storage}
+                                                            label="Quantidade à transferir"
+                                                            type="number"
+                                                            variant="standard"
+                                                            onchange={onChangeQuantityTransfer}
+                                                            value={prod.quantityTransfer}>
+                                                        </lightning-input> -->
+                                                    <!-- </lightning-layout-item> -->
+                                                <!-- </template>
+                                            </template> -->
+                                        <!-- </lightning-layout-item>
+                                    </lightning-layout>
+                                </lightning-layout-item> -->
+                            </lightning-layout>
+    
+    
+    
+    
+    
+                        </template>
+                    </div>
+                </template>
+              </div>
+              <div class="slds-modal__footer">
+                  <template if:false={showProductToTransfer}>
+                      
+                      <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleCancel}>Cancelar</button>
+                      <button class="slds-button slds-button_brand" disabled={disableContinue} onclick={handleContinueOnClick}>Continuar</button>
+                </template>
+                <template if:true={showProductToTransfer}>
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={handleBackModal}>Voltar</button>
+                    <button class="slds-button slds-button_brand" disabled={disableContinue} onclick={handleTransferProducts}>Transferir</button>
+                </template>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </div>
+    <template if:true={isLoadingProductsTransfer}>
+        <lightning-spinner alternative-text="Loading" size="small" style="z-index: 100000; position: fixed;"></lightning-spinner>
+    </template>
+</template>

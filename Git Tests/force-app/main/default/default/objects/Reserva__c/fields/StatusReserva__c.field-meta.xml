@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StatusReserva__c</fullName>
+    <externalId>false</externalId>
+    <label>Status da reserva</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ativa</fullName>
+                <default>true</default>
+                <label>Ativa</label>
+            </value>
+            <value>
+                <fullName>Expirada</fullName>
+                <default>false</default>
+                <label>Expirada</label>
+            </value>
+            <value>
+                <fullName>Aguardando aprovação</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aguardando aprovação</label>
+            </value>
+            <value>
+                <fullName>Aguardando envio de exclusão</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aguardando envio de exclusão</label>
+            </value>
+            <value>
+                <fullName>Aguardando integração</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aguardando integração</label>
+            </value>
+            <value>
+                <fullName>Aprovada</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Aprovada</label>
+            </value>
+            <value>
+                <fullName>Cancelada</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Cancelada</label>
+            </value>
+            <value>
+                <fullName>Em digitação</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Em digitação</label>
+            </value>
+            <value>
+                <fullName>Erro de integração</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Erro de integração</label>
+            </value>
+            <value>
+                <fullName>Integrado</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Integrado</label>
+            </value>
+            <value>
+                <fullName>Rejeitada</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Rejeitada</label>
+            </value>
+            <value>
+                <fullName>Vencida</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vencida</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

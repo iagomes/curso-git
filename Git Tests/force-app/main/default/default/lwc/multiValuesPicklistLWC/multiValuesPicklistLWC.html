@@ -1,0 +1,82 @@
+<template>
+    <div class="style-element-container"></div>
+    <div class="content slds-form-element" onmouseleave={handleElementMouseLeave}>
+        <div class="slds-form-element__label" if:true={label}>
+            
+            <label if:false={boldTitle}>{label}</label>
+            <label if:true={boldTitle}><b>{label}</b></label>
+            <label class="limpar" if:false={hideLimpar} onclick={handleClickLimpar}>Limpar</label>
+        </div>
+        <div 
+            id="main-div" 
+            class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left-right slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click main-div"
+            onclick={handleElementMouseEnter}>
+            
+            <template if:true={isLookup}>
+                <lightning-icon icon-name="utility:search" size="x-small" class="slds-icon slds-input__icon slds-input__icon_left slds-icon-text-default search-icon" aria-hidden="true"></lightning-icon>
+                <input
+                    onkeydown={resetTimeout} 
+                    onkeyup={handleLookupTextChange}
+                    autocomplete="off"
+                    type="text"
+                    id="lookupSearchText" 
+                    placeholder="Pressione 'Enter' para fazer a busca." 
+                    class="slds-input"
+                    onfocus={handleElementMouseEnter}/>
+            </template>
+
+            <template if:true={isButton}>
+                <button 
+                    class="slds-button slds-button--neutral slds-picklist__label picklist-button" 
+                    aria-haspopup="true"
+                    onclick={handleClick}>
+                    <span class="slds-truncate" title={infoText}>{infoText}</span>
+                    <lightning-icon icon-name={buttonEditIconName} size="small"></lightning-icon>
+                </button>
+            </template>
+            
+            <div class="slds-input__icon-group slds-input__icon-group_right div-button-3">
+                <div if:true={showSpinner} role="status" class="slds-spinner slds-spinner_brand slds-spinner_x-small slds-input__spinner">
+                    <span class="slds-assistive-text">Carregando</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+                <template if:false={isButton}>
+                    <button class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" title="Clear" onclick={handleClickLimpar}>
+                        <lightning-icon icon-name="utility:clear" size="x-small" class="slds-button__icon slds-icon-text-light" aria-hidden="true"></lightning-icon>
+                        <span class="slds-assistive-text">Limpar</span>
+                    </button>
+                </template>
+            </div>
+            
+            <div class="slds-dropdown slds-dropdown--left slds-dropdown_length-5 custom-dropdown" onmouseenter={handleDropDownMouseEnter} onmouseleave={handleDropDownMouseLeave}>
+                <ul class="slds-dropdown__list" role="menu" if:false={showTable}>
+
+                    <template for:each={options} for:item="option" for:index="index">
+                        <li key={option.value} class={option.className} role="presentation" onclick={handleSelection} data-value={option.value} data-label={option.label} data-object={option.data} data-selected={option.selected}>
+                            <a role="menuitemcheckbox" aria-checked="true" tabindex="0" >
+                                <span class="slds-truncate display-flex">
+                                    <div class="div-check-icon">
+                                        <template if:true={option.isSelected}>
+                                            <lightning-icon icon-name="utility:check" size="x-small"></lightning-icon>
+                                        </template>
+                                    </div>
+                                    <label class="option-value">{option.label}</label>
+                                </span>
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <div if:true={showTable} style="max-height:300px">
+                    <lightning-datatable
+                        key-field="id"
+                        data={tableData}
+                        columns={tableColumns}
+                        max-row-selection={maxRowSelection}
+                        onclick={handleTableClick}
+                    ></lightning-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MetaVolume__c</fullName>
+    <description>Valor (em quantidade) da meta da campanha.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Valor (em quantidade) da meta da campanha.</inlineHelpText>
+    <label>Meta</label>
+    <length>80</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+    <trackFeedHistory>false</trackFeedHistory>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pedido_NaoPermitirCaracteresEspeciais</fullName>
+    <active>false</active>
+    <errorConditionFormula>OR(
+AND(
+ !ISBLANK(ObservacoesPedido__c),
+ !REGEX(ObservacoesPedido__c, &quot;[a-zA-Z0-9\\s]+&quot;)),
+AND(
+ !ISBLANK(MensagemNF__c),
+ !REGEX(MensagemNF__c, &quot;[a-zA-Z0-9\\s]+&quot;))
+)</errorConditionFormula>
+    <errorMessage>Não é permitido caracteres especiais.</errorMessage>
+</ValidationRule>
